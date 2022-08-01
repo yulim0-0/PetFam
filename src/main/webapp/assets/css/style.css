@@ -913,6 +913,16 @@ section {
 .inner .faq-list1 .faq-list2 {
   width: 50%;
 }
+li {
+	
+	list-style:none;
+	margin:0px auto;
+	}
+ul {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /*--------------------------------------------------------------
 # Team

@@ -277,125 +277,88 @@
         
         
         <div class="inner">
-          <ul class="faq-list1" data-aos="fade-up" data-aos-delay="100">
+	        
+	          <ul class="faq-list1" data-aos="fade-up" data-aos-delay="100">
+	
+	          <li>
+	            <a id="faq1" data-bs-toggle="collapse" class="collapsed question" href="#faq1">펫팸은 어떤 서비스를 제공하나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+	            <div id="faq1" class="collapse" data-bs-parent=".faq-list1">
+	              <p>
+	              	저희는 국내 최고 반려동물 전문가들의 교육을 받은 펫시터분들의 전문 케어와 픽업 서비스 등 이용가능한 다양한 서비스 옵션을 제공하고 있습니다. 또한, 프리미엄 안전보장 프로그램과 모바일 앱을 통해 간단하고 쉽게 서비스를 이용할 수 있습니다.
+	              </p>
+	            </div>
+	          </li>
+	
+	          <li>
+	            <a data-bs-toggle="collapse" href="#faq2" class="collapsed question">예약 취소 및 환불 규정은 어떻게 되나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+	            <div id="faq2" class="collapse" data-bs-parent=".faq-list1">
+	              <p>
+	               	예약 취소에 따른 환불 가능 금액은 체크인 전 시간에 따라 달라집니다. 체크인 시간을 기준으로 3일(72시간) 전 취소 시 100% 환불, 3일(72시간) 이내 취소 시 50% 환불됩니다. 1일(24시간) 이내 취소 시엔 환불이 불가하고 조기 서비스 종료 시에도 남은 일수에 해당하는 금액 또한 환불 불가합니다. 다만, 펫시터님의 요청 수락 이후 (매칭 이후) 2시간 이내 취소는 전액 환불이 가능합니다. 예약 변경은 예약 취소 후 다시 예약 신청하셔야 하며, 되도록이면 5일 이전에 해주시길 바랍니다. 예약일 연장에 대해서는 앱 내 [ 프로필 > 고객센터 > 채팅문의/전화문의 ] 로 연락주시면 친절히 안내드리겠습니다.
+	              </p>
+	            </div>
+	          </li>
+	
+	          <li>
+	            <a data-bs-toggle="collapse" href="#faq3" class="collapsed question">훈련 예약시 반려동물을 추가하면 비용이 어떻게 되나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+	            <div id="faq3" class="collapse" data-bs-parent=".faq-list1">
+	              <p>
+	               맡기시는 반려동물이 2마리 이상일 경우 2번째 반려동물부터 할인된 비용이 적용될 수 있습니다. 각 이용업체마다 0~20000원 사이의 할인 금액이 있을 수 있으니 유의바랍니다. 
+	              </p>
+	            </div>
+	          </li>
+	
+	          <li>
+	            <a data-bs-toggle="collapse" href="#faq4" class="collapsed question">예약 대기상태는 무엇인가요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+	            <div id="faq4" class="collapse" data-bs-parent=".faq-list1">
+	              <p>
+	                펫팸은 이용업체에서 예약 요청을 승인해야 매칭이 완료됩니다. 예약 대기상태란 아직 이용업체가 예약을 승인하기 전 대기상태를 말합니다. 이 상태에서는 결제가 이뤄지지 않습니다. 24시간 내로 승인하지 않으면 자동으로 예약은 취소됩니다.
+	              </p>
+	            </div>
+	          </li>
+	        </ul>
+	        
+	        
+	          <ul class="faq-list2" data-aos="fade-up" data-aos-delay="100">
+	
+	          <li>
+	            <a data-bs-toggle="collapse" class="collapsed question" href="#faq5">예약된 체크인 또는 체크아웃 시간보다 늦어졌어요.<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+	            <div id="faq5" class="collapse" data-bs-parent=".faq-list2">
+	              <p>
+	              	먼저 체크인 또는 체크아웃 시간보다 늦어지는 경우 반드시 펫시터님께 연락해서 얼만큼 늦어지게 되는 지 연락해주세요. 체크아웃이 늦어지는 경우는 펫시터님이 늦어진 시간 만큼 추가금 결제 요청을 할 수 있습니다.
+	              </p>
+	            </div>
+	          </li>
+	
+	          <li>
+	            <a data-bs-toggle="collapse" href="#faq6" class="collapsed question">예약이 확정되고 난 후, 날짜를 다시 변경하고 싶어요<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+	            <div id="faq6" class="collapse" data-bs-parent=".faq-list2">
+	              <p>
+	               	날짜를 다시 변경하시고 싶은 경우, 예약을 취소하고 다시 예약요청을 하셔야합니다. 만약 예약을 취소함으로써 수수료가 발생하는 경우, 고객센터(070-4756-2223)으로 문의해주시면 수수료 환불이 가능합니다.
+	              </p>
+	            </div>
+	          </li>
+	
+	          <li>
+	            <a data-bs-toggle="collapse" href="#faq7" class="collapsed question">펫팸을 탈퇴하고 싶어요 <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+	            <div id="faq7" class="collapse" data-bs-parent=".faq-list2">
+	              <p>
+	            	 하단의 프로필 탭을 누르면 환경설정에서 회원 탈퇴가 가능합니다. 회원 탈퇴시 이전의 대화, 일지는 모두 볼 수 없게 됩니다. 신중히 진행해주시길 부탁드립니다.
+	              </p>
+	            </div>
+	          </li>
+	
+	          <li>
+	            <a data-bs-toggle="collapse" href="#faq8" class="collapsed question">아이디랑 비밀번호를 잃어버렸어요. 어떻게 다시 찾죠? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+	            <div id="faq8" class="collapse" data-bs-parent=".faq-list2">
+	              <p>
+	              	첫 화면에서 로그인 버튼을 눌러 아이디,비밀번호 찾기 버튼을 누르면 아이디 혹은 비밀번호를 찾을 수 있는 페이지로 이동합니다. 아이디의 경우 실명과 휴대폰 번호, 비밀번호의 경우 가입한 아이디를 입력하고 찾기 버튼을 누르면 문자로 해당내용을 받아보실 수 있습니다.
+	              </p>
+	            </div>
+	          </li>
+	         </div>
+	        </ul>  
+       </div>
 
-          <li><!-- collapse는 구겨진 종이펴듯 피는거  -->
-            <a data-bs-toggle="collapse" class="collapsed question" href="#faq1">예약취소는 어떻게 하나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq1" class="collapse" data-bs-parent=".faq-list1">
-              <p>
-              마이페이지 사이트 내 나의 주문기록에서 예약취소가 가능합니다. 취소처리는 예약 업체의 취소 확인후 승인처리 될 예정입니다.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-bs-toggle="collapse" href="#faq2" class="collapsed question">예약승인은 얼마나 걸리나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq2" class="collapse" data-bs-parent=".faq-list1">
-              <p>
-               관리자가 빠른시일 내 처리 진행중입니다. 1~2일 소요 예상입니다.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-bs-toggle="collapse" href="#faq3" class="collapsed question">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq3" class="collapse" data-bs-parent=".faq-list1">
-              <p>
-                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-bs-toggle="collapse" href="#faq4" class="collapsed question">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq4" class="collapse" data-bs-parent=".faq-list1">
-              <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-bs-toggle="collapse" href="#faq5" class="collapsed question">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq5" class="collapse" data-bs-parent=".faq-list1">
-              <p>
-                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-bs-toggle="collapse" href="#faq6" class="collapsed question">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq6" class="collapse" data-bs-parent=".faq-list1">
-              <p>
-                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
-              </p>
-            </div>
-          </li>
-
-        </ul>
-          <ul class="faq-list2" data-aos="fade-up" data-aos-delay="100">
-
-          <li><!-- collapse는 구겨진 종이펴듯 피는거  -->
-            <a data-bs-toggle="collapse" class="collapsed question" href="#faq7">예약취소는 어떻게 하나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq7" class="collapse" data-bs-parent=".faq-list2">
-              <p>
-              마이페이지 사이트 내 나의 주문기록에서 예약취소가 가능합니다. 취소처리는 예약 업체의 취소 확인후 승인처리 될 예정입니다.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-bs-toggle="collapse" href="#faq8" class="collapsed question">예약승인은 얼마나 걸리나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq8" class="collapse" data-bs-parent=".faq-list2">
-              <p>
-               관리자가 빠른시일 내 처리 진행중입니다. 1~2일 소요 예상입니다.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-bs-toggle="collapse" href="#faq9" class="collapsed question">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq9" class="collapse" data-bs-parent=".faq-list2">
-              <p>
-                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-bs-toggle="collapse" href="#faq10" class="collapsed question">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq10" class="collapse" data-bs-parent=".faq-list2">
-              <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-bs-toggle="collapse" href="#faq11" class="collapsed question">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq11" class="collapse" data-bs-parent=".faq-list2">
-              <p>
-                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <a data-bs-toggle="collapse" href="#faq12" class="collapsed question">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-            <div id="faq12" class="collapse" data-bs-parent=".faq-list2">
-              <p>
-                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
-              </p>
-            </div>
-          </li>
-
-        </ul>
-        
-        </div>
-        
-        
-      </div>
     </section><!-- End F.A.Q Section -->
   
   
