@@ -914,7 +914,6 @@ section {
   width: 50%;
 }
 li {
-	
 	list-style:none;
 	/* margin:0px auto; */
 	margin-left: auto;
@@ -926,12 +925,12 @@ li {
   margin-right: auto;
 }  */ 
  ul.faq-list1 {
-	display: table;
+  display: table;
   margin-left: auto;
   margin-right: auto;
 } 
  ul.faq-list2 {
-	display: table;
+  display: table;
   margin-left: auto;
   margin-right: auto;
 } 
