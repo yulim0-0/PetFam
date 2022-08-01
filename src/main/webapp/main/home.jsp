@@ -268,7 +268,7 @@
   <!-- ======= F.A.Q Section ======= -->
    
     <section id="faq" class="faq section-bg">
-      <div class="container" data-aos="fad e-up">
+      <div class="container" data-aos="fade-up">
 
         <div class="section-title">
           <h2>F.A.Q</h2>

@@ -916,14 +916,25 @@ section {
 li {
 	
 	list-style:none;
-	margin:0px auto;
+	/* margin:0px auto; */
+	margin-left: auto;
+ 	 margin-right: auto;
 	}
-ul {
+/* ul {
   display: table;
   margin-left: auto;
   margin-right: auto;
-}
-
+}  */ 
+ ul.faq-list1 {
+	display: table;
+  margin-left: auto;
+  margin-right: auto;
+} 
+ ul.faq-list2 {
+	display: table;
+  margin-left: auto;
+  margin-right: auto;
+} 
 /*--------------------------------------------------------------
 # Team
 --------------------------------------------------------------*/
