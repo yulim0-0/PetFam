@@ -96,7 +96,6 @@
               <p class="description">서울 서초구 명달로4길 4 1층</p>
             </div>
           </div>
-          
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
            <div class="icon-box">
