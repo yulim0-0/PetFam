@@ -67,42 +67,50 @@
           <p>펫펨이 추천하는 이번 주말 반려견과의 외출</p>
         </div>
 
-        <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate</p>
-            </div>
-          </div>
-
+	        <div class="row"style="justify-content : space-evenly;">
+	        
+	          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" >
+	          		 <div class="icon-box">
+	      				  <img src="https://i0.holapet.com/v0.holapet.com/data2/20211124/16377322407986_78.jpg?resize=400,300" class="img-fluid" alt="">
+		              <h4 class="title"><a href=""><br>바람구름</a></h4>
+		              <p class="description">대구 남구 명덕로64길 26 1층</p>
+		            </div>
+	            </div>
+	      
+	  
+               
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</p>
+            <img src="https://i0.holapet.com/v0.holapet.com/data2/20211125/16378047755484_52.jpeg?resize=400,300" class="img-fluid" alt="">
+              
+              <h4 class="title"><a href=""><br>루체</a></h4>
+              <p class="description">강원 원주시 판부면 매봉길 16-4</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim</p>
+            <img src="https://i0.holapet.com/v0.holapet.com/data2/20211122/16375598086284_64.jpg?resize=400,300" class="img-fluid" alt="">
+              
+              <h4 class="title"><a href=""><br>오늘 카페</a></h4>
+              <p class="description">서울 서초구 명달로4길 4 1층</p>
             </div>
           </div>
+          
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</p>
+           <div class="icon-box">
+            <img src="https://i0.holapet.com/v0.holapet.com/data2/20210528/16221694971084_17.jpg?resize=400,300" class="img-fluid" alt="">
+              <h4 class="title"><a href=""><br>삼락생태공원</a></h4>
+              <p class="description">부산 사상구 삼락동 29-46</p>
             </div>
           </div>
+		
 
         </div>
-
+			
       </div>
+
     </section><!-- End Services Section -->
 
     <section id="portfolio" class="portfolio">
