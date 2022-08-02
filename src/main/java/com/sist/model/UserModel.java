@@ -14,4 +14,11 @@ public class UserModel {
 		request.setAttribute("main_jsp", "../user/login.jsp");
 		return "../main/main.jsp";
 	}
+	
+	@RequestMapping("user/join.do")
+	public String join(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("main_jsp", "../user/join.jsp");
+		return "../main/main.jsp";
+	}
 }

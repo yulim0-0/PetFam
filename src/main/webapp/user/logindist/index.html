@@ -1,31 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
   <title>CodePen - Sign In / Sign Up Slider Form</title>
-  <link rel="stylesheet" href="logindist/login_style.css">
+  <link rel="stylesheet" href="./style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<div class="logincontainer">
-  <div class="loginoverlay" id="overlay">
+<div class="container">
+  <div class="overlay" id="overlay">
     <div class="sign-in" id="sign-in">
-      <h1>Good to See you Again !</h1>
-      <p>아직 회원이 아니시라면 회원가입을 통해 펫팸의 멤버가 되어보세요</p>
-      <button class="switch-button" id="slide-right-button">Join</button>
+      <h1>Welcome Back!</h1>
+      <p>To keep connected with us please login with your personal info</p>
+      <button class="switch-button" id="slide-right-button">Sign In</button>
     </div>
     <div class="sign-up" id="sign-up">
       <h1>Hello, Friend!</h1>
-      <p>이미 회원이신가요?</p>
-      <button class="switch-button" id="slide-left-button">Log In</button>
+      <p>Enter your personal details and start a journey with us</p>
+      <button class="switch-button" id="slide-left-button">Sign Up</button>
     </div>
   </div>
   <div class="form">
     <div class="sign-in" id="sign-in-info">
-      <h1 style="color:#192f61;">회원가입</h1>
+      <h1>Sign In</h1>
       <div class="social-media-buttons">
         <div class="icon">
           <svg viewBox="0 0 24 24">
@@ -44,10 +42,15 @@
         </div>
       </div>
       <p class="small">or use your email account:</p>
-        <button class="control-button in" style="color:#192f61;"><a href="../join.do">회원가입</a></button>
+      <form id="sign-in-form">      
+        <input type="email" placeholder="Email"/>
+        <input type="password" placeholder="Password"/>
+        <p class="forgot-password">Forgot your password?</p>
+        <button class="control-button in">Sign In</button>
+      </form>
     </div>
     <div class="sign-up" id="sign-up-info">
-      <h1>로그인</h1>
+      <h1>Create Account</h1>
       <div class="social-media-buttons">
         <div class="icon">
           <svg viewBox="0 0 24 24">
@@ -67,16 +70,16 @@
       </div>
       <p class="small">or use your email for registration:</p>
       <form id="sign-up-form">
-        <input type="text" placeholder="Id"/>
+        <input type="text" placeholder="Name"/>
+        <input type="email" placeholder="Email"/>
         <input type="password" placeholder="Password"/>
-        <p class="forgot-password">Forgot your password?</p>
-        <button class="control-button up">로그인</button>
+        <button class="control-button up">Sign Up</button>
       </form>
     </div>
   </div>
 </div>
 <!-- partial -->
-  <script  src="logindist/script.js"></script>
+  <script  src="./script.js"></script>
 
 </body>
 </html>

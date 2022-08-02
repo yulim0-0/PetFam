@@ -12,7 +12,7 @@
 
       <div class="logo">
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="Main.jsp"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
+        <a href="../main/main.do"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
         <h1 class="text-light"><a href="#"><span>PetFam</span></a></h1>
       </div>
 
@@ -40,6 +40,7 @@
             
           <li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
+              <li><a href="../user/join.do">회원가입</a></li>
               <li><a href="#">Drop Down 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
