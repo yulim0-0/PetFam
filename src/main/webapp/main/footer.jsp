@@ -27,10 +27,10 @@
             <h4>Quick Moves</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Booking</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Recommendation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Community</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">MyPage</a></li>
             </ul>
           </div>
 

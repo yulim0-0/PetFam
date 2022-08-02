@@ -7,11 +7,11 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 
 @Controller
-public class MainModel {
-	@RequestMapping("main/main.do")
-	public String main_page(HttpServletRequest reqeust, HttpServletResponse response)
+public class UserModel {
+	@RequestMapping("user/login.do")
+	public String login(HttpServletRequest request, HttpServletResponse response)
 	{
-		reqeust.setAttribute("main_jsp", "../main/home.jsp");
+		request.setAttribute("main_jsp", "../user/login.jsp");
 		return "../main/main.jsp";
 	}
 }

@@ -13,7 +13,7 @@
       <div class="logo">
         <!-- Uncomment below if you prefer to use an image logo -->
         <a href="Main.jsp"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
-        <h1 class="text-light"><a href="Main.jsp"><span>PetFam</span></a></h1>
+        <h1 class="text-light"><a href="#"><span>PetFam</span></a></h1>
       </div>
 
       <nav id="navbar" class="navbar">
@@ -56,7 +56,7 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">연락하기</a></li>
-          <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
+          <li><a class="getstarted scrollto" href="../user/login.do">로그인</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
