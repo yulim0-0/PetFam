@@ -13,7 +13,7 @@
 <div class="logincontainer">
   <div class="loginoverlay" id="overlay">
     <div class="sign-in" id="sign-in">
-      <h1>Good to See you Again !</h1>
+      <h1>Good to See</h1><h1>You Again !</h1>
       <p>아직 회원이 아니시라면 회원가입을 통해 펫팸의 멤버가 되어보세요</p>
       <button class="switch-button" id="slide-right-button">Join</button>
     </div>
@@ -44,7 +44,7 @@
         </div>
       </div>
       <p class="small">or use your email account:</p>
-        <button class="control-button in" style="color:#192f61;"><a href="../join.do">회원가입</a></button>
+        <button class="control-button in" style="color:#192f61;"><a href="../user/join.do">회원가입</a></button>
     </div>
     <div class="sign-up" id="sign-up-info">
       <h1>로그인</h1>

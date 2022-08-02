@@ -1,25 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://use.typekit.net/evl6ifb.css">
 </head>
 <body>
 <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-
       <div class="logo">
         <!-- Uncomment below if you prefer to use an image logo -->
         <a href="../main/main.do"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
-        <h1 class="text-light"><a href="#"><span>PetFam</span></a></h1>
+        <h1 class="text-light"><a href="../main/main.do"><span>PetFam</span></a></h1>
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
 <!--           <li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
-          <li><a class="nav-link scrollto" href="../about/about.jsp">소개</a></li>
+          <li><a class="nav-link scrollto" href="../about/about.do">소개</a></li>
           <li class="dropdown"><a href="#"><span>예약</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
               <li><a href="../booking/booking_hospital.jsp">병원</a></li>
@@ -56,7 +57,7 @@
               <li><a href="#">Drop Down 4</a></li>
             </ul>
           </li>
-          <li><a class="nav-link scrollto" href="#contact">연락하기</a></li>
+          <li><a class="nav-link scrollto" href="#contact">문의</a></li>
           <li><a class="getstarted scrollto" href="../user/login.do">로그인</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

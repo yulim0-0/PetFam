@@ -7,12 +7,12 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 
 @Controller
-public class MainModel {
-	@RequestMapping("main/main.do")
-	public String main_page(HttpServletRequest reqeust, HttpServletResponse response)
+public class AboutModel {
+	
+	@RequestMapping("about/about.do")
+	public String about_page(HttpServletRequest request, HttpServletResponse response)
 	{
-		reqeust.setAttribute("main_jsp", "../main/home.jsp");
+		request.setAttribute("main_jsp", "../about/about.jsp");
 		return "../main/main.jsp";
 	}
-	
 }

@@ -358,7 +358,7 @@
       <div class="container">
         <div class="section-title" data-aos="fade-up">
           <h2>Team</h2>
-          <p>우리 팀을 소개합니다</p>
+          <p>4조를 소개합니다</p>
         </div>
 
         <div class="row" style="justify-content : space-evenly;">
@@ -371,7 +371,7 @@
                   <span>Chief Executive Officer</span>
                 </div>
                 <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
+                  <a href="https://github.com/sist-varm/sist_webStudy"><i class="bi bi-twitter"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
                   <a href=""><i class="bi bi-instagram"></i></a>
                   <a href=""><i class="bi bi-linkedin"></i></a>
@@ -486,7 +486,7 @@
 
         <div class="section-title">
           <h2>Contact Us</h2>
-          <p>Contact us the get started</p>
+          <p>문의 사항은 여기로</p>
         </div>
 
         <div class="row">
@@ -496,19 +496,21 @@
               <div class="address">
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <p style="padding: 0 0 10px 60px; margin-bottom: -10px;
+	  			font-size: 14px; color: #ab9d95;">서울특별시 강남구 테헤란로 132(역삼동)</p>
+	  			<p>한독약품빌딩 8층 쌍용교육센터</p>
               </div>
 
               <div class="email">
                 <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@example.com</p>
+                <h4>Fax:</h4>
+                <p>02-3482-4636</p>
               </div>
 
               <div class="phone">
                 <i class="bi bi-phone"></i>
                 <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
+                <p>02-3482-4632~5 </p>
               </div>
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.365821638151!2d127.0310121152449!3d37.49928923573424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca1c32408f9b7%3A0x4e3761a4f356d1eb!2z7IyN7Jqp6rWQ7Jyh7IS87YSw!5e0!3m2!1sko!2skr!4v1659323879797!5m2!1sko!2skr" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
             </div>

@@ -11,7 +11,7 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<div class="joincontainer" style="margin-top: 200px;margin-bottom: 200px;">
+<div class="joincontainer">
   <form>
     <div class="row">
       <h4>Account</h4>
@@ -32,15 +32,16 @@
       <div class="col-half">
         <h4>Date of Birth</h4>
         <div class="input-group">
+        	<div class="col-third">
+            <input type="text" placeholder="YYYY"/>
+          </div>
           <div class="col-third">
             <input type="text" placeholder="DD"/>
           </div>
           <div class="col-third">
             <input type="text" placeholder="MM"/>
           </div>
-          <div class="col-third">
-            <input type="text" placeholder="YYYY"/>
-          </div>
+          
         </div>
       </div>
       <div class="col-half">

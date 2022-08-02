@@ -13,13 +13,13 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Team Four</h3>
+            <h3>쌍용교육센터</h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Teheranro 132, 8F <br>
+              Seoul, Gangnam 06235<br>
+              South Korea <br><br>
+              <strong>Phone:</strong> +82 0507 1316 4632<br>
+              <strong>Site:</strong> <a href="https://www.sist.co.kr/index.jsp">https://www.sist.co.kr</a><br>
             </p>
           </div>
 
@@ -70,7 +70,7 @@
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed and Programmed by <a href="https://github.com/sistteamtuna">TeamTuna</a>
       </div>
     </div>
   </footer>
