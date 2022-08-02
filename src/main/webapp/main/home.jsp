@@ -141,13 +141,12 @@
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
-                <h4>App 1</h4>
-                <p>App</p>
+                <p>플러스동물메디컬센터</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_52.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
@@ -155,8 +154,7 @@
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
+                <p>순수동물병원</p>
               </div>
             </div>
           </div>
@@ -169,8 +167,7 @@
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
-                <h4>App 2</h4>
-                <p>App</p>
+                <p>치료해주오 광명점</p>
               </div>
             </div>
           </div>
@@ -183,13 +180,12 @@
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
-                <h4>Card 2</h4>
-                <p>Card</p>
+                <p>초롱스쿨 반려견교육센터</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_%EC%95%84%EC%B9%B4%EB%8D%B0%EB%AF%B8.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
@@ -197,41 +193,38 @@
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
-                <h4>Web 2</h4>
-                <p>Web</p>
+                <p>바우라움서울캠퍼스</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <div class="portfolio-wrap">
-              <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_43.jpg" data-gallery="portfolioGallery" class="img-fluid" alt="">
+              <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_%EC%B9%B4%EB%B0%8D%EC%8B%9C%EA%B7%B8%EB%84%90.jpg" data-gallery="portfolioGallery" class="img-fluid" alt="">
               <div class="portfolio-links">
                 <a href="" class="portfolio-lightbox" title="App 3"><i class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
-                <h4>App 3</h4>
-                <p>App</p>
+                <p>조이플마인드케어</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
-              <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_%EC%B9%B4%EB%B0%8D%EC%8B%9C%EA%B7%B8%EB%84%90.jpg" class="img-fluid" alt="">
+              <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_6.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
                 <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bi bi-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
-                <h4>Card 1</h4>
-                <p>Card</p>
+                <p>도그플러스 애견미용</p>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_%EA%B3%A0%EC%96%91%EC%9D%B4%EB%AF%B8%EC%9A%A9.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
@@ -239,8 +232,7 @@
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
-                <h4>Card 3</h4>
-                <p>Card</p>
+                <p>우리들동물종합병원</p>
               </div>
             </div>
           </div>
@@ -253,8 +245,7 @@
                 <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
-                <h4>Web 3</h4>
-                <p>Web</p>
+                <p>잇츠그루밍타임</p>
               </div>
             </div>
           </div>
