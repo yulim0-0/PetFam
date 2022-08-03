@@ -58,10 +58,24 @@
     </section> -->
     <!-- End About Section -->
 
+
+
+
+    <!-- ======= Searchbar Section ======= -->
+    <section id="searchbar" class="searchbar section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="searchsection-title">
+          <h2>SearchBar</h2>
+          <p><input placeholder="Search" type="text" name="search" class="searchbar"></p>
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+
+
+
     <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
-
         <div class="section-title">
           <h2>Recommendation</h2>
           <p>펫펨이 추천하는 이번 주말 반려견과의 외출</p>
@@ -104,12 +118,8 @@
               <p class="description">부산 사상구 삼락동 29-46</p>
             </div>
           </div>
-		
-
         </div>
-			
       </div>
-
     </section><!-- End Services Section -->
 
     <section id="portfolio" class="portfolio">

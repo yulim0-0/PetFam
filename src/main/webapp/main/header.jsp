@@ -20,7 +20,6 @@
       <nav id="navbar" class="navbar">
         <ul>
 <!--           <li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
-          <li><a class="nav-link scrollto" href="../about/about.do">소개</a></li>
           <li class="dropdown"><a href="#"><span>예약</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
               <li><a href="../booking/booking_hospital.jsp">병원</a></li>
@@ -42,7 +41,7 @@
           <li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="../user/join.do">회원가입</a></li>
-              <li><a href="#">Drop Down 1</a></li>
+              <li><a href="#">나의 예약</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
@@ -52,9 +51,8 @@
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="#">예약 내역</a></li>
+              <li><a href="#">예약 현황</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">문의</a></li>

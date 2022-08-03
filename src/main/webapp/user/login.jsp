@@ -14,7 +14,7 @@
   <div class="loginoverlay" id="overlay">
     <div class="sign-in" id="sign-in">
       <h1>Good to See</h1><h1>You Again !</h1>
-      <p>아직 회원이 아니시라면 회원가입을 통해 펫팸의 멤버가 되어보세요</p>
+      <p>아직 회원이 아니라면 회원가입을 통해 펫팸의 멤버가 되어보세요</p>
       <button class="switch-button" id="slide-right-button">Join</button>
     </div>
     <div class="sign-up" id="sign-up">

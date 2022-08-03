@@ -395,7 +395,7 @@ font-style: normal;
   transition: 0.5s;
   margin-top: 30px;
   color: #f34100;
-  border : solid;
+  border : solid 0.8px;
   border-color : #f34100;
 }
 
@@ -521,6 +521,17 @@ section {
   left: calc(50% - 30px);
 }
 
+/* 상단 searchbar 전용 */
+.searchsection-title p::before {
+	  content: "";
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #192f61;
+  bottom: 0;
+  left: calc(50% - 30px);
+}
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
@@ -607,6 +618,32 @@ section {
     max-width: 90%;
   }
 }
+
+/*--------------------------------------------------------------
+# Searchbar
+--------------------------------------------------------------*/
+.searchbar {
+	padding-top : 100px;
+	background-color:#fff;
+	text-align : center;
+}
+
+.searchbar .searchbar {
+    font-size: 20px;
+    text-align : initial;
+    width: 70%;
+    height: auto;
+    padding: 10px 10px 10px 24px;
+    border : solid 0.8px;
+    border-radius: 100px;
+    border-color : #192f61;
+}
+
+.searchbar p {
+	padding : 20px;
+}
+
+
 
 /*--------------------------------------------------------------
 # Services
