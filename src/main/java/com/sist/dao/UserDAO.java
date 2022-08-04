@@ -22,4 +22,51 @@ public class UserDAO {
 		}
 	}
 	
+	public static int userIdCheck(String id)
+	{
+		int count=0;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			count=session.selectOne("userIdCheck",id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return count;
+	}
+	
+	public static int userEmailCheck(String email)
+	{
+		int count=0;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			count=session.selectOne("userEmailCheck",email);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return count;
+	}
+	public static int userPhoneCheck(String phone)
+	{
+		int count=0;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			count=session.selectOne("userPhoneCheck",phone);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return count;
+	}
+	
 }

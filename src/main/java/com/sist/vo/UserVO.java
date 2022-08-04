@@ -9,9 +9,22 @@ public class UserVO {
 	PHONE             VARCHAR2(13) 
 	EMAIL             VARCHAR2(30) 
 	ZIPCODE           NUMBER(5)    
-	ADDRESS           VARCHAR2(50)
+	ADDR1          VARCHAR2(100)
+		ADDR2          VARCHAR2(100)
 */
-	private String id, pwd, name, birthday, phone, email, address;
+	private String id, pwd, name, birthday, phone, email, addr1, addr2;
+	public String getAddr1() {
+		return addr1;
+	}
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
 	private int zipcode;
 	public String getId() {
 		return id;
@@ -48,12 +61,6 @@ public class UserVO {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
 	}
 	public int getZipcode() {
 		return zipcode;

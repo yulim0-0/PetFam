@@ -66,7 +66,7 @@
       <div class="container" data-aos="fade-up">
         <div class="searchsection-title">
           <h2>SearchBar</h2>
-          <p><input placeholder="Search" type="text" name="search" class="searchbar"></p>
+          <p><input placeholder="Search" type="text" value="${search }" name="search" class="searchbar"></p>
         </div>
       </div>
     </section><!-- End Services Section -->
@@ -81,7 +81,7 @@
           <p>펫펨이 추천하는 이번 주말 반려견과의 외출</p>
         </div>
 
-	        <div class="row"style="justify-content : space-evenly;">
+	        <div class="row"style="justify-content : space-evenly;word-break : keep-all;">
 	        
 	          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" >
 	          		 <div class="icon-box">
@@ -89,7 +89,7 @@
 		              <h4 class="title"><a href=""><br>바람구름</a></h4>
 		              <p class="description">대구 남구 명덕로64길 26 1층</p>
 		            </div>
-	            </div>
+	          </div>
 	      
 	  
                
@@ -98,7 +98,7 @@
             <img src="https://i0.holapet.com/v0.holapet.com/data2/20211125/16378047755484_52.jpeg?resize=400,300" class="img-fluid" alt="">
               
               <h4 class="title"><a href=""><br>루체</a></h4>
-              <p class="description">강원 원주시 판부면 매봉길 16-4</p>
+              <p class="description">강원 원주시</p><p class="description">판부면 매봉길 16-4</p>
             </div>
           </div>
 
