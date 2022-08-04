@@ -27,7 +27,15 @@
               <li><a href="#">미용</a></li>
             </ul>
           
-          <li><a class="nav-link scrollto" href="#portfolio" hover="Recommendation")>추천</a></li>
+         <!--   <li><a class="nav-link scrollto" href="#portfolio" hover="Recommendation")>추천</a></li>-->
+         
+            <li class="dropdown"><a href="#"><span>추천</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+              <li><a href="../petplace/cafe.do">카페/식당</a></li>
+              <li><a href="../petplace/park.do">공원</a></li>
+              <li><a href="../petplace/pension.do">펜션</a></li>
+            </ul>
+         </li>
           
           
           <li class="dropdown"><a href="#"><span>커뮤니티</span> <i class="bi bi-chevron-down"></i></a>
