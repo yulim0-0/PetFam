@@ -81,7 +81,7 @@
         $.ajax({
             type:'post',
             url:'../user/phone_check.do',
-            data:{"phone":"010-"+phone},
+            data:{"phone":phone},
             success:function(result)
             {
                 let count=parseInt(result.trim())
