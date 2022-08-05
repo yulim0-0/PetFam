@@ -1,0 +1,131 @@
+/* Font */
+@font-face {
+    font-family: 'Noto Sans KR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@import url('https://fonts.googleapis.com/earlyaccess/notosanskr.css');
+@import url('https://use.typekit.net/evl6ifb.css');
+
+/* Design */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* html {
+  background-color: cyan;
+} */
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  letter-spacing: 0;
+  padding: 1rem;
+}
+
+.main{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 150;
+    text-align: center;
+}
+
+img {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.btn {
+  color:#FFFFFF;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 0.7rem;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  background-color: #192F61;
+}
+
+.btn:hover {
+  background-color: #FFFFFF;
+  color: #192F61;
+  border: 1px solid #192F61;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+  width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  border-radius: 1rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.4);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card_content {
+  padding: 1rem;
+  background-color: white;
+  height: 100%;
+}
+
+.card_store {
+  color: #4e4039;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.card_title {
+  color: #212529;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 0.1rem;    
+  font-weight: 700;
+}
+.card_price {
+  color: #f34100;
+  text-align: right;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;    
+  font-weight: 300;
+}

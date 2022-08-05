@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.booking-mapper">
+ <select id="bookingListData" resultType="BookingVO" parameterType="hashmap">
+ SELECT o_no,name,store,poster,price,num
+ FROM(SELECT o_no,name,store,poster,price,rownum as num
+ FROM(SELECT o_no,name,store,poster,price
+ FROM ${table_name} ORDER BY o_no ASC))
+ WHERE num BETWEEN #{start} AND #{end}
+ </select>
+</mapper>

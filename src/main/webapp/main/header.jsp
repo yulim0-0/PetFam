@@ -22,7 +22,7 @@
 <!--           <li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
           <li class="dropdown"><a href="#"><span>예약</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-              <li><a href="../booking/booking_hospital.jsp">병원</a></li>
+              <li><a href="../booking/hospital_list.do">병원</a></li>
               <li><a href="#">훈련</a></li>
               <li><a href="#">미용</a></li>
             </ul>
