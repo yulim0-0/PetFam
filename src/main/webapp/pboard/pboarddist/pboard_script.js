@@ -33,11 +33,6 @@ let Stops = [
   }
 ]
 
-class TourBus {
-  constructor(stops){
-    this.stops = stops;
-    this.currentIndex = 0;
-  }
   initOverlay = () => {
     // Overlay
     let overlay = document.createElement('div');
@@ -231,8 +226,6 @@ class TourBus {
       return;
     }
   }
-}
-
 const pageTour = new TourBus(Stops);
 pageTour.start();
 
