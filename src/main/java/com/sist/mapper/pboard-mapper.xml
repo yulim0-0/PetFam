@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.pboard-mapper">
-
+	 <!--  목록 : 페이징  select -->
+  <!-- findAll() -->
+  <select id="pboardListData" resultType="PboardVO" parameterType="hashmap">
+    SELECT p_no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
+    FROM (SELECT p_no,subject,name,regdate,hit,rcount,rownum as num 
+    FROM (SELECT p_no,subject,name,regdate,hit,rcount 
+    FROM pbo_4))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <select id="pboardTotalPage" resultType="int">
+    SELECT CEIL(COUNT(*)/10.0) FROM pbo_4
+  </select>
+  <!--  map.get("start") -->
+  <!--  등록 : 시퀀스  selectKey insert-->
+  <insert id="pboardInsert" parameterType="PboardVO">
+    INSERT INTO pbo_4(p_no,name,subject,content,pwd) 
+    VALUES((SELECT NVL(MAX(p_no)+1,1) FROM pbo_4),
+     #{name},#{subject},#{content},#{pwd}
+    )
+  </insert>
+  <!--  vo.getName() -->
+  <update id="hitIncrement" parameterType="int">
+    UPDATE pbo_4 SET
+    hit=hit+1
+    WHERE p_no=#{p_no}
+  </update>
+  <!-- findOne(int no) -->
+  <select id="pboardDetailData" resultType="PboardVO" parameterType="int">
+    SELECT p_no,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
+    FROM pbo_4
+    WHERE p_no=#{p_no}
+  </select>
+  <!--  수정 update, 삭제 (댓글) delete 
+        findByPwd(String pwd)
+  -->
+  <select id="pboardGetPassword" resultType="string" parameterType="int">
+    SELECT pwd FROM pbo_4
+    WHERE p_no=#{p_no}
+  </select>
+  <!-- save(FreeboardVO vo) -->
+  <update id="pboardUpdate" parameterType="PboardVO">
+    UPDATE pbo_4 SET
+    name=#{name},subject=#{subject},content=#{content}
+    WHERE p_no=#{p_no}
+  </update>
+  <!-- delete(int no) -->
+  <delete id="pboardDelete" parameterType="int">
+    DELETE FROM pbo_4
+    WHERE p_no=#{p_no}
+  </delete>
 </mapper>
