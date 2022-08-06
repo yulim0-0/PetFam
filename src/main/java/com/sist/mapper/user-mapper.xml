@@ -4,14 +4,34 @@
 
 <!-- 아이디 중복 체크 -->
 <select id="userIdCheck" resultType="int" parameterType="string">
-	SELECT COUNT(*) FROM hr.user_4 WHERE id=#{id}
+	SELECT COUNT(*) FROM user_4 WHERE id=#{id}
 </select>
 <!-- 이메일 중복 체크 -->
 <select id="userEmailCheck" resultType="int" parameterType="string">
-	SELECT COUNT(*) FROM hr.user_4 WHERE email=#{email}
+	SELECT COUNT(*) FROM user_4 WHERE email=#{email}
 </select>
 
 <select id="userPhoneCheck" resultType="int" parameterType="string">
-	SELECT COUNT(*) FROM hr.user_4 WHERE phone=#{phone}
+	SELECT COUNT(*) FROM user_4 WHERE phone=#{phone}
 </select>
+
+
+<!-- 	
+ID       NOT NULL VARCHAR2(20)  
+PWD               VARCHAR2(20)  
+NAME              VARCHAR2(10)  
+BIRTHDAY          VARCHAR2(8)   
+PHONE             VARCHAR2(13)  
+EMAIL             VARCHAR2(30)  
+ZIPCODE           NUMBER(5)     
+ADDR1             VARCHAR2(100) 
+ADDR2             VARCHAR2(100) 
+GENDER            VARCHAR2(10)  
+
+ -->
+ <insert id="userInsert" parameterType="UserVO">
+ 	INSERT INTO user_4(id, pwd, name, birthday, phone, email, zipecode, addr1, addr2, gender) 
+ 	VALUES(#{id}, #{pwd}, #{name}, #{birthday}, #{phone}, #{email}, #{zipcode}, #{addr1}, #{addr2}, #{gender})
+ 
+ </insert>
 </mapper>

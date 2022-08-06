@@ -69,4 +69,50 @@ public class UserDAO {
 		return count;
 	}
 	
+	public static void userinsert(UserVO vo)
+	{
+		SqlSession session=null;
+		try {
+			session=ssf.openSession(true);
+			session.insert("userInsert",vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	
+	public static UserVO isLogin(String id, String pwd)
+	{
+		UserVO vo=new UserVO();
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			int count=session.selectOne("userIdCount",id);
+			
+			if(count==0)
+			{
+				vo.setMsg("NOID");
+			}
+			else {
+				vo=session.selectOne("userInfoData",id);
+				if(pwd.equals(vo.getPwd()))
+				{
+					vo.setMsg("OK");
+				}
+				else
+				{
+					vo.setMsg("NOPWD");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return vo;
+	}
+	
 }
