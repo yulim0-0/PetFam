@@ -23,8 +23,13 @@
           <li class="dropdown"><a href="#"><span>예약</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
               <li><a href="../booking/hospital_list.do">병원</a></li>
+<<<<<<< HEAD
                 <li><a href="../booking/salon_list.do">미용</a></li>
                <li><a href="../booking/training_list.do">훈련</a>
+=======
+              <li><a href="../booking/salon_list.do">미용</a></li>
+              <li><a href="../booking/training_list.do">훈련</a></li>
+>>>>>>> branch 'master' of https://github.com/sistteamtuna/PetFam.git
             </ul>
           
          <!--   <li><a class="nav-link scrollto" href="#portfolio" hover="Recommendation")>추천</a></li>-->
