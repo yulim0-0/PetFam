@@ -27,9 +27,6 @@
                 <li><a href="../booking/salon_list.do">미용</a></li>
                <li><a href="../booking/training_list.do">훈련</a>
 
-              <li><a href="../booking/salon_list.do">미용</a></li>
-              <li><a href="../booking/training_list.do">훈련</a></li>
-
             </ul>
           
          <!--   <li><a class="nav-link scrollto" href="#portfolio" hover="Recommendation")>추천</a></li>-->
