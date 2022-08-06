@@ -57,7 +57,7 @@
 
 
 body {
-  margin: 0;
+  margin-top: 10px;
 }
 .row {
   display: flex;
@@ -83,8 +83,8 @@ button {
 
  #ptitle{
   font-size: 2em;
-  margin-undder: 15px;
-  color: #de5c41;
+  margin-bottom: 15px;
+  color:#f34100;
 }
 
 /* 
@@ -174,11 +174,11 @@ button {
   width: 100%;
   padding: 20px;
   text-align: left;
-  color: #717171;
+  color: #192f61;
 }
 
 .psidebar-nav button:hover {
-  color: #de5c41;
+  color: #f34100;
 }
 
 .psidebar-nav button span {
@@ -254,6 +254,10 @@ button.primary:hover {
   padding: 20px;
   border-radius: 5px;
 }
+.ptable-card h2 {
+	
+	color:#192f61;
+}
 
 .dashcards {
   margin-bottom: 40px;
@@ -300,3 +304,22 @@ ul:hover{
 	color:#ee7843;
 	
 }
+
+/* list-bottom */
+
+.data-ci-pagination-page{
+	display: table;
+  margin-left: auto;
+  margin-right: auto; /*있으나마나임 방법을 강구해 봐야겠음 */
+}
+/* insert */
+
+.pi_body{
+	margin-top: 100px;	
+	
+}
+
+
+
+
+

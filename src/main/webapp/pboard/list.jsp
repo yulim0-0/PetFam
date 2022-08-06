@@ -15,8 +15,7 @@
 <!-- partial:index.partial.html -->
 <div class='app'>
   <div class='pheader'>
-    <div class='row'>
-    </div>
+    
   </div>
   <div class='pbody'>
     <div class='psidebar'>
@@ -88,48 +87,48 @@
           </div>
         </div>
         <div class='ptable-card'>
-          <h2>PetBoard</h2>
-          <table class='ptable'>
-           <thead>
-              <tr>
-              <th id='tour-table'></th>
-		          <td width="10%" class="text-center">번호</td>
-		          <td width="45%" class="text-center">제목</td>
-		          <td width="15%" class="text-center">이름</td>
-		          <td width="20%" class="text-center">작성일</td>
-		          <td width="10%" class="text-center">조회수</td>
-		        </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="vo" items="${list }">
-				        <tr>
-				          <%--
-				              adadadaadad (3) ==> reply ==> insert  freeboard=>rcount++
-				              
-				              .do ==> DispatcherServlet
-				                  ==> ~Model 
-				                      @RequestMapping(.do)
-				                      메소드 ==> 호출 
-				                      {
-				                          DB연동 
-				                          이동할 JSP지정 
-				                      }
-				           --%>
-				          <td width="10%" class="text-center">${vo.p_no }</td>
-				          <td width="45%"><a href="../pboard/detail.do?p_no=${vo.p_no }">${vo.subject }</a>
-				            &nbsp;&nbsp;
-				            <c:if test="${vo.rcount>0 }">
-				             (${vo.rcount })
-				            </c:if>
-				          </td>
-				          <td width="15%" class="text-center">${vo.name }</td>
-				          <td width="20%" class="text-center">${vo.dbday }</td>
-				          <td width="10%" class="text-center">${vo.hit }</td>
-				        </tr>
-				</c:forEach>
-			</table>
-				      </div>
-				      <table class="table">
+	          <h2>PetBoard</h2>
+		          <table class='ptable'>
+			           <thead>
+			              <tr>
+					          <td width="10%" class="text-center">번호</td>
+					          <td width="45%" class="text-center">제목</td>
+					          <td width="15%" class="text-center">이름</td>
+					          <td width="20%" class="text-center">작성일</td>
+					          <td width="10%" class="text-center">조회수</td>
+					        </tr>
+			            </thead>
+		           
+		                <c:forEach var="vo" items="${list }">
+						        <tr>
+						          <%--
+						              adadadaadad (3) ==> reply ==> insert  freeboard=>rcount++
+						              
+						              .do ==> DispatcherServlet
+						                  ==> ~Model 
+						                      @RequestMapping(.do)
+						                      메소드 ==> 호출 
+						                      {
+						                          DB연동 
+						                          이동할 JSP지정 
+						                      }
+						           --%>
+						          <td width="10%" class="text-center">${vo.p_no }</td>
+						          <td width="45%"><a href="../pboard/detail.do?p_no=${vo.p_no }">${vo.subject }</a>
+						            &nbsp;&nbsp;
+						            <c:if test="${vo.rcount>0 }">
+						             (${vo.rcount })
+						            </c:if>
+						          </td>
+						          <td width="15%" class="text-center">${vo.name }</td>
+						          <td width="20%" class="text-center">${vo.dbday }</td>
+						          <td width="10%" class="text-center">${vo.hit }</td>
+						        </tr>
+						</c:forEach>
+						
+				</table>
+		 </div>
+				     <!--  <table class="table">  원래 기본 
 				         <tr>
 					         <td class="text-right">
 						          <input type="checkbox" name=fd value="name">이름
@@ -138,8 +137,9 @@
 						          <input type=text name=ss size=15 class="input-sm">
 						          <input type=button value=검색 class="btn btn-sm btn-primary">
 						         </td>
-						       </tr>
-						      <tr>   
+						  </tr>
+						  
+						  <tr>   
 					         <td class="text-center inline"> 
 					         <ul class="pagination pagination">
 							    <li><a href="#">1</a></li>
@@ -149,13 +149,53 @@
 							    <li><a href="#">5</a></li>
 							  </ul>
 					       </td> 
-				         </tr>
-				     </table>
-				     
+				         </tr>-->
+				<!--    </table>  -->
+						
+								<div id="article-list-menu">
+									<a href="#" class="btn square btn-default best"><i class="fa fa-star"></i>인기글</a> 
+									<button class="btn square del btn-danger" type="button" id="deleteAllBtn"><i class="fa fa-trash"></i>삭제</button>
+									
+								<ul class='pagination'>
+										<li class='disabled'></li>
+										<li class='active'><a href='#'>1<span class='sr-only'></span></a></li>
+										<li><a href="#" data-ci-pagination-page="2">2</a></li>
+										<li><a href="#" data-ci-pagination-page="3">3</a></li>
+										<li><a href="#" data-ci-pagination-page="4">4</a></li>
+										<li><a href="#" data-ci-pagination-page="2" rel="next">&gt;</a>
+								</ul>
+									<a href="../pboard/insert.do" class="btn square btn-primary write" id="WriteBtn"><i class="fa fa-pencil"></i> 글 쓰기</a>
+								</div>
+		
+								<form class="input-group" method="get" id="boardSearchForm">
+									<input type="hidden" name="search_type" value="title"/>
+									 <span class="input-group-btn">
+										<button type="button"
+											class="btn square btn-default dropdown-toggle"
+											data-toggle="dropdown" aria-haspopup="true"
+											aria-expanded="false">
+											<span id="search-type-desc">제목</span> <span class="caret"></span>
+										</button>
+										
+										<ul class="dropdown-menu">
+											<li><a href="#" data-value="title">제목</a></li>
+											<li><a href="#" data-value="titlecont">제목+내용</a></li>
+											<li><a href="#" data-value="nickname">닉네임</a></li>
+									</ul><!--  원래 div였음 -->
+									</span>
+									    <input type="text" name="search_term" class="form-control" placeholder="검색어" value=""> 
+									    	<span class="input-group-btn">
+												<button class="btn square btn-default" type="submit">
+													<i class="fa fa-search"></i>
+												</button>
+											</span>
+								</form>
+							
+						</div>
 				 </div>
 			 </div>
 	  </div>
- </div>
+
 		
 <!-- partial -->
   <script  src="pboarddist/pboard_script.js"></script>
