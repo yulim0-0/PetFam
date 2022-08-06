@@ -1,6 +1,7 @@
 package com.sist.dao;
 
 import java.io.*;
+
 import java.util.*;
 
 import org.apache.ibatis.io.Resources;
@@ -9,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.BookingVO;
+
 
 public class BookingDAO {
 	//1.XML파일 읽기
@@ -48,4 +50,46 @@ public class BookingDAO {
 		}
 		return list;
 	}
+	
+	 public static int bookingTotalPage(Map map)
+	   {
+		   int total=0;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   total=session.selectOne("bookingTotalPage", map);
+		   }catch(Exception ex)
+		   {
+			   System.out.println("bookingTotalPage : error");
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); // POOL => 반환 
+		   }
+		   return total;
+	   }
+	 
+	 public static BookingVO hospitalDetailData(Map map)
+	   {
+		    BookingVO vo=new BookingVO();
+		    SqlSession session=null;
+		    try
+		    {
+		    	session=ssf.openSession();
+		    	vo=session.selectOne("hospitalDetailData", map);//row
+		    }catch(Exception ex)
+		    {
+		    	System.out.println("hospitalDetailData: error");
+		    	ex.printStackTrace();
+		    }
+		    finally
+		    {
+		    	if(session!=null)
+		    		session.close();
+		    }
+		    return vo;
+	   }
 }

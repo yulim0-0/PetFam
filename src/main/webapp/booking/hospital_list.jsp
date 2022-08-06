@@ -5,7 +5,12 @@
 <html>
 <head>
 <!-- grid css -->
-<link rel="stylesheet" href="../booking/listdist/list_style.css">
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="../booking/listdist/list_style.css">
 </head>
 <body>
  <div class="main">
@@ -20,7 +25,7 @@
       <h2 class="card_store">${vo.store }</h2>
       <p class="card_title">${vo.name }</p>
       <p class="card_price">${vo.price }\</p>
-      <button class="btn card_btn">Read More</button>
+      <a href="../booking/hos_detail.do?o_no=${vo.o_no }"><button class="btn card_btn">Read More</button></a>
      </div>
     </div>
    </li>
@@ -35,7 +40,7 @@
       <h2 class="card_store">${vo.store }</h2>
       <p class="card_title">${vo.name }</p>
       <p class="card_price">${vo.price }\</p>
-      <button class="btn card_btn">Read More</button>
+     <a href="../booking/hos_detail.do?o_no=${vo.o_no }"> <button class="btn card_btn">Read More</button></a>
       
      </div>
     </div>
@@ -44,6 +49,28 @@
   </c:if>
   </c:forEach>
   </ul>
+  
+  
+        <div class="container" align="center">
+  <ul class="pagination">
+          <c:if test="${startPage>1 }">
+            <li><a href="../booking/hospital_list.do?page=${startPage-1 }">&laquo;</a></li>
+          </c:if>
+          <c:forEach var="i" begin="${startPage }" end="${endPage }">
+            <c:if test="${i==curpage }">
+             
+            </c:if>
+            <c:if test="${i!=curpage }">
+             
+            </c:if>
+            <li><a href="../booking/hospital_list.do?page=${i }">${i }</a></li>
+          </c:forEach>
+          <c:if test="${endPage<totalpage }">
+            <li><a href="../booking/hospital_list.do?page=${endPage+1 }">&raquo;</a></li>
+          </c:if>
+        </ul>
+        </div>
  </div>
+ 
 </body>
 </html>

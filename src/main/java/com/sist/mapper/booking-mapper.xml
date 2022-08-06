@@ -8,4 +8,13 @@
  FROM ${table_name} ORDER BY o_no ASC))
  WHERE num BETWEEN #{start} AND #{end}
  </select>
+ 
+ <select id="bookingTotalPage" resultType="int" parameterType="hashmap">
+   SELECT CEIL(COUNT(*)/16.0) FROM ${table_name}
+ </select>
+ 
+ <select id="hospitalDetailData" resultType="BookingVO" parameterType="hashmap">
+   SELECT * FROM ${table_name}
+   WHERE o_no=#{o_no}
+ </select>
 </mapper>

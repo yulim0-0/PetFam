@@ -2,13 +2,17 @@ package com.sist.model;
 
 import java.util.*;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.vo.BookingVO;
+
 import com.sist.dao.BookingDAO;
+
+
 
 @Controller
 public class BookingModel {
@@ -28,9 +32,48 @@ public class BookingModel {
 		map.put("end", end);
 		map.put("table_name", "ord_4");
 		List<BookingVO> list=BookingDAO.bookingListData(map);
-		request.setAttribute("list", list);
+		
+		 int totalpage=BookingDAO.bookingTotalPage(map);
+		   System.out.println("totalpage="+totalpage);
+		   final int BLOCK=5;
+		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		   /*
+		    *   [1][2][3][4][5]  => startPage =1 
+		    *                       endPage   =5
+		    *   [6][7][8][9][10] => startPage=6
+		    *                       endPage=10
+		    */
+		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		   
+		   if(endPage>totalpage)
+			    endPage=totalpage;
+		   
+		   request.setAttribute("curpage", curpage);
+		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("startPage", startPage);
+		   request.setAttribute("endPage", endPage);
+		   request.setAttribute("list", list);
 		
 		request.setAttribute("main_jsp", "../booking/hospital_list.jsp");
 		return "../main/main.jsp";
 	}
-}
+	 @RequestMapping("booking/hos_detail.do")
+	   public String hos_detail(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   String o_no=request.getParameter("o_no");
+		  
+		   String table_name="ord_4";
+		  
+		  
+		   
+		   Map map=new HashMap();
+		   map.put("o_no",o_no);
+		   map.put("table_name", table_name);
+		   BookingVO vo=BookingDAO.hospitalDetailData(map);
+		   
+		   request.setAttribute("vo", vo);
+		   request.setAttribute("main_jsp", "../booking/hos_detail.jsp");
+		   return "../main/main.jsp";
+	   }
+	}
+
