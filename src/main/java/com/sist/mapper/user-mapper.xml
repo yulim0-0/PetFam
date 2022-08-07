@@ -30,8 +30,8 @@ GENDER            VARCHAR2(10)
 
  -->
  <insert id="userInsert" parameterType="UserVO">
- 	INSERT INTO user_4(id, pwd, name, birthday, phone, email, zipecode, addr1, addr2, gender) 
- 	VALUES(#{id}, #{pwd}, #{name}, #{birthday}, #{phone}, #{email}, #{zipcode}, #{addr1}, #{addr2}, #{gender})
+ 	INSERT INTO user_4(id, pwd, name, birthday, phone, email, zipcode, addr1, addr2, gender) 
+ 	VALUES(#{id}, #{pwd}, #{name}, #{birthday}, #{gender}, #{phone}, #{email}, #{zipcode}, #{addr1}, #{addr2})
  
  </insert>
 </mapper>

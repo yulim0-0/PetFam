@@ -33,7 +33,7 @@
 			// 우편번호 검색 처리 
 			new daum.Postcode({
 				oncomplete : function(data) {
-					$('#post').val(data.zonecode)
+					$('#zipcode').val(data.zonecode)
 					$('#addr1').val(data.address)
 				}
 			}).open()
@@ -108,24 +108,24 @@
 <body>
 	<!-- partial:index.partial.html -->
 	<div class="joincontainer">
-		<form>
+		<form method="post" action="../user/join_ok.do" name="join_frm" id="join_frm" >
 			
-				<h4>Account</h4>
-				<div class="row">
-					<div class="col-66 input-group input-group-icon">
-						<input type="text" name=id id=id placeholder="아이디" />
-						<div class="input-icon">
-							<i class="fa fa-envelope"></i>
-						</div>
-					</div>
-					<div class="col-33">
-						<input type="button" id="checkBtn" value="중복확인" />
+			<h4>Account</h4>
+			<div class="row">
+				<div class="col-66 input-group input-group-icon">
+					<input type="text" name=id id=id placeholder="아이디" />
+					<div class="input-icon">
+						<i class="fa fa-envelope"></i>
 					</div>
 				</div>
+				<div class="col-33">
+					<input type="button" id="checkBtn" value="중복확인" />
+				</div>
+			</div>
 				
 				<div class="row">
 					<div class="input-group input-group-icon">
-						<input class="row-100" type="password" id="pwd" placeholder="비밀번호" />
+						<input class="row-100" type="password" name="pwd" id="pwd" placeholder="비밀번호" />
 						<div class="input-icon" style="margin-top : 4px; ">
 							<i class="fa fa-key"></i>
 						</div>
@@ -141,12 +141,19 @@
 					</div>
 				</div>
 				
-				
+				<div class="row">
+						<div class="input-group input-group-icon">
+							<input class="row-100" type="text" id="name" name="name" placeholder="이름" />
+							<div class="input-icon" style="margin-top : 4px; ">
+							<i class="fa fa-key"></i>
+						</div>
+					</div>
+				</div>
 			<div class="row">
 				<!-- 생년월일 -->
 				<h4>Private Info</h4>
 				<div class="col-half" style="padding-top : 5px">
-					<input type="date" name=birthday placeholder="생년월일" />
+					<input type="date" name=birthday id="birthday" placeholder="생년월일" />
 				</div>
 
 				<!-- 성별 -->
@@ -162,7 +169,7 @@
 
 			<div class="row">
 				<div class="col-66 input-group input-group-icon">
-					<input type="tel" id=phone placeholder="전화번호" />
+					<input type="tel" id=phone name="phone" placeholder="전화번호" />
 					<div class="input-icon">
 						<i class="fa fa-phone"></i>
 					</div>
@@ -177,7 +184,7 @@
 			
 			<div class="row">
 				<div class="col-66 input-group input-group-icon">
-					<input type="email" id="email" placeholder="이메일" />
+					<input type="email" id="email" name="email" placeholder="이메일" />
 					<div class="input-icon">
 						<i class="fa fa-envelope"></i>
 					</div>
@@ -193,7 +200,7 @@
 			
 			<div class="row">
 					<div class="col-66 input-group input-group-icon">
-						<input type="text" name=postcode id=postcode placeholder="우편번호" readonly />
+						<input type="text" name=zipcode id=zipcode placeholder="우편번호" readonly />
 						<div class="input-icon">
 							<i class="fa fa-automobile"></i>
 						</div>

@@ -76,7 +76,6 @@ public class UserModel {
 		String name=request.getParameter("name");
 		String birthday=request.getParameter("birthday");
 		String email=request.getParameter("email");
-		String postcode=request.getParameter("postcode");
 		String addr1=request.getParameter("addr1");
 		String addr2=request.getParameter("addr2");
 		String phone=request.getParameter("phone");
@@ -97,7 +96,7 @@ public class UserModel {
 		vo.setGender(gender);
 		
 		System.out.println("email:"+email);
-		UserDAO.userinsert(vo);
+		UserDAO.userInsert(vo);
 		return "redirect:../main/main.do";
 		
 	}

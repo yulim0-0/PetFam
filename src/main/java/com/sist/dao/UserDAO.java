@@ -69,7 +69,7 @@ public class UserDAO {
 		return count;
 	}
 	
-	public static void userinsert(UserVO vo)
+	public static void userInsert(UserVO vo)
 	{
 		SqlSession session=null;
 		try {

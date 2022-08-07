@@ -51,14 +51,10 @@
           <li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="../user/join.do">회원가입</a></li>
-              <li><a href="#">나의 예약</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+              <li class="dropdown"><a href="#"><span>마이페이지</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
+                  <li><a href="#">나의정보</a></li>
+                  <li><a href="#">비밀번호 변경</a></li>
                 </ul>
               </li>
               <li><a href="#">예약 내역</a></li>
