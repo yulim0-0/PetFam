@@ -192,6 +192,20 @@ $(function(){
          </td>
        </tr>
      </table>
+     
+	     
+		<div id="article-neighbor-list"><!-- 이동은 가능한데 제목을 어떻게 바꾸는지는 생각해봐야 할 것 같음!! -->
+	        <div>
+	        <span class="indicator"><strong>▲윗글</strong></span>
+	        <a href="../pboard/detail.do?p_no=${(vo.p_no)+1 }" class="subject">${vo.subject }</a>
+	    </div>
+	    <div>
+	        <span class="indicator"><strong>▼아랫글</strong></span>
+	        <a href="../pboard/detail.do?p_no=${(vo.p_no)-1}" class="subject">${vo.subject }</a>
+	    </div>
+	    </div>
+	    
+    
      <div id="comments">    
         <h2>댓글</h2>
         <ul>

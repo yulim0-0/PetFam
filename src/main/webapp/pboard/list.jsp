@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css'>
+<!--  <link rel="stylesheet" type="text/css" href="https://d4fodtu7cqfym.cloudfront.net/fad0d3bf8c478ce27ec4b20657d43000.min.css?v=200103-10"> -->
 <link rel="stylesheet" href="pboarddist/pboard_style.css">
 </head>
 <body>
@@ -19,7 +20,7 @@
   </div>
   <div class='pbody'>
     <div class='psidebar'>
-      <ul class='psidebar-nav'>
+      <ul class="psidebar-nav inline">
         <li>
           <button>
            <h2>커뮤니티</h2>
@@ -27,27 +28,25 @@
           </button>
         </li>
         <li>
-          <button>
-            <a  href="../pboard/list.do">
-	            <span>자유 게시판</span>
-	            <i class='fas fa-book'></i>
-            </a>
+          <button type="button" onclick= "location.href='../pboard/list.do'">
+	          <span>자유게시판 </span>
+	           <i class='fas fa-book'></i>
           </button>
         </li>
         <li>
-          <button>
+          <button type="button" onclick= "location.href='../ppboard/list.do'">
             <span>반려동물 자랑 게시판 </span>
             <i class='fas fa-car'></i>
           </button>
         </li>
         <li>
-          <button>
+          <button type="button" onclick= "location.href='../qna/list.do'">
             <span>문의 게시판</span>
             <i class='fas fa-cloud'></i>
           </button>
         </li>
          <li>
-          <button>
+          <button type="button" onclick= "location.href='../notice/list.do'">
             <span>공지사항</span>
             <i class='fas fa-cloud'></i>
           </button>
@@ -140,32 +139,44 @@
 						          <input type=button value=검색 class="btn btn-sm btn-primary">
 						         </td>
 						  </tr>
-						  
-						  <tr>   
-					         <td class="text-center inline"> 
-					         <ul class="pagination pagination">
-							    <li><a href="#">1</a></li>
-							    <li><a href="#">2</a></li>
-							    <li><a href="#">3</a></li>
-							    <li><a href="#">4</a></li>
-							    <li><a href="#">5</a></li>
-							  </ul>
-					       </td> 
-				         </tr>-->
+						
 				<!--    </table>  -->
 						
 								<div id="article-list-menu">
 									<a href="#" class="btn square btn-default best"><i class="fa fa-star"></i>인기글</a> 
 									<button class="btn square del btn-danger" type="button" id="deleteAllBtn"><i class="fa fa-trash"></i>삭제</button>
 									
-								<ul class='pagination'>
-										<li class='disabled'></li>
-										<li class='active'><a href='#'>1<span class='sr-only'></span></a></li>
+								<!-- <ul class='pagination'>
+										<li class='active'><a href=''>1</a></li>
 										<li><a href="#" data-ci-pagination-page="2">2</a></li>
 										<li><a href="#" data-ci-pagination-page="3">3</a></li>
 										<li><a href="#" data-ci-pagination-page="4">4</a></li>
+										<li><a href="#" data-ci-pagination-page="5">5</a></li>
 										<li><a href="#" data-ci-pagination-page="2" rel="next">&gt;</a>
-								</ul>
+								</ul> -->
+								
+							
+								  <div class="container" align="center">
+									  <ul class="pagination">
+									          <c:if test="${startPage>1 }">
+									            <li><a href="../pboard/list.do?page=${startPage-1 }">&laquo;</a></li>
+									          </c:if>
+									          <c:forEach var="i" begin="${startPage }" end="${endPage }">
+									            <c:if test="${i==curpage }">
+									             
+									            </c:if>
+									            <c:if test="${i!=curpage }">
+									             
+									            </c:if>
+									            <li><a href="../pboard/list.do?page=${i }">${i }</a></li>
+									          </c:forEach>
+									          <c:if test="${endPage<totalpage }">
+									            <li><a href="../pboard/list.do?page=${endPage+1 }">&raquo;</a></li>
+									          </c:if>
+									        </ul>
+									        </div>
+									 </div>
+ 
 									<a href="../pboard/insert.do" class="btn square btn-primary write" id="WriteBtn"><i class="fa fa-pencil"></i> 글 쓰기</a>
 								</div>
 		

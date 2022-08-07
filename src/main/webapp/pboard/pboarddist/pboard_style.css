@@ -161,12 +161,14 @@ button {
 */
 .psidebar {
   flex: 0 0 20%;
+  margin-top:20px;
 }
 
 .psidebar-nav {
   padding: 0;
   margin: 0;
   list-style: none;
+  
 }
 
 .psidebar-nav button {
@@ -186,7 +188,8 @@ button {
 }
 
 .psidebar-nav button i {
-  flex: 0 0 20px;
+  flex: 0 0 30px;
+  
 }
 
 .psidebar-nav .cta {
@@ -291,6 +294,31 @@ button.primary:hover {
   color: #777;
 }
 
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+@import url('https://use.typekit.net/evl6ifb.css');
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;
+  color: #212529;
+}
+
+a {
+  color: #f34100;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ef7f4d;
+  text-decoration: none;
+}
 h1,
 h2,
 h3,
@@ -306,35 +334,105 @@ ul:hover{
 }
 
 /* list-bottom */
-
-.data-ci-pagination-page{
-	display: table;
-  margin-left: auto;
-  margin-right: auto; /*있으나마나임 방법을 강구해 봐야겠음 */
+/* 
+#article-list>.article-list-row {
+	border-right: none;
 }
-/* insert */
+
+#article-list #article-list-menu {
+	box-sizing: border-box;
+	width: unset;
+	margin: 20px;
+}
+
+#article-list #boardSearchForm {
+	padding-bottom: 20px;
+	height: unset;
+} */
+
+
+/* insert.do */
+.btn-primary {
+	background: #192f61 !important;/* 글쓰기 버튼 */
+	float:right;
+	margin-bottom:30px;
+
+}
+.btn-danger .btn-default{
+	margin-top:30px;
+}
+/* 
+.input-group-btn {
+	position: relative;
+	font-size: 0;
+	white-space: nowrap
+} */
+/* 
+.input-group-btn>.btn {
+	position: relative
+}
+
+.input-group-btn>.btn+.btn {
+	margin-left: -1px
+}
+
+.input-group-btn>.btn:active, .input-group-btn>.btn:focus,
+	.input-group-btn>.btn:hover {
+	z-index: 2
+}
+
+.input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group
+	{
+	margin-right: -1px
+}
+
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group
+	{
+	z-index: 2;
+	margin-left: -1px
+}
+ */
+
+
+
+
+
 
 .pi_body{
 	margin-top: 100px;	
 	
 }
 
-/*페이징*/
-.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover,
-	.pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover
-	{
-	background-color:#f34100;
-	border-color: #f34100;
-}
+/* 페이징 list.do */
 
 .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus,
 	.pagination>li>span:hover {
 	color: #f34100;
+	
 }
 
-.pagination>li>a, .pagination>li>span {
-	color: #f34100;
+
+.pagination{
+	display:block;
+	text-align:center;
+	
 }
+.pagination>li>a{
+	float:none;
+	margin-left:-5px;
+	
+	background-color:#fff;
+	border-color: #f34100;
+
+}
+
+
+
+
+
+
+
+
 
 
 

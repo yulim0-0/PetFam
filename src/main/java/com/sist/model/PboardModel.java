@@ -24,10 +24,20 @@ public class PboardModel {
 	   map.put("start", start);
 	   map.put("end",end);
 	   List<PboardVO> list=PboardDAO.pboardListData(map);
+	   
 	   int totalpage=PboardDAO.pboardTotalPage();
+	  
+	   final int BLOCK=5;
+	   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+	   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+	   
+	   if(endPage>totalpage)
+		    endPage=totalpage;
 	   
 	   request.setAttribute("curpage", curpage);
        request.setAttribute("totalpage", totalpage);
+       request.setAttribute("startPage", startPage);
+	   request.setAttribute("endPage", endPage);
        request.setAttribute("list", list);
 	   request.setAttribute("main_jsp", "../pboard/list.jsp");
 	   return "../main/main.jsp";
