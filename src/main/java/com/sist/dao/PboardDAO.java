@@ -81,7 +81,7 @@ public class PboardDAO {
 			   session.close(); // POOL => 반환 
 	   }
    }
-   // <select id="boardDetailData" resultType="FreeBoardVO" parameterType="int">
+   // <select id="pboardDetailData" resultType="PboardVO" parameterType="int">
    public static PboardVO pboardDetailData(int p_no)
    {
 	   PboardVO vo=new PboardVO();
@@ -93,6 +93,13 @@ public class PboardDAO {
 		   // openSession(true) => setAutoCommit(true)
 		   session=ssf.openSession();
 		   session.update("hitIncrement",p_no);//commit수행을 하지 않는다 
+		   /*
+		    * <update id="hitIncrement" parameterType="int">// 조회수 증가 
+			    UPDATE pbo_4 SET
+			    hit=hit+1
+			    WHERE p_no=#{p_no}
+			  </update>
+		    */
 		   session.commit();//commit을 수행 요청 
 		   vo=session.selectOne("pboardDetailData",p_no);
 	   }catch(Exception ex)

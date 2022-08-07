@@ -118,11 +118,13 @@
 						            &nbsp;&nbsp;
 						            <c:if test="${vo.rcount>0 }">
 						             (${vo.rcount })
+						             	 <small class="favo"><i class="fa fa-heart"></i></small>
 						            </c:if>
 						          </td>
 						          <td width="15%" class="text-center">${vo.name }</td>
 						          <td width="20%" class="text-center">${vo.dbday }</td>
 						          <td width="10%" class="text-center">${vo.hit }</td>
+						          
 						        </tr>
 						</c:forEach>
 						

@@ -55,7 +55,7 @@ $(function(){
 		let p_no=$('#p_no').val();
 		$.ajax({
 			type:'post',
-            url:'../freeboard/pwd_check.do',
+            url:'../pboard/pwd_check.do',
             data:{"pwd":pwd,"p_no":p_no},
             // 404 , 500 , 412... success:200
             success:function(result)

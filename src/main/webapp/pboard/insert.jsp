@@ -97,7 +97,7 @@ $(function(){
 	      </table>
 	      </form>
 	    </div>
-	    <div class="one_third">2/3</div>
+	   
 	   </main>
 	</div>
 </div>

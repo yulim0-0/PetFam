@@ -18,14 +18,44 @@ TYPE                NUMBER
 ROOT                NUMBER        
  */
 public class PReplyVO {
-	private int pre_no, group_tab,pp_no,p_no,depth,type,root;
-	private String group_id,group_step,id;
+	private int pre_no, group_tab,pp_no,p_no,depth,type,root,bno;
+	public int getBno() {
+		return bno;
+	}
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
+	private String group_id,group_step,id,dbday,table_name,name,msg;
+	public String getMsg() {
+		return msg;
+	}
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getTable_name() {
+		return table_name;
+	}
+	public void setTable_name(String table_name) {
+		this.table_name = table_name;
+	}
 	private Date regdate;
 	public int getPre_no() {
 		return pre_no;
 	}
 	public void setPre_no(int pre_no) {
 		this.pre_no = pre_no;
+	}
+	public String getDbday() {
+		return dbday;
+	}
+	public void setDbday(String dbday) {
+		this.dbday = dbday;
 	}
 	public int getGroup_tab() {
 		return group_tab;

@@ -201,8 +201,8 @@ $(function(){
               <header>
                 <figure class="avatar">
                  <c:if test="${sessionScope.id==rvo.id}"><%-- 본인이면 --%>
-                  <span class="btn btn-xs btn-danger up" style="color:black" data-p_no="${rvo.p_no }">수정</span>
-                  <a href="../reply/reply_delete.do?p_no=${rvo.p_no }&bno=${vo.p_no}" class="btn btn-xs btn-success" style="color:black">삭제</a>
+                  <span class="btn btn-xs btn-danger up" style="color:black" data-p_no="${rvo.pre_no }">수정</span>
+                  <a href="../preply/preply_delete.do?p_no=${rvo.p_no }&bno=${vo.p_no}" class="btn btn-xs btn-success" style="color:black">삭제</a>
                  </c:if>
                 </figure>
                 <address>

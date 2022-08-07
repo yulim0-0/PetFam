@@ -69,13 +69,20 @@ public class PboardModel {
 	   String p_no=request.getParameter("p_no");
 	   PboardVO vo=PboardDAO.pboardDetailData(Integer.parseInt(p_no));
 	   request.setAttribute("vo", vo);
+	   
+	   //댓글 
+	   PReplyVO rvo=new PReplyVO();
+	   rvo.setBno(vo.getP_no());
+	   rvo.setType(1);// pbo_4 자유게시판 
+	   List<PReplyVO> list=PReplyDAO.preplyListData(rvo);
+	   request.setAttribute("list", list);
 	   request.setAttribute("main_jsp", "../pboard/detail.jsp");
 	   return "../main/main.jsp";
    }
    @RequestMapping("pboard/update.do")
    public String pboard_update(HttpServletRequest request,HttpServletResponse response)
    {
-	   String p_no=request.getParameter("no");
+	   String p_no=request.getParameter("p_no");
 	   PboardVO vo=PboardDAO.pboardUpdateData(Integer.parseInt(p_no));
 	   request.setAttribute("vo", vo);
 	   request.setAttribute("main_jsp", "../pboard/update.jsp");
@@ -115,8 +122,8 @@ public class PboardModel {
 	   return "redirect:../pboard/detail.do?p_no="+p_no;
    }
    
-   @RequestMapping("freeboard/delete.do")
-   public String freeboard_delete(HttpServletRequest request,HttpServletResponse response)
+   @RequestMapping("pboard/delete.do")
+   public String pboard_delete(HttpServletRequest request,HttpServletResponse response)
    {
 	   String p_no=request.getParameter("p_no");
 	   String pwd=request.getParameter("pwd");
