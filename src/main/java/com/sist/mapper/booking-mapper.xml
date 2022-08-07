@@ -10,7 +10,7 @@
  </select>
  
  <select id="bookingTotalPage" resultType="int" parameterType="hashmap">
-   SELECT CEIL(COUNT(*)/16.0) FROM ${table_name}
+   SELECT CEIL(COUNT(*)/9.0) FROM ${table_name} WHERE o_no BETWEEN #{s} AND #{e}
  </select>
  
  <select id="hospitalDetailData" resultType="BookingVO" parameterType="hashmap">
