@@ -146,7 +146,7 @@
                                     <p>${vo.address }</p>
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane fade" id="addi-info">
+                            <div role="tabpanel" class="tab-pane fade show active" id="addi-info">
                                 <div class="additional_info_area">
                                     <p>What should I do if I receive a damaged parcel?
                                         <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit impedit similique qui, itaque delectus labore.</span></p>
@@ -158,7 +158,7 @@
                                         <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum eius eum, minima!</span></p>
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane fade" id="reviews">
+                            <div role="tabpanel" class="tab-pane fade show active" id="reviews">
                                 <div class="reviews_area">
                                     <ul>
                                         <li>
