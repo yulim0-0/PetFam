@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.petplace-mapper">
+<select id="petplaceListData" resultType="PetplaceVO" parameterType="hashmap">
+	
+
+	SELECT c_no,title, poster,num
+	FROM (SELECT c_no,title, poster,rownum as num)
+	FROM (SELECT c_no,title, poster
+	
+	FROM ${table_name2} WHERE c_no BETWEEN #{st} AND #{en} ORDER BY c_no ASC))
+	
+	WHERE num BETWEEN #{start2} AND #{end2}
+	</select>
+	<select id="petplaceTotalPage" resultType="int" parameterType="hashmap">
+	SELECT CEIL(COUNT(*)/9.0) FROM ${table_name2} WHERE c_no BETWEEN #{st} AND #{en}
+	</select>
+	
+	<select id="petplaceDetailData" resultType="BookingVO" parameterType="hashmap">
+   SELECT * FROM ${table_name}
+   WHERE o_no=#{o_no}
+   </select>
+</mapper>
