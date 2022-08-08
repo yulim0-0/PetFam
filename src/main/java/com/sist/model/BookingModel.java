@@ -36,7 +36,7 @@ public class BookingModel {
 		List<BookingVO> list=BookingDAO.bookingListData(map);
 		
 		 int totalpage=BookingDAO.bookingTotalPage(map);
-		   System.out.println("totalpage="+totalpage);
+		   //System.out.println("totalpage="+totalpage);
 		   final int BLOCK=5;
 		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
 		   /*
@@ -80,7 +80,7 @@ public class BookingModel {
 		List<BookingVO> list=BookingDAO.bookingListData(map);
 		
 		 int totalpage=BookingDAO.bookingTotalPage(map);
-		   System.out.println("totalpage="+totalpage);
+		   //System.out.println("totalpage="+totalpage);
 		   final int BLOCK=5;
 		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
 		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
@@ -118,7 +118,7 @@ public class BookingModel {
 		List<BookingVO> list=BookingDAO.bookingListData(map);
 		
 		 int totalpage=BookingDAO.bookingTotalPage(map);
-		   System.out.println("totalpage="+totalpage);
+		   //System.out.println("totalpage="+totalpage);
 		   final int BLOCK=5;
 		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
 		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
