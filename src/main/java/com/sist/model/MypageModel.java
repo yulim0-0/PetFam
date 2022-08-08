@@ -2,15 +2,17 @@ package com.sist.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 
+@Controller
 public class MypageModel {
-	@RequestMapping("mypage/mypage.do")
-	public String user_logout(HttpServletRequest request, HttpServletResponse response)
+	
+	@RequestMapping("mypage/myinfo.do")
+	public String about_page(HttpServletRequest request, HttpServletResponse response)
 	{
-		request.setAttribute("main_jsp", "../mypage/myinfo");
-		return "redirect:../main/main.do";
+		request.setAttribute("main_jsp", "../mypage/myinfo.jsp");
+		return "../main/main.jsp";
 	}
 }

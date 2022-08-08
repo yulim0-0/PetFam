@@ -44,9 +44,6 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('#login_header')click(function(){
-		location.href="../user/login.do";
-	})
 	$('#logout_header').click(function(){
 		location.href="../user/logout.do";
 	})

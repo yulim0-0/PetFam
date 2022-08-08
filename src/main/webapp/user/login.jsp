@@ -4,7 +4,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Sign In / Sign Up Slider Form</title>
+  <title>LOGIN</title>
   <link rel="stylesheet" href="logindist/login_style.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -45,7 +45,7 @@ $(function() {
 				}
 				else
 				{
-					parent.location.href="../main/main.do";
+					location.href="../main/main.do";
 				}
 			}
 		})
@@ -112,7 +112,7 @@ $(function() {
         </div>
       </div>
       <p class="small">or use your email for registration:</p>
-      <form id="sign-up-form">
+      <form id="sign-up-form" method="post" action="../user/login_ok.do">
         <input type="text" id=id name=id placeholder="Id"/>
         <input type="password" id=pwd name=pwd placeholder="Password"/>
         <p class="forgot-password">Forgot your password?</p>

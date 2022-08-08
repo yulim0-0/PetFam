@@ -111,6 +111,7 @@ public class UserModel {
 		
 		UserVO vo=UserDAO.isLogin(id, pwd);
 		String result=vo.getMsg();
+		
 		if(result.equals("OK"))
 		{
 			HttpSession session=request.getSession();
@@ -121,6 +122,7 @@ public class UserModel {
 		}
 		request.setAttribute("result", result);
 		return "../user/login_ok.jsp";
+	
 	}
 	
 	@RequestMapping("user/logout.do")

@@ -53,7 +53,7 @@
           	<c:if test="${sessionScope.admin=='n' }">
 	          <li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
 	            <ul>
-	              <li><a href="../user/join.do">회원가입</a></li>
+	              
 	              <li class="dropdown"><a href="#"><span>마이페이지</span> <i class="bi bi-chevron-right"></i></a>
 	                <ul>
 	                  <li><a href="../mypage/myinfo.do">나의정보</a></li>
@@ -67,12 +67,28 @@
           	</c:if>
 
 			<c:if test="${sessionScope.admin=='y' }">
+			<li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
+	            <ul>
+	              
+	              <li class="dropdown"><a href="#"><span>마이페이지</span> <i class="bi bi-chevron-right"></i></a>
+	                <ul>
+	                  <li><a href="../mypage/myinfo.do">나의정보</a></li>
+	                  <li><a href="#">비밀번호 변경</a></li>
+	                </ul>
+	              </li>
+	              <li><a href="#">예약 내역</a></li>
+	              <li><a href="#">예약 현황</a></li>
+	            </ul>
+	          </li>
 	          <li><a class="nav-link scrollto" href="../admin/admin_main.do">관리자</a></li>
 			</c:if>
 
           </c:if>
           
-		
+		<!-- 로그인 상태가 아닌 경우 -->
+          <c:if test="${sessionScope.id==null }" >
+          	<li><a href="../user/join.do">회원가입</a></li>
+          </c:if>
 
           <li><a class="nav-link scrollto" href="#contact">문의</a></li>
           

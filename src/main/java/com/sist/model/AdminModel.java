@@ -9,7 +9,8 @@ import com.sist.controller.RequestMapping;
 @Controller
 public class AdminModel {
 	@RequestMapping("admin/admin_main.do")
-	public String admin_main(HttpServletRequest request, HttpServletResponse response) {
+	public String admin_main(HttpServletRequest request, HttpServletResponse response) 
+	{
 		request.setAttribute("main_jsp", "../admin/admin_main.jsp");
 		return "../main/main.jsp";
 	}
