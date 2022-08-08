@@ -34,4 +34,14 @@ GENDER            VARCHAR2(10)
  	VALUES(#{id}, #{pwd}, #{name}, #{birthday}, #{gender}, #{phone}, #{email}, #{zipcode}, #{addr1}, #{addr2})
  
  </insert>
+ 
+ <!-- 계정 존재 여부 확인 -->
+ <select id="userIdCount" resultType="int" parameterType="String">
+ 	SELECT COUNT(*) FROM user_4 WHERE id=#{id}
+ </select>
+ 
+ <!-- 비밀번호 읽기 -->
+ <select id="userInfoData" resultType="UserVO" parameterType="string">
+  	SELECT pwd, id, name, admin FROM user_4 WHERE id=#{id}
+ </select>
 </mapper>

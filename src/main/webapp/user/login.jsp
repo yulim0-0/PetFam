@@ -6,7 +6,53 @@
   <meta charset="UTF-8">
   <title>CodePen - Sign In / Sign Up Slider Form</title>
   <link rel="stylesheet" href="logindist/login_style.css">
-
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#logBtn').on("click",function(){
+		let id=$('#id').val();
+		if(id.trim()=="")
+		{
+			$('#id').focus();
+			return;
+		}
+		let pwd=$('#pwd').val();
+		if(pwd.trim()=="")
+		{
+			$('#pwd').focus();
+			return;
+		}
+		
+		$.ajax({
+			type:'post',
+			url:'../user/login_ok.do',
+			data:{"id":id,"pwd":pwd},
+			success:function(result)
+			{
+				let res=result.trim();
+				if(res=='NOID')
+				{
+					alert("등록되지 않은 회원입니다");
+					$('#id').val("")
+					$('#pwd').val("")
+					$('#id').focus();
+					
+				} else if(res=='NOPWD')
+				{
+					alert("비밀번호 오류");
+					$('#pwd').val("");
+					$('#pwd').focus();
+				}
+				else
+				{
+					parent.location.href="../main/main.do";
+				}
+			}
+		})
+	
+	})
+})
+</script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -67,10 +113,10 @@
       </div>
       <p class="small">or use your email for registration:</p>
       <form id="sign-up-form">
-        <input type="text" placeholder="Id"/>
-        <input type="password" placeholder="Password"/>
+        <input type="text" id=id name=id placeholder="Id"/>
+        <input type="password" id=pwd name=pwd placeholder="Password"/>
         <p class="forgot-password">Forgot your password?</p>
-        <button class="control-button up">로그인</button>
+        <button class="control-button up" id="logBtn">로그인</button>
       </form>
     </div>
   </div>

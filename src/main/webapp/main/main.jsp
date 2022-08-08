@@ -42,7 +42,16 @@
 <link rel="stylesheet" href="../user/shadow/css/shadowbox.css">
 <script type="text/javascript" src="../user/shadow/js/shadowbox.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-
+<script type="text/javascript">
+$(function(){
+	$('#login_header')click(function(){
+		location.href="../user/login.do";
+	})
+	$('#logout_header').click(function(){
+		location.href="../user/logout.do";
+	})
+})
+</script>
   
 </head>
 

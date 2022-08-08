@@ -106,6 +106,7 @@ public class UserModel {
 	public String user_login_ok(HttpServletRequest request, HttpServletResponse response)
 	{
 		String id=request.getParameter("id");
+		System.out.println(id);
 		String pwd=request.getParameter("pwd");
 		
 		UserVO vo=UserDAO.isLogin(id, pwd);
@@ -116,6 +117,7 @@ public class UserModel {
 			session.setAttribute("id", vo.getId());
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("admin", vo.getAdmin());
+			
 		}
 		request.setAttribute("result", result);
 		return "../user/login_ok.jsp";
