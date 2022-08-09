@@ -7,7 +7,7 @@
     SELECT p_no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
     FROM (SELECT p_no,subject,name,regdate,hit,rcount,rownum as num 
     FROM (SELECT p_no,subject,name,regdate,hit,rcount 
-    FROM pbo_4))
+    FROM pbo_4 ORDER BY p_no DESC))
     WHERE num BETWEEN #{start} AND #{end}
   </select>
   <select id="pboardTotalPage" resultType="int">

@@ -91,7 +91,7 @@ public class PboardDAO {
 	   {
 		   // openSession() => setAutoCommit(false)
 		   // openSession(true) => setAutoCommit(true)
-		   session=ssf.openSession();
+		   session=ssf.openSession(true);
 		   session.update("hitIncrement",p_no);//commit수행을 하지 않는다 
 		   /*
 		    * <update id="hitIncrement" parameterType="int">// 조회수 증가 
@@ -100,7 +100,7 @@ public class PboardDAO {
 			    WHERE p_no=#{p_no}
 			  </update>
 		    */
-		   session.commit();//commit을 수행 요청 
+//		   session.commit();//commit을 수행 요청 
 		   vo=session.selectOne("pboardDetailData",p_no);
 	   }catch(Exception ex)
 	   {
