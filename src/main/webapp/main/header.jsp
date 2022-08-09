@@ -44,9 +44,10 @@
           
           <li class="dropdown"><a href="../pboard/list.do"><span>커뮤니티</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-              <li><a href="../pboard/list.do">자유</a></li>
-              <li><a href="#">자랑</a></li>
-              <li><a href="#">QnA</a></li>
+              <li><a href="../pboard/list.do">자유 게시판</a></li>
+              <li><a href="../ppboard/list.do">반려동물 자랑 게시판</a></li>
+              <li><a href="../qna/list.do">문의 게시판</a></li>
+              <li><a href="../qna/list.do">공지사항</a></li>
             </ul>
             
           <c:if test="${sessionScope.id!=null }">
@@ -77,7 +78,6 @@
 			      </ul>
 			   </li>
 			</c:if>
-
           </c:if>
           
 		<!-- 로그인 상태가 아닌 경우 -->

@@ -233,7 +233,7 @@ $(function(){
 	            <table class="table">
 		          <tr>
 		            <td>
-		             <form method=post action="../reply/reply_update.do">
+		             <form method=post action="../preply/preply_update.do">
 		               <input type=hidden name=bno value="${vo.p_no }">
 		               <input type=hidden name=type value="1">
 		               <input type=hidden name=p_no value="${rvo.p_no }">
@@ -252,7 +252,7 @@ $(function(){
         <table class="table">
           <tr>
             <td>
-             <form method=post action="../reply/reply_insert.do">
+             <form method=post action="../preply/preply_insert.do">
                <input type=hidden name=bno value="${vo.p_no }">
                <input type=hidden name=type value="1">
                <textarea rows="5" cols="100" name="msg" style="float: left"></textarea>

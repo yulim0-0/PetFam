@@ -39,7 +39,7 @@ public class PReplyModel {
 	   String name=(String)session.getAttribute("name");
 	   
 	   PReplyVO vo=new PReplyVO();
-	   vo.setP_no(Integer.parseInt(p_no));
+	   vo.setPre_no(Integer.parseInt(p_no));
 	   vo.setId(id);
 	   vo.setName(name);
 	   vo.setMsg(msg);
@@ -51,7 +51,7 @@ public class PReplyModel {
 	   vo.setTable_name(table);
 	   //DAO => 오라클 전송 
 	   PReplyDAO.preplyInsert(vo);
-	   return "redirect:../pboard/detail.do?p_no="+p_no;
+	   return "redirect:../pboard/detail.do?p_no="+p_no;// detail로 넘어가지 않고 있음 방법을 생각해야함 
    }
    @RequestMapping("preply/preply_delete.do")
    public String reply_delete(HttpServletRequest request,HttpServletResponse response)

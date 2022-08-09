@@ -9,6 +9,9 @@
       <typeAlias type="com.sist.vo.PboardVO" alias="PboardVO"/>
       <typeAlias type="com.sist.vo.PReplyVO" alias="PReplyVO"/>
       <typeAlias type="com.sist.vo.BookingVO" alias="BookingVO"/>
+      <typeAlias type="com.sist.vo.QnaVO" alias="QnaVO"/>
+      <typeAlias type="com.sist.vo.NoticeVO" alias="NoticeVO"/>
+      <typeAlias type="com.sist.vo.PetplaceVO" alias="PetplaceVO"/>
    </typeAliases>
    <environments default="development">
       <environment id="development">
@@ -21,6 +24,7 @@
         </dataSource>
       </environment>
    </environments>
+<<<<<<< HEAD
 	<mappers>
 		<mapper resource="com/sist/mapper/user-mapper.xml" />
 		<mapper resource="com/sist/mapper/mypage-mapper.xml" />
@@ -28,4 +32,14 @@
 		<mapper resource="com/sist/mapper/preply-mapper.xml" />
 		<mapper resource="com/sist/mapper/booking-mapper.xml" />
 	</mappers>
+=======
+   <mappers>
+     <mapper resource="com/sist/mapper/user-mapper.xml"/>
+      <mapper resource="com/sist/mapper/pboard-mapper.xml"/>
+      <mapper resource="com/sist/mapper/preply-mapper.xml"/>
+      <mapper resource="com/sist/mapper/booking-mapper.xml"/>
+      <mapper resource="com/sist/mapper/qna-mapper.xml"/>
+      <mapper resource="com/sist/mapper/petplace-mapper.xml"/>
+   </mappers>
+>>>>>>> c59d35c9677d98fd4b5b78cf872c8f0bf6e63aaf
  </configuration>
