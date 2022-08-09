@@ -129,7 +129,8 @@ public class PboardModel {
 	   vo.setPwd(pwd);
 	   vo.setP_no(Integer.parseInt(p_no));
 	   PboardDAO.pboardUpdate(vo);
-	   return "redirect:../pboard/detail.do?p_no="+p_no;
+	   return "redirect:../pboard/detail.do?p_no="+p_no;// sendRedirect
+//	   insert_ok, update_ok, delete_ok 데이터 전송은 없고 처리후 바로 (이전에 실행된 화면)페이지 이동(list,detail)  => 따로 jsp파일을 만들지 않아도 됨 
    }
    
    @RequestMapping("pboard/delete.do")

@@ -55,7 +55,7 @@ public class QnaModel {
    {
 	   // 데이터베이스 처리 
 	   try
-	   {
+	   { 
             request.setCharacterEncoding("UTF-8"); // 한글 처리 		   
 	   }catch(Exception ex) {}
 	   String name=request.getParameter("name");
