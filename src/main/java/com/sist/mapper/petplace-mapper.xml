@@ -4,15 +4,35 @@
  <select id="petplaceListData" resultType="PetplaceVO" parameterType="hashmap">
 
    <!-- parameterType은 1개 지정이 가능 : 여러개 데이터를 첨부 (VO,Map) -->
-   SELECT c_no,title,poster,num
-   FROM (SELECT c_no,title,poster,rownum as num 
-   FROM (SELECT c_no,title,poster 
-   FROM ${table_name}W WHERE c_no BETWEEN #{start} AND #{end} ORDER BY c_no ASC))
-   WHERE num BETWEEN #{start} AND #{end}
+SELECT c_no
+    ,title
+    ,category
+    ,poster
+    ,addr
+    ,tel
+    ,subtitle
+    ,map
+    ,good
+FROM    ${table_name}
+WHERE   c_no BETWEEN #{start} AND #{end}
+ORDER BY c_no ASC
+
+<!--    SELECT c_no,title,poster,num
+   FROM (
+   			SELECT c_no,title,poster,rownum as num 
+   			FROM (
+   					SELECT 	c_no,title,poster 
+   					FROM 	${table_name} 
+   					WHERE 	c_no BETWEEN #{start} AND #{end} 
+   					ORDER BY c_no ASC
+   				  )
+   		)
+   WHERE num BETWEEN #{s} AND #{e} -->
 
  </select>
  <select id="petplaceTotalPage" resultType="int" parameterType="hashmap">
-   SELECT CEIL(COUNT(*)/9.0) FROM ${table_name} WHERE c_no BETWEEN #{start} AND #{end}
+   SELECT CEIL(COUNT(*)/9.0) FROM ${table_name}
+   
  </select>
  
  <!-- 상세보기 -->

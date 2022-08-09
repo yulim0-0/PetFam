@@ -24,6 +24,11 @@ public class PetplaceModel {
 		int start=(rowSize*curpage)-(rowSize-1);//rownum
 		int end=curpage*rowSize;
 		
+		System.out.println("==================================================");
+		System.out.println("page="+page);
+		System.out.println("start="+start);
+		System.out.println("end="+end);
+		
 		map.put("start", start); // #{start}
 		map.put("end", end);  //#{end}
 		map.put("table_name", "rcpg_4"); //${table_name}
@@ -51,6 +56,11 @@ public class PetplaceModel {
 		request.setAttribute("startPage",startPage);
 		request.setAttribute("endPage",endPage);
 		request.setAttribute("list",list);
+		
+		System.out.println("curpage="+curpage);
+		System.out.println("totalPage="+totalpage);
+		System.out.println("startPage="+startPage);
+		System.out.println("endPage="+endPage);
 		
 		request.setAttribute("main_jsp", "../petplace/cafe.jsp");
 		return "../main/main.jsp";

@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -14,7 +18,8 @@
 </style>
 </head>
 <body>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<br><br><br>
+	
 
   <div class="container-fluid">
     <div class="row">
@@ -32,5 +37,28 @@
      </c:forEach>
     </div>
   </div>
+  
+     <div class="container" align="center">
+  		<ul class="pagination">
+          <c:if test="${startPage>1 }">
+            <li><a href="../petplace/cafe.do?page=${startPage-1 }">&laquo;</a></li>
+          </c:if>
+          <c:forEach var="i" begin="${startPage }" end="${endPage }">
+            <c:if test="${i==curpage }">
+             
+            </c:if>
+            <c:if test="${i!=curpage }">
+             
+            </c:if>
+            <li><a href="../petplace/cafe.do?page=${i }">${i }</a></li>
+          </c:forEach>
+          <c:if test="${endPage<totalPage }">
+            <li><a href="../petplace/cafe.do?page=${endPage+1 }">&raquo;</a></li>
+          </c:if>
+        </ul>
+     </div>
+ </div>
+ 
+  
 </body>
 </html>
