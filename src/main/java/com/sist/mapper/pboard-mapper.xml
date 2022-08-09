@@ -9,7 +9,7 @@
     FROM (SELECT p_no,subject,name,regdate,hit,rcount 
     FROM pbo_4 ORDER BY p_no DESC))
     WHERE num BETWEEN #{start} AND #{end}
-  </select>
+  </select> 
   <select id="pboardTotalPage" resultType="int">
     SELECT CEIL(COUNT(*)/10.0) FROM pbo_4
   </select>

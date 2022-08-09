@@ -27,7 +27,7 @@ public class PReplyModel {
    {
 	   // bno , type ,  msg  ==> id, name  
 	   try
-	   {
+	   { 
 		   request.setCharacterEncoding("UTF-8");
 	   }catch(Exception ex) {}
 	   
