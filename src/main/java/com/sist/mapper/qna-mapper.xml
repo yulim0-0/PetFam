@@ -8,7 +8,7 @@
     FROM (SELECT q_no,subject,name,regdate,hit,isreply,group_id,group_tab
     FROM qbo_4 ORDER BY group_id DESC,group_step ASC))
     WHERE num BETWEEN #{start} AND #{end}
-  </select>
+  </select> 
   <!-- 총페이지 -->
   <select id="qnaTotalPage" resultType="int">
     SELECT CEIL(COUNT(*)/10.0) FROM qbo_4
