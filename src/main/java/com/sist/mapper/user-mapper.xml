@@ -41,7 +41,7 @@ GENDER            VARCHAR2(10)
  </select>
  
  <!-- 비밀번호 읽기 -->
- <select id="userInfoData" resultType="UserVO" parameterType="string">
+ <select id="userIdPwdData" resultType="UserVO" parameterType="string">
   	SELECT pwd, id, name, admin FROM user_4 WHERE id=#{id}
  </select>
 </mapper>

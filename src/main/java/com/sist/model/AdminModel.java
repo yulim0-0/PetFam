@@ -8,10 +8,22 @@ import com.sist.controller.RequestMapping;
 
 @Controller
 public class AdminModel {
-	@RequestMapping("admin/admin_main.do")
-	public String admin_main(HttpServletRequest request, HttpServletResponse response) 
+	@RequestMapping("admin/admin_booking.do")
+	public String admin_booking(HttpServletRequest request, HttpServletResponse response) 
 	{
-		request.setAttribute("main_jsp", "../admin/admin_main.jsp");
+		request.setAttribute("main_jsp", "../admin/admin_booking.jsp");
+		return "../main/main.jsp";
+	}
+	@RequestMapping("admin/admin_community.do")
+	public String admin_community(HttpServletRequest request, HttpServletResponse response) 
+	{
+		request.setAttribute("main_jsp", "../admin/admin_community.jsp");
+		return "../main/main.jsp";
+	}
+	@RequestMapping("admin/admin_user.do")
+	public String admin_user(HttpServletRequest request, HttpServletResponse response) 
+	{
+		request.setAttribute("main_jsp", "../admin/admin_user.jsp");
 		return "../main/main.jsp";
 	}
 }

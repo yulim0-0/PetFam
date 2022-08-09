@@ -106,6 +106,7 @@
 </script>
 </head>
 <body>
+<main class="main">
 	<!-- partial:index.partial.html -->
 	<div class="joincontainer">
 		<form method="post" action="../user/join_ok.do" name="join_frm" id="join_frm" >
@@ -257,6 +258,6 @@
 	<script
 		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script src="joindist/script.js"></script>
-
+</main>
 </body>
 </html>

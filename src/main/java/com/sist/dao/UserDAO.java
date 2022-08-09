@@ -96,7 +96,7 @@ public class UserDAO {
 				vo.setMsg("NOID");
 			}
 			else {
-				vo=session.selectOne("userInfoData",id);
+				vo=session.selectOne("userIdPwdData",id);
 				if(pwd.equals(vo.getPwd()))
 				{
 					vo.setMsg("OK");
@@ -114,5 +114,7 @@ public class UserDAO {
 		}
 		return vo;
 	}
+	
+
 	
 }

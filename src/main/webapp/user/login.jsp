@@ -116,8 +116,21 @@ $(function() {
         <input type="text" id=id name=id placeholder="Id"/>
         <input type="password" id=pwd name=pwd placeholder="Password"/>
         <p class="forgot-password">Forgot your password?</p>
-        <button class="control-button up" id="logBtn">로그인</button>
-      </form>
+ 		<!-- <button class="control-button up" id="logBtn">로그인</button> -->
+		<input type="button" class="control-button up" id="logBtn" value="로그인" 
+				style="cursor: pointer;
+					  display: block;
+					  width: 140px;
+					  height: 40px;
+					  text-transform: uppercase;
+					  background: #f34100;
+					  border-radius: 20px;
+					  color: white;
+					  font:14px GmarketSansMedium;
+					  Margin : 15px 130px 0px 130px;
+					  padding : 1px 6px
+					  ">
+	</form>
     </div>
   </div>
 </div>
