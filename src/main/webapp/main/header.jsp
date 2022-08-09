@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://use.typekit.net/evl6ifb.css">
+
 </head>
 <body>
 <header id="header" class="fixed-top d-flex align-items-center">
@@ -42,27 +44,64 @@
           
           <li class="dropdown"><a href="../pboard/list.do"><span>커뮤니티</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-              <li><a href="../pboard/list.do">자유</a></li>
-              <li><a href="#">자랑</a></li>
-              <li><a href="#">QnA</a></li>
+              <li><a href="../pboard/list.do">자유 게시판</a></li>
+              <li><a href="../ppboard/list.do">반려동물 자랑 게시판</a></li>
+              <li><a href="../qna/list.do">문의 게시판</a></li>
+              <li><a href="../qna/list.do">공지사항</a></li>
             </ul>
             
-            
-          <li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="../user/join.do">회원가입</a></li>
-              <li class="dropdown"><a href="#"><span>마이페이지</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">나의정보</a></li>
-                  <li><a href="#">비밀번호 변경</a></li>
-                </ul>
-              </li>
-              <li><a href="#">예약 내역</a></li>
-              <li><a href="#">예약 현황</a></li>
-            </ul>
-          </li>
+          <c:if test="${sessionScope.id!=null }">
+          	<c:if test="${sessionScope.admin=='n' }">
+	          <li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
+	            <ul>
+	              
+	              <li class="dropdown"><a href="#"><span>마이페이지</span> <i class="bi bi-chevron-right"></i></a>
+	                <ul>
+	                  <li><a href="../mypage/myinfo.do">나의정보</a></li>
+	                  <li><a href="#">비밀번호 변경</a></li>
+	                </ul>
+	              </li>
+	              <li><a href="#">예약 내역</a></li>
+	              <li><a href="#">예약 현황</a></li>
+	            </ul>
+	          </li>
+          	</c:if>
+
+			<c:if test="${sessionScope.admin=='y' }">
+			<li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
+	            <ul>
+	              
+	              <li class="dropdown"><a href="#"><span>마이페이지</span> <i class="bi bi-chevron-right"></i></a>
+	                <ul>
+	                  <li><a href="../mypage/myinfo.do">나의정보</a></li>
+	                  <li><a href="#">비밀번호 변경</a></li>
+	                </ul>
+	              </li>
+	              <li><a href="#">예약 내역</a></li>
+	              <li><a href="#">예약 현황</a></li>
+	            </ul>
+	          </li>
+	          <li><a class="nav-link scrollto" href="../admin/admin_main.do">관리자</a></li>
+			</c:if>
+
+          </c:if>
+          
+		<!-- 로그인 상태가 아닌 경우 -->
+          <c:if test="${sessionScope.id==null }" >
+          	<li><a href="../user/join.do">회원가입</a></li>
+          </c:if>
+
           <li><a class="nav-link scrollto" href="#contact">문의</a></li>
-          <li><a class="getstarted scrollto" href="../user/login.do">로그인</a></li>
+          
+          <!-- 로그인 상태가 아닌 경우 -->
+          <c:if test="${sessionScope.id==null }" >
+          	<li><a class="start" id="login_header" href="../user/login.do">로그인</a></li>
+          </c:if>
+          
+          <!-- 로그인 상태인 경우 -->
+       	  <c:if test="${sessionScope.id!=null }">
+          	<li><a class="start" id="logout_header" href="../user/logout.do">로그아웃</a></li>
+          </c:if>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

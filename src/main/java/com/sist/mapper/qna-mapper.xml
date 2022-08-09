@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.qna-mapper">
+  <!-- 목록 가지고 오기 -->
+  <select id="qnaListData" resultType="QnaVO" parameterType="hashmap">
+    SELECT q_no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,isreply,group_id,group_tab,num
+    FROM (SELECT q_no,subject,name,regdate,hit,isreply,group_id,group_tab,rownum as num
+    FROM (SELECT q_no,subject,name,regdate,hit,isreply,group_id,group_tab
+    FROM qbo_4 ORDER BY group_id DESC,group_step ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <!-- 총페이지 -->
+  <select id="qnaTotalPage" resultType="int">
+    SELECT CEIL(COUNT(*)/10.0) FROM qbo_4
+  </select>
+  <!-- 
+                       group_id(게시물=답변)    group_step(답변,일반게시물)  group_tab  isreply(답변완료)
+         AAAAA            2            0           0         1
+           =>BBBBBB       2            1           1         0
+         CCCCC            1            0           0         1
+           =>DDDDDD       1            1           1         0
+  
+   -->
+  <!-- 상세 보기 -->
+  <!-- 수정 , 삭제 -->
+  <!-- 추가(사용자) -->
+  <insert id="qnaInsert" parameterType="QnaVO">
+    <selectKey keyProperty="q_no" resultType="int" order="BEFORE">
+      SELECT NVL(MAX(q_no)+1,1) as no FROM qbo_4
+    </selectKey>
+    INSERT INTO qbo_4(q_no,name,subject,content,pwd,group_id)
+    VALUES(#{q_no},#{name},#{subject},#{content},#{pwd},
+     (SELECT NVL(MAX(group_id)+1,1) FROM qbo_4)
+    )
+  </insert>
+  <!-- 답변 달기(어드민)-->
+  <select id="qnaAdminData" resultType="QnaVO">
+    SELECT * FROM qbo_4
+    WHERE isreply!=1 AND group_step!=1
+    ORDER BY q_no DESC
+  </select>
+  <!-- 내용보기  , 일반 유저 , 관리자 -->
+  <update id="qnaHitIncrement" parameterType="int">
+    UPDATE qbo_4 SET
+    hit=hit-1
+    WHERE q_no=#{q_no}
+  </update>
+  <update id="qnaHitDecrement" parameterType="int">
+    UPDATE qbo_4 SET
+    hit=hit+1
+    WHERE q_no=#{q_no}
+  </update>
+  <select id="qnaDetailData" resultType="QnaVO" parameterType="int">
+    SELECT q_no,name,subject,content,hit,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,group_id
+    FROM qbo_4
+    WHERE q_no=#{q_no}
+  </select>
+  
+  <!--  어드민에서 답변 달기 -->
+  <select id="qnaInfoData" resultType="int" parameterType="int">
+    SELECT group_id FROM qbo_4
+    WHERE q_no=#{q_no}
+  </select>
+  <insert id="qnaInsertOk" parameterType="QnaVO">
+    <selectKey keyProperty="q_no" resultType="int" order="BEFORE">
+      SELECT NVL(MAX(q_no)+1,1) as q_no FROM qbo_4
+    </selectKey>
+    INSERT INTO qbo_4(q_no,name,subject,content,pwd,group_id,group_step,group_tab)
+    VALUES(#{q_no},#{name},#{subject},#{content},#{pwd},
+     #{group_id},1,1
+    )
+  </insert>
+  <update id="qnaIsReply" parameterType="int">
+    UPDATE qbo_4 SET
+    isreply=1
+    WHERE q_no=#{q_no}
+  </update>
+</mapper>
+
+
+
+
+
+
+
+

@@ -172,8 +172,8 @@ font-style: normal;
   color: #f34100;
 }
 
-.navbar .getstarted,
-.navbar .getstarted:focus {
+.navbar .start,
+.navbar .start:focus {
   background: #f34100;
   color: #fff;
   padding: 10px 25px;
@@ -181,8 +181,8 @@ font-style: normal;
   border-radius: 50px;
 }
 
-.navbar .getstarted:hover,
-.navbar .getstarted:focus:hover {
+.navbar .start:hover,
+.navbar .start:focus:hover {
   color: #fff;
   background: #ee7843;
 }
@@ -320,8 +320,8 @@ font-style: normal;
   color: #f34100;
 }
 
-.navbar-mobile .getstarted,
-.navbar-mobile .getstarted:focus {
+.navbar-mobile .start,
+.navbar-mobile .start:focus {
   margin: 15px;
 }
 

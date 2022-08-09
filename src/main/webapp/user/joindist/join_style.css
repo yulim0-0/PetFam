@@ -13,6 +13,7 @@ body {
 h4 {
 	font-size: 25px;
 	color: #192f61;
+	margin-top : 10px;
 }
 
 form {
@@ -205,12 +206,12 @@ select option {
 }
 
 .joincontainer {
-	height: 1050px;
+	height: 1100px;
 	max-width: 660px;
-	padding: 50px 45px; 
+	padding: 40px 45px; 
 	margin : 120px auto;
 	background-color: #fff;
-	border-radius: 4.2px;
+	border-radius: 20px;
 	box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, 0.2);
 	margin: 120px auto;
 }

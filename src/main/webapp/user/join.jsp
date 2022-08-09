@@ -123,35 +123,38 @@
 				</div>
 			</div>
 				
-				<div class="row">
-					<div class="input-group input-group-icon">
-						<input class="row-100" type="password" name="pwd" id="pwd" placeholder="비밀번호" />
-						<div class="input-icon" style="margin-top : 4px; ">
-							<i class="fa fa-key"></i>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="input-group input-group-icon">
-						<input class="row-100" type="password" id="pwd_check" placeholder="비밀번호 확인" />
-						<div class="input-icon" style="margin-top : 4px; ">
-							<i class="fa fa-key"></i>
-						</div>
-					</div>
-				</div>
-				
-				<div class="row">
-						<div class="input-group input-group-icon">
-							<input class="row-100" type="text" id="name" name="name" placeholder="이름" />
-							<div class="input-icon" style="margin-top : 4px; ">
-							<i class="fa fa-key"></i>
-						</div>
-					</div>
-				</div>
 			<div class="row">
+				<div class="input-group input-group-icon">
+					<input class="row-100" type="password" name="pwd" id="pwd" placeholder="비밀번호" />
+					<div class="input-icon" style="margin-top : 4px; ">
+						<i class="fa fa-key"></i>
+					</div>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="input-group input-group-icon">
+					<input class="row-100" type="password" name="pwd_check" id="pwd_check" placeholder="비밀번호 확인" />
+					<div class="input-icon" style="margin-top : 4px; ">
+						<i class="fa fa-key"></i>
+					</div>
+				</div>
+			</div>
+				
+			<h4>Private Info</h4>
+			
+			<!-- 이름 -->
+			<div class="row">
+				<div class="input-group input-group-icon">
+					<input class="row-100" type="text" id="name" name="name" placeholder="이름" />
+					<div class="input-icon" style="margin-top : 4px; ">
+						<i class="fa fa-smile-o"></i>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+			
 				<!-- 생년월일 -->
-				<h4>Private Info</h4>
 				<div class="col-half" style="padding-top : 5px">
 					<input type="date" name=birthday id="birthday" placeholder="생년월일" />
 				</div>

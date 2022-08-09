@@ -10,15 +10,15 @@ REGDATE             DATE
 GROUP_ID            VARCHAR2(20)  
 GROUP_STEP          VARCHAR2(20)  
 GROUP_TAB           NUMBER        
-PP_NO      NOT NULL NUMBER        
-P_NO       NOT NULL NUMBER        
+PP_NO      NOT NULL NUMBER    보류     
+P_NO       NOT NULL NUMBER    보류    
 DEPTH               NUMBER        
 ID         NOT NULL VARCHAR2(20)  
 TYPE                NUMBER        
 ROOT                NUMBER        
  */
 public class PReplyVO {
-	private int pre_no, group_tab,pp_no,p_no,depth,type,root,bno;
+	private int pre_no, group_tab,depth,type,root,bno;
 	public int getBno() {
 		return bno;
 	}
@@ -62,18 +62,6 @@ public class PReplyVO {
 	}
 	public void setGroup_tab(int group_tab) {
 		this.group_tab = group_tab;
-	}
-	public int getPp_no() {
-		return pp_no;
-	}
-	public void setPp_no(int pp_no) {
-		this.pp_no = pp_no;
-	}
-	public int getP_no() {
-		return p_no;
-	}
-	public void setP_no(int p_no) {
-		this.p_no = p_no;
 	}
 	public int getDepth() {
 		return depth;
