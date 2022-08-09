@@ -40,6 +40,7 @@
   
 <!-- 주소 검색창 JS  -->
 <link rel="stylesheet" href="../user/shadow/css/shadowbox.css">
+<link rel="stylesheet" href="https://use.typekit.net/evl6ifb.css">
 <script type="text/javascript" src="../user/shadow/js/shadowbox.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">

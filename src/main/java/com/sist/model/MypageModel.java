@@ -19,14 +19,18 @@ public class MypageModel {
 	{
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");	// 다운캐스팅
-		UserVO vo=MypageDAO.userInfoData(id);
-		String name=vo.getName();
 		
-		request.setAttribute("id", id);
-		request.setAttribute("name", name);
+		List<UserVO> list=MypageDAO.userInfoData(id);
 		
-		request.setAttribute("vo", vo);
+		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../mypage/myinfo.jsp");
+		return "../main/main.jsp";
+	}
+	
+	@RequestMapping("mypage/mybooking.do")
+	public String user_booking(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("main_jsp", "../mypage/mybooking.jsp");
 		return "../main/main.jsp";
 	}
 }

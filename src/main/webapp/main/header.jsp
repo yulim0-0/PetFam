@@ -50,7 +50,7 @@
             </ul>
             
           <c:if test="${sessionScope.id!=null }">
-          	<c:if test="${sessionScope.admin=='n' }">
+          	
 	          <li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
 	            <ul>
 	              
@@ -60,27 +60,14 @@
 	                  <li><a href="#">비밀번호 변경</a></li>
 	                </ul>
 	              </li>
-	              <li><a href="#">예약 내역</a></li>
+	              <li><a href="../mypage/mybooking.do">예약 내역</a></li>
 	              <li><a href="#">예약 현황</a></li>
+	              <li><a href="#">게시글 내역</a></li>
+	              <li><a href="#">문의 내역</a></li>
 	            </ul>
 	          </li>
-          	</c:if>
 
 			<c:if test="${sessionScope.admin=='y' }">
-			   <li class="dropdown">
-			      <a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
-			      <ul>
-			         <li class="dropdown">
-			            <a href="#"><span>마이페이지</span> <i class="bi bi-chevron-right"></i></a>
-			            <ul>
-			               <li><a href="../mypage/myinfo.do">나의정보</a></li>
-			               <li><a href="#">비밀번호 변경</a></li>
-			            </ul>
-			         </li>
-			         <li><a href="#">예약 내역</a></li>
-			         <li><a href="#">예약 현황</a></li>
-			      </ul>
-			   </li>
 			   <li class="dropdown">
 			      <a href="#"><span>관리자</span> <i class="bi bi-chevron-down"></i></a>
 			      <ul>

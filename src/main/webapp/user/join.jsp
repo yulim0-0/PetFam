@@ -120,7 +120,7 @@
 					</div>
 				</div>
 				<div class="col-33">
-					<input type="button" id="checkBtn" value="중복확인" />
+					<input type="button" name="checkBtn" id="checkBtn" value="중복확인" />
 				</div>
 			</div>
 				
@@ -163,9 +163,9 @@
 				<!-- 성별 -->
 				<div class="col-half">
 					<div class="input-group">
-						<input id="gender-male" type="radio" name="gender" value="male" />
+						<input id="gender-male" type="radio" name="gender" value="남자" checked/>
 						<label for="gender-male">Male</label> 
-						<input id="gender-female" type="radio" name="gender" value="female" /> 
+						<input id="gender-female" type="radio" name="gender" value="여자" /> 
 						<label for="gender-female">Female</label>
 					</div>
 				</div>

@@ -4,6 +4,6 @@
 
  <!-- 비밀번호 읽기 -->
  <select id="userInfoData" resultType="UserVO" parameterType="string">
-  	SELECT pwd, id, name FROM user_4 WHERE id=#{id}
+  	SELECT * FROM user_4 WHERE id=#{id}
  </select>
 </mapper>
