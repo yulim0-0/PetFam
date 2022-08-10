@@ -106,6 +106,7 @@
 </script>
 </head>
 <body>
+<main class="main">
 	<!-- partial:index.partial.html -->
 	<div class="joincontainer">
 		<form method="post" action="../user/join_ok.do" name="join_frm" id="join_frm" >
@@ -119,7 +120,7 @@
 					</div>
 				</div>
 				<div class="col-33">
-					<input type="button" id="checkBtn" value="중복확인" />
+					<input type="button" name="checkBtn" id="checkBtn" value="중복확인" />
 				</div>
 			</div>
 				
@@ -162,9 +163,9 @@
 				<!-- 성별 -->
 				<div class="col-half">
 					<div class="input-group">
-						<input id="gender-male" type="radio" name="gender" value="male" />
+						<input id="gender-male" type="radio" name="gender" value="남자" checked/>
 						<label for="gender-male">Male</label> 
-						<input id="gender-female" type="radio" name="gender" value="female" /> 
+						<input id="gender-female" type="radio" name="gender" value="여자" /> 
 						<label for="gender-female">Female</label>
 					</div>
 				</div>
@@ -257,6 +258,6 @@
 	<script
 		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script src="joindist/script.js"></script>
-
+</main>
 </body>
 </html>

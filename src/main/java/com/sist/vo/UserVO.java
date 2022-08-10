@@ -1,5 +1,7 @@
 package com.sist.vo;
 
+import java.sql.Date;
+
 public class UserVO {
 /*
 ID       NOT NULL VARCHAR2(20)  
@@ -16,6 +18,15 @@ GENDER            VARCHAR2(10)
 */
 	private String id, pwd, name, birthday, phone, email, addr1, addr2, gender, zipcode, admin;
 	private String msg;
+	private Date joindate;
+
+	public Date getJoindate() {
+		return joindate;
+	}
+
+	public void setJoindate(Date joindate) {
+		this.joindate = joindate;
+	}
 
 	public String getAdmin() {
 		return admin;

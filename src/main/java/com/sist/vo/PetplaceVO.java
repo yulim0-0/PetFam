@@ -1,4 +1,5 @@
 package com.sist.vo;
+import java.util.*;
 	//park, cafe, pension
 public class PetplaceVO { 
 	/*
@@ -13,13 +14,19 @@ public class PetplaceVO {
 	GOOD              NUMBER         
 	 */
 	
-	private int c_no, category;
-	private String title,poster,addr, tel, subtitle, map, good;
+	private int c_no, good, category;
+	private String title,poster,addr,tel, subtitle, map;
 	public int getC_no() {
 		return c_no;
 	}
 	public void setC_no(int c_no) {
 		this.c_no = c_no;
+	}
+	public int getGood() {
+		return good;
+	}
+	public void setGood(int good) {
+		this.good = good;
 	}
 	public int getCategory() {
 		return category;
@@ -63,11 +70,6 @@ public class PetplaceVO {
 	public void setMap(String map) {
 		this.map = map;
 	}
-	public String getGood() {
-		return good;
-	}
-	public void setGood(String good) {
-		this.good = good;
-	}
-
+	
+	
 }

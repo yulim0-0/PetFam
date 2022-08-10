@@ -24,14 +24,14 @@ BIRTHDAY          VARCHAR2(8)
 PHONE             VARCHAR2(13)  
 EMAIL             VARCHAR2(30)  
 ZIPCODE           NUMBER(5)     
-ADDR1             VARCHAR2(100) 
+ADDR1             VARCHAR2(100)
 ADDR2             VARCHAR2(100) 
 GENDER            VARCHAR2(10)  
 
  -->
  <insert id="userInsert" parameterType="UserVO">
  	INSERT INTO user_4(id, pwd, name, birthday, phone, email, zipcode, addr1, addr2, gender) 
- 	VALUES(#{id}, #{pwd}, #{name}, #{birthday}, #{gender}, #{phone}, #{email}, #{zipcode}, #{addr1}, #{addr2})
+ 	VALUES(#{id}, #{pwd}, #{name}, #{birthday}, #{phone}, #{email}, #{zipcode}, #{addr1}, #{addr2}, #{gender})
  
  </insert>
  
@@ -41,7 +41,7 @@ GENDER            VARCHAR2(10)
  </select>
  
  <!-- 비밀번호 읽기 -->
- <select id="userInfoData" resultType="UserVO" parameterType="string">
+ <select id="userIdPwdData" resultType="UserVO" parameterType="string">
   	SELECT pwd, id, name, admin FROM user_4 WHERE id=#{id}
  </select>
 </mapper>

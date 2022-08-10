@@ -74,7 +74,7 @@
 
 			</div>
 			<div class="bottom-button">
-				<input type="button" class="control-button up" id="logBtn" value="수정하기" onclick="../mypage/mypage_edit.do" >
+				<input type="button" class="control-button up" id="logBtn" value="수정하기" >
 				<input type="button" class="control-button up" id="logBtn" value="취소" >
 			</div>
 

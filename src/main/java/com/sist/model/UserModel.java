@@ -118,7 +118,9 @@ public class UserModel {
 			session.setAttribute("id", vo.getId());
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("admin", vo.getAdmin());
-			
+			session.setMaxInactiveInterval(60*60);
+			int time = session.getMaxInactiveInterval()/60;
+			System.out.println("세션 유효 시간 : "+time+"분");
 		}
 		request.setAttribute("result", result);
 		return "../user/login_ok.jsp";

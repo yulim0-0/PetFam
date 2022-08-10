@@ -1,23 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.petplace-mapper">
-<select id="petplaceListData" resultType="PetplaceVO" parameterType="hashmap">
-	
+<mapper namespace="com.sist.mapper.petplace-mapper">
+ <select id="petplaceListData" resultType="PetplaceVO" parameterType="hashmap">
 
-	SELECT c_no,title, poster,num
-	FROM (SELECT c_no,title, poster,rownum as num)
-	FROM (SELECT c_no,title, poster
-	
-	FROM ${table_name2} WHERE c_no BETWEEN #{st} AND #{en} ORDER BY c_no ASC))
-	
-	WHERE num BETWEEN #{start2} AND #{end2}
-	</select>
-	<select id="petplaceTotalPage" resultType="int" parameterType="hashmap">
-	SELECT CEIL(COUNT(*)/9.0) FROM ${table_name2} WHERE c_no BETWEEN #{st} AND #{en}
-	</select>
-	
-	<select id="petplaceDetailData" resultType="BookingVO" parameterType="hashmap">
+   <!-- parameterType은 1개 지정이 가능 : 여러개 데이터를 첨부 (VO,Map) -->
+SELECT c_no
+    ,title
+    ,category
+    ,poster
+    ,addr
+    ,tel
+    ,subtitle
+    ,map
+    ,good
+FROM    ${table_name}
+WHERE   c_no BETWEEN #{start} AND #{end}
+ORDER BY c_no ASC
+
+<!--    SELECT c_no,title,poster,num
+   FROM (
+   			SELECT c_no,title,poster,rownum as num 
+   			FROM (
+   					SELECT 	c_no,title,poster 
+   					FROM 	${table_name} 
+   					WHERE 	c_no BETWEEN #{start} AND #{end} 
+   					ORDER BY c_no ASC
+   				  )
+   		)
+   WHERE num BETWEEN #{s} AND #{e} -->
+
+ </select>
+ <select id="petplaceTotalPage" resultType="int" parameterType="hashmap">
+   SELECT CEIL(COUNT(*)/9.0) FROM ${table_name}
+   
+ </select>
+ 
+ <!-- 상세보기 -->
+  <select id="petplaceDetailData" resultType="petplaceVO" parameterType="hashmap">
    SELECT * FROM ${table_name}
-   WHERE o_no=#{o_no}
-   </select>
+   WHERE c_no=#{c_no}
+ </select>
 </mapper>

@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.sist.vo.BookingVO;
+
 import com.sist.vo.PetplaceVO;
 
 import java.io.*;
@@ -30,10 +30,10 @@ public class PetplaceDAO {
 	public static List<PetplaceVO> petplaceListData(Map map){
 		SqlSession session=null;   //PreparedStatement
 		//ssf=> Connection
-		List<PetplaceVO> list2=null;
+		List<PetplaceVO> list=null;
 		try {
 			session=ssf.openSession();
-			list2=session.selectList("petplaceListData",map); 
+			list=session.selectList("petplaceListData",map); 
 		}catch(Exception ex) {
 			System.out.println("petplaceListData(Map map) : error");
 			ex.printStackTrace();
@@ -45,7 +45,7 @@ public class PetplaceDAO {
 				session.close();
 			}
 		}
-		return list2;
+		return list;
 		
 	}
 	
@@ -58,7 +58,7 @@ public class PetplaceDAO {
 			session=ssf.openSession();
 			total=session.selectOne("petplaceTotalPage",map); 
 		}catch(Exception ex) {
-			System.out.println("petplaceListData(Map map) : error");
+			System.out.println("petplaceTotalPage(Map map) : error");
 			ex.printStackTrace();
 		}
 		finally 
