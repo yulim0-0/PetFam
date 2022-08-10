@@ -3,7 +3,11 @@
 <mapper namespace="com.sist.mapper.petplace-mapper">
  <select id="petplaceListData" resultType="PetplaceVO" parameterType="hashmap">
 
+<<<<<<< HEAD
 <!-- parameterType은 1개 지정이 가능 : 여러개 데이터를 첨부 (VO,Map) -->
+=======
+   <!-- parameterType은 1개 지정이 가능 : 여러개 데이터를 첨부 (VO,Map) -->
+>>>>>>> status
 SELECT c_no
     ,title
     ,category
