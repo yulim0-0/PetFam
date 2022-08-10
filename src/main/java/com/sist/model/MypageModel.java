@@ -33,4 +33,11 @@ public class MypageModel {
 		request.setAttribute("main_jsp", "../mypage/mybooking.jsp");
 		return "../main/main.jsp";
 	}
+	
+	@RequestMapping("mypage/myinfo_edit.do")
+	public String user_info_edit(HttpServletRequest request, HttpServletResponse response)
+	{
+		request.setAttribute("main_jsp", "../mypage/myinfo_edit.jsp");
+		return "../main/main.jsp";
+	}
 }
