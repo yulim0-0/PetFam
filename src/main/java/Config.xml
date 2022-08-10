@@ -31,6 +31,7 @@
 	<mappers>
 		<mapper resource="com/sist/mapper/user-mapper.xml" />
 		<mapper resource="com/sist/mapper/mypage-mapper.xml" />
+		<mapper resource="com/sist/mapper/admin-mapper.xml" />
 		<mapper resource="com/sist/mapper/user-mapper.xml" />
 		<mapper resource="com/sist/mapper/pboard-mapper.xml" />
 		<mapper resource="com/sist/mapper/preply-mapper.xml" />

@@ -2,7 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.admin-mapper">
 
- <select id="userInfoList">
-  	SELECT name FROM user_4
- </select>
+	<select id="userInfoList" resultType="UserVO">
+		SELECT * FROM user_4
+	</select>
+	
+	<select id="userInfoDetailData" resultType="String">
+		SELECT * FROM user_4 WHERE id=#{id}
+	</select>
 </mapper>

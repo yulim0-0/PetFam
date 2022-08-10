@@ -3,7 +3,7 @@
 <mapper namespace="com.sist.mapper.mypage-mapper">
 
  <!-- 비밀번호 읽기 -->
- <select id="userInfoData" resultType="UserVO" parameterType="string">
-  	SELECT * FROM user_4 WHERE id=#{id}
- </select>
+<select id="userInfoData" resultType="UserVO" parameterType="string">
+	SELECT * FROM user_4 WHERE id=#{id}
+</select>
 </mapper>

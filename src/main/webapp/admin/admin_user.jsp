@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -14,7 +16,8 @@
 <body>
 <!-- partial:index.partial.html -->
 <main class="main">
-	<div class="container">
+	
+		<div class="container">
 	<h1>User List</h1>
 	<p> Mémo pour les options du Bootstrap Table : <a href="http://bootstrap-table.wenzhixin.net.cn/documentation/">Bootstrap Table Documentation</a></p>
 	<p>Eléments de Bootstrap Table utilisés : <a href="http://jsfiddle.net/wenyi/e3nk137y/3178/">Data Checkbox</a>
@@ -44,94 +47,22 @@
 				<th data-field="prenom" data-filter-control="input" data-sortable="true">이름</th>
 				<th data-field="date" data-filter-control="select" data-sortable="true">가입 날짜</th>
 				<th data-field="examen" data-filter-control="select" data-sortable="true">권한</th>
-				<th data-field="note" data-sortable="true">Note</th>
+				<th data-field="note" data-sortable="true">노트</th>
+				
 			</tr>
 		</thead>
 		<tbody>
+		<c:forEach var="vo" items="${list }">
 			<tr>
 				<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
-				<td>Valérie</td>
-				<td>01/09/2015</td>
-				<td>Français</td>
-				<td>12/20</td>
+				<td>${vo.id }</td>
+				<td>${vo.joindate }</td>
+				<td>${vo.admin }</td>
+				<td onClick="location.href='../admin/admin_user_detail.do?no=${vo.name }'" style="cursor:pointer;">상세보기</td>
+				<td><input type="button" value="상세보기"></td>
+				
 			</tr>
-			<tr>
-				<td class="bs-checkbox "><input data-index="1" name="btSelectItem" type="checkbox"></td>
-				<td>Eric</td>
-				<td>05/09/2015</td>
-				<td>Philosophie</td>
-				<td>8/20</td>
-			</tr>
-			<tr>
-				<td class="bs-checkbox "><input data-index="2" name="btSelectItem" type="checkbox"></td>
-				<td>Valentin</td>
-				<td>05/09/2015</td>
-				<td>Philosophie</td>
-				<td>4/20</td>
-			</tr>
-			<tr>
-				<td class="bs-checkbox "><input data-index="3" name="btSelectItem" type="checkbox"></td>
-				<td>Valérie</td>
-				<td>05/09/2015</td>
-				<td>Philosophie</td>
-				<td>10/20</td>
-			</tr>
-			<tr>
-				<td class="bs-checkbox "><input data-index="4" name="btSelectItem" type="checkbox"></td>
-				<td>Eric</td>
-				<td>01/09/2015</td>
-				<td>Français</td>
-				<td>14/20</td>
-			</tr>
-			<tr>
-				<td class="bs-checkbox "><input data-index="5" name="btSelectItem" type="checkbox"></td>
-				<td>Valérie</td>
-				<td>07/09/2015</td>
-				<td>Mathématiques</td>
-				<td>19/20</td>
-			</tr>
-			<tr>
-				<td class="bs-checkbox "><input data-index="6" name="btSelectItem" type="checkbox"></td>
-				<td>Valentin</td>
-				<td>01/09/2015</td>
-				<td>Français</td>
-				<td>11/20</td>
-			</tr>
-			<tr>
-				<td class="bs-checkbox "><input data-index="7" name="btSelectItem" type="checkbox"></td>
-				<td>Eric</td>
-				<td>01/10/2015</td>
-				<td>Philosophie</td>
-				<td>8/20</td>
-			</tr>
-			<tr>
-				<td class="bs-checkbox "><input data-index="8" name="btSelectItem" type="checkbox"></td>
-				<td>Valentin</td>
-				<td>07/09/2015</td>
-				<td>Mathématiques</td>
-				<td>14/20</td>
-			</tr>
-			<tr>
-				<td class="bs-checkbox "><input data-index="9" name="btSelectItem" type="checkbox"></td>
-				<td>Valérie</td>
-				<td>01/10/2015</td>
-				<td>Philosophie</td>
-				<td>12/20</td>
-			</tr>
-			<tr>
-				<td class="bs-checkbox "><input data-index="10" name="btSelectItem" type="checkbox"></td>
-				<td>Eric</td>
-				<td>07/09/2015</td>
-				<td>Mathématiques</td>
-				<td>14/20</td>
-			</tr>
-			<tr>
-			<td class="bs-checkbox "><input data-index="11" name="btSelectItem" type="checkbox"></td>
-				<td>Valentin</td>
-				<td>01/10/2015</td>
-				<td>Philosophie</td>
-				<td>10/20</td>
-			</tr>
+		</c:forEach>
 		</tbody>
 	</table>
 	</div>
@@ -144,8 +75,8 @@
 <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/editable/bootstrap-table-editable.js'></script>
 <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/export/bootstrap-table-export.js'></script>
 <script src='//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/filter-control/bootstrap-table-filter-control.js'>
-</script><script  src="admin_user_dist/script.js"></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/filter-control/bootstrap-table-filter-control.js'></script>
+<script src="admin_user_dist/script.js"></script>
 
 </body>
 </html>
