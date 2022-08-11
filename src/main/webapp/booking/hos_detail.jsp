@@ -268,8 +268,8 @@
     </section>
     <!-- ##### Single Product Details Area End ##### -->
   
-  
-  <div class="aside" style="width:50%;height:50%;"  >
+ 
+  <div class="aside" style="width:50%;height:50%;margin:auto;">
        <div id="map" style="width:100%;height:350px;"></div>
 
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b258686433a9d9db37e9d1bbb85cdae3&libraries=services"></script>
@@ -314,7 +314,9 @@
 		});    
 		</script>
     </div>
+   
    </div>
+ 
 
    
 
