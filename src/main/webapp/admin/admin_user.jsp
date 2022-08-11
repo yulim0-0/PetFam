@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -11,13 +11,25 @@
 	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css'>
 	<link rel='stylesheet' href='//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css'>
 	<link rel="stylesheet" href="admin_user_dist/style.css">
+	<style>
+		.detail {
+			cursor:pointer;
+		}
+		
+	</style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+	<script>
+		$('#detail').on("click",function(){
+			location.href="../admin/admin_user_detail.do?id=";
+		})
+	</script>
 </head>
 
 <body>
 <!-- partial:index.partial.html -->
 <main class="main">
 	
-		<div class="container">
+	<div class="userlistcontainer">
 	<h1>User List</h1>
 	<p> Mémo pour les options du Bootstrap Table : <a href="http://bootstrap-table.wenzhixin.net.cn/documentation/">Bootstrap Table Documentation</a></p>
 	<p>Eléments de Bootstrap Table utilisés : <a href="http://jsfiddle.net/wenyi/e3nk137y/3178/">Data Checkbox</a>
@@ -39,8 +51,8 @@
 				 data-search="true"
 				 data-filter-control="true" 
 				 data-show-export="true"
-				 data-click-to-select="true"
 				 data-toolbar="#toolbar">
+				 <!-- data-click-to-select="true" -->
 		<thead>
 			<tr>
 				<th data-field="state" data-checkbox="true"></th>
@@ -52,17 +64,31 @@
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach var="vo" items="${list }">
+		
 			<tr>
 				<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
-				<td>${vo.id }</td>
-				<td>${vo.joindate }</td>
-				<td>${vo.admin }</td>
-				<td onClick="location.href='../admin/admin_user_detail.do?no=${vo.name }'" style="cursor:pointer;">상세보기</td>
-				<td><input type="button" value="상세보기"></td>
-				
+				<td id=id>admin</td>
+				<td>2022-08-10</td>
+				<td>y</td>
+				<td onClick="location.href='../admin/admin_user_detail.do?id=admin'" id=detail>상세보기</td>
 			</tr>
-		</c:forEach>
+		
+			<tr>
+				<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
+				<td id=id>yulim</td>
+				<td>2022-08-10</td>
+				<td>n</td>
+				<td onClick="location.href='../admin/admin_user_detail.do?id=yulim'" id=detail>상세보기</td>
+			</tr>
+		
+			<tr>
+				<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
+				<td id=id>test</td>
+				<td>2022-08-10</td>
+				<td>n</td>
+				<td onClick="location.href='../admin/admin_user_detail.do?id=test'" id=detail>상세보기</td>
+			</tr>
+		
 		</tbody>
 	</table>
 	</div>

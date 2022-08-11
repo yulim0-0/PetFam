@@ -1,4 +1,4 @@
-.container {
+.userlistcontainer {
 	width: 1024px;
 	padding: 2em;
 }
@@ -35,7 +35,7 @@ header,
 hgroup,
 main,
 menu,
-nav,
+userlistnav,
 section,
 summary {
 	display: block
@@ -300,7 +300,7 @@ th {
 		page-break-after: avoid
 	}
 
-	.navbar {
+	.userlistnavbar {
 		display: none
 	}
 
@@ -2003,7 +2003,7 @@ pre code {
 	overflow-y: scroll
 }
 
-.container {
+.userlistcontainer {
 	padding-right: 15px;
 	padding-left: 15px;
 	margin-right: auto;
@@ -2011,24 +2011,24 @@ pre code {
 }
 
 @media (min-width:768px) {
-	.container {
+	.userlistcontainer {
 		width: 750px
 	}
 }
 
 @media (min-width:992px) {
-	.container {
+	.userlistcontainer {
 		width: 970px
 	}
 }
 
 @media (min-width:1200px) {
-	.container {
+	.userlistcontainer {
 		width: 1170px
 	}
 }
 
-.container-fluid {
+.userlistcontainer-fluid {
 	padding-right: 15px;
 	padding-left: 15px;
 	margin-right: auto;
@@ -4618,7 +4618,7 @@ tbody.collapse.in {
 }
 
 .dropup .caret,
-.navbar-fixed-bottom .dropdown .caret {
+.userlistnavbar-fixed-bottom .dropdown .caret {
 	content: "";
 	border-top: 0;
 	border-bottom: 4px dashed;
@@ -4626,19 +4626,19 @@ tbody.collapse.in {
 }
 
 .dropup .dropdown-menu,
-.navbar-fixed-bottom .dropdown .dropdown-menu {
+.userlistnavbar-fixed-bottom .dropdown .dropdown-menu {
 	top: auto;
 	bottom: 100%;
 	margin-bottom: 2px
 }
 
 @media (min-width:768px) {
-	.navbar-right .dropdown-menu {
+	.userlistnavbar-right .dropdown-menu {
 		right: 0;
 		left: auto
 	}
 
-	.navbar-right .dropdown-menu-left {
+	.userlistnavbar-right .dropdown-menu-left {
 		right: auto;
 		left: 0
 	}
@@ -5031,82 +5031,82 @@ textarea.input-group-sm>.input-group-btn>.btn {
 	margin-left: -1px
 }
 
-.nav {
+.userlistnav {
 	padding-left: 0;
 	margin-bottom: 0;
 	list-style: none
 }
 
-.nav>li {
+.userlistnav>li {
 	position: relative;
 	display: block
 }
 
-.nav>li>a {
+.userlistnav>li>a {
 	position: relative;
 	display: block;
 	padding: 10px 15px
 }
 
-.nav>li>a:focus,
-.nav>li>a:hover {
+.userlistnav>li>a:focus,
+.userlistnav>li>a:hover {
 	text-decoration: none;
 	background-color: #eee
 }
 
-.nav>li.disabled>a {
+.userlistnav>li.disabled>a {
 	color: #777
 }
 
-.nav>li.disabled>a:focus,
-.nav>li.disabled>a:hover {
+.userlistnav>li.disabled>a:focus,
+.userlistnav>li.disabled>a:hover {
 	color: #777;
 	text-decoration: none;
 	cursor: not-allowed;
 	background-color: transparent
 }
 
-.nav .open>a,
-.nav .open>a:focus,
-.nav .open>a:hover {
+.userlistnav .open>a,
+.userlistnav .open>a:focus,
+.userlistnav .open>a:hover {
 	background-color: #eee;
 	border-color: #337ab7
 }
 
-.nav .nav-divider {
+.userlistnav .userlistnav-divider {
 	height: 1px;
 	margin: 9px 0;
 	overflow: hidden;
 	background-color: #e5e5e5
 }
 
-.nav>li>a>img {
+.userlistnav>li>a>img {
 	max-width: none
 }
 
-.nav-tabs {
+.userlistnav-tabs {
 	border-bottom: 1px solid #ddd
 }
 
-.nav-tabs>li {
+.userlistnav-tabs>li {
 	float: left;
 	margin-bottom: -1px
 }
 
-.nav-tabs>li>a {
+.userlistnav-tabs>li>a {
 	margin-right: 2px;
 	line-height: 1.42857143;
 	border: 1px solid transparent;
 	border-radius: 4px 4px 0 0
 }
 
-.nav-tabs>li>a:hover {
+.userlistnav-tabs>li>a:hover {
 	border-color: #eee #eee #ddd
 }
 
-.nav-tabs>li.active>a,
-.nav-tabs>li.active>a:focus,
-.nav-tabs>li.active>a:hover {
+.userlistnav-tabs>li.active>a,
+.userlistnav-tabs>li.active>a:focus,
+.userlistnav-tabs>li.active>a:hover {
 	color: #555;
 	cursor: default;
 	background-color: #fff;
@@ -5114,141 +5114,141 @@ textarea.input-group-sm>.input-group-btn>.btn {
 	border-bottom-color: transparent
 }
 
-.nav-tabs.nav-justified {
+.userlistnav-tabs.userlistnav-justified {
 	width: 100%;
 	border-bottom: 0
 }
 
-.nav-tabs.nav-justified>li {
+.userlistnav-tabs.userlistnav-justified>li {
 	float: none
 }
 
-.nav-tabs.nav-justified>li>a {
+.userlistnav-tabs.userlistnav-justified>li>a {
 	margin-bottom: 5px;
 	text-align: center
 }
 
-.nav-tabs.nav-justified>.dropdown .dropdown-menu {
+.userlistnav-tabs.userlistnav-justified>.dropdown .dropdown-menu {
 	top: auto;
 	left: auto
 }
 
 @media (min-width:768px) {
-	.nav-tabs.nav-justified>li {
+	.userlistnav-tabs.userlistnav-justified>li {
 		display: table-cell;
 		width: 1%
 	}
 
-	.nav-tabs.nav-justified>li>a {
+	.userlistnav-tabs.userlistnav-justified>li>a {
 		margin-bottom: 0
 	}
 }
 
-.nav-tabs.nav-justified>li>a {
+.userlistnav-tabs.userlistnav-justified>li>a {
 	margin-right: 0;
 	border-radius: 4px
 }
 
-.nav-tabs.nav-justified>.active>a,
-.nav-tabs.nav-justified>.active>a:focus,
-.nav-tabs.nav-justified>.active>a:hover {
+.userlistnav-tabs.userlistnav-justified>.active>a,
+.userlistnav-tabs.userlistnav-justified>.active>a:focus,
+.userlistnav-tabs.userlistnav-justified>.active>a:hover {
 	border: 1px solid #ddd
 }
 
 @media (min-width:768px) {
-	.nav-tabs.nav-justified>li>a {
+	.userlistnav-tabs.userlistnav-justified>li>a {
 		border-bottom: 1px solid #ddd;
 		border-radius: 4px 4px 0 0
 	}
 
-	.nav-tabs.nav-justified>.active>a,
-	.nav-tabs.nav-justified>.active>a:focus,
-	.nav-tabs.nav-justified>.active>a:hover {
+	.userlistnav-tabs.userlistnav-justified>.active>a,
+	.userlistnav-tabs.userlistnav-justified>.active>a:focus,
+	.userlistnav-tabs.userlistnav-justified>.active>a:hover {
 		border-bottom-color: #fff
 	}
 }
 
-.nav-pills>li {
+.userlistnav-pills>li {
 	float: left
 }
 
-.nav-pills>li>a {
+.userlistnav-pills>li>a {
 	border-radius: 4px
 }
 
-.nav-pills>li+li {
+.userlistnav-pills>li+li {
 	margin-left: 2px
 }
 
-.nav-pills>li.active>a,
-.nav-pills>li.active>a:focus,
-.nav-pills>li.active>a:hover {
+.userlistnav-pills>li.active>a,
+.userlistnav-pills>li.active>a:focus,
+.userlistnav-pills>li.active>a:hover {
 	color: #fff;
 	background-color: #337ab7
 }
 
-.nav-stacked>li {
+.userlistnav-stacked>li {
 	float: none
 }
 
-.nav-stacked>li+li {
+.userlistnav-stacked>li+li {
 	margin-top: 2px;
 	margin-left: 0
 }
 
-.nav-justified {
+.userlistnav-justified {
 	width: 100%
 }
 
-.nav-justified>li {
+.userlistnav-justified>li {
 	float: none
 }
 
-.nav-justified>li>a {
+.userlistnav-justified>li>a {
 	margin-bottom: 5px;
 	text-align: center
 }
 
-.nav-justified>.dropdown .dropdown-menu {
+.userlistnav-justified>.dropdown .dropdown-menu {
 	top: auto;
 	left: auto
 }
 
 @media (min-width:768px) {
-	.nav-justified>li {
+	.userlistnav-justified>li {
 		display: table-cell;
 		width: 1%
 	}
 
-	.nav-justified>li>a {
+	.userlistnav-justified>li>a {
 		margin-bottom: 0
 	}
 }
 
-.nav-tabs-justified {
+.userlistnav-tabs-justified {
 	border-bottom: 0
 }
 
-.nav-tabs-justified>li>a {
+.userlistnav-tabs-justified>li>a {
 	margin-right: 0;
 	border-radius: 4px
 }
 
-.nav-tabs-justified>.active>a,
-.nav-tabs-justified>.active>a:focus,
-.nav-tabs-justified>.active>a:hover {
+.userlistnav-tabs-justified>.active>a,
+.userlistnav-tabs-justified>.active>a:focus,
+.userlistnav-tabs-justified>.active>a:hover {
 	border: 1px solid #ddd
 }
 
 @media (min-width:768px) {
-	.nav-tabs-justified>li>a {
+	.userlistnav-tabs-justified>li>a {
 		border-bottom: 1px solid #ddd;
 		border-radius: 4px 4px 0 0
 	}
 
-	.nav-tabs-justified>.active>a,
-	.nav-tabs-justified>.active>a:focus,
-	.nav-tabs-justified>.active>a:hover {
+	.userlistnav-tabs-justified>.active>a,
+	.userlistnav-tabs-justified>.active>a:focus,
+	.userlistnav-tabs-justified>.active>a:hover {
 		border-bottom-color: #fff
 	}
 }
@@ -5261,13 +5261,13 @@ textarea.input-group-sm>.input-group-btn>.btn {
 	display: block
 }
 
-.nav-tabs .dropdown-menu {
+.userlistnav-tabs .dropdown-menu {
 	margin-top: -1px;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0
 }
 
-.navbar {
+.userlistnavbar {
 	position: relative;
 	min-height: 50px;
 	margin-bottom: 20px;
@@ -5275,18 +5275,18 @@ textarea.input-group-sm>.input-group-btn>.btn {
 }
 
 @media (min-width:768px) {
-	.navbar {
+	.userlistnavbar {
 		border-radius: 4px
 	}
 }
 
 @media (min-width:768px) {
-	.navbar-header {
+	.userlistnavbar-header {
 		float: left
 	}
 }
 
-.navbar-collapse {
+.userlistnavbar-collapse {
 	padding-right: 15px;
 	padding-left: 15px;
 	overflow-x: visible;
@@ -5296,82 +5296,82 @@ textarea.input-group-sm>.input-group-btn>.btn {
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1)
 }
 
-.navbar-collapse.in {
+.userlistnavbar-collapse.in {
 	overflow-y: auto
 }
 
 @media (min-width:768px) {
-	.navbar-collapse {
+	.userlistnavbar-collapse {
 		width: auto;
 		border-top: 0;
 		-webkit-box-shadow: none;
 		box-shadow: none
 	}
 
-	.navbar-collapse.collapse {
+	.userlistnavbar-collapse.collapse {
 		display: block !important;
 		height: auto !important;
 		padding-bottom: 0;
 		overflow: visible !important
 	}
 
-	.navbar-collapse.in {
+	.userlistnavbar-collapse.in {
 		overflow-y: visible
 	}
 
-	.navbar-fixed-bottom .navbar-collapse,
-	.navbar-fixed-top .navbar-collapse,
-	.navbar-static-top .navbar-collapse {
+	.userlistnavbar-fixed-bottom .userlistnavbar-collapse,
+	.userlistnavbar-fixed-top .userlistnavbar-collapse,
+	.userlistnavbar-static-top .userlistnavbar-collapse {
 		padding-right: 0;
 		padding-left: 0
 	}
 }
 
-.navbar-fixed-bottom .navbar-collapse,
-.navbar-fixed-top .navbar-collapse {
+.userlistnavbar-fixed-bottom .userlistnavbar-collapse,
+.userlistnavbar-fixed-top .userlistnavbar-collapse {
 	max-height: 340px
 }
 
 @media (max-device-width:480px) and (orientation:landscape) {
 
-	.navbar-fixed-bottom .navbar-collapse,
-	.navbar-fixed-top .navbar-collapse {
+	.userlistnavbar-fixed-bottom .userlistnavbar-collapse,
+	.userlistnavbar-fixed-top .userlistnavbar-collapse {
 		max-height: 200px
 	}
 }
 
-.container-fluid>.navbar-collapse,
-.container-fluid>.navbar-header,
-.container>.navbar-collapse,
-.container>.navbar-header {
+.userlistcontainer-fluid>.userlistnavbar-collapse,
+.userlistcontainer-fluid>.userlistnavbar-header,
+.userlistcontainer>.userlistnavbar-collapse,
+.userlistcontainer>.userlistnavbar-header {
 	margin-right: -15px;
 	margin-left: -15px
 }
 
 @media (min-width:768px) {
 
-	.container-fluid>.navbar-collapse,
-	.container-fluid>.navbar-header,
-	.container>.navbar-collapse,
-	.container>.navbar-header {
+	.userlistcontainer-fluid>.userlistnavbar-collapse,
+	.userlistcontainer-fluid>.userlistnavbar-header,
+	.userlistcontainer>.userlistnavbar-collapse,
+	.userlistcontainer>.userlistnavbar-header {
 		margin-right: 0;
 		margin-left: 0
 	}
 }
 
-.navbar-static-top {
+.userlistnavbar-static-top {
 	z-index: 1000;
 	border-width: 0 0 1px
 }
 
 @media (min-width:768px) {
-	.navbar-static-top {
+	.userlistnavbar-static-top {
 		border-radius: 0
 	}
 }
 
-.navbar-fixed-bottom,
-.navbar-fixed-top {
+.userlistnavbar-fixed-bottom,
+.userlistnavbar-fixed-top {
 	position: fixed;
 	right: 0;
 	left: 0;
@@ -5380,24 +5380,24 @@ textarea.input-group-sm>.input-group-btn>.btn {
 
 @media (min-width:768px) {
 
-	.navbar-fixed-bottom,
-	.navbar-fixed-top {
+	.userlistnavbar-fixed-bottom,
+	.userlistnavbar-fixed-top {
 		border-radius: 0
 	}
 }
 
-.navbar-fixed-top {
+.userlistnavbar-fixed-top {
 	top: 0;
 	border-width: 0 0 1px
 }
 
-.navbar-fixed-bottom {
+.userlistnavbar-fixed-bottom {
 	bottom: 0;
 	margin-bottom: 0;
 	border-width: 1px 0 0
 }
 
-.navbar-brand {
+.userlistnavbar-brand {
 	float: left;
 	height: 50px;
 	padding: 15px 15px;
@@ -5405,24 +5405,24 @@ textarea.input-group-sm>.input-group-btn>.btn {
 	line-height: 20px
 }
 
-.navbar-brand:focus,
-.navbar-brand:hover {
+.userlistnavbar-brand:focus,
+.userlistnavbar-brand:hover {
 	text-decoration: none
 }
 
-.navbar-brand>img {
+.userlistnavbar-brand>img {
 	display: block
 }
 
 @media (min-width:768px) {
 
-	.navbar>.container .navbar-brand,
-	.navbar>.container-fluid .navbar-brand {
+	.userlistnavbar>.userlistcontainer .userlistnavbar-brand,
+	.userlistnavbar>.userlistcontainer-fluid .userlistnavbar-brand {
 		margin-left: -15px
 	}
 }
 
-.navbar-toggle {
+.userlistnavbar-toggle {
 	position: relative;
 	float: right;
 	padding: 9px 10px;
@@ -5435,39 +5435,39 @@ textarea.input-group-sm>.input-group-btn>.btn {
 	border-radius: 4px
 }
 
-.navbar-toggle:focus {
+.userlistnavbar-toggle:focus {
 	outline: 0
 }
 
-.navbar-toggle .icon-bar {
+.userlistnavbar-toggle .icon-bar {
 	display: block;
 	width: 22px;
 	height: 2px;
 	border-radius: 1px
 }
 
-.navbar-toggle .icon-bar+.icon-bar {
+.userlistnavbar-toggle .icon-bar+.icon-bar {
 	margin-top: 4px
 }
 
 @media (min-width:768px) {
-	.navbar-toggle {
+	.userlistnavbar-toggle {
 		display: none
 	}
 }
 
-.navbar-nav {
+.userlistnavbar-userlistnav {
 	margin: 7.5px -15px
 }
 
-.navbar-nav>li>a {
+.userlistnavbar-userlistnav>li>a {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	line-height: 20px
 }
 
 @media (max-width:767px) {
-	.navbar-nav .open .dropdown-menu {
+	.userlistnavbar-userlistnav .open .dropdown-menu {
 		position: static;
 		float: none;
 		width: auto;
@@ -5478,38 +5478,38 @@ textarea.input-group-sm>.input-group-btn>.btn {
 		box-shadow: none
 	}
 
-	.navbar-nav .open .dropdown-menu .dropdown-header,
-	.navbar-nav .open .dropdown-menu>li>a {
+	.userlistnavbar-userlistnav .open .dropdown-menu .dropdown-header,
+	.userlistnavbar-userlistnav .open .dropdown-menu>li>a {
 		padding: 5px 15px 5px 25px
 	}
 
-	.navbar-nav .open .dropdown-menu>li>a {
+	.userlistnavbar-userlistnav .open .dropdown-menu>li>a {
 		line-height: 20px
 	}
 
-	.navbar-nav .open .dropdown-menu>li>a:focus,
-	.navbar-nav .open .dropdown-menu>li>a:hover {
+	.userlistnavbar-userlistnav .open .dropdown-menu>li>a:focus,
+	.userlistnavbar-userlistnav .open .dropdown-menu>li>a:hover {
 		background-image: none
 	}
 }
 
 @media (min-width:768px) {
-	.navbar-nav {
+	.userlistnavbar-userlistnav {
 		float: left;
 		margin: 0
 	}
 
-	.navbar-nav>li {
+	.userlistnavbar-userlistnav>li {
 		float: left
 	}
 
-	.navbar-nav>li>a {
+	.userlistnavbar-userlistnav>li>a {
 		padding-top: 15px;
 		padding-bottom: 15px
 	}
 }
 
-.navbar-form {
+.userlistnavbar-form {
 	padding: 10px 15px;
 	margin-top: 8px;
 	margin-right: -15px;
@@ -5522,78 +5522,78 @@ textarea.input-group-sm>.input-group-btn>.btn {
 }
 
 @media (min-width:768px) {
-	.navbar-form .form-group {
+	.userlistnavbar-form .form-group {
 		display: inline-block;
 		margin-bottom: 0;
 		vertical-align: middle
 	}
 
-	.navbar-form .form-control {
+	.userlistnavbar-form .form-control {
 		display: inline-block;
 		width: auto;
 		vertical-align: middle
 	}
 
-	.navbar-form .form-control-static {
+	.userlistnavbar-form .form-control-static {
 		display: inline-block
 	}
 
-	.navbar-form .input-group {
+	.userlistnavbar-form .input-group {
 		display: inline-table;
 		vertical-align: middle
 	}
 
-	.navbar-form .input-group .form-control,
-	.navbar-form .input-group .input-group-addon,
-	.navbar-form .input-group .input-group-btn {
+	.userlistnavbar-form .input-group .form-control,
+	.userlistnavbar-form .input-group .input-group-addon,
+	.userlistnavbar-form .input-group .input-group-btn {
 		width: auto
 	}
 
-	.navbar-form .input-group>.form-control {
+	.userlistnavbar-form .input-group>.form-control {
 		width: 100%
 	}
 
-	.navbar-form .control-label {
+	.userlistnavbar-form .control-label {
 		margin-bottom: 0;
 		vertical-align: middle
 	}
 
-	.navbar-form .checkbox,
-	.navbar-form .radio {
+	.userlistnavbar-form .checkbox,
+	.userlistnavbar-form .radio {
 		display: inline-block;
 		margin-top: 0;
 		margin-bottom: 0;
 		vertical-align: middle
 	}
 
-	.navbar-form .checkbox label,
-	.navbar-form .radio label {
+	.userlistnavbar-form .checkbox label,
+	.userlistnavbar-form .radio label {
 		padding-left: 0
 	}
 
-	.navbar-form .checkbox input[type=checkbox],
-	.navbar-form .radio input[type=radio] {
+	.userlistnavbar-form .checkbox input[type=checkbox],
+	.userlistnavbar-form .radio input[type=radio] {
 		position: relative;
 		margin-left: 0
 	}
 
-	.navbar-form .has-feedback .form-control-feedback {
+	.userlistnavbar-form .has-feedback .form-control-feedback {
 		top: 0
 	}
 }
 
 @media (max-width:767px) {
-	.navbar-form .form-group {
+	.userlistnavbar-form .form-group {
 		margin-bottom: 5px
 	}
 
-	.navbar-form .form-group:last-child {
+	.userlistnavbar-form .form-group:last-child {
 		margin-bottom: 0
 	}
 }
 
 @media (min-width:768px) {
-	.navbar-form {
+	.userlistnavbar-form {
 		width: auto;
 		padding-top: 0;
 		padding-bottom: 0;
@@ -5605,13 +5605,13 @@ textarea.input-group-sm>.input-group-btn>.btn {
 	}
 }
 
-.navbar-nav>li>.dropdown-menu {
+.userlistnavbar-userlistnav>li>.dropdown-menu {
 	margin-top: 0;
 	border-top-left-radius: 0;
 	border-top-right-radius: 0
 }
 
-.navbar-fixed-bottom .navbar-nav>li>.dropdown-menu {
+.userlistnavbar-fixed-bottom .userlistnavbar-userlistnav>li>.dropdown-menu {
 	margin-bottom: 0;
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
@@ -5619,28 +5619,28 @@ textarea.input-group-sm>.input-group-btn>.btn {
 	border-bottom-left-radius: 0
 }
 
-.navbar-btn {
+.userlistnavbar-btn {
 	margin-top: 8px;
 	margin-bottom: 8px
 }
 
-.navbar-btn.btn-sm {
+.userlistnavbar-btn.btn-sm {
 	margin-top: 10px;
 	margin-bottom: 10px
 }
 
-.navbar-btn.btn-xs {
+.userlistnavbar-btn.btn-xs {
 	margin-top: 14px;
 	margin-bottom: 14px
 }
 
-.navbar-text {
+.userlistnavbar-text {
 	margin-top: 15px;
 	margin-bottom: 15px
 }
 
 @media (min-width:768px) {
-	.navbar-text {
+	.userlistnavbar-text {
 		float: left;
 		margin-right: 15px;
 		margin-left: 15px
@@ -5648,261 +5648,261 @@ textarea.input-group-sm>.input-group-btn>.btn {
 }
 
 @media (min-width:768px) {
-	.navbar-left {
+	.userlistnavbar-left {
 		float: left !important
 	}
 
-	.navbar-right {
+	.userlistnavbar-right {
 		float: right !important;
 		margin-right: -15px
 	}
 
-	.navbar-right~.navbar-right {
+	.userlistnavbar-right~.userlistnavbar-right {
 		margin-right: 0
 	}
 }
 
-.navbar-default {
+.userlistnavbar-default {
 	background-color: #f8f8f8;
 	border-color: #e7e7e7
 }
 
-.navbar-default .navbar-brand {
+.userlistnavbar-default .userlistnavbar-brand {
 	color: #777
 }
 
-.navbar-default .navbar-brand:focus,
-.navbar-default .navbar-brand:hover {
+.userlistnavbar-default .userlistnavbar-brand:focus,
+.userlistnavbar-default .userlistnavbar-brand:hover {
 	color: #5e5e5e;
 	background-color: transparent
 }
 
-.navbar-default .navbar-text {
+.userlistnavbar-default .userlistnavbar-text {
 	color: #777
 }
 
-.navbar-default .navbar-nav>li>a {
+.userlistnavbar-default .userlistnavbar-userlistnav>li>a {
 	color: #777
 }
 
-.navbar-default .navbar-nav>li>a:focus,
-.navbar-default .navbar-nav>li>a:hover {
+.userlistnavbar-default .userlistnavbar-userlistnav>li>a:focus,
+.userlistnavbar-default .userlistnavbar-userlistnav>li>a:hover {
 	color: #333;
 	background-color: transparent
 }
 
-.navbar-default .navbar-nav>.active>a,
-.navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.active>a:hover {
+.userlistnavbar-default .userlistnavbar-userlistnav>.active>a,
+.userlistnavbar-default .userlistnavbar-userlistnav>.active>a:focus,
+.userlistnavbar-default .userlistnavbar-userlistnav>.active>a:hover {
 	color: #555;
 	background-color: #e7e7e7
 }
 
-.navbar-default .navbar-nav>.disabled>a,
-.navbar-default .navbar-nav>.disabled>a:focus,
-.navbar-default .navbar-nav>.disabled>a:hover {
+.userlistnavbar-default .userlistnavbar-userlistnav>.disabled>a,
+.userlistnavbar-default .userlistnavbar-userlistnav>.disabled>a:focus,
+.userlistnavbar-default .userlistnavbar-userlistnav>.disabled>a:hover {
 	color: #ccc;
 	background-color: transparent
 }
 
-.navbar-default .navbar-toggle {
+.userlistnavbar-default .userlistnavbar-toggle {
 	border-color: #ddd
 }
 
-.navbar-default .navbar-toggle:focus,
-.navbar-default .navbar-toggle:hover {
+.userlistnavbar-default .userlistnavbar-toggle:focus,
+.userlistnavbar-default .userlistnavbar-toggle:hover {
 	background-color: #ddd
 }
 
-.navbar-default .navbar-toggle .icon-bar {
+.userlistnavbar-default .userlistnavbar-toggle .icon-bar {
 	background-color: #888
 }
 
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
+.userlistnavbar-default .userlistnavbar-collapse,
+.userlistnavbar-default .userlistnavbar-form {
 	border-color: #e7e7e7
 }
 
-.navbar-default .navbar-nav>.open>a,
-.navbar-default .navbar-nav>.open>a:focus,
-.navbar-default .navbar-nav>.open>a:hover {
+.userlistnavbar-default .userlistnavbar-userlistnav>.open>a,
+.userlistnavbar-default .userlistnavbar-userlistnav>.open>a:focus,
+.userlistnavbar-default .userlistnavbar-userlistnav>.open>a:hover {
 	color: #555;
 	background-color: #e7e7e7
 }
 
 @media (max-width:767px) {
-	.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+	.userlistnavbar-default .userlistnavbar-userlistnav .open .dropdown-menu>li>a {
 		color: #777
 	}
 
-	.navbar-default .navbar-nav .open .dropdown-menu>li>a:focus,
-	.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+	.userlistnavbar-default .userlistnavbar-userlistnav .open .dropdown-menu>li>a:focus,
+	.userlistnavbar-default .userlistnavbar-userlistnav .open .dropdown-menu>li>a:hover {
 		color: #333;
 		background-color: transparent
 	}
 
-	.navbar-default .navbar-nav .open .dropdown-menu>.active>a,
-	.navbar-default .navbar-nav .open .dropdown-menu>.active>a:focus,
-	.navbar-default .navbar-nav .open .dropdown-menu>.active>a:hover {
+	.userlistnavbar-default .userlistnavbar-userlistnav .open .dropdown-menu>.active>a,
+	.userlistnavbar-default .userlistnavbar-userlistnav .open .dropdown-menu>.active>a:focus,
+	.userlistnavbar-default .userlistnavbar-userlistnav .open .dropdown-menu>.active>a:hover {
 		color: #555;
 		background-color: #e7e7e7
 	}
 
-	.navbar-default .navbar-nav .open .dropdown-menu>.disabled>a,
-	.navbar-default .navbar-nav .open .dropdown-menu>.disabled>a:focus,
-	.navbar-default .navbar-nav .open .dropdown-menu>.disabled>a:hover {
+	.userlistnavbar-default .userlistnavbar-userlistnav .open .dropdown-menu>.disabled>a,
+	.userlistnavbar-default .userlistnavbar-userlistnav .open .dropdown-menu>.disabled>a:focus,
+	.userlistnavbar-default .userlistnavbar-userlistnav .open .dropdown-menu>.disabled>a:hover {
 		color: #ccc;
 		background-color: transparent
 	}
 }
 
-.navbar-default .navbar-link {
+.userlistnavbar-default .userlistnavbar-link {
 	color: #777
 }
 
-.navbar-default .navbar-link:hover {
+.userlistnavbar-default .userlistnavbar-link:hover {
 	color: #333
 }
 
-.navbar-default .btn-link {
+.userlistnavbar-default .btn-link {
 	color: #777
 }
 
-.navbar-default .btn-link:focus,
-.navbar-default .btn-link:hover {
+.userlistnavbar-default .btn-link:focus,
+.userlistnavbar-default .btn-link:hover {
 	color: #333
 }
 
-.navbar-default .btn-link[disabled]:focus,
-.navbar-default .btn-link[disabled]:hover,
-fieldset[disabled] .navbar-default .btn-link:focus,
-fieldset[disabled] .navbar-default .btn-link:hover {
+.userlistnavbar-default .btn-link[disabled]:focus,
+.userlistnavbar-default .btn-link[disabled]:hover,
+fieldset[disabled] .userlistnavbar-default .btn-link:focus,
+fieldset[disabled] .userlistnavbar-default .btn-link:hover {
 	color: #ccc
 }
 
-.navbar-inverse {
+.userlistnavbar-inverse {
 	background-color: #222;
 	border-color: #080808
 }
 
-.navbar-inverse .navbar-brand {
+.userlistnavbar-inverse .userlistnavbar-brand {
 	color: #9d9d9d
 }
 
-.navbar-inverse .navbar-brand:focus,
-.navbar-inverse .navbar-brand:hover {
+.userlistnavbar-inverse .userlistnavbar-brand:focus,
+.userlistnavbar-inverse .userlistnavbar-brand:hover {
 	color: #fff;
 	background-color: transparent
 }
 
-.navbar-inverse .navbar-text {
+.userlistnavbar-inverse .userlistnavbar-text {
 	color: #9d9d9d
 }
 
-.navbar-inverse .navbar-nav>li>a {
+.userlistnavbar-inverse .userlistnavbar-userlistnav>li>a {
 	color: #9d9d9d
 }
 
-.navbar-inverse .navbar-nav>li>a:focus,
-.navbar-inverse .navbar-nav>li>a:hover {
+.userlistnavbar-inverse .userlistnavbar-userlistnav>li>a:focus,
+.userlistnavbar-inverse .userlistnavbar-userlistnav>li>a:hover {
 	color: #fff;
 	background-color: transparent
 }
 
-.navbar-inverse .navbar-nav>.active>a,
-.navbar-inverse .navbar-nav>.active>a:focus,
-.navbar-inverse .navbar-nav>.active>a:hover {
+.userlistnavbar-inverse .userlistnavbar-userlistnav>.active>a,
+.userlistnavbar-inverse .userlistnavbar-userlistnav>.active>a:focus,
+.userlistnavbar-inverse .userlistnavbar-userlistnav>.active>a:hover {
 	color: #fff;
 	background-color: #080808
 }
 
-.navbar-inverse .navbar-nav>.disabled>a,
-.navbar-inverse .navbar-nav>.disabled>a:focus,
-.navbar-inverse .navbar-nav>.disabled>a:hover {
+.userlistnavbar-inverse .userlistnavbar-userlistnav>.disabled>a,
+.userlistnavbar-inverse .userlistnavbar-userlistnav>.disabled>a:focus,
+.userlistnavbar-inverse .userlistnavbar-userlistnav>.disabled>a:hover {
 	color: #444;
 	background-color: transparent
 }
 
-.navbar-inverse .navbar-toggle {
+.userlistnavbar-inverse .userlistnavbar-toggle {
 	border-color: #333
 }
 
-.navbar-inverse .navbar-toggle:focus,
-.navbar-inverse .navbar-toggle:hover {
+.userlistnavbar-inverse .userlistnavbar-toggle:focus,
+.userlistnavbar-inverse .userlistnavbar-toggle:hover {
 	background-color: #333
 }
 
-.navbar-inverse .navbar-toggle .icon-bar {
+.userlistnavbar-inverse .userlistnavbar-toggle .icon-bar {
 	background-color: #fff
 }
 
-.navbar-inverse .navbar-collapse,
-.navbar-inverse .navbar-form {
+.userlistnavbar-inverse .userlistnavbar-collapse,
+.userlistnavbar-inverse .userlistnavbar-form {
 	border-color: #101010
 }
 
-.navbar-inverse .navbar-nav>.open>a,
-.navbar-inverse .navbar-nav>.open>a:focus,
-.navbar-inverse .navbar-nav>.open>a:hover {
+.userlistnavbar-inverse .userlistnavbar-userlistnav>.open>a,
+.userlistnavbar-inverse .userlistnavbar-userlistnav>.open>a:focus,
+.userlistnavbar-inverse .userlistnavbar-userlistnav>.open>a:hover {
 	color: #fff;
 	background-color: #080808
 }
 
 @media (max-width:767px) {
-	.navbar-inverse .navbar-nav .open .dropdown-menu>.dropdown-header {
+	.userlistnavbar-inverse .userlistnavbar-userlistnav .open .dropdown-menu>.dropdown-header {
 		border-color: #080808
 	}
 
-	.navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+	.userlistnavbar-inverse .userlistnavbar-userlistnav .open .dropdown-menu .divider {
 		background-color: #080808
 	}
 
-	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
+	.userlistnavbar-inverse .userlistnavbar-userlistnav .open .dropdown-menu>li>a {
 		color: #9d9d9d
 	}
 
-	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:focus,
-	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
+	.userlistnavbar-inverse .userlistnavbar-userlistnav .open .dropdown-menu>li>a:focus,
+	.userlistnavbar-inverse .userlistnavbar-userlistnav .open .dropdown-menu>li>a:hover {
 		color: #fff;
 		background-color: transparent
 	}
 
-	.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a,
-	.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:focus,
-	.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:hover {
+	.userlistnavbar-inverse .userlistnavbar-userlistnav .open .dropdown-menu>.active>a,
+	.userlistnavbar-inverse .userlistnavbar-userlistnav .open .dropdown-menu>.active>a:focus,
+	.userlistnavbar-inverse .userlistnavbar-userlistnav .open .dropdown-menu>.active>a:hover {
 		color: #fff;
 		background-color: #080808
 	}
 
-	.navbar-inverse .navbar-nav .open .dropdown-menu>.disabled>a,
-	.navbar-inverse .navbar-nav .open .dropdown-menu>.disabled>a:focus,
-	.navbar-inverse .navbar-nav .open .dropdown-menu>.disabled>a:hover {
+	.userlistnavbar-inverse .userlistnavbar-userlistnav .open .dropdown-menu>.disabled>a,
+	.userlistnavbar-inverse .userlistnavbar-userlistnav .open .dropdown-menu>.disabled>a:focus,
+	.userlistnavbar-inverse .userlistnavbar-userlistnav .open .dropdown-menu>.disabled>a:hover {
 		color: #444;
 		background-color: transparent
 	}
 }
 
-.navbar-inverse .navbar-link {
+.userlistnavbar-inverse .userlistnavbar-link {
 	color: #9d9d9d
 }
 
-.navbar-inverse .navbar-link:hover {
+.userlistnavbar-inverse .userlistnavbar-link:hover {
 	color: #fff
 }
 
-.navbar-inverse .btn-link {
+.userlistnavbar-inverse .btn-link {
 	color: #9d9d9d
 }
 
-.navbar-inverse .btn-link:focus,
-.navbar-inverse .btn-link:hover {
+.userlistnavbar-inverse .btn-link:focus,
+.userlistnavbar-inverse .btn-link:hover {
 	color: #fff
 }
 
-.navbar-inverse .btn-link[disabled]:focus,
-.navbar-inverse .btn-link[disabled]:hover,
-fieldset[disabled] .navbar-inverse .btn-link:focus,
-fieldset[disabled] .navbar-inverse .btn-link:hover {
+.userlistnavbar-inverse .btn-link[disabled]:focus,
+.userlistnavbar-inverse .btn-link[disabled]:hover,
+fieldset[disabled] .userlistnavbar-inverse .btn-link:focus,
+fieldset[disabled] .userlistnavbar-inverse .btn-link:hover {
 	color: #444
 }
 
@@ -6204,7 +6204,7 @@ a.badge:hover {
 }
 
 .list-group-item.active>.badge,
-.nav-pills>.active>a>.badge {
+.userlistnav-pills>.active>a>.badge {
 	color: #337ab7;
 	background-color: #fff
 }
@@ -6217,7 +6217,7 @@ a.badge:hover {
 	margin-right: 5px
 }
 
-.nav-pills>li>a>.badge {
+.userlistnav-pills>li>a>.badge {
 	margin-left: 3px
 }
 
@@ -6244,12 +6244,12 @@ a.badge:hover {
 	border-top-color: #d5d5d5
 }
 
-.container .jumbotron,
-.container-fluid .jumbotron {
+.userlistcontainer .jumbotron,
+.userlistcontainer-fluid .jumbotron {
 	border-radius: 6px
 }
 
-.jumbotron .container {
+.jumbotron .userlistcontainer {
 	max-width: 100%
 }
 
@@ -6259,8 +6259,8 @@ a.badge:hover {
 		padding-bottom: 48px
 	}
 
-	.container .jumbotron,
-	.container-fluid .jumbotron {
+	.userlistcontainer .jumbotron,
+	.userlistcontainer-fluid .jumbotron {
 		padding-right: 60px;
 		padding-left: 60px
 	}
@@ -7930,7 +7930,7 @@ button.close {
 	margin: 1px;
 	text-indent: -999px;
 	cursor: pointer;
-	background-color: #000\9;
+	background-color: #0009;
 	background-color: rgba(0, 0, 0, 0);
 	border: 1px solid #fff;
 	border-radius: 10px
@@ -7999,24 +7999,24 @@ button.close {
 .btn-toolbar:before,
 .clearfix:after,
 .clearfix:before,
-.container-fluid:after,
-.container-fluid:before,
-.container:after,
-.container:before,
+.userlistcontainer-fluid:after,
+.userlistcontainer-fluid:before,
+.userlistcontainer:after,
+.userlistcontainer:before,
 .dl-horizontal dd:after,
 .dl-horizontal dd:before,
 .form-horizontal .form-group:after,
 .form-horizontal .form-group:before,
 .modal-footer:after,
 .modal-footer:before,
-.nav:after,
-.nav:before,
-.navbar-collapse:after,
-.navbar-collapse:before,
-.navbar-header:after,
-.navbar-header:before,
-.navbar:after,
-.navbar:before,
+.userlistnav:after,
+.userlistnav:before,
+.userlistnavbar-collapse:after,
+.userlistnavbar-collapse:before,
+.userlistnavbar-header:after,
+.userlistnavbar-header:before,
+.userlistnavbar:after,
+.userlistnavbar:before,
 .pager:after,
 .pager:before,
 .panel-body:after,
@@ -8030,15 +8030,15 @@ button.close {
 .btn-group-vertical>.btn-group:after,
 .btn-toolbar:after,
 .clearfix:after,
-.container-fluid:after,
-.container:after,
+.userlistcontainer-fluid:after,
+.userlistcontainer:after,
 .dl-horizontal dd:after,
 .form-horizontal .form-group:after,
 .modal-footer:after,
-.nav:after,
-.navbar-collapse:after,
-.navbar-header:after,
-.navbar:after,
+.userlistnav:after,
+.userlistnavbar-collapse:after,
+.userlistnavbar-header:after,
+.userlistnavbar:after,
 .pager:after,
 .panel-body:after,
 .row:after {

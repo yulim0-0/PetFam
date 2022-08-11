@@ -30,7 +30,6 @@ public class AdminDAO {
 		try {
 			session=ssf.openSession();
 			list=session.selectList("userInfoList");
-			System.out.println(list);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -48,7 +47,6 @@ public class AdminDAO {
 		try {
 			session=ssf.openSession();
 			list=session.selectList("userInfoDetailData");
-			System.out.println(list);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
