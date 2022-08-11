@@ -4,9 +4,9 @@
 	 <!--  목록 : 페이징  select -->
   <!-- findAll() -->
   <select id="pboardListData" resultType="PboardVO" parameterType="hashmap">
-    SELECT p_no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
-    FROM (SELECT p_no,subject,name,regdate,hit,rcount,rownum as num 
-    FROM (SELECT p_no,subject,name,regdate,hit,rcount 
+    SELECT p_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
+    FROM (SELECT p_no,subject,id,regdate,hit,rcount,rownum as num 
+    FROM (SELECT p_no,subject,id,regdate,hit,rcount 
     FROM pbo_4 ORDER BY p_no DESC))
     WHERE num BETWEEN #{start} AND #{end}
   </select> 
@@ -16,9 +16,9 @@
   <!--  map.get("start") -->
   <!--  등록 : 시퀀스  selectKey insert-->
   <insert id="pboardInsert" parameterType="PboardVO">
-    INSERT INTO pbo_4(p_no,name,subject,content,pwd) 
+    INSERT INTO pbo_4(p_no,name,id,subject,content,pwd) 
     VALUES((SELECT NVL(MAX(p_no)+1,1) FROM pbo_4),
-     #{name},#{subject},#{content},#{pwd}
+   #{name},#{id} #{subject},#{content},#{pwd}
     )
   </insert>
   <!--  vo.getName() -->
@@ -29,7 +29,7 @@
   </update>
   <!-- findOne(int no) -->
   <select id="pboardDetailData" resultType="PboardVO" parameterType="int">
-    SELECT p_no,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
+    SELECT p_no,id,subject,content,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
     FROM pbo_4
     WHERE p_no=#{p_no}
   </select>
@@ -43,7 +43,7 @@
   <!-- save(FreeboardVO vo) -->
   <update id="pboardUpdate" parameterType="PboardVO">
     UPDATE pbo_4 SET
-    name=#{name},subject=#{subject},content=#{content}
+    id=#{id},subject=#{subject},content=#{content}
     WHERE p_no=#{p_no}
   </update>
   <!-- delete(int no) -->

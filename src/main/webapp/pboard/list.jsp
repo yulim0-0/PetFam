@@ -11,6 +11,52 @@
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css'>
 <!--  <link rel="stylesheet" type="text/css" href="https://d4fodtu7cqfym.cloudfront.net/fad0d3bf8c478ce27ec4b20657d43000.min.css?v=200103-10"> -->
 <link rel="stylesheet" href="pboarddist/pboard_style.css">
+<style type="text/css">
+.pagination {
+    margin: 20px 0;
+    overflow: hidden;
+    position: relative;
+    text-align:center;
+}
+.pagination li {
+    float: left;
+}
+.pagination ul {
+    float: left;
+    left: 50%;
+    position: relative;
+}
+.pagination ul > li {
+    left: -50%;
+    position: relative;
+}
+.pagination li a {
+    transition: all 100ms ease-in-out 0s;
+    background-color: /* #F7F7F8; */#FFFF;
+    border-radius: 5px 5px 5px 5px;
+    color: #69696E;
+    display: block;
+    font: 16px/30px Noto Sans KR, sans-serif;
+    height: 30px;
+    margin: 0 3px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 30px;
+}
+.pagination li a:hover {
+    background-color: #f34100;;
+    color: #FFFFFF;
+}
+.pagination li.active a {
+    background-color: #f34100;;
+    color: #FFFFFF;
+}
+.pagination li.active a:hover {
+    color: #FFFFFF;
+}
+</style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -55,11 +101,7 @@
     </div>
     <div class='main'>
       <div class='main__content'>
-        <h1 class='h1 title' id=ptitle>
-       <!--    <i class='fas fa-home'></i> -->
-          <span> Community</span>
-        </h1>
-        <div class='dashcards'>
+       <!--  <div class='dashcards'>
           <div class='col'>
             <div class='card'>
               <i class='fas fa-home'></i>
@@ -84,7 +126,7 @@
               <p class='card__extra'>Simple Information</p>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class='ptable-card'>
 	          <h2>PetBoard</h2>
 		          <table class='ptable'>
@@ -92,7 +134,7 @@
 			              <tr>
 					          <td width="10%" class="text-center">번호</td>
 					          <td width="45%" class="text-center">제목</td>
-					          <td width="15%" class="text-center">이름</td>
+					          <td width="15%" class="text-center">작성자</td>
 					          <td width="20%" class="text-center">작성일</td>
 					          <td width="10%" class="text-center">조회수</td>
 					        </tr>
@@ -120,7 +162,7 @@
 						             	 <small class="favo"><i class="fa fa-heart"></i></small>
 						            </c:if>
 						          </td>
-						          <td width="15%" class="text-center">${vo.name }</td>
+						          <td width="15%" class="text-center">${vo.id }</td>
 						          <td width="20%" class="text-center">${vo.dbday }</td>
 						          <td width="10%" class="text-center">${vo.hit }</td>
 						          
@@ -145,21 +187,11 @@
 								<div id="article-list-menu">
 									<a href="#" class="btn square btn-default best"><i class="fa fa-star"></i>인기글</a> 
 									<button class="btn square del btn-danger" type="button" id="deleteAllBtn"><i class="fa fa-trash"></i>삭제</button>
-									
-								<!-- <ul class='pagination'>
-										<li class='active'><a href=''>1</a></li>
-										<li><a href="#" data-ci-pagination-page="2">2</a></li>
-										<li><a href="#" data-ci-pagination-page="3">3</a></li>
-										<li><a href="#" data-ci-pagination-page="4">4</a></li>
-										<li><a href="#" data-ci-pagination-page="5">5</a></li>
-										<li><a href="#" data-ci-pagination-page="2" rel="next">&gt;</a>
-								</ul> -->
 								
-							
-								  <div class="container" align="center">
-									  <ul class="pagination">
+									<div class="pagination">
+										  <ul class="active">
 									          <c:if test="${startPage>1 }">
-									            <li><a href="../pboard/list.do?page=${startPage-1 }">&laquo;</a></li>
+									            <li><a href="../pboard/list.do?page=${startPage-1 }">&lt;</a></li>
 									          </c:if>
 									          <c:forEach var="i" begin="${startPage }" end="${endPage }">
 									            <c:if test="${i==curpage }">
@@ -171,13 +203,14 @@
 									            <li><a href="../pboard/list.do?page=${i }">${i }</a></li>
 									          </c:forEach>
 									          <c:if test="${endPage<totalpage }">
-									            <li><a href="../pboard/list.do?page=${endPage+1 }">&raquo;</a></li>
+									            <li><a href="../pboard/list.do?page=${endPage+1 }">&gt;</a></li>
 									          </c:if>
-									        </ul>
-									        </div>
+									      </ul>
 									 </div>
+								 </div>
  
-									<a href="../pboard/insert.do" class="btn square btn-primary write" id="WriteBtn"><i class="fa fa-pencil"></i> 글 쓰기</a>
+									<a href="../pboard/insert.do" class="btn square btn-primary write" id="WriteBtn">
+										<i class="fa fa-pencil"></i> 글 쓰기</a>
 								</div>
 		
 								<form class="input-group" method="get" id="boardSearchForm">
@@ -193,7 +226,7 @@
 										<ul class="dropdown-menu">
 											<li><a href="#" data-value="title">제목</a></li>
 											<li><a href="#" data-value="titlecont">제목+내용</a></li>
-											<li><a href="#" data-value="nickname">닉네임</a></li>
+											<li><a href="#" data-value="nickname">작성자</a></li>
 									</ul><!--  원래 div였음 -->
 									</span>
 									    <input type="text" name="search_term" class="form-control" placeholder="검색어" value=""> 

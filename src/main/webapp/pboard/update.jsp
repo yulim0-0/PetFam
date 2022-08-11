@@ -100,9 +100,8 @@ $(function(){
      <form method=post action="../pboard/update_ok.do" id="frm">
       <table class="table">
         <tr>
-          <th width=20% class="text-right">이름</th>
-          <td width=80%>
-            <input type=text name=name size=15 class="input-sm" id="name" value="${vo.name }">
+          <th width=20% class="text-right">작성자</th>
+          <td width=80%>${vo.id }
             <input type=hidden name=p_no value="${vo.p_no }" id="p_no">
           </td>
         </tr>

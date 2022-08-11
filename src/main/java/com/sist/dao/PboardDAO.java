@@ -72,7 +72,7 @@ public class PboardDAO {
 		   //session.commit();
 	   }catch(Exception ex)
 	   {
-		   System.out.println("pboardTotalPage : error");
+		   System.out.println("pboardInsertPage : error");
 		   ex.printStackTrace();
 	   }
 	   finally

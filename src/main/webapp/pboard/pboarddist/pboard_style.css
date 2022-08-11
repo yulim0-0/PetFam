@@ -404,14 +404,14 @@ ul:hover{
 }
 
 /* 페이징 list.do */
-
+/* 
 .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus,
 	.pagination>li>span:hover {
 	color: #f34100;
 	
-}
+} */
 
-
+/* 
 .pagination{
 	display:block;
 	text-align:center;
@@ -425,7 +425,7 @@ ul:hover{
 	border-color: #f34100;
 
 }
-
+ */
 
 
 

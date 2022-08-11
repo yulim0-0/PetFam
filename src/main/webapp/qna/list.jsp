@@ -55,11 +55,7 @@
     </div>
     <div class='main'>
       <div class='main__content'>
-        <h1 class='h1 title' id=ptitle>
-       <!--    <i class='fas fa-home'></i> -->
-          <span> Community</span>
-        </h1>
-        <div class='dashcards'>
+       <!--  <div class='dashcards'>
           <div class='col'>
             <div class='card'>
               <i class='fas fa-home'></i>
@@ -84,7 +80,7 @@
               <p class='card__extra'>Simple Information</p>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class='ptable-card'>
 	          <h2>Qna</h2>
 		          <table class='ptable'>

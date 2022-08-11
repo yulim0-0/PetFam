@@ -164,8 +164,8 @@ $(function(){
          <td width=30% class="text-center">${vo.dbday }</td>
        </tr>
        <tr>
-         <th width=20% class="text-center">이름</th>
-         <td width=30% class="text-center">${vo.name }</td>
+         <th width=20% class="text-center">작성자</th>
+         <td width=30% class="text-center">${vo.id }</td>
          <th width=20% class="text-center">조회수</th>
          <td width=30% class="text-center">${vo.hit }</td>
        </tr>
@@ -194,7 +194,7 @@ $(function(){
      </table>
      
 	     
-		<div id="article-neighbor-list"><!-- 이동은 가능한데 제목을 어떻게 바꾸는지는 생각해봐야 할 것 같음!! -->
+		<div id="article-neighbor-list"><!-- 이동은 가능한데 제목이랑 삭제된 게시글에 대한 오류해결 해야함 !! -->
 	        <div>
 	        <span class="indicator"><strong>▲윗글</strong></span>
 	        <a href="../pboard/detail.do?p_no=${(vo.p_no)+1 }" class="subject">${vo.subject }</a>

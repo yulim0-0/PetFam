@@ -18,7 +18,7 @@ public class PboardModel {
 		   page="1";
 	   int curpage=Integer.parseInt(page);
 	   Map map=new HashMap();
-	   int rowSize=10;
+	   int rowSize=9;
 	   int start=(curpage*rowSize)-(rowSize-1);
 	   int end=curpage*rowSize;
 	   map.put("start", start);
@@ -57,13 +57,15 @@ public class PboardModel {
 		   request.setCharacterEncoding("UTF-8");
 	   }catch(Exception ex) {}
 	   
+	   String id=request.getParameter("id");
 	   String name=request.getParameter("name");
-	   System.out.println("name="+name);
+	   System.out.println("id="+id);
 	   String subject=request.getParameter("subject");
 	   String content=request.getParameter("content");
 	   String pwd=request.getParameter("pwd");
 	   
 	   PboardVO vo=new PboardVO();
+	   vo.setId(id);
 	   vo.setName(name);
 	   vo.setSubject(subject);
 	   vo.setContent(content);
@@ -116,14 +118,16 @@ public class PboardModel {
 		   request.setCharacterEncoding("UTF-8");
 	   }catch(Exception ex) {}
 	   
+	   String id=request.getParameter("id");
+	   System.out.println("id="+id);
 	   String name=request.getParameter("name");
-	   System.out.println("name="+name);
 	   String subject=request.getParameter("subject");
 	   String content=request.getParameter("content");
 	   String pwd=request.getParameter("pwd");
 	   String p_no=request.getParameter("p_no");
 	   PboardVO vo=new PboardVO();
 	   vo.setName(name);
+	   vo.setId(id);
 	   vo.setSubject(subject);
 	   vo.setContent(content);
 	   vo.setPwd(pwd);
