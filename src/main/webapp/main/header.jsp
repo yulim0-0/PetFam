@@ -63,7 +63,7 @@
 	              </li>
 	              <li><a href="../mypage/mybooking.do">예약 내역</a></li>
 	              <li><a href="#">예약 현황</a></li>
-	              <li><a href="#">게시글 내역</a></li>
+	              <li><a href="../mypage/mywrite.do">게시글 내역</a></li>
 	              <li><a href="#">문의 내역</a></li>
 	            </ul>
 	          </li>

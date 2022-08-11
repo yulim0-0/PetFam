@@ -8,8 +8,12 @@ var $table = $('#table');
         });
     })
 
-		var trBoldBlue = $("table");
-
-	$(trBoldBlue).on("click", "tr", function (){
+	var trBoldBlue = $("table");
+	$('#detail').on("dblclick", "#detail", function (){
+		
+			location.href="../admin/admin_user_detail.do?id=${vo.id }";
+	});
+	$(trBoldBlue).on("click", "#id", function (){
 			$(this).toggleClass("bold-blue");
+			
 	});

@@ -6,4 +6,32 @@
 <select id="userInfoData" resultType="UserVO" parameterType="string">
 	SELECT * FROM user_4 WHERE id=#{id}
 </select>
+<!-- 
+P_NO       NOT NULL NUMBER        
+SUBJECT    NOT NULL VARCHAR2(100) 
+CONTENT    NOT NULL CLOB          
+PWD        NOT NULL VARCHAR2(20)  
+REGDATE             DATE          
+HIT                 NUMBER        
+GOOD_COUNT          NUMBER        
+ID                  VARCHAR2(20)  
+NAME       NOT NULL VARCHAR2(20)  
+RCOUNT              NUMBER    -->
+ <!-- 게시글 목록 -->
+ <select id="userWriteData" resultType="PboardVO" parameterType="string">
+ 	SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
+ 	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
+ 	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
+ 	FROM pbo_4 ))
+ 	WHERE id=#{id}
+ </select>
+ 
+  <!-- 게시글 상세보기 -->
+ <select id="userWriteDetailData" resultType="PboardVO" parameterType="int">
+ 	SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
+ 	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
+ 	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
+ 	FROM pbo_4 ))
+ 	WHERE p_no=#{p_no}
+ </select>
 </mapper>

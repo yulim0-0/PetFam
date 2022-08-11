@@ -44,4 +44,6 @@ GENDER            VARCHAR2(10)
  <select id="userIdPwdData" resultType="UserVO" parameterType="string">
   	SELECT pwd, id, name, admin FROM user_4 WHERE id=#{id}
  </select>
+  
+
 </mapper>
