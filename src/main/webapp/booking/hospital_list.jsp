@@ -95,8 +95,8 @@
   </c:forEach>
   </ul>
   
-  
-        <div class="container" align="center">
+  <!-- paging start-->
+  <div class="container" align="center">
 		 <div class="pagination">
           <ul>
 		  <c:if test="${startPage>1 }">
@@ -116,6 +116,7 @@
 		  </ul>
 		 </div>
 		 </div>
+	<!-- paging end-->
  </div>
  
 </body>
