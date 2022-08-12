@@ -20,14 +20,14 @@
 				<!-- Table starts here -->
 				<table id="table" class="table table-hover table-mc-light-blue">
 					<c:forEach var="vo" items="${list }">
-						<thead>
+						<!-- <thead>
 							<tr>
 								<th></th>
 								<th></th>
 								<th></th>
 								<th></th>
 							</tr>
-						</thead>
+						</thead> -->
 						<tbody>
 							<tr>
 								<td></td>
@@ -56,7 +56,7 @@
 							<tr>
 								<td></td>
 								<td data-title="ID" class="info_cate">주소</td>
-								<td data-title="Name">[${vo.zipcode }] ${vo.addr1 }${vo.addr2 }</td>
+								<td data-title="Name">[${vo.zipcode }]  ${vo.addr1 }  ${vo.addr2 }</td>
 								<td></td>
 							</tr>
 							<tr>
@@ -74,8 +74,7 @@
 
 			</div>
 			<div class="bottom-button">
-				<input type="button" class="control-button up" id="logBtn" value="수정하기" onclick="../mypage/mypage_edit.do" >
-				<input type="button" class="control-button up" id="logBtn" value="취소" >
+				<input type="button" class="control-button up" id="editBtn" value="수정하기" onclick="../mypage/myinfo_edit.do">
 			</div>
 
 		</div>

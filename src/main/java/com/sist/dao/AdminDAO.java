@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.sist.vo.PboardVO;
 import com.sist.vo.UserVO;
 
 public class AdminDAO {
@@ -53,6 +54,21 @@ public class AdminDAO {
 		} finally {
 			if(session!=null)
 				session.close();
+		}
+		return list;
+	}
+	
+	public static List<PboardVO> userWriteList()
+	{
+		List<PboardVO> list=null;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("userWriteList");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
 		}
 		return list;
 	}

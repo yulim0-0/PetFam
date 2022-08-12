@@ -11,7 +11,7 @@
 <body>
 	<main class="main">
 		<div class="top-menu">
-			<h1>개인정보</h1>
+			<h1>개인정보 수정</h1>
 		</div>
 
 		<div id="demo">
@@ -20,14 +20,14 @@
 				<!-- Table starts here -->
 				<table id="table" class="table table-hover table-mc-light-blue">
 					<c:forEach var="vo" items="${list }">
-						<thead>
+<!-- 						<thead>
 							<tr>
 								<th></th>
 								<th></th>
 								<th></th>
 								<th></th>
 							</tr>
-						</thead>
+						</thead> -->
 						<tbody>
 							<tr>
 								<td></td>

@@ -9,4 +9,8 @@
 	<select id="userInfoDetailData" resultType="String">
 		SELECT * FROM user_4 WHERE id=#{id}
 	</select>
+	
+	<select id="userWriteList" resultType="PboardVO">
+		SELECT * FROM pbo_4 ORDER BY p_no
+	</select>
 </mapper>

@@ -10,6 +10,7 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.AdminDAO;
 import com.sist.dao.MypageDAO;
+import com.sist.vo.PboardVO;
 import com.sist.vo.UserVO;
 
 @Controller
@@ -23,6 +24,8 @@ public class AdminModel {
 	@RequestMapping("admin/admin_community.do")
 	public String admin_community(HttpServletRequest request, HttpServletResponse response) 
 	{
+		List<PboardVO> list=AdminDAO.userWriteList();
+		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../admin/admin_community.jsp");
 		return "../main/main.jsp";
 	}
