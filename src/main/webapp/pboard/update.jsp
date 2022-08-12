@@ -11,12 +11,12 @@
 $(function(){
 	$('#writeBtn').hide();
 	$('#writeBtn').click(function(){
-		let name=$('#name').val();
+		/* let name=$('#name').val();
 		if(name.trim()=="")
 		{
 			$('#name').focus();
 			return;
-		}
+		} */
 		
 		let subject=$('#subject').val();
 		if(subject.trim()=="")
@@ -102,6 +102,7 @@ $(function(){
         <tr>
           <th width=20% class="text-right">작성자</th>
           <td width=80%>${vo.id }
+        	 <input type=hidden name=id value="${vo.id }" id="id"> 
             <input type=hidden name=p_no value="${vo.p_no }" id="p_no">
           </td>
         </tr>

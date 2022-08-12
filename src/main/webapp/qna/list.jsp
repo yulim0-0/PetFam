@@ -8,9 +8,55 @@
   <title>CodePen - Tour Bus</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css'>
-<!--  <link rel="stylesheet" type="text/css" href="https://d4fodtu7cqfym.cloudfront.net/fad0d3bf8c478ce27ec4b20657d43000.min.css?v=200103-10"> -->
+<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css'><!-- 
+<link rel="stylesheet" type="text/css" href="https://d4fodtu7cqfym.cloudfront.net/fad0d3bf8c478ce27ec4b20657d43000.min.css?v=200103-10">  -->
 <link rel="stylesheet" href="../pboard/pboarddist/pboard_style.css">
+<style type="text/css">
+.pagination {
+    margin: 20px 0;
+    overflow: hidden;
+    position: relative;
+    text-align:center;
+}
+.pagination li {
+    float: left;
+}
+.pagination ul {
+    float: left;
+    left: 50%;
+    position: relative;
+}
+.pagination ul > li {
+    left: -50%;
+    position: relative;
+}
+.pagination li a {
+    transition: all 100ms ease-in-out 0s;
+    background-color: /* #F7F7F8; */#FFFF;
+    border-radius: 5px 5px 5px 5px;
+    color: #69696E;
+    display: block;
+    font: 16px/30px Noto Sans KR, sans-serif;
+    height: 30px;
+    margin: 0 3px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 30px;
+}
+.pagination li a:hover {
+    background-color: #f34100;;
+    color: #FFFFFF;
+}
+.pagination li.active a {
+    background-color: #f34100;;
+    color: #FFFFFF;
+}
+.pagination li.active a:hover {
+    color: #FFFFFF;
+}
+</style>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -101,7 +147,6 @@
 						             <c:if test="${vo.group_tab==1 }">
 						           		 &nbsp;&nbsp;
 						             <img src="../qna/re_icon.gif">
-						             	<!--  <small class="favo"><i class="fa fa-heart"></i></small> -->
 						            </c:if>
 						            <a href="../qna/detail.do?q_no=${vo.q_no }">${vo.subject }</a>
 						          </td>
@@ -113,10 +158,6 @@
 				</table>
 		 </div>		
 								<div id="article-list-menu">
-									<!-- <a href="#" class="btn square btn-default best"><i class="fa fa-star"></i>인기글</a> --> 
-								<!-- 	<button class="btn square del btn-danger" type="button" id="deleteAllBtn"><i class="fa fa-trash"></i>삭제</button> -->
-								
-							
 								  <div class="container" align="center">
 									  <ul class="pagination">
 									          <c:if test="${startPage>1 }">
@@ -137,16 +178,11 @@
 									        </ul>
 									        </div>
 									 </div>
- 
 									<a href="../qna/insert.do" class="btn square btn-primary write" id="WriteBtn"><i class="fa fa-pencil"></i> 글 쓰기</a>
 								</div>
-		
-								
-						
 						</div>
 				 </div>
 			 </div>
-	  </div>
 
 		
 <!-- partial -->

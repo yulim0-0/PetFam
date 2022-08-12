@@ -18,7 +18,7 @@
   <insert id="pboardInsert" parameterType="PboardVO">
     INSERT INTO pbo_4(p_no,name,id,subject,content,pwd) 
     VALUES((SELECT NVL(MAX(p_no)+1,1) FROM pbo_4),
-   #{name},#{id} #{subject},#{content},#{pwd}
+   #{name},#{id}, #{subject},#{content},#{pwd}
     )
   </insert>
   <!--  vo.getName() -->

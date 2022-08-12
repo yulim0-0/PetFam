@@ -206,7 +206,7 @@ $(function(){
 	    </div>
 	    
     
-     <div id="comments">    
+    <%--  <div id="comments">    
         <h2>댓글</h2>
         <ul>
          <c:forEach var="rvo" items="${list }">
@@ -214,7 +214,7 @@ $(function(){
             <article>
               <header>
                 <figure class="avatar">
-                 <c:if test="${sessionScope.id==rvo.id}"><%-- 본인이면 --%>
+                 <c:if test="${sessionScope.id==rvo.id}">본인이면
                   <span class="btn btn-xs btn-danger up" style="color:black" data-p_no="${rvo.pre_no }">수정</span>
                   <a href="../preply/preply_delete.do?p_no=${rvo.p_no }&bno=${vo.p_no}" class="btn btn-xs btn-success" style="color:black">삭제</a>
                  </c:if>
@@ -248,7 +248,7 @@ $(function(){
           </c:forEach>
         </ul> 
        </div>
-       <c:if test="${sessionScope.id!=null }"><%--로그인시에만 보여준다 --%>
+       <c:if test="${sessionScope.id!=null }">로그인시에만 보여준다
         <table class="table">
           <tr>
             <td>
@@ -263,7 +263,7 @@ $(function(){
           </tr>
         </table>
        </c:if>
-      </div>
+      </div> --%>
   
    </main>
 </div>

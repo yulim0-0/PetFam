@@ -2,6 +2,7 @@ package com.sist.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
@@ -45,6 +46,9 @@ public class PboardModel {
    @RequestMapping("pboard/insert.do")
    public String pboard_insert(HttpServletRequest request,HttpServletResponse response)
    {
+//	   HttpSession session=request.getSession();
+//	   String id=(String)session.getAttribute("id");
+//	   String name=(String)session.getAttribute("name");
 	   request.setAttribute("main_jsp", "../pboard/insert.jsp");
 	   return "../main/main.jsp";
    }
@@ -57,8 +61,11 @@ public class PboardModel {
 		   request.setCharacterEncoding("UTF-8");
 	   }catch(Exception ex) {}
 	   
-	   String id=request.getParameter("id");
-	   String name=request.getParameter("name");
+	   HttpSession session=request.getSession();//id 세션 받아오기 
+	   String id=(String)session.getAttribute("id");
+	   String name=(String)session.getAttribute("name");
+//	  / String id=request.getParameter("id");
+//	   String name=request.getParameter("name");
 	   System.out.println("id="+id);
 	   String subject=request.getParameter("subject");
 	   String content=request.getParameter("content");
@@ -134,7 +141,8 @@ public class PboardModel {
 	   vo.setP_no(Integer.parseInt(p_no));
 	   PboardDAO.pboardUpdate(vo);
 	   return "redirect:../pboard/detail.do?p_no="+p_no;// sendRedirect
-//	   insert_ok, update_ok, delete_ok 데이터 전송은 없고 처리후 바로 (이전에 실행된 화면)페이지 이동(list,detail)  => 따로 jsp파일을 만들지 않아도 됨 
+//	   insert_ok, update_ok, delete_ok 데이터 전송은 없고 처리후 바로 (이전에 실행된 화면)페이지 이동(list,detail)
+//	   => 따로 jsp파일을 만들지 않아도 됨 
    }
    
    @RequestMapping("pboard/delete.do")

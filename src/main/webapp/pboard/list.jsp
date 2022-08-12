@@ -208,9 +208,10 @@
 									      </ul>
 									 </div>
 								 </div>
- 
-									<a href="../pboard/insert.do" class="btn square btn-primary write" id="WriteBtn">
-										<i class="fa fa-pencil"></i> 글 쓰기</a>
+				   <c:if test="${sessionScope.id!=null }"><!-- 로그인한 사람만 보임  -->
+								<a href="../pboard/insert.do" class="btn square btn-primary write" id="WriteBtn">
+								<i class="fa fa-pencil"></i> 글 쓰기</a>
+					</c:if>							
 								</div>
 		
 								<form class="input-group" method="get" id="boardSearchForm">
