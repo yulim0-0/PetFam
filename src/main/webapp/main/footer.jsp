@@ -24,18 +24,18 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Quick Moves</h4>
+            <h4>페이지 바로가기</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Booking</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Recommendation</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Community</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">MyPage</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../main/main.do">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../booking/hospital_list.do">Booking</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../petplace/cafe.do">Recommendation</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../pboard/list.do">Community</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="../mypage/myinfo.do">MyPage</a></li>
             </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>최근 검색 기록</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>

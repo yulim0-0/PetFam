@@ -3,14 +3,24 @@
 <mapper namespace="com.sist.mapper.admin-mapper">
 
 	<select id="userInfoList" resultType="UserVO">
-		SELECT * FROM user_4
+		SELECT * FROM user_4 
 	</select>
 	
 	<select id="userInfoDetailData" resultType="String">
 		SELECT * FROM user_4 WHERE id=#{id}
 	</select>
 	
-	<select id="userWriteList" resultType="PboardVO">
-		SELECT * FROM pbo_4 ORDER BY p_no
+
+	<select id="userWriteList" resultType="PboardVO" parameterType="hashmap">
+	    SELECT p_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
+	    FROM (SELECT p_no,subject,id,regdate,hit,rcount,rownum as num 
+	    FROM (SELECT p_no,subject,id,regdate,hit,rcount 
+	    FROM pbo_4 ORDER BY p_no ASC))
+	    WHERE num BETWEEN #{start} AND #{end}
+  	</select> 
+	
+	<select id="userWriteTotalPage" resultType="int">
+    	SELECT CEIL(COUNT(*)/10.0) FROM pbo_4
 	</select>
+
 </mapper>

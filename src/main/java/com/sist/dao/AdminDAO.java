@@ -58,13 +58,13 @@ public class AdminDAO {
 		return list;
 	}
 	
-	public static List<PboardVO> userWriteList()
+	public static List<PboardVO> userWriteList(Map map)
 	{
 		List<PboardVO> list=null;
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			list=session.selectList("userWriteList");
+			list=session.selectList("userWriteList", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -72,4 +72,23 @@ public class AdminDAO {
 		}
 		return list;
 	}
+	
+	public static int userWriteTotalPage()
+	{
+		int total=0;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			total=session.selectOne("userWriteTotalPage");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return total;
+	}
+	
+	
 }

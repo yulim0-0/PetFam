@@ -3,106 +3,155 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>CodePen - Bootstrap Table - Filter control</title>
-	<link rel="stylesheet" href="https://use.typekit.net/evl6ifb.css">
-	<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.min.css'>
-	<link rel='stylesheet' href='//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css'>
-	<link rel="stylesheet" href="admin_user_dist/style.css">
-	<style>
-		.detail {
-			cursor:pointer;
-		}
-		
-	</style>
-	<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-	<script>
-		$('#detail').on("click",function(){
-			location.href="../admin/admin_user_detail.do?id=";
-		})
-	</script>
+<meta charset="UTF-8">
+<title>CodePen - Material Design Table</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+<link rel="stylesheet" href="css/admin_user.css">
+<style>
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+*{
+	font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;
+ 	color: #212529;
+}
+
+</style>
 </head>
-
 <body>
-<!-- partial:index.partial.html -->
 <main class="main">
-	
-	<div class="userlistcontainer">
-	<h1>User List</h1>
-	<p> Mémo pour les options du Bootstrap Table : <a href="http://bootstrap-table.wenzhixin.net.cn/documentation/">Bootstrap Table Documentation</a></p>
-	<p>Eléments de Bootstrap Table utilisés : <a href="http://jsfiddle.net/wenyi/e3nk137y/3178/">Data Checkbox</a>
-	, pour cocher les éléments à sélectionner, 
-	<a href="https://github.com/wenzhixin/bootstrap-table-examples/blob/master/extensions/filter-control.html">
-	extension Filter control</a>, pour les filtres via les colonnes, 
-	<a href="https://github.com/kayalshri/tableExport.jquery.plugin">extension Data export</a> pour exporter</p>
-	
-	<div id="toolbar">
-			<select class="form-control">
-					<option value="">Export Basic</option>
-					<option value="all">Export All</option>
-					<option value="selected">Export Selected</option>
-			</select>
+	<!-- partial:index.partial.html -->
+	<div class="app-page" ng-app="clientsApp" ng-controller="ClientsCtrl">
+		<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--12-col">
+				<div class="mdl-textfield mdl-js-textfield">
+					<input class="mdl-textfield__input" type="text" ng-model="search">
+					<label class="mdl-textfield__label" for="sample1">Search...</label>
+				</div>
+			</div>
+			<div class="mdl-cell mdl-cell--9-col">
+				<table style="border-radius:30px;" class="mdl-data-table mdl-data-table_full mdl-js-data-table mdl-shadow--4dp">
+					<colgroup>
+						<col style="width: 1px" />
+						<col style="width: 1px" />
+						<col />
+						<col style="width: 128px" />
+						<col style="width: 128px" />
+						<col style="width: 128px" />
+					</colgroup>
+					
+					<thead>
+						<tr>
+							<th>
+								<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+									<input type="checkbox" class="mdl-checkbox__input">
+								</label>
+							</th>
+							<th>ID</th>
+							<th>Name</th>
+							<th class="mdl-data-table__cell--non-numeric">Addr</th>
+							
+							<th>BirthDay</th>
+							<th>JoinDate</th>
+							<th class="controls mdl-data-table__cell--non-numeric">Actions</th>
+						</tr>
+					</thead>
+					
+					<c:forEach var="vo" items="${list }">
+					
+					<tbody ng-repeat="client in clients | filter:search">
+						<tr ng-if="client != activeClient">
+							<td><mdl-checkbox></mdl-checkbox></td>
+							<td>${vo.id }</td>
+							<td>${vo.name }
+							<td class="mdl-data-table__cell--non-numeric">[${vo.zipcode }] ${vo.addr1 } ${vo.addr2 }</td>
+							<td>${vo.birthday }
+							<td>
+									${vo.joindate }
+							</td>
+							<td class="controls mdl-data-table__cell--non-numeric">
+								<button style="background:#192f61;"
+									class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
+									ng-click="edit(client)">Edit</button>
+								<button style="background:#f34100;"
+									class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect"
+									ng-click="delete(client)">Delete</button>
+							</td>
+						</tr>
+					</tbody>
+					
+					</c:forEach>
+				</table>
+			</div>
+			<div class="mdl-cell mdl-cell--3-col">
+				<form class="mdl-card mdl-shadow--2dp" novalidate role="form"
+					name="clientForm">
+					<div class="mdl-card__title mdl-card--expand">
+						<h2 class="mdl-card__title-text">Create User</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						<div
+							class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="text" name="name"
+								ng-model="newClient.name" required> <label
+								class="mdl-textfield__label" for="">Name:</label> <span
+								class="mdl-textfield__error"
+								ng-show="clientForm.name.$error.required">Name is
+								required</span>
+						</div>
+						<div
+							class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="number"
+								ng-model="newClient.age" name="age" required max="100" min="1">
+							<label class="mdl-textfield__label" for="">Age:</label> <span
+								class="mdl-textfield__error"
+								ng-show="clientForm.age.$error.required">Age is required</span>
+							<span class="mdl-textfield__error"
+								ng-show="clientForm.age.$error.integer">Age should be an
+								integer</span> <span class="mdl-textfield__error"
+								ng-show="clientForm.age.$error.min">Age should be greater
+								than 1</span> <span class="mdl-textfield__error"
+								ng-show="clientForm.age.$error.max">Age should be lesser
+								than 100</span>
+						</div>
+						<div
+							class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="number"
+								ng-model="newClient.percentage" name="percentage" required
+								max="1" min="0"> <label class="mdl-textfield__label"
+								for="">Percentage:</label> <span class="mdl-textfield__error"
+								ng-show="clientForm.percentage.$error.required">Percentage
+								is required</span> <span class="mdl-textfield__error"
+								ng-show="clientForm.percentage.$error.min">Percentage
+								should be greater than 0</span> <span class="mdl-textfield__error"
+								ng-show="clientForm.percentage.$error.max">Percentage
+								should be lesser than 1</span>
+						</div>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+						<button
+							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+							ng-click="create()" ng-disabled="clientForm.$invalid">
+							Save
+						</buttin>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
-	
-	<table id="table" 
-				 data-toggle="table"
-				 data-search="true"
-				 data-filter-control="true" 
-				 data-show-export="true"
-				 data-toolbar="#toolbar">
-				 <!-- data-click-to-select="true" -->
-		<thead>
-			<tr>
-				<th data-field="state" data-checkbox="true"></th>
-				<th data-field="prenom" data-filter-control="input" data-sortable="true">이름</th>
-				<th data-field="date" data-filter-control="select" data-sortable="true">가입 날짜</th>
-				<th data-field="examen" data-filter-control="select" data-sortable="true">권한</th>
-				<th data-field="note" data-sortable="true">노트</th>
-				
-			</tr>
-		</thead>
-		<tbody>
+	<!-- partial -->
+	<script src='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js'></script>
+	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js'></script>
 		
-			<tr>
-				<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
-				<td id=id>admin</td>
-				<td>2022-08-10</td>
-				<td>y</td>
-				<td onClick="location.href='../admin/admin_user_detail.do?id=admin'" id=detail>상세보기</td>
-			</tr>
-		
-			<tr>
-				<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
-				<td id=id>yulim</td>
-				<td>2022-08-10</td>
-				<td>n</td>
-				<td onClick="location.href='../admin/admin_user_detail.do?id=yulim'" id=detail>상세보기</td>
-			</tr>
-		
-			<tr>
-				<td class="bs-checkbox "><input data-index="0" name="btSelectItem" type="checkbox"></td>
-				<td id=id>test</td>
-				<td>2022-08-10</td>
-				<td>n</td>
-				<td onClick="location.href='../admin/admin_user_detail.do?id=test'" id=detail>상세보기</td>
-			</tr>
-		
-		</tbody>
-	</table>
-	</div>
+	<!-- <script src="js/admin_user.js"></script> -->
 </main>
-
-<!-- partial -->
-<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.0/bootstrap-table.js'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/editable/bootstrap-table-editable.js'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/export/bootstrap-table-export.js'></script>
-<script src='//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js'></script>
-<script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.1/extensions/filter-control/bootstrap-table-filter-control.js'></script>
-<script src="admin_user_dist/script.js"></script>
-
 </body>
 </html>

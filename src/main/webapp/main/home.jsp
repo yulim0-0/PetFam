@@ -7,6 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function enterkey(){
+		if(window.event.keyCode == 13) {
+			location.href="../main/search.do";
+		}
+		else {
+			alert('실패');
+		}
+	}
+
+</script>
 </head>
 <body>
 <main id="main">
@@ -61,19 +72,22 @@
 
 
 
-    <!-- ======= Searchbar Section ======= -->
-    <section id="searchbar" class="searchbar section-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="searchsection-title">
-          <h2>SearchBar</h2>
-          <p><input placeholder="Search" type="text" value="${search }" name="search" class="searchbar"></p>
-        </div>
-      </div>
-    </section><!-- End Services Section -->
+		<!-- ======= Searchbar Section ======= -->
+		<section id="searchbar" class="searchbar section-bg">
+			<div class="container" data-aos="fade-up">
+				<div class="searchsection-title">
+					<h2>SearchBar</h2>
+
+					<p><input placeholder="Search" type="text" value="${search }" name="search" id="search" class="searchbar" onkeyup="enterkey()"></p>
+					<img style="width: 20px; length: 20px;" alt="searchBtn" src="../assets/img/search.png">
+				</div>
+			</div>
+		</section>
+		<!-- End Services Section -->
 
 
 
-    <!-- ======= Services Section ======= -->
+		<!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-title">

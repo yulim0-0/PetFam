@@ -6,7 +6,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
 	em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var,
 	b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
-	table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
+	caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas,
 	details, embed, figure, figcaption, footer, header, hgroup, menu, nav,
 	output, ruby, section, summary, time, mark, audio, video {
 	margin: 0;
@@ -22,7 +22,21 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
-
+table {
+	width : 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	outline: none;
+	-webkit-font-smoothing: antialiased;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
 html {
 	overflow-y: scroll;
 }
@@ -98,7 +112,6 @@ img {
 }
 
 h1 {
-	font-family: 'Amarante', Tahoma, sans-serif;
 	font-weight: bold;
 	font-size: 3.6em;
 	line-height: 1.7em;
@@ -109,7 +122,7 @@ h1 {
 /** page structure **/
 #wrapper {
 	display: block;
-	width: 850px;
+	width: 1100px;
 	background: #fff;
 	margin: 0 auto;
 	padding: 10px 17px;
@@ -124,13 +137,15 @@ h1 {
 
 #keywords thead {
 	cursor: pointer;
-	background: #c9dff0;
+	background: #192f61;
 }
 
 #keywords thead tr th {
 	font-weight: bold;
 	padding: 12px 30px;
 	padding-left: 42px;
+	text-align : center;
+	color : #fff9ed;
 }
 
 #keywords thead tr th span {
@@ -141,7 +156,7 @@ h1 {
 
 #keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown
 	{
-	background: #acc8dd;
+	background: #192f61;
 }
 
 #keywords thead tr th.headerSortUp span {
@@ -163,4 +178,49 @@ h1 {
 
 #keywords tbody tr td.lalign {
 	text-align: left;
+}
+
+/* 페이징 */
+.pagination {
+    margin: 20px 0;
+    overflow: hidden;
+    position: relative;
+}
+.pagination li {
+    float: left;
+}
+.pagination ul {
+    float: left;
+    left: 50%;
+    position: relative;
+}
+.pagination ul > li {
+    left: -50%;
+    position: relative;
+}
+.pagination li a {
+    transition: all 100ms ease-in-out 0s;
+    background-color: #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+    color: #69696E;
+    display: block;
+    font: 16px/30px Noto Sans KR, sans-serif;
+    height: 30px;
+    margin: 0 3px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 30px;
+}
+.pagination li a:hover {
+    background-color: #F34100;
+    color: #FFFFFF;
+}
+.pagination li.active a {
+    background-color: #F34100;
+    color: #FFFFFF;
+}
+.pagination li.active a:hover {
+    color: #F34100;
 }

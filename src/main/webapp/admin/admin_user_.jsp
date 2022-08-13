@@ -5,18 +5,15 @@
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <title>CodePen - PDisk Movies -- Sree74</title>
-<head>
-<title>Pdisk Movie - Sree74</title>
- <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<meta charset="UTF-8">
+<title>[ADMIN]User List</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
 <script src="https://unpkg.com/jquery-tablesortable"></script>
-<link rel="stylesheet" href="admin_user_dist/style.css">
+<link rel="stylesheet" href="css/admin_user.css">
 <script>
 	function autoIncrement(startnum){
 		var init=startnum;
@@ -28,7 +25,6 @@
 		autoIncrement(0);
 </script>
 
-</head>
 
 </head>
 <body>
@@ -70,7 +66,7 @@
     <div class="mb-4" data-pagination="" data-num-pages="numPages()" data-current-page="currentPage" data-max-size="maxSize" data-boundary-links="true"></div>
   </div>
 <!-- partial -->
-  <script  src="admin_user_dist/script.js"></script>
+  <script  src="js/admin_user.js"></script>
 </main>
 </body>
 </html>
