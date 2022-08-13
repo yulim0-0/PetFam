@@ -91,7 +91,7 @@ public class PboardModel {
 	   
 	   //댓글 
 	   PReplyVO rvo=new PReplyVO();
-	   rvo.setBno(vo.getP_no());
+	   rvo.setP_no(vo.getP_no());
 	   rvo.setType(1);// pbo_4 자유게시판 
 	   List<PReplyVO> list=PReplyDAO.preplyListData(rvo);
 	   request.setAttribute("list", list);

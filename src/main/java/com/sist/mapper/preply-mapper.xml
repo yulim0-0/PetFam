@@ -16,12 +16,13 @@
   <update id="countIncrement" parameterType="PReplyVO">
     UPDATE ${table_name} SET
     rcount=rcount+1
-    WHERE pre_no=#{bno}
+    WHERE p_no=#{p_no}
   </update>
   <select id="preplyListData" resultType="PReplyVO" parameterType="PReplyVO">
-    SELECT  pre_no,bno,type,id,name,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday
+    SELECT  pre_no,p_no,type,id,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday
     FROM p_repl_4
-    WHERE bno=#{bno} AND type=#{type}
+    WHERE p_no=#{p_no} AND type=#{type}
+    ORDER BY group_id DESC,group_step ASC
   </select>
   <!-- 추가 -->
   <insert id="preplyInsert" parameterType="PReplyVO">
@@ -29,29 +30,92 @@
          order 순서 => BEFORE는 먼저 수행 
          고급 => JOIN , SUBQUERY , 동적쿼리 
     -->
-    <selectKey keyProperty="no" resultType="int" order="BEFORE">
+    <selectKey keyProperty="pre_no" resultType="int" order="BEFORE">
       SELECT NVL(MAX(pre_no)+1,1) as pre_no FROM p_repl_4
     </selectKey>
-    INSERT INTO p_repl_4 VALUES(
+    INSERT INTO p_repl_4 (pre_no,p_no,msg,id,type,group_id) VALUES(
       #{pre_no},
-      #{bno},
-      #{type},
+      #{p_no},
+       #{msg},
       #{id},
-      #{name},
-      #{msg},
-      SYSDATE
+      #{type},
+      (SELECT NVL(MAX(group_id)+1,1) FROM p_repl_4)   
     )
   </insert>
-  <!-- 수정 -->
-  <!-- 삭제 -->
-  <delete id="preplyDelete" parameterType="int">
-   DELETE FROM p_repl_4
-   WHERE pre_no=#{pre_no}
-  </delete>
   
+  <!-- 수정 -->
   <update id="preplyUpdate" parameterType="PReplyVO">
    UPDATE p_repl_4 SET
    msg=#{msg}
    WHERE pre_no=#{pre_no}
   </update>
+  
+  <!-- 삭제 -->
+   <select id="preplyInfoData" resultType="PReplyVO" parameterType="int">
+    SELECT root,depth FROM p_repl_4
+    WHERE pre_no=#{pre_no}
+  </select>
+  
+  <update id="replyMsgUpdate" parameterType="int">
+    UPDATE p_repl_4 SET
+    msg='관리자가 삭제한 댓글입니다'
+    WHERE pre_no=#{pre_no}
+  </update>
+  
+  <delete id="preplyDelete" parameterType="int">
+   DELETE FROM p_repl_4
+   WHERE pre_no=#{pre_no}
+  </delete>
+  
+   <update id="pdepthDecrement" parameterType="int">
+    UPDATE p_repl_4 SET
+    depth=depth-1
+    WHERE pre_no=#{pre_no}
+  </update>
+  <!--  대댓글 -->
+  <select id="preplyParentInfoData" resultType="PReplyVO" parameterType="int">
+  SELECT group_id,group_step,group_tab
+  FROM p_repl_4
+  WHERE pre_no=#{pre_no}
+  </select>
+  
+  <update id="preplyGroupStepInvrement" parameterType="PReplyVO">
+  UPDATE p_repl_4 SET
+  group_step=group_step+1
+  WHERE group_id=#{group_id} AND group_step> #{group_step}
+  </update>
+  
+ <insert id="preplyToReplyInsert" parameterType="PReplyVO">
+    <selectKey keyProperty="pre_no" resultType="int" order="BEFORE">
+      SELECT NVL(MAX(pre_no)+1,1) as pre_no FROM p_repl_4
+    </selectKey>
+    INSERT INTO p_repl_4 VALUES(
+      #{pre_no},
+      #{p_no},
+      #{id},
+      #{msg},
+      SYSDATE,
+      #{group_id},
+      #{group_step},
+      #{group_tab},
+      #{root},
+      0
+    )
+  </insert>
+  <update id="preplyDepthIncrement" parameterType="int">
+    UPDATE spring_reply SET
+    depth=depth+1
+    WHERE pre_no=#{pre_no}
+  </update>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
