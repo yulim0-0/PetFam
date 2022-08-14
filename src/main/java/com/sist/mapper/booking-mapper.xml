@@ -5,16 +5,16 @@
  SELECT o_no,name,store,poster,price,num
  FROM(SELECT o_no,name,store,poster,price,rownum as num
  FROM(SELECT o_no,name,store,poster,price
- FROM ${table_name} WHERE o_no BETWEEN #{s} AND #{e} ORDER BY o_no ASC))
+ FROM ord_4 WHERE o_no BETWEEN #{s} AND #{e} ORDER BY o_no ASC))
  WHERE num BETWEEN #{start} AND #{end}
  </select>
  
  <select id="bookingTotalPage" resultType="int" parameterType="hashmap">
-   SELECT CEIL(COUNT(*)/9.0) FROM ${table_name} WHERE o_no BETWEEN #{s} AND #{e}
+   SELECT CEIL(COUNT(*)/9.0) FROM ord_4 WHERE o_no BETWEEN #{s} AND #{e}
  </select>
  
- <select id="hospitalDetailData" resultType="BookingVO" parameterType="hashmap">
-   SELECT * FROM ${table_name}
+ <select id="hospitalDetailData" resultType="BookingVO" parameterType="int">
+   SELECT * FROM ord_4
    WHERE o_no=#{o_no}
  </select>
 </mapper>

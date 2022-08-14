@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" %>
+    pageEncoding="UTF-8" import="com.sist.vo.*,com.sist.dao.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+	String o_no=request.getParameter("o_no");
+	BookingDAO dao=new BookingDAO();
+	BookingVO vo=dao.hospitalDetailData(Integer.parseInt(o_no));
+	
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -126,13 +133,15 @@
                                 <div class="description_area">
                                     <img src="http://${vo.img }" style=width:100%>
                                     
-                                </div>
+                                </div><br>
+                                <br>
+                                <br>
                             </div>
                              <div role="tabpanel" class="tab-pane fade show active" id="addi-info">
                              <div class="aside" style="width:100%;height:100%;margin:auto;">
 						       <div id="map" style="width:100%;height:350px;"></div>
 								<p><span>주소:</span> <span>${vo.address }</span></p>
-								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=76b3dc16187eaea0d4f50c71d09990b7&libraries=services"></script>
+								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b258686433a9d9db37e9d1bbb85cdae3&libraries=services"></script>
 								<script>
 								var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 								    mapOption = {
@@ -304,7 +313,7 @@
                 <div class="col-12">
                     <!-- Section Heading -->
                     <div class="section-heading text-center">
-                        <h2>최근에 본 상품</h2>
+                        <h2> HOT 추천 상품</h2>
                     </div>
                 </div>
             </div>

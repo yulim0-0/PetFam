@@ -72,14 +72,14 @@ public class BookingDAO {
 		   return total;
 	   }
 	 
-	 public static BookingVO hospitalDetailData(Map map)
+	 public static BookingVO hospitalDetailData(int o_no)
 	   {
 		    BookingVO vo=new BookingVO();
 		    SqlSession session=null;
 		    try
 		    {
 		    	session=ssf.openSession();
-		    	vo=session.selectOne("hospitalDetailData", map);//row
+		    	vo=session.selectOne("hospitalDetailData", o_no);//row
 		    }catch(Exception ex)
 		    {
 		    	System.out.println("hospitalDetailData: error");

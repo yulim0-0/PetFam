@@ -30,7 +30,7 @@ public class BookingModel {
 		
 		map.put("start", start);
 		map.put("end", end);
-		map.put("table_name", "ord_4");
+		
 		map.put("s", 19);
 		map.put("e", 515);
 		List<BookingVO> list=BookingDAO.bookingListData(map);
@@ -74,7 +74,7 @@ public class BookingModel {
 		
 		map.put("start", start);
 		map.put("end", end);
-		map.put("table_name", "ord_4");
+	
 		map.put("s", 8);
 		map.put("e", 18);
 		List<BookingVO> list=BookingDAO.bookingListData(map);
@@ -112,7 +112,7 @@ public class BookingModel {
 		
 		map.put("start", start);
 		map.put("end", end);
-		map.put("table_name", "ord_4");
+		
 		map.put("s", 1);
 		map.put("e", 7);
 		List<BookingVO> list=BookingDAO.bookingListData(map);
@@ -140,12 +140,8 @@ public class BookingModel {
 	   public String hos_detail(HttpServletRequest request,HttpServletResponse response)
 	   {
 		   String o_no=request.getParameter("o_no");
-		   String table_name="ord_4";
 		  
-		   Map map=new HashMap();
-		   map.put("o_no",o_no);
-		   map.put("table_name", table_name);
-		   BookingVO vo=BookingDAO.hospitalDetailData(map);
+		   BookingVO vo=BookingDAO.hospitalDetailData(Integer.parseInt(o_no));
 		   
 		   request.setAttribute("vo", vo);
 		   request.setAttribute("main_jsp", "../booking/hos_detail.jsp");

@@ -1,6 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*,com.sist.vo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+	
+	BookingDAO dao=new BookingDAO();
+	Cookie[] cookies=request.getCookies(); //쿠키 읽기
+	List<BookingVO> bList=new ArrayList<BookingVO>();
+	if(cookies!=null)
+	{
+		for(int i=cookies.length-1;i>=0;i--) // 최신부터 출력 
+		{
+			if(cookies[i].getName().startsWith("booking")) //movie1
+			{
+				String o_no=cookies[i].getValue();// 1
+				BookingVO vo=dao.hospitalDetailData(Integer.parseInt(o_no));
+				bList.add(vo);
+			}
+		}
+	}
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,6 +75,9 @@
 .pagination li.active a:hover {
     color: #F34100;
 }
+.cookie-row{
+	display: inline;
+}
  </style>
 </head>
 <body>
@@ -70,7 +93,7 @@
       <h2 class="card_store">${vo.store }</h2>
       <p class="card_title">${vo.name }</p>
       <p class="card_price">${vo.price }\</p>
-      <a href="../booking/hos_detail.do?o_no=${vo.o_no }"><button class="btn card_btn">Read More</button></a>
+      <a href="../booking/detail_before.jsp?o_no=${vo.o_no }"><button class="btn card_btn">Read More</button></a>
      </div>
     </div>
    </li>
@@ -85,7 +108,7 @@
       <h2 class="card_store">${vo.store }</h2>
       <p class="card_title">${vo.name }</p>
       <p class="card_price">${vo.price }\</p>
-     <a href="../booking/hos_detail.do?o_no=${vo.o_no }"> <button class="btn card_btn">Read More</button></a>
+     <a href="../booking/detail_before.jsp?o_no=${vo.o_no }"> <button class="btn card_btn">Read More</button></a>
       
      </div>
     </div>
@@ -118,6 +141,26 @@
 		 </div>
 	<!-- paging end-->
  </div>
- 
+ 	<!-- cookie -->
+ 	
+ 	<div style="height: 10px"></div>
+ 		<div class="cookie-row">
+    <h3>최근에 본 상품</h3>
+    <hr>
+     <%
+     	int k=0;
+        for(BookingVO vo:bList)
+        {
+        	if(k>13) break;
+     %>
+     	<a href="hos_detail.do?o_no=<%= vo.getO_no()%>"> 
+          <img src="http://<%=vo.getPoster() %>" style="width: 263px;height: 100px">
+     <%
+     		k++;
+        }
+     %>
+    </div>
+ 	
+ 	<!-- cookie end  -->
 </body>
 </html>
