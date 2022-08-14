@@ -7,6 +7,7 @@
 		<!-- VO 등록 -->
 		<typeAlias type="com.sist.vo.UserVO" alias="UserVO" />
 		<typeAlias type="com.sist.vo.PboardVO" alias="PboardVO" />
+		<typeAlias type="com.sist.vo.PPboardVO" alias="PPboardVO" />
 		<typeAlias type="com.sist.vo.PReplyVO" alias="PReplyVO" />
 		<typeAlias type="com.sist.vo.BookingVO" alias="BookingVO" />
 		<typeAlias type="com.sist.vo.QnaVO" alias="QnaVO" />
@@ -34,6 +35,7 @@
 		<mapper resource="com/sist/mapper/admin-mapper.xml" />
 		<mapper resource="com/sist/mapper/user-mapper.xml" />
 		<mapper resource="com/sist/mapper/pboard-mapper.xml" />
+		<mapper resource="com/sist/mapper/ppboard-mapper.xml" />
 		<mapper resource="com/sist/mapper/preply-mapper.xml" />
 		<mapper resource="com/sist/mapper/booking-mapper.xml" />
 		<mapper resource="com/sist/mapper/qna-mapper.xml" />
