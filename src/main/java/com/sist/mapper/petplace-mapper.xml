@@ -4,10 +4,12 @@
  <select id="petplaceListData" resultType="PetplaceVO" parameterType="hashmap">
 
    <!-- parameterType은 1개 지정이 가능 : 여러개 데이터를 첨부 (VO,Map) -->
-		SELECT c_no,title,category,poster,addr,tel,subtitle,map,good
-		FROM    ${table_name}
-		WHERE   c_no BETWEEN #{start} AND #{end}
-		ORDER BY c_no ASC
+		SELECT c_no,title,category,poster,addr,tel,subtitle,map,good,num
+		FROM(SELECT c_no,title,category,poster,addr,tel,subtitle,map,good,rownum as num
+		FROM(SELECT c_no,title,category,poster,addr,tel,subtitle,map,good
+		FROM rcpg_4 WHERE c_no BETWEEN #{s} AND #{e} ORDER BY c_no ASC))
+		WHERE num BETWEEN #{start} AND #{end}
+		
 
 	<!--    SELECT c_no,title,poster,num
     FROM (
@@ -23,7 +25,7 @@
 	
  </select>
  <select id="petplaceTotalPage" resultType="int" parameterType="hashmap">
-   SELECT CEIL(COUNT(*)/9.0) FROM ${table_name}
+   SELECT CEIL(COUNT(*)/9.0) FROM rcpg_4 WHERE c_no BETWEEN #{s} AND #{e}
    
  </select>
  
@@ -32,4 +34,18 @@
    SELECT * FROM ${table_name}
    WHERE c_no=#{c_no}
  </select>
+ 
+  <!--  지역별 추천장소 찾기 -->
+  <!-- <select id="petplaceLocationFindData" resultType="PetplaceVO" parameterType="hashmap">
+    SELECT c_no,title,score,poster,addr,num
+    FROM (SELECT c_no,title,poster,addr,rownum as num 
+    FROM (SELECT c_no,title,poster,addr 
+    FROM rcpg_4 WHERE addr LIKE '%'||#{addr}||'%' ORDER BY c_no ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select> -->
+  <select id="petplaceLocationFindTotalPage" resultType="int" parameterType="string">
+<!--     SELECT CEIL(COUNT(*)/12.0) FROM rcpg_4
+    WHERE addr LIKE '%'||#{addr}||'%' -->
+  </select>
+ 
 </mapper>

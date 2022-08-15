@@ -83,7 +83,7 @@ public class PetplaceDAO {
 			    }catch(Exception ex)
 			    {
 			    	System.out.println("petplaceDetailData: error");
-			    	ex.printStackTrace();
+			    	ex.printStackTrace(); 
 			    }
 			    finally
 			    {
@@ -92,4 +92,45 @@ public class PetplaceDAO {
 			    }
 			    return vo;
 		   }
+		 
+		 
+		   public static List<PetplaceVO> petplaceLocationFindData(Map map)
+		   {
+			   List<PetplaceVO> list=null;
+			   SqlSession session=null;
+			   try
+			   {
+				   session=ssf.openSession();
+				   list=session.selectList("petplaceLocationFindData", map);
+			   }catch(Exception ex)
+			   {
+				   ex.printStackTrace();
+			   }
+			   finally
+			   {
+				   if(session!=null)
+					   session.close();
+			   }
+			   return list;
+		   }
+		   
+		   public static int petplaceLocationFindTotalPage(String addr)
+		   {
+			   int total=0;
+			   SqlSession session=null;
+			   try
+			   {
+				   session=ssf.openSession();
+				   total=session.selectOne("petplaceLocationFindTotalPage", addr);
+			   }catch(Exception ex)
+			   {
+				   ex.printStackTrace();
+			   }
+			   finally
+			   {
+				   if(session!=null)
+					   session.close();
+			   }
+			   return total;
+		   }	 
 	}

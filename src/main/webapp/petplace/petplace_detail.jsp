@@ -6,13 +6,9 @@
 
 <head>
 	<script src="js/jquery/jquery-2.2.4.min.js"></script>
-    
     <script src="js/bootstrap/popper.min.js"></script>
-   
     <script src="js/bootstrap/bootstrap.min.js"></script>
-    
     <script src="js/plugins/plugins.js"></script>
-    
     <script src="js/active.js"></script>
      
     
@@ -44,9 +40,9 @@
 
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
-        <!-- Top Breadcrumb Area -->
-        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>SHOP DETAILS</h2>
+
+ <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
+            <h2>반려동물 동반 장소 추천 </h2>
         </div>
 
         
@@ -76,38 +72,40 @@
                     <div class="col-12 col-md-6">
                         <div class="single_product_desc">
                             <h4 class="title">${vo.title }</h4>
-                     			<p>${vo.tel }</p>
-                                <p>${vo.subtitle }</p>
+                     			
                             </div>
 
                             <div class="cart--area d-flex flex-wrap align-items-center">
                                 <!-- Add to Cart Form -->
-                                <form class="cart clearfix d-flex align-items-center" method="post">
-                                    <div class="quantity">
-                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
-                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                    </div>
-                                    <div class="wishlist-compare d-flex flex-wrap align-items-center">
-                                    <a href="#" class="wishlist-btn ml-15"><i class="icon_heart_alt"></i></a>
-                                    
-                                    
+                                   
+                               <button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">Add to cart</button>
+                                <form class="cart clearfix d-flex align-items-center" method="post" action="petplace.do">
+                                    <button type="submit" name="buy" value="5" class="btn alazea-btn ml-15">BUY NOW </button>
                                 </form>
-                                <!-- Wishlist & Compare -->
-                                <button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">Add to cart</button>
-                                    <button type="submit" name="buy" value="5" class="btn alazea-btn ml-15">BUY NOW</button>
-                                </div>
-                            </div>
-
-                            <div class="products--meta">
+                                  <div class="wishlist-compare d-flex flex-wrap align-items-center">
+                                 <!-- Wishlist & Compare -->
+                                 	<a href="#" class="wishlist-btn ml-15"><i class="icon_heart_alt"></i></a>
+                                 </div> 
+                                 
+                                  <div class="products--meta">
+                            	
                                 <p><span>Address:</span> <span>${vo.addr }</span></p>
+                                <p><span>Tel:</span><span>${vo.tel }</span></p> 
                                 <p><span>Category:</span> 
                                 	<span>
-	                                	<c:if test="${vo.category eq '2' }"> 카페식당</c:if>
-								         <c:if test="${vo.category eq '3' }"> 펜션</c:if>  
+	                                	<c:if test="${vo.category eq '2' }"> 카페,식당</c:if>
+								         <c:if test="${vo.category eq '3' }"> 카페,식당</c:if>  
 								        <c:if test="${vo.category eq '11' }"> 공원</c:if>
+								        <c:if test="${vo.category eq '1' }"> 펜션</c:if>
+								        <c:if test="${vo.category eq '4' }"> 펜션</c:if>
+								        <c:if test="${vo.category eq '5' }"> 펜션</c:if>
+								        <c:if test="${vo.category eq '6' }"> 펜션</c:if>
+								        <c:if test="${vo.category eq '7' }"> 펜션</c:if>
+								        <c:if test="${vo.category eq '8' }"> 펜션</c:if>
+								        <c:if test="${vo.category eq '9' }"> 펜션</c:if>
+								    
                                 	</span></p>
-                                <p><span>Tags:</span> <span>plants, green, cactus </span></p>
+                                
                                 <p>
                                     <span>Share on:</span>
                                     <span>
@@ -117,15 +115,14 @@
                                     <a href="#"><i class="fa fa-google-plus"></i></a>
                                 </span>
                                 </p>
+                            </div>       
                             </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
+                          </div>
+                     </div>
+                 </div>
+                 
+                            
+          <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="product_details_tab clearfix">
@@ -138,129 +135,71 @@
                                 <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">Additional Information</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">Reviews <span class="text-muted">(1)</span></a>
+                                <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">Reviews <span class="text-muted">0</span></a>
                             </li>
                         </ul>
                         <!-- Tab Content -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade show active" id="description">
                                 <div class="description_area">
-                                    <img src=${vo.poster }">
-                                    <p>${vo.addr }</p>
-                                </div>
+                                    <p>설명${vo.subtitle } </p>
+                                    
+                                </div><br>
+                                <br>
+                                <br>
                             </div>
-                            <div role="tabpanel" class="tab-pane fade" id="addi-info">
-                                <div class="additional_info_area">
-                                    <p>What should I do if I receive a damaged parcel?
-                                        <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit impedit similique qui, itaque delectus labore.</span></p>
-                                    <p>I have received my order but the wrong item was delivered to me.
-                                        <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis quam voluptatum beatae harum tempore, ab?</span></p>
-                                    <p>Product Receipt and Acceptance Confirmation Process
-                                        <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum ducimus, temporibus soluta impedit minus rerum?</span></p>
-                                    <p>How do I cancel my order?
-                                        <br> <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum eius eum, minima!</span></p>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="reviews">
-                                <div class="reviews_area">
-                                    <ul>
-                                        <li>
-                                            <div class="single_user_review mb-15">
-                                                <div class="review-rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <span>for Quality</span>
-                                                </div>
-                                                <div class="review-details">
-                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
-                                                </div>
-                                            </div>
-                                            <div class="single_user_review mb-15">
-                                                <div class="review-rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <span>for Design</span>
-                                                </div>
-                                                <div class="review-details">
-                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
-                                                </div>
-                                            </div>
-                                            <div class="single_user_review">
-                                                <div class="review-rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <span>for Value</span>
-                                                </div>
-                                                <div class="review-details">
-                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <div class="submit_a_review_area mt-50">
-                                    <h4>Submit A Review</h4>
-                                    <form action="#" method="post">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group d-flex align-items-center">
-                                                    <span class="mr-15">Your Ratings:</span>
-                                                    <div class="stars">
-                                                        <input type="radio" name="star" class="star-1" id="star-1">
-                                                        <label class="star-1" for="star-1">1</label>
-                                                        <input type="radio" name="star" class="star-2" id="star-2">
-                                                        <label class="star-2" for="star-2">2</label>
-                                                        <input type="radio" name="star" class="star-3" id="star-3">
-                                                        <label class="star-3" for="star-3">3</label>
-                                                        <input type="radio" name="star" class="star-4" id="star-4">
-                                                        <label class="star-4" for="star-4">4</label>
-                                                        <input type="radio" name="star" class="star-5" id="star-5">
-                                                        <label class="star-5" for="star-5">5</label>
-                                                        <span></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Nickname</label>
-                                                    <input type="email" class="form-control" id="name" placeholder="Nazrul">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <div class="form-group">
-                                                    <label for="options">Reason for your rating</label>
-                                                    <select class="form-control" id="options">
-                                                          <option>Quality</option>
-                                                          <option>Value</option>
-                                                          <option>Design</option>
-                                                          <option>Price</option>
-                                                          <option>Others</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <label for="comments">Comments</label>
-                                                    <textarea class="form-control" id="comments" rows="5" data-max-length="150"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <button type="submit" class="btn alazea-btn">Submit Your Review</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                             <div role="tabpanel" class="tab-pane fade show active" id="addi-info">
+                             <div class="aside" style="width:100%;height:100%;margin:auto;">
+						       <div id="map" style="width:100%;height:350px;"></div>
+								<p><span>주소:</span> <span>${vo.addr }</span></p>
+								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b258686433a9d9db37e9d1bbb85cdae3&libraries=services"></script>
+								<script>
+								var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+								    mapOption = {
+								        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+								        level: 4 // 지도의 확대 레벨
+								    };  
+								
+								// 지도를 생성합니다    
+								var map = new kakao.maps.Map(mapContainer, mapOption); 
+								
+								// 주소-좌표 변환 객체를 생성합니다
+								var geocoder = new kakao.maps.services.Geocoder();
+								
+								// 주소로 좌표를 검색합니다
+								
+							
+								geocoder.addressSearch('${vo.addr}', function(result, status) {
+								
+								    // 정상적으로 검색이 완료됐으면 
+								     if (status === kakao.maps.services.Status.OK) {
+								
+								        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+								
+								        // 결과값으로 받은 위치를 마커로 표시합니다
+								        var marker = new kakao.maps.Marker({
+								            map: map,
+								            position: coords
+								        });
+								
+								        // 인포윈도우로 장소에 대한 설명을 표시합니다
+								        var infowindow = new kakao.maps.InfoWindow({
+								            content: '<div style="width:150px;text-align:center;padding:6px 0;">${vo.title}</div>'
+								        });
+								        infowindow.open(map, marker);
+								
+								        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+								        map.setCenter(coords);
+								    } 
+								});    
+								</script>
+						    </div>
+                             </div>
+                            
+                            
+                                    
+                           </div>
+                           
 
                         </div>
                     </div>
