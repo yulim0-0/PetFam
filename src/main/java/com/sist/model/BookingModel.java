@@ -147,5 +147,11 @@ public class BookingModel {
 		   request.setAttribute("main_jsp", "../booking/hos_detail.jsp");
 		   return "../main/main.jsp";
 	   }
+	 @RequestMapping("booking/booking.do")
+	   public String booking(HttpServletRequest request,HttpServletResponse response)
+	   {
+		 	request.setAttribute("main_jsp", "../booking/booking.jsp");
+		 	return "../main/main.jsp";
+	   }
 	}
 

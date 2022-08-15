@@ -91,20 +91,15 @@
 
                             <div class="cart--area d-flex flex-wrap align-items-center" >
                                 <!-- Add to Cart Form -->
-                                <form class="cart clearfix d-flex align-items-center" method="post">
-                               		<button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">Add to cart</button>
-                                    <button type="submit" name="buy" value="5" class="btn alazea-btn ml-15">BUY NOW</button>
+                               <button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">Add to cart</button>
+                                <form class="cart clearfix d-flex align-items-center" method="post" action="booking.do">
+                                    <button type="submit" name="buy" value="5" class="btn alazea-btn ml-15">BUY NOW </button>
+                                </form>
                                   <div class="wishlist-compare d-flex flex-wrap align-items-center">
                                  <!-- Wishlist & Compare -->
                                  	<a href="#" class="wishlist-btn ml-15"><i class="icon_heart_alt"></i></a>
                                  </div> 
-                                </form>
-                              
-                                 
                             </div>
-
-                      
-
                         </div>
                     </div>
                 </div>
