@@ -15,6 +15,7 @@ import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.dao.*;
 import com.sist.vo.*;
@@ -29,7 +30,7 @@ public class QnaModel {
 		   page="1";
 	   int curpage=Integer.parseInt(page);
 	   Map map=new HashMap();
-	   int rowSize=10;
+	   int rowSize=9;
 	   int start=(rowSize*curpage)-(rowSize-1);
 	   int end=rowSize*curpage;
 	   
@@ -37,6 +38,13 @@ public class QnaModel {
 	   map.put("end", end);
 	   List<QnaVO> list=QnaDAO.qnaListData(map);
 	   int totalpage=QnaDAO.qnaTotalPage();
+//	   
+//	   final int BLOCK=5;
+//	   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+//	   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+//	   
+//	   if(endPage>totalpage)
+//		    endPage=totalpage;
 	   
 	   request.setAttribute("totalpage", totalpage);
 	   request.setAttribute("list", list);
@@ -58,12 +66,17 @@ public class QnaModel {
 	   { 
             request.setCharacterEncoding("UTF-8"); // 한글 처리 		   
 	   }catch(Exception ex) {}
-	   String name=request.getParameter("name");
+	   
+	   HttpSession session=request.getSession();//id 세션 받아오기 
+	   String id=(String)session.getAttribute("id");
+	   String name=(String)session.getAttribute("name");
+	   System.out.println("id="+id);
 	   String subject=request.getParameter("subject");
 	   String content=request.getParameter("content");
 	   String pwd=request.getParameter("pwd");
 	   String pno=request.getParameter("pno");
 	   QnaVO vo=new QnaVO();
+	   vo.setId(id);
 	   vo.setName(name);
 	   vo.setSubject(subject);
 	   vo.setContent(content);
@@ -75,7 +88,66 @@ public class QnaModel {
    }
    
    
-   
+   // board_reply/detail.do
+   @RequestMapping("qna/detail.do")
+   public String qna_detail(HttpServletRequest request,HttpServletResponse response)
+   {
+	   // board_reply/detail.do?no=${vo.no }
+	   // C/S ==> 주고 받기 
+	   // Client (요청 => 데이터 전송) => ?
+	   // Server (요청 처리 => 결과값 => request,session => setAttribute())
+	   // primary key , 검색어 , id(보안유지 => session) , page
+	   // 장바구니 => 번호 
+	   String q_no=request.getParameter("q_no");
+	  QnaVO vo=QnaDAO.qnaDetailData(Integer.parseInt(q_no));
+	   request.setAttribute("vo", vo);
+	   request.setAttribute("main_jsp", "../qna/detail.jsp");
+	   return "../main/main.jsp";
+   }
+   // .do ==> 처리 (Model)  board_reply/update.do?no=${vo.no } 
+   @RequestMapping("qna/update.do")
+   public String qna_update(HttpServletRequest request,HttpServletResponse response)
+   {
+	   // 출력할 데이터 전송 
+	   String q_no=request.getParameter("q_no");
+	   QnaVO vo=QnaDAO.qnaUpdateData(Integer.parseInt(q_no));
+	   request.setAttribute("vo", vo);
+	   request.setAttribute("main_jsp", "../qna/update.jsp");
+	   return "../main/main.jsp";
+   }
+   // _ok : 화면 출력이 아니고 => 요청 처리 => 이동할 페이지를 재호출 (redirect)
+   // board_reply/update_ok.do
+   @RequestMapping("qna/update_ok.do")
+   public String qna_update_ok(HttpServletRequest request,HttpServletResponse response)
+   {
+	   try
+	   {
+            request.setCharacterEncoding("UTF-8"); // 한글 처리 		   
+	   }catch(Exception ex) {}
+	   String id=request.getParameter("id");
+	   String subject=request.getParameter("subject");
+	   String content=request.getParameter("content");
+	   String pwd=request.getParameter("pwd");
+	   String q_no=request.getParameter("q_no");
+	   QnaVO vo=new QnaVO();
+	   vo.setName(id);
+	   vo.setSubject(subject);
+	   vo.setContent(content);
+	   vo.setPwd(pwd);
+	   vo.setQ_no(Integer.parseInt(q_no));
+	   // DAO연동 ==> 처리 
+	   QnaDAO.qnaUpdate(vo);
+	   return "redirect:../qna/detail.do?q_no="+vo.getQ_no();
+   }
+   // board_reply/delete.do?no=${vo.no }
+   @RequestMapping("qna/delete.do")
+   public String qna_delete(HttpServletRequest request,HttpServletResponse response)
+   {
+	   String q_no=request.getParameter("q_no");
+	   //DAO 연동 
+	      QnaDAO.qnaDelete(Integer.parseInt(q_no));
+	   return "redirect:../qna/list.do";
+   }
    
 }
 

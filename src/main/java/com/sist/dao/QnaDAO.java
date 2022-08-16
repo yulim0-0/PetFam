@@ -47,6 +47,7 @@ public class QnaDAO {
 			   list=session.selectList("qnaListData",map);
 		   }catch(Exception ex)
 		   {
+			   System.out.println("qnaListData : error");
 			   ex.printStackTrace();
 		   }
 		   finally
@@ -77,7 +78,8 @@ public class QnaDAO {
 			   session.insert("qnaInsert",vo);
 		   }catch(Exception ex)
 		   {
-			   ex.printStackTrace();
+			   System.out.println("qnaInsert : error");
+			   	ex.printStackTrace();
 		   }
 		   finally
 		   {
@@ -101,6 +103,7 @@ public class QnaDAO {
 			   total=session.selectOne("qnaTotalPage");
 		   }catch(Exception ex)
 		   {
+			   System.out.println("qnaTotalPage : error");
 			   ex.printStackTrace();
 		   }
 		   finally
@@ -145,6 +148,7 @@ public class QnaDAO {
 			   list=session.selectList("qnaAdminData");
 		   }catch(Exception ex)
 		   {
+			   System.out.println("qnaAdminData : error");
 			   ex.printStackTrace();
 		   }
 		   finally
@@ -169,9 +173,12 @@ public class QnaDAO {
 		   try
 		   {
 			   session=ssf.openSession();// getConnection() : 미리 생성된 Connection주소 읽기 
+			   session.update("qnaHitIncrement",q_no);// 조회수 증가
+			   session.commit();
 			   vo=session.selectOne("qnaDetailData", q_no);
 		   }catch(Exception ex)
 		   {
+			   System.out.println("qnaDetailData: error");
 			   ex.printStackTrace();
 		   }
 		   finally
@@ -216,6 +223,7 @@ public class QnaDAO {
 			   session.commit();
 		   }catch(Exception ex)
 		   {
+			   System.out.println("qnaInsertOk: error");
 			   session.rollback();
 			   ex.printStackTrace();
 		   }
@@ -223,6 +231,83 @@ public class QnaDAO {
 		   {
 			   if(session!=null)
 				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
+		   }
+	   }
+	   
+	   public static QnaVO qnaUpdateData(int q_no)
+	   {
+		   QnaVO vo=null;
+		   SqlSession session=null;
+			  
+		   try
+		   {
+			   session=ssf.openSession();// getConnection() : 미리 생성된 Connection주소 읽기 
+			   vo=session.selectOne("qnaDetailData", q_no);
+		   }catch(Exception ex)
+		   {
+			   System.out.println("qnaUpdateData: error");
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
+		   }
+		   return vo;
+	   }
+	   /*
+	    *   <update id="boardReplyUpdate" parameterType="BoardReplyVO">
+			    UPDATE project_replyBoard SET
+			    name=#{name},subject=#{subject},content=#{content}
+			    WHERE no=#{no}
+			  </update>
+	    */
+	   public static void qnaUpdate(QnaVO vo)
+	   {
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   session.update("qnaUpdate",vo);
+		   }catch(Exception ex)
+		   {
+			   System.out.println("qnaUpdate: error");
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+	   }
+	   
+	   /*
+	    *   <select id="boardGetGroupId" resultType="int" parameterType="int">
+			    SELECT group_id FROM project_replyBoard
+			    WHERE no=#{no}
+			  </select>
+			  <delete id="boardDelete" parameterType="int">
+			   DELETE FROM project_replyBoard
+			   WHERE group_id=#{group_id}
+			  </delete>
+	    */
+	   public static void qnaDelete(int q_no)
+	   {
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   int gi=session.selectOne("qnaGetGroupId", q_no);
+			   session.delete("qnaDelete",gi);
+		   }catch(Exception ex)
+		   {
+			   System.out.println("qnaDelete: error");
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
 		   }
 	   }
 }

@@ -22,8 +22,15 @@ NAME       NOT NULL VARCHAR2(20)
  */
 public class QnaVO {
 	private int q_no,hit,group_id,isreply,group_step,group_tab;
-	private String name,subject,content,pwd,dbday;
+	private String name,subject,content,pwd,dbday,id;
 	private Date regdate;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getQ_no() {
 		return q_no;
 	}

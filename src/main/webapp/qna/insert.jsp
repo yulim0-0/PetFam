@@ -10,12 +10,6 @@
 <script type="text/javascript">
 $(function(){
 	$('#writeBtn').click(function(){
-		let name=$('#name').val();
-		if(name.trim()=="")
-		{
-			$('#name').focus();
-			return;
-		}
 		
 		let subject=$('#subject').val();
 		if(subject.trim()=="")
@@ -64,9 +58,9 @@ $(function(){
 	     <form method=post action="../qna/insert_ok.do" id="frm">
 	      <table class="table">
 	        <tr>
-	          <th width=20% class="text-right">이름</th>
-	          <td width=80%>
-	            <input type=text name=name size=15 class="input-sm" id="name">
+	          <th width=20% class="text-right">작성자</th>
+	          <td width=80%>${id }
+	             <input type=hidden name=id size=50 class="input-sm" id="id" value="${vo.id }">
 	          </td>
 	        </tr>
 	        <tr>

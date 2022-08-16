@@ -129,8 +129,8 @@ $(function(){
          <td width=30% class="text-center">${vo.dbday }</td>
        </tr>
        <tr>
-         <th width=20% class="text-center">이름</th>
-         <td width=30% class="text-center">${vo.name }</td>
+         <th width=20% class="text-center">작성자</th>
+         <td width=30% class="text-center">${vo.id }</td>
          <th width=20% class="text-center">조회수</th>
          <td width=30% class="text-center">${vo.hit }</td>
        </tr>
