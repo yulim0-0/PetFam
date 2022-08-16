@@ -56,7 +56,7 @@
 										<a href="#"><span>마이페이지</span> <i class="bi bi-chevron-right"></i></a>
 										<ul>
 											<li><a href="../mypage/myinfo.do">나의정보</a></li>
-											<li><a href="#">비밀번호 변경</a></li>
+											<li><a href="../mypage/myinfo_edit.do">나의정보 수정</a></li>
 										</ul>
 									</li>
 									<li><a href="../mypage/mybooking.do">예약 내역</a></li>

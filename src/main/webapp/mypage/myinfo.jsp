@@ -16,7 +16,7 @@
 
 		<div id="demo">
 			<div class="table-responsive-vertical shadow-z-1"
-				style="width: 800px; margin: 0 auto;">
+				style="width: 1000px; margin: 0 auto;">
 				<!-- Table starts here -->
 				<table id="table" class="table table-hover table-mc-light-blue">
 					<c:forEach var="vo" items="${list }">

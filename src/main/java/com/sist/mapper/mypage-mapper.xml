@@ -17,21 +17,31 @@ GOOD_COUNT          NUMBER
 ID                  VARCHAR2(20)  
 NAME       NOT NULL VARCHAR2(20)  
 RCOUNT              NUMBER    -->
- <!-- 게시글 목록 -->
- <select id="userWriteData" resultType="PboardVO" parameterType="string">
- 	SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
- 	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
- 	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
- 	FROM pbo_4 ))
- 	WHERE id=#{id}
- </select>
+<!-- 게시글 목록 -->
+<select id="userWriteData" resultType="PboardVO" parameterType="string">
+	SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
+	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
+	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
+	FROM pbo_4 ))
+	WHERE id=#{id}
+</select>
  
-  <!-- 게시글 상세보기 -->
- <select id="userWriteDetailData" resultType="PboardVO" parameterType="int">
- 	SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
- 	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
- 	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
- 	FROM pbo_4 ))
- 	WHERE p_no=#{p_no}
- </select>
+<!-- 게시글 상세보기 -->
+<select id="userWriteDetailData" resultType="PboardVO" parameterType="int">
+	SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
+	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
+	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
+	FROM pbo_4 ))
+	WHERE p_no=#{p_no}
+</select>
+
+<!-- 개인정보 수정 -->
+<select id="userInfoEdit" resultType="UserVO" parameterType="string">
+	SELECT * FROM user_4 WHERE id=#{id}
+</select>
+
+<!-- 개인정보 수정 처리 -->
+<update id="userEdit" parameterType="UserVO">
+	UPDATE user_4 SET name=#{name}, gen
+</update>
 </mapper>

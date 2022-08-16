@@ -9,13 +9,13 @@
 
 function ck_email(){
         var email = document.getElementById("email")
-        var MsgId = document.getElementById("MsgId")
+        var MsgId = document.getElementById("emailcheck_msg")
         var isEmail = /([\w\-]+\@[\w\-]+\.[\w\-]+)/
 
         if(!isEmail.test(email.value)){
-            MsgId.style.display="block";
-            MsgId.className='error'
-            MsgId.innerHTML="이메일 형식을 확인하세요"
+            email.style.display="block";
+            email.className='error'
+            email.innerHTML="이메일 형식을 확인하세요"
             email.focus()
             return false;
         } else{

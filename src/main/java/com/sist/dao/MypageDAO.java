@@ -39,6 +39,22 @@ public class MypageDAO {
 		return list;
 	}
 	
+	public static List<UserVO> userInfoEdit(String id)
+	{
+		List<UserVO> list=null;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("userInfoEdit",id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	
 	// 커뮤니티 작성 글 목록
 	public static List<PboardVO> userWriteData(String id)
 	{

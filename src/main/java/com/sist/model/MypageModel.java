@@ -28,6 +28,34 @@ public class MypageModel {
 		return "../main/main.jsp";
 	}
 	
+	@RequestMapping("mypage/myinfo_edit.do")
+	public String user_info_edit(HttpServletRequest request, HttpServletResponse response)
+	{	
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		List<UserVO> list=MypageDAO.userInfoEdit(id);
+		request.setAttribute("list", list);
+		request.setAttribute("main_jsp", "../mypage/myinfo_edit.jsp");
+		return "../main/main.jsp";
+	}
+	
+	@RequestMapping("user/myinfo_edit_ok.do")
+	public String user_myinfo_edit_ok(HttpServletRequest request, HttpServletResponse response)
+	{
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (Exception e) {
+			String id=request.getParameter("id");
+			String pwd=request.getParameter("pwd");
+			String name=request.getParameter("name");
+			String phone=request.getParameter("phone");
+			String birthday=request.getParameter("birthday");
+			String zipcode=request.getParameter("zipcode");
+			String addr1=request.getParameter("addr1");
+			String addr2=request.getParameter("addr2");
+			String gender=request.getParameter("gender");
+		}
+	}
 	@RequestMapping("mypage/mybooking.do")
 	public String user_booking(HttpServletRequest request, HttpServletResponse response)
 	{
@@ -35,12 +63,6 @@ public class MypageModel {
 		return "../main/main.jsp";
 	}
 	
-	@RequestMapping("mypage/myinfo_edit.do")
-	public String user_info_edit(HttpServletRequest request, HttpServletResponse response)
-	{
-		request.setAttribute("main_jsp", "../mypage/myinfo_edit.jsp");
-		return "../main/main.jsp";
-	}
 	
 	@RequestMapping("mypage/mywrite.do")
 	public String user_write(HttpServletRequest request, HttpServletResponse response)
