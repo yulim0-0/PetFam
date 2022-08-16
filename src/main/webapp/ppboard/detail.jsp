@@ -139,6 +139,18 @@ $(function(){
          <th width=20% class="text-center">제목</th>
          <td colspan="3">${vo.subject }</td>
        </tr>
+         <c:if test="${vo.filecount>0 }">
+          <tr>
+            <th width=20% class="text-center danger">첨부파일</th>
+            <td colspan="3" class="text-left">
+              <ul>
+               <c:forEach var="file" items="${fList }" varStatus="s">
+                 <li><a href="download.do?fn=${file }">${file }</a>&nbsp;(${sList[s.index]}Bytes)</li>
+               </c:forEach>
+              </ul>
+            </td>
+          </tr>
+        </c:if>
        <tr>
         <td colspan="4" height="200" valign="top" class="text-left">
           <pre style="white-space: pre-wrap;background-color: white;border:none">${vo.content }</pre>

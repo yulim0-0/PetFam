@@ -75,6 +75,26 @@ $(function(){
 		})
 	})
 })
+
+let fileIndex=0;
+$(function(){
+    $('#addBtn').click(function(){
+        $('#user-table').append(
+           '<tr id=f'+fileIndex+'>'
+          +'<td width="15%" class="text-right">파일'+(fileIndex+1)+'</td>'
+          +'<td width="85%"><input type="file" name=files['+fileIndex+']>'
+          +'</td></tr>'
+        );
+        fileIndex=fileIndex+1;
+    });
+    $('#removeBtn').click(function(){
+        if(fileIndex>0)
+        {
+            $('#f'+(fileIndex-1)).remove();
+            fileIndex=fileIndex-1;
+        }
+    });
+});
 </script>
 </head>
 <body>
@@ -118,6 +138,21 @@ $(function(){
             <textarea rows="10" cols="50" name=content id="content">${vo.content }</textarea>
           </td>
         </tr>
+        <tr>
+         <td colspan="2">
+             <table class="table">
+               <tr>
+                <td class="text-right">
+                  <input type=button value="add" class="btn btn-xs btn-success" id="addBtn">
+                  <input type=button value="remover" class="btn btn-xs btn-warning" id="removeBtn">
+                </td>
+               </tr>
+             </table>
+             <table class="table" id="user-table">
+               
+             </table>
+         </td>
+       </tr>
         <tr>
           <th width=20% class="text-right">비밀번호</th>
           <td width=80% class="inline">

@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.ppboard-mapper">
 <select id="ppboardListData" resultType="PPboardVO" parameterType="hashmap">
-    SELECT pp_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
-    FROM (SELECT pp_no,subject,id,regdate,hit,rcount,rownum as num 
-    FROM (SELECT pp_no,subject,id,regdate,hit,rcount 
+    SELECT pp_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,content,rcount,num
+    FROM (SELECT pp_no,subject,id,regdate,hit,content,rcount,rownum as num 
+    FROM (SELECT pp_no,subject,id,regdate,hit,content,rcount 
     FROM ppbo_4 ORDER BY pp_no DESC))
     WHERE num BETWEEN #{start} AND #{end}
   </select> 
@@ -14,9 +14,9 @@
   <!--  map.get("start") -->
   <!--  등록 : 시퀀스  selectKey insert-->
   <insert id="ppboardInsert" parameterType="PPboardVO">
-    INSERT INTO ppbo_4(pp_no,name,id,subject,content,pwd) 
+    INSERT INTO ppbo_4(pp_no,name,id,subject,content,pwd,filename,filesize,filecount) 
     VALUES((SELECT NVL(MAX(pp_no)+1,1) FROM ppbo_4),
-   #{name},#{id}, #{subject},#{content},#{pwd}
+   #{name},#{id}, #{subject},#{content},#{pwd},#{filename},#{filesize},#{filecount}
     )
   </insert>
   <!--  vo.getName() -->
@@ -41,7 +41,7 @@
   <!-- save(FreeboardVO vo) -->
   <update id="ppboardUpdate" parameterType="PPboardVO">
     UPDATE ppbo_4 SET
-    id=#{id},subject=#{subject},content=#{content}
+    id=#{id},subject=#{subject},content=#{content},filename=#{filename},filesize=#{filesize},filecount=#{filecount}
     WHERE pp_no=#{pp_no}
   </update>
   <!-- delete(int no) -->
@@ -49,4 +49,10 @@
     DELETE FROM ppbo_4
     WHERE pp_no=#{pp_no}
   </delete>
+  <!--file info -->
+  <select id="ppboardFileInfoData" resultType="PPboardVO" parameterType="int">
+  SELECT filename,filecount,filesize
+  FROM ppbo_4
+  WHERE pp_no=#{pp_no}
+  </select>
 </mapper>

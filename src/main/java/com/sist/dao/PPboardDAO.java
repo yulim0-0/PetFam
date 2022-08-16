@@ -232,6 +232,30 @@ public class PPboardDAO {
 	   }
 	   return result;
    }
+   /*
+    *  <select id="ppboardFileInfoData" resultType="PPboardVO" parameterType="int">
+		  SELECT filename,filecount,filesize
+		  FROM ppbo_4
+		  WHERE pp_no=#{pp_no}
+ 	   </select>
+    */
+   public static PPboardVO ppboardFileInfoData(int pp_no)
+   {
+	   PPboardVO vo=new PPboardVO();
+	   SqlSession session=null;
+	  try {
+		  session=ssf.openSession();
+		   vo=session.selectOne("ppboardFileInfoData",pp_no);
+	} catch (Exception e) {
+		 System.out.println("ppboardFileInfoData : error");
+		e.printStackTrace();
+	}
+	  finally {
+		if(session!=null)
+			session.close();
+	}
+	  return vo;
+   }
 }
 
 

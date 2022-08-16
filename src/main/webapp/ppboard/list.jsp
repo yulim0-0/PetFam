@@ -63,6 +63,7 @@
 .pagination li.active a:hover {
     color: #FFFFFF;
 }
+
 </style>
 </head>
 <body>
@@ -111,17 +112,8 @@
         <div class='ptable-card'>
 	          <h2>Pet Pride Board</h2>
 		          <table class='ptable'>
-			           <!-- <thead>
-			              <tr>
-					          <td width="10%" class="text-center">번호</td>
-					          <td width="45%" class="text-center">제목</td>
-					          <td width="15%" class="text-center">작성자</td>
-					          <td width="20%" class="text-center">작성일</td>
-					          <td width="10%" class="text-center">조회수</td>
-					        </tr>
-			            </thead> -->
 			     <c:forEach var="vo" items="${list }">        
-		<!-- 	<div class="col-lg-4 col-md-3">  -->
+		<!-- <div class="col-lg-4 col-md-3">  -->
                     <div class="row">
                        <!--  <div class="col-lg-4 col-md-4 col-sm-4"> -->
                             <div class="blog__item">

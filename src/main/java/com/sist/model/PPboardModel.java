@@ -19,7 +19,7 @@ public class PPboardModel {
 		   page="1";
 	   int curpage=Integer.parseInt(page);
 	   Map map=new HashMap();
-	   int rowSize=9;
+	   int rowSize=4;
 	   int start=(curpage*rowSize)-(rowSize-1);
 	   int end=curpage*rowSize;
 	   map.put("start", start);

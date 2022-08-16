@@ -43,6 +43,26 @@ $(function(){
 		$('#frm').submit();
 	})
 })
+
+let fileIndex=0;
+$(function(){
+    $('#addBtn').click(function(){
+        $('#user-table').append(
+           '<tr id=f'+fileIndex+'>'
+          +'<td width="15%" class="text-right">파일'+(fileIndex+1)+'</td>'
+          +'<td width="85%"><input type="file" name=files['+fileIndex+']>'
+          +'</td></tr>'
+        );
+        fileIndex=fileIndex+1;
+    });
+    $('#removeBtn').click(function(){
+        if(fileIndex>0)
+        {
+            $('#f'+(fileIndex-1)).remove();
+            fileIndex=fileIndex-1;
+        }
+    });
+}); 
 </script>
 </head>
 <body>
@@ -83,6 +103,21 @@ $(function(){
 	            <textarea rows="10" cols="50" name=content id="content"></textarea>
 	          </td>
 	        </tr>
+	         <tr>
+		         <td colspan="2">
+		             <table class="table">
+		               <tr>
+		                <td class="text-right">
+		                  <input type=button value="add" class="btn btn-xs btn-success" id="addBtn">
+		                  <input type=button value="remove" class="btn btn-xs btn-warning" id="removeBtn">
+		                </td>
+		               </tr>
+		             </table>
+		             <table class="table" id="user-table">
+		             
+		             </table>
+         		</td>
+       </tr>
 	        <tr>
 	          <th width=20% class="text-right">비밀번호</th>
 	          <td width=80%>
@@ -91,7 +126,7 @@ $(function(){
 	        </tr>
 	        <tr>
 	          <td colspan="2" class="text-center">
-	            <input type=button value="글쓰기" class="btn btn-sm btn-success" id="writeBtn">
+	           <!--  <input type=button value="글쓰기" class="btn btn-sm btn-success" id="writeBtn"> -->
 	            <input type=button value="취소" class="btn btn-sm btn-info"
 	              onclick="javascript:history.back()">
 	          </td>
