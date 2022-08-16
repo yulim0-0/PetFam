@@ -17,14 +17,13 @@
 }
 </style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
-
 <script type="text/javascript">
 $(function() {
     $('#cBtn').click(function(){
-	    let id=$('#id').val();
+	    let id=$('#idck').val();
 	    if(id.trim()=="")
 	    {
-		    $('#id').focus();
+		    $('#idck').focus();
 		    return;
 	    }
 	    
@@ -54,7 +53,7 @@ $(function() {
     })	
     
     $('#okBtn').on("click",function(){
-	    parent.join_frm.id.value=$('#id').val();
+	    parent.join_frm.id.value=$('#idck').val();
 	    parent.Shadowbox.close();
     })
 })
@@ -67,7 +66,7 @@ $(function() {
             <table class="Table">
                 <tr>
                     <td>
-                        입력 : <input type=text name=id id=id size=15 class="input-sm">
+                        입력 : <input type=text name=idck id=idck size=15 class="input-sm">
                         <input type=button value="중복체크" class="btn btn-sm btn-primary" id="cBtn">
                     </td>
                 </tr>

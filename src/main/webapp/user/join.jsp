@@ -12,98 +12,10 @@
 <script type="text/javascript" src="shadow/js/shadowbox.js"></script>
 
 
-<link rel="stylesheet" href="joindist/join_style.css">
+<link rel="stylesheet" href="css/join_style.css">
 <link rel="stylesheet" href="shadow/css/shadowbox.css">
 
-<script type="text/javascript">
-	Shadowbox.init({
-		players : [ 'iframe' ]
-	})
-	$(function() {
-		$('#checkBtn').click(function() {
-			Shadowbox.open({
-				content : '../user/idcheck.do',
-				player : 'iframe',
-				title : '아이디 중복체크',
-				width : 400,
-				height : 200
-			})
-		})
-		$('#postBtn').click(function() {
-			// 우편번호 검색 처리 
-			new daum.Postcode({
-				oncomplete : function(data) {
-					$('#zipcode').val(data.zonecode)
-					$('#addr1').val(data.address)
-				}
-			}).open()
-		})
-		
-		// 유효성 검사
-	    $('#eBtn').click(function(){
-		    let email=$('#email').val();
-		    if(email.trim()=="")
-			{
-			 $("email").focus();
-			 $('#ePrint').text("이메일을 입력하세요")
-			 return;
-			}
-		    $.ajax({
-			    type:'post',
-			    url:'../user/email_check.do',
-			    data:{"email":email},
-			    success:function(result)
-			    {
-				    let count=parseInt(result.trim())
-				    if(count==0)
-					{
-					    $('#ePrint').text("사용가능한 이메일입니다");
-					    $('#email').attr('disabled',true);
-					}
-				    else
-					{
-					    $('#ePrint').text("사용중인 이메일입니다");
-					    $('#email').val("")
-					    $('#email').focus()
-					}
-			    }
-		    })
-	    })
-    
-	     $('#tBtn').click(function(){
-	        let phone=$('#phone').val();
-	        if(phone.trim()=="")
-	        {
-	         $("phone").focus();
-	         $('#tPrint').text("전화번호를 입력하세요")
-	         return;
-	        }
-	        $.ajax({
-	            type:'post',
-	            url:'../user/phone_check.do',
-	            data:{"phone":phone},
-	            success:function(result)
-	            {
-	                let count=parseInt(result.trim())
-	                if(count==0)
-	                {
-	                    $('#ePrint').text("사용가능한 번호입니다");
-	                    $('#phone').attr('disabled',true);
-	                }
-	                else
-	                {
-	                    $('#tPrint').text("사용중인 번호입니다");
-	                    $('#phone').val("")
-	                    $('#phone').focus()
-	                }
-	            }
-	        })
-	    })
-	    $('#joinBtn').click(function(){
-	    	$('#join_frm').submit();
-	    })
-	})
-</script>
+
 </head>
 <body>
 <main class="main">
@@ -135,15 +47,20 @@
 				
 			<div class="row">
 				<div class="input-group input-group-icon">
-					<input class="row-100" type="password" name="pwd_check" id="pwd_check" placeholder="비밀번호 확인" />
+					<input class="row-100" type="password" name="pwd_check" id="pwd_check" placeholder="비밀번호 확인" onblur="ck_pwd2()" />
+					<span style="display: none;" id="pwdck_msg"></span>
+					
 					<div class="input-icon" style="margin-top : 4px; ">
 						<i class="fa fa-key"></i>
 					</div>
 				</div>
 			</div>
-				
-			<h4>Private Info</h4>
 			
+			<div class="row">
+			</div>	
+				
+			
+			<h4>Private Info</h4>
 			<!-- 이름 -->
 			<div class="row">
 				<div class="input-group input-group-icon">
@@ -153,13 +70,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
 			
+			<div class="row">
 				<!-- 생년월일 -->
 				<div class="col-half" style="padding-top : 5px">
 					<input type="date" name=birthday id="birthday" placeholder="생년월일" />
 				</div>
-
+	
 				<!-- 성별 -->
 				<div class="col-half">
 					<div class="input-group">
@@ -180,7 +97,8 @@
 				</div>
 				<div class="col-33">
 					<input type="button" id="tBtn" value="전화번호 확인">
-	        		&nbsp;<span style="color:blue" id="tPrint"></span>
+					<span style="display: none;" id="phoneck_msg"></span>
+	        		<!-- &nbsp;<span style="color:blue" id="tPrint"></span> -->
 				</div>
 			</div>
 			
@@ -195,13 +113,14 @@
 				</div>
 				<div class="col-33">
 					<input type="button" id="eBtn" value="이메일 확인" />
-					&nbsp;<span style="color:blue" id="ePrint"></span>
+					<span style="display: none;" id="emailcheck_msg"></span>
+					<!-- &nbsp;<span style="color:blue" id="ePrint"></span> -->
 				</div>
 			</div>
 
+
 			<!-- 주소 -->
 			<h4>Address</h4>
-			
 			<div class="row">
 					<div class="col-66 input-group input-group-icon">
 						<input type="text" name=zipcode id=zipcode placeholder="우편번호" readonly />
@@ -222,6 +141,8 @@
 					</div>
 				</div>
 			</div>
+			
+			
 			<div class="row">
 				<div class="input-group input-group-icon ">
 					<input class="col-100" type="text" name=addr2 id=addr2 placeholder="상세주소" />
@@ -257,7 +178,7 @@
 	<!-- partial -->
 	<script
 		src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	<script src="joindist/script.js"></script>
+	<script src="js/join.js"></script>
 </main>
 </body>
 </html>

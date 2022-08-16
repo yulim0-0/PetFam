@@ -46,7 +46,8 @@
 			<table id="keywords" cellspacing="0" cellpadding="0">
 				<thead>
 					<tr>
-						<th><span>Category</span></th>
+						<th></th>
+						<th><span>No</span></th>
 						<th><span>Subject</span></th>
 						<th><span>Writer</span></th>
 						<th><span>Clicks</span></th>
@@ -56,9 +57,10 @@
 				
 				<c:forEach var="vo" items="${list }">
 					<tbody>
-						<tr onclick="location.href='../pboard/detail.do?p_no=${vo.p_no }'" style="cursor:pointer">
+						<tr>
+							<td><input type=checkbox /></td>
 							<td style="width:10%">${vo.p_no }</td>
-							<td style="text-align : left;">${vo.subject }</td>
+							<td onclick="location.href='../pboard/detail.do?p_no=${vo.p_no }'" style="cursor:pointer; text-align : left;">${vo.subject }</td>
 							<td>${vo.id }</td>
 							<td>${vo.hit }</td>
 							<td>${vo.dbday }</td>
@@ -67,27 +69,27 @@
 				</c:forEach>
 				
 				<!-- paging start -->
-					<div class="pagination">
-						  <ul>
-					          <c:if test="${startPage>1 }">
-					            <li><a href="../admin/admin_community.do?page=${startPage-1 }">&lt;</a></li>
-					          </c:if>
-					          <c:forEach var="i" begin="${startPage }" end="${endPage }">
-					            <c:if test="${i==curpage }">
-					            	<li><a href="../admin/admin_community.do?page=${i }">${i }</a>
-					            </c:if>
-					            
-					            <c:if test="${i!=curpage }">
-					            	<li><a href="../admin/admin_community.do?page=${i }">${i }</a>
-					            </c:if>
-					            
-					          </c:forEach>
-					          
-					          <c:if test="${endPage<totalpage }">
-					            <li><a href="../admin/admin_community.do?page=${endPage+1 }">&raquo;</a></li>
-					          </c:if>
-					      </ul>
-					 </div>
+				<div class="pagination">
+					  <ul>
+				          <c:if test="${startPage>1 }">
+				            <li><a href="../admin/admin_community.do?page=${startPage-1 }">&lt;</a></li>
+				          </c:if>
+				          <c:forEach var="i" begin="${startPage }" end="${endPage }">
+				            <c:if test="${i==curpage }">
+				            	<li><a href="../admin/admin_community.do?page=${i }">${i }</a>
+				            </c:if>
+				            
+				            <c:if test="${i!=curpage }">
+				            	<li><a href="../admin/admin_community.do?page=${i }">${i }</a>
+				            </c:if>
+				            
+				          </c:forEach>
+				          
+				          <c:if test="${endPage<totalpage }">
+				            <li><a href="../admin/admin_community.do?page=${endPage+1 }">&raquo;</a></li>
+				          </c:if>
+				      </ul>
+				 </div>
 			</table>
 		</div>
 	</main>

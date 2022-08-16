@@ -1,14 +1,14 @@
+"use strict";
+
 // original:
 // https://www.airpair.com/angularjs/posts/angularjs-from-prototyping-to-functional-code
-
-
 // file: scripts/app.js 
-var app = angular.module('clientsApp', []);
+var app = angular.module('clientsApp', []); //
 
-//
 app.directive('mdlCheckbox', function ($timeout) {
   return {
     restrict: 'E',
+
     /*scope: {
         ngModel: '='
     },*/
@@ -27,23 +27,39 @@ app.directive('mdlCheckbox', function ($timeout) {
           $timeout(function () {
             componentHandler.upgradeElements(element[0]);
           }, 0);
-        } };
+        }
+      };
+    }
+  };
+}); // file: scripts/controllers/clientsCtrl.js
 
-    } };
-
-});
-
-// file: scripts/controllers/clientsCtrl.js
 app.controller('ClientsCtrl', function ($scope, Clients) {
-
-  $scope.clients = [
-  { id: 1, name: 'John', age: 25, percentage: 0.3 },
-  { id: 2, name: 'Jane', age: 39, percentage: 0.18 },
-  { id: 3, name: 'Jude', age: 51, percentage: 0.54 },
-  { id: 4, name: 'James', age: 18, percentage: 0.32 },
-  { id: 5, name: 'John', age: 22, percentage: 0.91 }];
-
-
+  $scope.clients = [{
+    id: 1,
+    name: 'John',
+    age: 25,
+    percentage: 0.3
+  }, {
+    id: 2,
+    name: 'Jane',
+    age: 39,
+    percentage: 0.18
+  }, {
+    id: 3,
+    name: 'Jude',
+    age: 51,
+    percentage: 0.54
+  }, {
+    id: 4,
+    name: 'James',
+    age: 18,
+    percentage: 0.32
+  }, {
+    id: 5,
+    name: 'John',
+    age: 22,
+    percentage: 0.91
+  }];
   /* Clients.all().success(function(data) {
       $scope.clients = data;
    });*/
@@ -74,17 +90,15 @@ app.controller('ClientsCtrl', function ($scope, Clients) {
          $scope.clients.splice(index, 1); 
      }); */
   };
+
   $scope.update = function (client) {
     $scope.activeClient = null;
     /*Clients.update(client).success(function(data) { 
        $scope.activeClient = null; 
     });*/
   };
+}); // scripts/factories/clients.js 
 
-});
-
-
-// scripts/factories/clients.js 
 app.factory('Clients', function ($http) {
   var BASE_URL = '/clients';
   return {
@@ -99,21 +113,16 @@ app.factory('Clients', function ($http) {
     },
     delete: function (id) {
       return $http.delete(BASE_URL + '/' + id);
-    } };
+    }
+  };
+}); // scripts/filters/percentage.js 
 
-});
-
-
-// scripts/filters/percentage.js 
 app.filter('percentage', function () {
   return function (value) {
     return value * 100 + ' %';
   };
-});
+}); // scripts/directives/integer.js
 
-
-
-// scripts/directives/integer.js
 app.directive('integer', function () {
   var INTEGER_REGEXP = /^\-?\d+$/;
   return {
@@ -124,20 +133,6 @@ app.directive('integer', function () {
         if (INTEGER_REGEXP.test(viewValue)) return true;
         return false;
       };
-    } };
-
+    }
+  };
 });
-
-
-
-//============================
-// todo:
-
-// добавить валидацию в строки таблицы
-
-// сделать подсветку найденного результата
-// https://codeforgeek.com/2014/12/highlight-search-result-angular-filter/
-// http://stackoverflow.com/questions/15519713/highlighting-a-filtered-result-in-angularjs
-
-// проблема с иниицализацией checkbox после angular-поиска
-// http://stackoverflow.com/questions/31278781/material-design-lite-integration-with-angularjs

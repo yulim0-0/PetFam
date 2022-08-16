@@ -8,23 +8,13 @@
 <meta charset="UTF-8">
 <title>CodePen - Material Design Table</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel='stylesheet' href='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css'>
+<!-- <link rel='stylesheet' href='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css'>-->
+<link rel="stylesheet" href="css/admin_user_indigo-pink.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 <link rel="stylesheet" href="css/admin_user.css">
-<style>
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-*{
-	font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;
- 	color: #212529;
-}
+<script>
 
-</style>
+</script>
 </head>
 <body>
 <main class="main">
@@ -38,7 +28,7 @@
 				</div>
 			</div>
 			<div class="mdl-cell mdl-cell--9-col">
-				<table style="border-radius:30px;" class="mdl-data-table mdl-data-table_full mdl-js-data-table mdl-shadow--4dp">
+				<table style="" class="mdl-data-table mdl-data-table_full mdl-js-data-table mdl-shadow--4dp">
 					<colgroup>
 						<col style="width: 1px" />
 						<col style="width: 1px" />
@@ -57,8 +47,7 @@
 							</th>
 							<th>ID</th>
 							<th>Name</th>
-							<th class="mdl-data-table__cell--non-numeric">Addr</th>
-							
+							<th class="mdl-data-table__cell--non-numeric">Address</th>
 							<th>BirthDay</th>
 							<th>JoinDate</th>
 							<th class="controls mdl-data-table__cell--non-numeric">Actions</th>
@@ -74,9 +63,7 @@
 							<td>${vo.name }
 							<td class="mdl-data-table__cell--non-numeric">[${vo.zipcode }] ${vo.addr1 } ${vo.addr2 }</td>
 							<td>${vo.birthday }
-							<td>
-									${vo.joindate }
-							</td>
+							<td>${vo.joindate }</td>
 							<td class="controls mdl-data-table__cell--non-numeric">
 								<button style="background:#192f61;"
 									class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect"
@@ -138,9 +125,9 @@
 					</div>
 					<div class="mdl-card__actions mdl-card--border">
 						<button
-							class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-							ng-click="create()" ng-disabled="clientForm.$invalid">
-							Save
+						class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+						ng-click="create()" ng-disabled="clientForm.$invalid">
+						Save
 						</buttin>
 					</div>
 				</form>
@@ -150,7 +137,6 @@
 	<!-- partial -->
 	<script src='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js'></script>
 	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js'></script>
-		
 	<!-- <script src="js/admin_user.js"></script> -->
 </main>
 </body>

@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') 
+    	format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 body {
   box-sizing: border-box;
@@ -6,6 +14,25 @@ body {
   position: relative;
 }
 
+a {
+  color: #f34100;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ef7f4d;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-primary {
+  font-family: "GmarketSansMedium", "Noto Sans" sans-serif;
+}
 .mdl-data-table {
   margin-bottom: 12px;
 }
@@ -26,4 +53,13 @@ body {
 
 .app-page {  
   margin: 0 auto;
+}
+
+.mdl-data-table th ,
+.mdl-data-table td {
+	text-align : center;
+}
+.mdl-data-table {
+	border : 0px;
+	border-radius:30px;
 }

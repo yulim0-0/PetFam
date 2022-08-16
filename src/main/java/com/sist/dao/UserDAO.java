@@ -22,7 +22,7 @@ public class UserDAO {
 		}
 	}
 	
-	public static int userIdCheck(String id)
+	public int userIdCheck(String id)
 	{
 		int count=0;
 		SqlSession session=null;

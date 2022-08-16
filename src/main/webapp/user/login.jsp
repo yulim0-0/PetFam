@@ -5,10 +5,16 @@
 <head>
   <meta charset="UTF-8">
   <title>LOGIN</title>
-  <link rel="stylesheet" href="logindist/login_style.css">
+  <link rel="stylesheet" href="css/login_style.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function() {
+	/* 엔터로 로그인 하기 (엔터 누르면 => 로그인 버튼 클릭으로 작동) */
+	$('#pwd').on('keypress', function(e){ 
+	    if(e.keyCode == '13'){ 
+	        $('#logBtn').click(); 
+	    }
+	}); 
 	$('#logBtn').on("click",function(){
 		let id=$('#id').val();
 		if(id.trim()=="")
@@ -49,7 +55,6 @@ $(function() {
 				}
 			}
 		})
-	
 	})
 })
 </script>
@@ -135,7 +140,7 @@ $(function() {
   </div>
 </div>
 <!-- partial -->
-  <script  src="logindist/script.js"></script>
+  <script  src="js/login.js"></script>
 
 </body>
 </html>

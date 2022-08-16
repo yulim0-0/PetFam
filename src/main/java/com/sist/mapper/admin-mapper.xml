@@ -10,12 +10,12 @@
 		SELECT * FROM user_4 WHERE id=#{id}
 	</select>
 	
-
+	<!-- 전체 쓴 글 목록, 체크 후 일괄 삭제 가능 (예정) -->
 	<select id="userWriteList" resultType="PboardVO" parameterType="hashmap">
 	    SELECT p_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
 	    FROM (SELECT p_no,subject,id,regdate,hit,rcount,rownum as num 
 	    FROM (SELECT p_no,subject,id,regdate,hit,rcount 
-	    FROM pbo_4 ORDER BY p_no ASC))
+	    FROM pbo_4 ORDER BY regdate DESC))
 	    WHERE num BETWEEN #{start} AND #{end}
   	</select> 
 	

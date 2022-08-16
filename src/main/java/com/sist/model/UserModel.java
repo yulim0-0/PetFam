@@ -1,5 +1,4 @@
 package com.sist.model;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,15 +10,18 @@ import com.sist.vo.UserVO;
 
 @Controller
 public class UserModel {
-	// 아이디 중복체크
+	// 아이디 중복체크 모달창 열기
 	@RequestMapping("user/idcheck.do")
 	public String user_idcheck(HttpServletRequest request, HttpServletResponse response) {
 		return "../user/idcheck.jsp";
 	}
+	
+	// 실제 아이디 중복 체크
 	@RequestMapping("user/idcheck_ok.do")
 	public String user_idcheck_ok(HttpServletRequest request, HttpServletResponse response) {
 		String id=request.getParameter("id");
-		int count=UserDAO.userIdCheck(id);
+		UserDAO dao=new UserDAO();
+		int count=dao.userIdCheck(id);
 		request.setAttribute("count", count);
 		return "../user/idcheck_ok.jsp";
 	}
