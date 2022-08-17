@@ -92,4 +92,25 @@ public class BookingDAO {
 		    }
 		    return vo;
 	   }
+	 
+	 public static BookingVO bookingDetailData(int o_no)
+	   {
+		    BookingVO vo=new BookingVO();
+		    SqlSession session=null;
+		    try
+		    {
+		    	session=ssf.openSession();
+		    	vo=session.selectOne("bookingDetailData", o_no);//row
+		    }catch(Exception ex)
+		    {
+		    	System.out.println("bookingDetailData: error");
+		    	ex.printStackTrace();
+		    }
+		    finally
+		    {
+		    	if(session!=null)
+		    		session.close();
+		    }
+		    return vo;
+	   }
 }

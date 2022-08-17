@@ -15,102 +15,39 @@
 
 <link rel="stylesheet" href="../booking/bookingdist/booking_style.css">
 
-<!-- <script type="text/javascript">
-	Shadowbox.init({
-		players : [ 'iframe' ]
-	})
-	$(function() {
-		$('#checkBtn').click(function() {
-			Shadowbox.open({
-				content : '../user/idcheck.do',
-				player : 'iframe',
-				title : '아이디 중복체크',
-				width : 400,
-				height : 200
-			})
-		})
-		$('#postBtn').click(function() {
-			// 우편번호 검색 처리 
-			new daum.Postcode({
-				oncomplete : function(data) {
-					$('#zipcode').val(data.zonecode)
-					$('#addr1').val(data.address)
-				}
-			}).open()
-		})
-		
-		// 유효성 검사
-	    $('#eBtn').click(function(){
-		    let email=$('#email').val();
-		    if(email.trim()=="")
-			{
-			 $("email").focus();
-			 $('#ePrint').text("이메일을 입력하세요")
-			 return;
-			}
-		    $.ajax({
-			    type:'post',
-			    url:'../user/email_check.do',
-			    data:{"email":email},
-			    success:function(result)
-			    {
-				    let count=parseInt(result.trim())
-				    if(count==0)
-					{
-					    $('#ePrint').text("사용가능한 이메일입니다");
-					    $('#email').attr('disabled',true);
-					}
-				    else
-					{
-					    $('#ePrint').text("사용중인 이메일입니다");
-					    $('#email').val("")
-					    $('#email').focus()
-					}
-			    }
-		    })
-	    })
-    
-	     $('#tBtn').click(function(){
-	        let phone=$('#phone').val();
-	        if(phone.trim()=="")
-	        {
-	         $("phone").focus();
-	         $('#tPrint').text("전화번호를 입력하세요")
-	         return;
-	        }
-	        $.ajax({
-	            type:'post',
-	            url:'../user/phone_check.do',
-	            data:{"phone":phone},
-	            success:function(result)
-	            {
-	                let count=parseInt(result.trim())
-	                if(count==0)
-	                {
-	                    $('#ePrint').text("사용가능한 번호입니다");
-	                    $('#phone').attr('disabled',true);
-	                }
-	                else
-	                {
-	                    $('#tPrint').text("사용중인 번호입니다");
-	                    $('#phone').val("")
-	                    $('#phone').focus()
-	                }
-	            }
-	        })
-	    })
-	    $('#joinBtn').click(function(){
-	    	$('#join_frm').submit();
-	    })
-	})
-</script> -->
+<style>
+ .joincontainer{
+    overflow:hidden;
+    height:auto;
+    color:red;
+   }
+    </style>
 </head>
 <body>
 <main class="main">
 
 	<!-- partial:index.partial.html -->
-	<div class="joincontainer">
+	<div class="joincontainer" height=100%>
 		<form method="post" action="" name="join_frm" id="join_frm" >
+			<h4>선택한 상품 정보</h4>
+		
+			<div class="row">
+			<div class="input-group input-group-icon">
+			
+					<img src ="http://${vo.poster }" width=70%>
+					
+				</div>
+				<div class="input-group input-group-icon">
+					<h4>업체명 : ${vo.store }</h4>	
+				</div>
+				<div class="input-group input-group-icon">
+					<h4>상품명 : ${vo.name } </h4>	
+				</div>
+				
+			
+			</div> 
+			
+			
 			
 			<h4>예약자 정보</h4>
 			<!-- 회원ID -->

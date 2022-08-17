@@ -60,6 +60,8 @@ public class BookingModel {
 		return "../main/main.jsp";
 	}
 	
+	
+	
 	@RequestMapping("booking/salon_list.do")
 	public String booking_salon(HttpServletRequest request, HttpServletResponse response)
 	{
@@ -147,11 +149,18 @@ public class BookingModel {
 		   request.setAttribute("main_jsp", "../booking/hos_detail.jsp");
 		   return "../main/main.jsp";
 	   }
-	 @RequestMapping("booking/booking.do")
-	   public String booking(HttpServletRequest request,HttpServletResponse response)
-	   {
-		 	request.setAttribute("main_jsp", "../booking/booking.jsp");
-		 	return "../main/main.jsp";
-	   }
-	}
+	
 
+	 @RequestMapping("booking/booking.do")
+	 public String booking(HttpServletRequest request, HttpServletResponse response)
+	 {
+		  String o_no=request.getParameter("o_no");
+		  
+		   BookingVO vo=BookingDAO.bookingDetailData(Integer.parseInt(o_no));
+		   
+		   request.setAttribute("vo", vo);
+		 
+	 	request.setAttribute("main_jsp", "../booking/booking.jsp");
+	 	return "../main/main.jsp";
+	 }
+}

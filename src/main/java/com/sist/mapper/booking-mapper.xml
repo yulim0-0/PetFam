@@ -17,4 +17,10 @@
    SELECT * FROM ord_4
    WHERE o_no=#{o_no}
  </select>
+ 
+ <select id="bookingDetailData" resultType="BookingVO" parameterType="int">
+ select *
+ from ord_4
+ where o_no=#{o_no}
+ </select>
 </mapper>

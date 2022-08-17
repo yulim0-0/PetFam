@@ -91,10 +91,11 @@
 
                             <div class="cart--area d-flex flex-wrap align-items-center" >
                                 <!-- Add to Cart Form -->
-                               <button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">Add to cart</button>
-                                <form class="cart clearfix d-flex align-items-center" method="post" action="booking.do">
-                                    <button type="submit" name="buy" value="5" class="btn alazea-btn ml-15">BUY NOW </button>
-                                </form>
+                               <button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">찜 하기</button>
+                               
+                               <a href="../booking/booking.do?o_no=${vo.o_no }"><button class="btn alazea-btn ml-15">예약하기</button></a>
+                                   
+             
                                   <div class="wishlist-compare d-flex flex-wrap align-items-center">
                                  <!-- Wishlist & Compare -->
                                  	<a href="#" class="wishlist-btn ml-15"><i class="icon_heart_alt"></i></a>
