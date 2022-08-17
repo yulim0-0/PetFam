@@ -23,4 +23,19 @@
  from ord_4
  where o_no=#{o_no}
  </select>
+ 
+ <!-- 찜하기 -->
+ <insert id="bookingJjimInsert" parameterType="JjimVO">
+ 	 <!-- 자동 증가번호 -->
+   <selectKey keyProperty="j_no" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(j_no)+1,1) as j_no FROM ORD_JJIM_4
+   </selectKey>
+     INSERT INTO ORD_JJIM_4 VALUES(#{j_no},#{id},#{o_no})
+ </insert>
+ 
+ <!-- 찜 여부 확인 -->
+ <select id="bookingJjimCount" resultType="int" parameterType="JjimVO">
+ 	SELECT COUNT(*) FROM ORD_JJIM_4
+ 	WHERE o_no=#{o_no} AND id=#{id}
+ </select>
 </mapper>

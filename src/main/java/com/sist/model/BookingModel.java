@@ -5,11 +5,12 @@ import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.vo.BookingVO;
-
+import com.sist.vo.JjimVO;
 import com.sist.dao.BookingDAO;
 
 
@@ -147,9 +148,33 @@ public class BookingModel {
 		   
 		   request.setAttribute("vo", vo);
 		   request.setAttribute("main_jsp", "../booking/hos_detail.jsp");
+		   
+		   JjimVO jvo=new JjimVO();
+		   jvo.setO_no(Integer.parseInt(o_no));
+		   HttpSession session=request.getSession();
+		   String id=(String)session.getAttribute("id");
+		   
+		   jvo.setId(id);
+		   int jcount=BookingDAO.bookingJjimCount(jvo);
+		   
+		   request.setAttribute("jcount", jcount);
+		   
 		   return "../main/main.jsp";
 	   }
 	
+	 @RequestMapping("booking/jjim.do")
+	 public String booking_jjim(HttpServletRequest request,HttpServletResponse response)
+	 {
+		 String o_no=request.getParameter("o_no");
+		 HttpSession session=request.getSession();
+		 String id=(String)session.getAttribute("id");
+		 JjimVO vo=new JjimVO();
+		 vo.setO_no(Integer.parseInt(o_no));
+		 vo.setId(id);
+		 BookingDAO.bookingJjimInsert(vo);
+		 return "redirect:../booking/hos_detail.do?o_no="+o_no;
+	 }
+	 
 
 	 @RequestMapping("booking/booking.do")
 	 public String booking(HttpServletRequest request, HttpServletResponse response)

@@ -13,6 +13,7 @@
 		<typeAlias type="com.sist.vo.QnaVO" alias="QnaVO" />
 		<typeAlias type="com.sist.vo.NoticeVO" alias="NoticeVO" />
 		<typeAlias type="com.sist.vo.PetplaceVO" alias="PetplaceVO" />
+		<typeAlias type="com.sist.vo.JjimVO" alias="JjimVO" />
 	</typeAliases>
 
 	<environments default="development">

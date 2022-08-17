@@ -8,6 +8,5 @@
 	cookie.setPath("/");
 	cookie.setMaxAge(60*60*24);
 	response.addCookie(cookie);
-	RequestDispatcher dispatcher=request.getRequestDispatcher("hos_detail.do");
-	dispatcher.forward(request, response);
+	response.sendRedirect("hos_detail.do?o_no="+o_no);
 %>

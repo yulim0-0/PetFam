@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.BookingVO;
+import com.sist.vo.JjimVO;
 
 
 public class BookingDAO {
@@ -113,4 +114,43 @@ public class BookingDAO {
 		    }
 		    return vo;
 	   }
+	 
+	 public static void bookingJjimInsert(JjimVO vo)
+	 {
+		 SqlSession session=null;
+		 try
+		 {
+			 session=ssf.openSession(true);
+			 session.insert("bookingJjimInsert", vo);
+		 }catch(Exception ex)
+		 {
+			 ex.printStackTrace();
+		 }
+		 finally
+		 {
+			 if(session!=null)
+				 session.close();
+		 }
+		 
+	 }
+	 
+	 public static int bookingJjimCount(JjimVO vo)
+	 {
+		 int count=0;
+		 SqlSession session=null;
+		 try
+		 {
+			 session=ssf.openSession();
+			 count=session.selectOne("bookingJjimCount", vo);
+		 }catch(Exception ex)
+		 {
+			 ex.printStackTrace();
+		 }
+		 finally
+		 {
+			 if(session!=null)
+				 session.close();
+		 }
+		 return count;
+	 }
 }

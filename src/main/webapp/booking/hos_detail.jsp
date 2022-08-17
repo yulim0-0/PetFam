@@ -39,6 +39,40 @@
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="../booking/detaildist/style.css">
 
+    <!-- heart icon -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.jjim_btn {
+  background-color: #f2f4f5;
+  border: none;
+  color: grey;
+  border-color: 1px solid red;
+  padding: 1px 19px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.jjim_btn1 {
+  background-color: #ffeebc;
+  border: none;
+  color: #F34100;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.jjim_btn:hover {
+  background-color: #ffeebc;
+  color: #F34100;
+  
+  
+}
+</style>
+
+
 </head>
 
 <body>
@@ -91,14 +125,23 @@
 
                             <div class="cart--area d-flex flex-wrap align-items-center" >
                                 <!-- Add to Cart Form -->
-                               <button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">찜 하기</button>
+                               <button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">장바구니</button>
                                
                                <a href="../booking/booking.do?o_no=${vo.o_no }"><button class="btn alazea-btn ml-15">예약하기</button></a>
                                    
-             
-                                  <div class="wishlist-compare d-flex flex-wrap align-items-center">
-                                 <!-- Wishlist & Compare -->
-                                 	<a href="#" class="wishlist-btn ml-15"><i class="icon_heart_alt"></i></a>
+             					  <!-- Wishlist  -->
+                                <div class="wishlist-compare d-flex flex-wrap align-items-center">
+                                  <!-- 로그인 된 상태에서 -->
+                                  <c:if test="${sessionScope.id!=null }"> 
+                                 <!-- 찜하기 누를 수 있게 활성화  --> 
+                                    <c:if test="${jcount==0 }"> 
+                                 	<a href="../booking/jjim.do?o_no=${vo.o_no }"><button class="jjim_btn" ><i class="fa fa-heart"></i></button></a>
+                                 	 </c:if> 
+                                 <!-- 이미 찜하기 눌렀으면 비활성화  --> 
+                                 	<c:if test="${jcount!=0 }"> 
+                                 	<button class="jjim_btn1"><i class="fa fa-heart"></i></button>
+                                 	 </c:if> 
+                                 	</c:if> 
                                  </div> 
                             </div>
                         </div>
@@ -114,13 +157,13 @@
                         <!-- Tabs -->
                         <ul class="nav nav-tabs" role="tablist" id="product-details-tab">
                             <li class="nav-item">
-                                <a href="#description" class="nav-link active" data-toggle="tab" role="tab">Description</a>
+                                <a href="#description" class="nav-link active" data-toggle="tab" role="tab">상품 상세정보</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">Additional Information</a>
+                                <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">상품 업체위치</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">Reviews <span class="text-muted">(1)</span></a>
+                                <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">리뷰 구매평 <span class="text-muted">(1)</span></a>
                             </li>
                         </ul>
                         <!-- Tab Content -->
