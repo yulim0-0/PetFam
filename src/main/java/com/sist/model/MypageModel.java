@@ -10,6 +10,7 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.MypageDAO;
 import com.sist.dao.UserDAO;
+import com.sist.vo.JjimVO;
 import com.sist.vo.PboardVO;
 import com.sist.vo.QnaVO;
 import com.sist.vo.UserVO;
@@ -111,6 +112,20 @@ public class MypageModel {
 		request.setAttribute("main_jsp", "../mypage/myqna.jsp");
 		return "../main/main.jsp";
 	}
+	
+//	내가 누른 좋아요
+	@RequestMapping("mypage/mylike.do")
+	public String user_like(HttpServletRequest request, HttpServletResponse response)
+	{	
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		List<JjimVO> list=MypageDAO.userlikeData(id);
+		
+		request.setAttribute("list", list);
+		request.setAttribute("main_jsp", "../mypage/mylike.jsp");
+		return "../main/main.jsp";
+	}
+	
 	@RequestMapping("mypage/mywrite_detail.do")
 	public String user_write_detail(HttpServletRequest request, HttpServletResponse response)
 	{

@@ -8,7 +8,20 @@ public class JjimVO {
 	private int j_no;
 	private String id;
 	private int o_no;
+	private String poster, name;
 	
+	public String getPoster() {
+		return poster;
+	}
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getJ_no() {
 		return j_no;
 	}

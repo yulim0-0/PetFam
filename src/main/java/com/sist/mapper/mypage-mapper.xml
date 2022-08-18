@@ -55,4 +55,20 @@ RCOUNT              NUMBER    -->
 	FROM qbo_4))
 	WHERE id=#{id}
 </select>
+
+<!-- 찜 여부 확인 -->
+<select id="userLiikeCount" resultType="int" parameterType="com.sist.vo.JjimVO">
+	SELECT COuNT(*) FROM jjim_4
+	WHERE fno=#{fno} AND id=#{id}
+</select>
+
+<!-- 찜 목록 -->
+<select id="userlikeData" resultType="JjimVO" parameterType="string">
+	SELECT ord_jjim_4.j_no, ord_jjim_4.id, ord_jjim_4.o_no, ord_4.poster, ord_4.name 
+	FROM ord_jjim_4 
+	LEFT JOIN ord_4
+	ON ord_jjim_4.o_no = ord_4.o_no 
+	WHERE id=#{id}
+</select>
+
 </mapper>

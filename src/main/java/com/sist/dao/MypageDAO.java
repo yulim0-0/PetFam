@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.sist.vo.JjimVO;
 import com.sist.vo.PboardVO;
 import com.sist.vo.QnaVO;
 import com.sist.vo.UserVO;
@@ -47,6 +48,40 @@ public class MypageDAO {
 		try {
 			session=ssf.openSession();
 			list=session.selectList("userInfoData",id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	
+	// 좋아요 목록
+	public static int userLiikeCount(JjimVO vo)
+	{
+		int count=0;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			count=session.selectOne("userLiikeCount",vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return count;
+	}
+	
+	// 좋아요 목록
+	public static List<JjimVO> userlikeData(String id)
+	{
+		List<JjimVO> list=null;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("userlikeData",id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
