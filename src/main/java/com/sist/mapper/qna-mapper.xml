@@ -34,7 +34,7 @@
     )
   </insert>
   <!-- 답변 달기(어드민)-->
-  <select id="qnaAdminData" resultType="QnaVO">
+  <select id="qnaAdminData" resultType="QnaVO"><!-- 답변 안달린 문의글만 최근게시글 순으로 볼 수 있음  -->
     SELECT * FROM qbo_4
     WHERE isreply!=1 AND group_step!=1
     ORDER BY q_no DESC
@@ -70,14 +70,14 @@
      #{group_id},1,1
     )
   </insert>
-  <update id="qnaIsReply" parameterType="int">
+  <update id="qnaIsReply" parameterType="int"><!-- isReply => 답변 달렸는지 아닌지 유무임 1이면 답변달림 0이면 안달림  -->
     UPDATE qbo_4 SET
     isreply=1
     WHERE q_no=#{q_no}
   </update>
   <update id="qnaUpdate" parameterType="QnaVO">
     UPDATE qbo_4 SET
-   id=#{id}, name=#{name},subject=#{subject},content=#{content}
+   id=#{id}, name=#{name},subject=#{subject},content=#{content},pwd=#{pwd}
     WHERE q_no=#{q_no}
   </update>
   

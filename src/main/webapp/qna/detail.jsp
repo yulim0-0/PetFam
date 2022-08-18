@@ -32,34 +32,13 @@ $(function(){
 
 	$('#delBtn').on("click",function(){
 		let pwd=$('#delPwd').val();
-		let p_no=$(this).attr("data-q_no");
+		let q_no=$(this).attr("data-q_no");
 		if(pwd.trim()=="")
 		{
 			$("#delPwd").focus();
 			return;
 		}
-		// ajax=>요청 , 데이터 받기
-		//alert("password:"+pwd+"\n번호:"+no)
-		/*
-		   type => GET/POST
-		   url  => 처리할 URL주소 => .do
-		   data: => ?()
-		   success:function(result)
-		   {
-			   정상 수행 : 200 ========> text(html),xml,json
-		   }
-		   error:function(ex)
-		   {
-			   에러 : 404 , 500 , 412 , 415 , 403....
-		   }
-			   
-			   ../freeoard/delete.do?no=1&pwd=1111
-					   
-			   HttpRequest request; // 브라우저에 존재
-			   --------------------
-			   
-			   request.open("post","../freeboard/delete.do",true) => 비동기 , false=동기 
-		*/
+	
 		$.ajax({
 			type:'post',
 			url:'../qna/delete.do',
@@ -88,7 +67,7 @@ $(function(){
 	
 	$('.up').click(function(){
 		$('.updates').hide();
-		let p_no=$(this).attr("data-q_no");
+		let q_no=$(this).attr("data-q_no");
 		if(u==0)
 		{
 			$('#update'+q_no).show();
@@ -145,8 +124,10 @@ $(function(){
        </tr>
        <tr>
          <td colspan="4" class="text-right">
+         <c:if test="${vo.group_step!=1}"><%-- 관리자가 작성 (1) , (0) 사용자 작성--%>
            <a href="../qna/update.do?q_no=${vo.q_no }" class="btn btn-xs btn-danger">수정</a>
            <span class="btn btn-xs btn-info" id="del">삭제</span>
+           </c:if>
            <a href="../qna/list.do" class="btn btn-xs btn-warning">목록</a>
          </td>
        </tr>
