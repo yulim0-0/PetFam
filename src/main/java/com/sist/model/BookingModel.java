@@ -155,8 +155,11 @@ public class BookingModel {
 		   String id=(String)session.getAttribute("id");
 		   
 		   jvo.setId(id);
-		   int jcount=BookingDAO.bookingJjimCount(jvo);
-		   
+		   int jcount=0;
+		   if(id!=null) // 로그인이 된 상태라면
+		   {
+		     jcount=BookingDAO.bookingJjimCount(jvo);
+		   }
 		   request.setAttribute("jcount", jcount);
 		   
 		   return "../main/main.jsp";

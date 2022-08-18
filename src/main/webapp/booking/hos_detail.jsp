@@ -125,6 +125,7 @@
 
                             <div class="cart--area d-flex flex-wrap align-items-center" >
                                 <!-- Add to Cart Form -->
+                                
                                <button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">장바구니</button>
                                
                                <a href="../booking/booking.do?o_no=${vo.o_no }"><button class="btn alazea-btn ml-15">예약하기</button></a>
@@ -141,8 +142,9 @@
                                  	<c:if test="${jcount!=0 }"> 
                                  	<button class="jjim_btn1"><i class="fa fa-heart"></i></button>
                                  	 </c:if> 
-                                 	</c:if> 
+                                 	</c:if>
                                  </div> 
+                                 
                             </div>
                         </div>
                     </div>
