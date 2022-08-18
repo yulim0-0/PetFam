@@ -11,12 +11,7 @@
 $(function(){
 	$('#writeBtn').hide();
 	$('#writeBtn').click(function(){
-		/* let name=$('#name').val();
-		if(name.trim()=="")
-		{
-			$('#name').focus();
-			return;
-		} */
+		
 		
 		let subject=$('#subject').val();
 		if(subject.trim()=="")
@@ -41,16 +36,7 @@ $(function(){
 		
 		$('#frm').submit();
 	})
-	/*
-	    vuejs 
-	    axios.get('url',{
-	    	params:{
-	    		no:1,
-	    		pwd:'1234'
-	    	}
-	    }).then(result=>{})
-	*/
-	$('#pwd').keyup(function(){
+	/* $('#pwd').keyup(function(){
 		let pwd=$('#pwd').val();
 		let q_no=$('#q_no').val();
 		$.ajax({
@@ -73,7 +59,7 @@ $(function(){
             	}
             }
 		})
-	})
+	}) */
 })
 </script>
 </head>
