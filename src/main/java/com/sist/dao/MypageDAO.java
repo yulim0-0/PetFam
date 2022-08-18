@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.PboardVO;
+import com.sist.vo.QnaVO;
 import com.sist.vo.UserVO;
 
 public class MypageDAO {
@@ -45,7 +46,7 @@ public class MypageDAO {
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			list=session.selectList("userInfoEdit",id);
+			list=session.selectList("userInfoData",id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -81,6 +82,24 @@ public class MypageDAO {
 		try {
 			session=ssf.openSession();
 			list=session.selectList("userWriteDetailData",p_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	
+	public static List<QnaVO> userQnaData(String id)
+	{
+		List<QnaVO> list=null;
+		SqlSession session=null;
+		
+		try {
+			session=ssf.openSession();
+			list=session.selectList("userQnaData",id);
+			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

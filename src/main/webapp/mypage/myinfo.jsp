@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="myinfo_style.css">
+<link rel="stylesheet" href="css/myinfo.css">
 </head>
 <body>
 	<main class="main">
@@ -76,11 +76,7 @@
 			<div class="bottom-button">
 				<input type="button" class="control-button up" id="editBtn" value="수정하기" onclick="../mypage/myinfo_edit.do">
 			</div>
-
 		</div>
-
-
 	</main>
-
 </body>
 </html>

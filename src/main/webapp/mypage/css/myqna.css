@@ -31,7 +31,7 @@ body {
 	font-family: "GmarketSansMedium", "Noto Sans" sans-serif;
 	font-size: 62.5%;
 	line-height: 1;
-	color: #585858;
+	color: #fff;
 	padding: 22px 10px;
 	padding-bottom: 55px;
 }
@@ -121,28 +121,28 @@ h1 {
 	margin: 0 auto;
 	font-size: 1.2em;
 	margin-bottom: 15px;
+	width:1200px;
 }
 
 #keywords thead {
 	cursor: pointer;
-	background: #c9dff0;
+	background: #192f61;
 }
 
 #keywords thead tr th {
 	font-weight: bold;
 	padding: 12px 30px;
 	text-align : center;
-	
 }
 
 #keywords thead tr th span {
-	padding-right: 20px;
 	background-repeat: no-repeat;
 	background-position: 100% 100%;
+	text-align : center;
 }
 
 #keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown
-	{
+{
 	background: #acc8dd;
 }
 

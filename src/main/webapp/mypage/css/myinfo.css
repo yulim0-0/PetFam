@@ -79,6 +79,20 @@ body {
 	border: solid;
 }
 
+.zipBtn {
+	cursor: pointer;
+	display: block;
+	width: 140px;
+	height: 40px;
+	text-transform: uppercase;
+	background: #192f61;
+	border-radius: 20px;
+	color: white;
+	font: 14px GmarketSansMedium;
+	padding: 1px 6px;
+	border: solid;
+}
+
 .checkBtn {
 	text-align: -webkit-right;
 	padding-right: 20px;

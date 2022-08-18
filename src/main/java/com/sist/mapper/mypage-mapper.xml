@@ -42,6 +42,17 @@ RCOUNT              NUMBER    -->
 
 <!-- 개인정보 수정 처리 -->
 <update id="userEdit" parameterType="UserVO">
-	UPDATE user_4 SET name=#{name}, gen
+	UPDATE user_4 
+	SET pwd=#{pwd}, name=#{name}, phone=#{phone}, birthday=#{birthday}, zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2}, gender=#{gender}
+	WHERE id=#{id}
 </update>
+
+<!-- 문의내역 목록 -->
+<select id="userQnaData" resultType="QnaVO" parameterType="string">
+	SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, id, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, num
+	FROM (SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id, rownum as num
+	FROM (seleCT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id
+	FROM qbo_4))
+	WHERE id=#{id}
+</select>
 </mapper>

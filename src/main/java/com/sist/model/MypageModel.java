@@ -9,7 +9,9 @@ import javax.servlet.http.HttpSession;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.MypageDAO;
+import com.sist.dao.UserDAO;
 import com.sist.vo.PboardVO;
+import com.sist.vo.QnaVO;
 import com.sist.vo.UserVO;
 
 @Controller
@@ -54,7 +56,28 @@ public class MypageModel {
 			String addr1=request.getParameter("addr1");
 			String addr2=request.getParameter("addr2");
 			String gender=request.getParameter("gender");
+			
+			UserVO vo=new UserVO();
+			vo.setId(id);
+			vo.setName(name);
+			vo.setPwd(pwd);
+			vo.setPhone(phone);
+			vo.setBirthday(birthday);
+			vo.setZipcode(zipcode);
+			vo.setAddr1(addr1);
+			vo.setAddr2(addr2);
+			vo.setGender(gender);
+			boolean bCheck=UserDAO.userEdit(vo);
+			if(bCheck==true)
+			{
+				HttpSession session=request.getSession();
+				session.setAttribute("name", vo.getName());
+			}
+				request.setAttribute("bCheck", bCheck);
+			
 		}
+		return "../user/myinfo_edit_ok.jsp";
+
 	}
 	@RequestMapping("mypage/mybooking.do")
 	public String user_booking(HttpServletRequest request, HttpServletResponse response)
@@ -76,7 +99,18 @@ public class MypageModel {
 		request.setAttribute("main_jsp", "../mypage/mywrite.jsp");
 		return "../main/main.jsp";
 	}
-	
+	@RequestMapping("mypage/myqna.do")
+	public String user_q(HttpServletRequest request, HttpServletResponse response)
+	{
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		
+		List<QnaVO> list=MypageDAO.userQnaData(id);
+		
+		request.setAttribute("list", list);
+		request.setAttribute("main_jsp", "../mypage/myqna.jsp");
+		return "../main/main.jsp";
+	}
 	@RequestMapping("mypage/mywrite_detail.do")
 	public String user_write_detail(HttpServletRequest request, HttpServletResponse response)
 	{

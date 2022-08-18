@@ -129,7 +129,7 @@
 						</div>
 					</div>
 					<div class="col-33">
-						<input  type="button" value="검색" id="postBtn" />
+						<input type="button" value="검색" id="postBtn" />
 					</div>
 			</div>
 			
