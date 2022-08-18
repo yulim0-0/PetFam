@@ -188,6 +188,8 @@ public class QnaDAO {
 		   }
 		   return vo;
 	   }
+	   
+	  
 	   /*
 	    *   <!--  어드민에서 답변 달기 -->
 		  <select id="boardReplyInfoData" resultType="int" parameterType="int">
@@ -233,7 +235,33 @@ public class QnaDAO {
 				   session.close(); // disConnection() ps.close(),conn.close() : 반환 
 		   }
 	   }
-	   
+	   public static String qnaPwdCheck(int q_no,String pwd)
+	   {
+		   String result="";
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   String db_pwd=session.selectOne("qnaGetPassword",q_no);
+			   if(db_pwd.equals(pwd))
+			   {
+				   result="yes";
+			   }
+			   else
+			   {
+				   result="no";
+			   }
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return result;
+	   }
 	   public static QnaVO qnaUpdateData(int q_no)
 	   {
 		   QnaVO vo=null;
@@ -311,8 +339,3 @@ public class QnaDAO {
 		   }
 	   }
 }
-
-
-
-
-

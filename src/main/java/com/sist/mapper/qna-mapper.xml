@@ -21,24 +21,17 @@
            =>DDDDDD       1            1           1         0
   
    -->
-  <!-- 상세 보기 -->
-  <!-- 수정 , 삭제 -->
+  
   <!-- 추가(사용자) -->
   <insert id="qnaInsert" parameterType="QnaVO">
     <selectKey keyProperty="q_no" resultType="int" order="BEFORE">
       SELECT NVL(MAX(q_no)+1,1) as q_no FROM qbo_4
     </selectKey>
-    INSERT INTO project_replyBoard(q_no,id,name,subject,content,pwd,group_id)
+    INSERT INTO qbo_4(q_no,id,name,subject,content,pwd,group_id)
     VALUES(#{q_no},#{id},#{name},#{subject},#{content},#{pwd},
      (SELECT NVL(MAX(group_id)+1,1) FROM qbo_4)
     )
   </insert>
-  <!-- 답변 달기(어드민)-->
-  <select id="qnaAdminData" resultType="QnaVO"><!-- 답변 안달린 문의글만 최근게시글 순으로 볼 수 있음  -->
-    SELECT * FROM qbo_4
-    WHERE isreply!=1 AND group_step!=1
-    ORDER BY q_no DESC
-  </select>
   <!-- 내용보기  , 일반 유저 , 관리자 -->
   <update id="qnaHitDecrement" parameterType="int">
     UPDATE qbo_4 SET
@@ -56,6 +49,38 @@
     WHERE q_no=#{q_no}
   </select>
   
+  <update id="qnaIsReply" parameterType="int"><!-- isReply => 답변 달렸는지 아닌지 유무임 1이면 답변달림 0이면 안달림  -->
+    UPDATE qbo_4 SET
+    isreply=1
+    WHERE q_no=#{q_no}
+  </update>
+  <!--  문의글 수정 -->
+  <update id="qnaUpdate" parameterType="QnaVO">
+    UPDATE qbo_4 SET
+   subject=#{subject},content=#{content},pwd=#{pwd}
+    WHERE q_no=#{q_no}
+  </update>
+  <!-- 비밀번호 체크 -->
+  <select id="qnaGetPassword" resultType="string" parameterType="int">
+    SELECT pwd FROM qbo_4
+    WHERE q_no=#{q_no}
+  </select>
+  <!-- 삭제 -->
+  <select id="qnaGetGroupId" resultType="int" parameterType="int">
+    SELECT group_id FROM qbo_4
+    WHERE q_no=#{q_no}
+  </select>
+  <delete id="qnaDelete" parameterType="int">
+   DELETE FROM qbo_4
+   WHERE group_id=#{group_id}
+  </delete>
+  
+  <!-- 답변 달기(어드민)-->
+  <select id="qnaAdminData" resultType="QnaVO"><!-- 답변 안달린 문의글만 최근게시글 순으로 볼 수 있음  -->
+    SELECT * FROM qbo_4
+    WHERE isreply!=1 AND group_step!=1
+    ORDER BY q_no DESC
+  </select>
   <!--  어드민에서 답변 달기 -->
   <select id="qnaInfoData" resultType="int" parameterType="int">
     SELECT group_id FROM qbo_4
@@ -70,33 +95,5 @@
      #{group_id},1,1
     )
   </insert>
-  <update id="qnaIsReply" parameterType="int"><!-- isReply => 답변 달렸는지 아닌지 유무임 1이면 답변달림 0이면 안달림  -->
-    UPDATE qbo_4 SET
-    isreply=1
-    WHERE q_no=#{q_no}
-  </update>
-  <update id="qnaUpdate" parameterType="QnaVO">
-    UPDATE qbo_4 SET
-   id=#{id}, name=#{name},subject=#{subject},content=#{content},pwd=#{pwd}
-    WHERE q_no=#{q_no}
-  </update>
   
-  <!-- 삭제 -->
-  <select id="qnaGetGroupId" resultType="int" parameterType="int">
-    SELECT group_id FROM qbo_4
-    WHERE q_no=#{q_no}
-  </select>
-  <delete id="qnaDelete" parameterType="int">
-   DELETE FROM qbo_4
-   WHERE group_id=#{group_id}
-  </delete>
 </mapper>
-
-
-
-
-
-
-
-
-

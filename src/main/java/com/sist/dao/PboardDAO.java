@@ -232,7 +232,43 @@ public class PboardDAO {
 	   }
 	   return result;
    }
+   
+   public static void good_countInsert(PboardVO vo)
+	 {
+		 SqlSession session=null;
+		 try
+		 {
+			 session=ssf.openSession(true);
+			 session.insert("good_countInsert", vo);
+		 }catch(Exception ex)
+		 {
+			 ex.printStackTrace();
+		 }
+		 finally
+		 {
+			 if(session!=null)
+				 session.close();
+		 }
+		 
+	 }
+	 
+	 public static int good_count(PboardVO vo)
+	 {
+		 int count=0;
+		 SqlSession session=null;
+		 try
+		 {
+			 session=ssf.openSession();
+			 count=session.selectOne("good_count", vo);
+		 }catch(Exception ex)
+		 {
+			 ex.printStackTrace();
+		 }
+		 finally
+		 {
+			 if(session!=null)
+				 session.close();
+		 }
+		 return count;
+	 }
 }
-
-
-

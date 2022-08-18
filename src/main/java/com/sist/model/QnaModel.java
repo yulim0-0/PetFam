@@ -25,32 +25,33 @@ public class QnaModel {
    public String qna_list(HttpServletRequest request,HttpServletResponse response)
    {
 	   String page=request.getParameter("page");
-	   // 사용자가 전송한 데이터는 => request에 첨부되어 있다 
 	   if(page==null)
 		   page="1";
 	   int curpage=Integer.parseInt(page);
 	   Map map=new HashMap();
-	   int rowSize=9;
-	   int start=(rowSize*curpage)-(rowSize-1);
-	   int end=rowSize*curpage;
-	   
+	   int rowSize=10;
+	   int start=(curpage*rowSize)-(rowSize-1);
+	   int end=curpage*rowSize;
 	   map.put("start", start);
-	   map.put("end", end);
+	   map.put("end",end);
 	   List<QnaVO> list=QnaDAO.qnaListData(map);
-	   int totalpage=QnaDAO.qnaTotalPage();
-//	   
-//	   final int BLOCK=5;
-//	   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
-//	   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
-//	   
-//	   if(endPage>totalpage)
-//		    endPage=totalpage;
 	   
-	   request.setAttribute("totalpage", totalpage);
-	   request.setAttribute("list", list);
+	   int totalpage=QnaDAO.qnaTotalPage();
+	  
+	   final int BLOCK=5;
+	   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+	   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+	   
+	   if(endPage>totalpage)
+		    endPage=totalpage;
+	   
 	   request.setAttribute("curpage", curpage);
+       request.setAttribute("totalpage", totalpage);
+       request.setAttribute("startPage", startPage);
+	   request.setAttribute("endPage", endPage);
+       request.setAttribute("list", list);
 	   request.setAttribute("main_jsp", "../qna/list.jsp");
-	   return "../main/main.jsp";// 화면 출력 관리 
+	   return "../main/main.jsp";
    }
    @RequestMapping("qna/insert.do")
    public String qna_insert(HttpServletRequest request,HttpServletResponse response)
@@ -59,6 +60,35 @@ public class QnaModel {
 	   return "../main/main.jsp";
    }
    @RequestMapping("qna/insert_ok.do")
+   public String pboard_insert_ok(HttpServletRequest request,HttpServletResponse response)
+   {
+	   try
+	   {
+		   request.setCharacterEncoding("UTF-8");
+	   }catch(Exception ex) {}
+	   
+	   HttpSession session=request.getSession();//id 세션 받아오기 
+	   String id=(String)session.getAttribute("id");
+	   String name=(String)session.getAttribute("name");
+//	  / String id=request.getParameter("id");
+//	   String name=request.getParameter("name");
+	   System.out.println("id="+id);
+	   String subject=request.getParameter("subject");
+	   String content=request.getParameter("content");
+	   String pwd=request.getParameter("pwd");
+	   
+	   QnaVO vo=new QnaVO();
+	   vo.setId(id);
+	   vo.setName(name);
+	   vo.setSubject(subject);
+	   vo.setContent(content);
+	   vo.setPwd(pwd);
+	   
+	   QnaDAO.qnaInsert(vo);
+	   return "redirect:../qna/list.do";
+   }
+ //어드민 INSERT용 (답변달기)  
+   @RequestMapping("qna/pinsert_ok.do")
    public String qna_insert_ok(HttpServletRequest request,HttpServletResponse response)
    {
 	   // 데이터베이스 처리 
@@ -104,16 +134,27 @@ public class QnaModel {
 	   request.setAttribute("main_jsp", "../qna/detail.jsp");
 	   return "../main/main.jsp";
    }
+   
    // .do ==> 처리 (Model)  board_reply/update.do?no=${vo.no } 
    @RequestMapping("qna/update.do")
    public String qna_update(HttpServletRequest request,HttpServletResponse response)
    {
 	   // 출력할 데이터 전송 
+	   
 	   String q_no=request.getParameter("q_no");
 	   QnaVO vo=QnaDAO.qnaUpdateData(Integer.parseInt(q_no));
 	   request.setAttribute("vo", vo);
 	   request.setAttribute("main_jsp", "../qna/update.jsp");
 	   return "../main/main.jsp";
+   }
+   @RequestMapping("qna/pwd_check.do")
+   public String qna_pwd_check(HttpServletRequest request,HttpServletResponse response)
+   {
+	   String q_no=request.getParameter("q_no");
+	   String pwd=request.getParameter("pwd");
+	   String res=PboardDAO.pboardPwdCheck(Integer.parseInt(q_no), pwd);
+	   request.setAttribute("res", res);
+	   return "../qna/update_ok.jsp";
    }
    // _ok : 화면 출력이 아니고 => 요청 처리 => 이동할 페이지를 재호출 (redirect)
    // board_reply/update_ok.do
@@ -124,7 +165,9 @@ public class QnaModel {
 	   {
             request.setCharacterEncoding("UTF-8"); // 한글 처리 		   
 	   }catch(Exception ex) {}
-	   String id=request.getParameter("id");
+	   HttpSession session=request.getSession();//id 세션 받아오기 
+	   String id=(String)session.getAttribute("id");
+//	   String id=request.getParameter("id");
 	   String subject=request.getParameter("subject");
 	   String content=request.getParameter("content");
 	   String pwd=request.getParameter("pwd");
@@ -150,16 +193,3 @@ public class QnaModel {
    }
    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

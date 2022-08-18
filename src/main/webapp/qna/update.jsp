@@ -36,7 +36,7 @@ $(function(){
 		
 		$('#frm').submit();
 	})
-	/* $('#pwd').keyup(function(){
+	 $('#pwd').keyup(function(){
 		let pwd=$('#pwd').val();
 		let q_no=$('#q_no').val();
 		$.ajax({
@@ -59,7 +59,7 @@ $(function(){
             	}
             }
 		})
-	}) */
+	}) 
 })
 </script>
 </head>

@@ -56,6 +56,7 @@
 .pagination li.active a:hover {
     color: #FFFFFF;
 }
+
 </style>
 </head>
 <body>
@@ -123,6 +124,10 @@
 						              <img src="../qna/re_icon.gif">
 						            </c:if>
 						          <a href="../qna/detail.do?q_no=${vo.q_no }">${vo.subject }</a>
+						          &nbsp;&nbsp; 
+						          	<c:if test="${vo.isreply==1 }">
+						             	 <small class="favo"><i class="bi bi-check-square-fill"></i></small>
+									</c:if>
 						          </td>
 						          <td width="15%" class="text-center">${vo.id }</td>
 						          <td width="20%" class="text-center">${vo.dbday }</td>
@@ -133,27 +138,27 @@
 						
 				</table>
 		 </div>
-								<div id="article-list-menu">
-									<div class="pagination">
-										  <ul class="active">
-									          <c:if test="${startPage>1 }">
-									            <li><a href="../qna/list.do?page=${startPage-1 }">&lt;</a></li>
-									          </c:if>
-									          <c:forEach var="i" begin="${startPage }" end="${endPage }">
-									            <c:if test="${i==curpage }">
-									             
-									            </c:if>
-									            <c:if test="${i!=curpage }">
-									             
-									            </c:if>
-									            <li><a href="../qna/list.do?page=${i }">${i }</a></li>
-									          </c:forEach>
-									          <c:if test="${endPage<totalpage }">
-									            <li><a href="../qna/list.do?page=${endPage+1 }">&gt;</a></li>
-									          </c:if>
-									      </ul>
-									 </div>
-								 </div>
+					<div class="container" align="center">
+						<div class="pagination">
+							<ul>
+								<c:if test="${startPage>1 }">
+									<li><a href="../qna/list.do?page=${startPage-1 }">&laquo;</a></li>
+								</c:if>
+								<c:forEach var="i" begin="${startPage }" end="${endPage }">
+									<c:if test="${i==curpage }">
+										<li class="active"><a href="../qna/list.do?page=${i }">${i }</a></li>
+									</c:if>
+									<c:if test="${i!=curpage }">
+										<li><a href="../qna/list.do?page=${i }">${i }</a></li>
+									</c:if>
+								</c:forEach>
+								<c:if test="${endPage<totalpage }">
+									<li><a href="../qna/list.do?page=${endPage+1 }">&raquo;</a></li>
+								</c:if>
+							</ul>
+						</div>
+					</div>
+				</div>
 				   <c:if test="${sessionScope.id!=null }"><!-- 로그인한 사람만 보임  -->
 								<a href="../qna/insert.do" class="btn square btn-primary write" id="WriteBtn">
 								<i class="fa fa-pencil"></i> 글 쓰기</a>

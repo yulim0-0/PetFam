@@ -16,7 +16,6 @@
     margin: 20px 0;
     overflow: hidden;
     position: relative;
-    text-align:center;
 }
 .pagination li {
     float: left;
@@ -32,7 +31,7 @@
 }
 .pagination li a {
     transition: all 100ms ease-in-out 0s;
-    background-color: /* #F7F7F8; */#FFFF;
+    background-color: #FFFFFF;
     border-radius: 5px 5px 5px 5px;
     color: #69696E;
     display: block;
@@ -46,17 +45,19 @@
     width: 30px;
 }
 .pagination li a:hover {
-    background-color: #f34100;;
+    background-color: #F34100;
     color: #FFFFFF;
 }
 .pagination li.active a {
-    background-color: #f34100;;
+    background-color: #F34100;
     color: #FFFFFF;
 }
 .pagination li.active a:hover {
-    color: #FFFFFF;
+    color: #F34100;
 }
+
 </style>
+
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -99,169 +100,102 @@
         </li>
       </ul>
     </div>
-    <div class='main'>
-      <div class='main__content'>
-       <!--  <div class='dashcards'>
-          <div class='col'>
-            <div class='card'>
-              <i class='fas fa-home'></i>
-              <h5 class='card__subtitle'>Subtitle</h5>
-              <h2 class='card__title'>Title</h2>
-              <p class='card__extra'>Simple Information</p>
-            </div>
-          </div>
-          <div class='col'>
-            <div class='card'>
-              <i class='fas fa-home'></i>
-              <h5 class='card__subtitle'>Subtitle</h5>
-              <h2 class='card__title'>Title</h2>
-              <p class='card__extra'>Simple Information</p>
-            </div>
-          </div>
-          <div class='col'>
-            <div class='card' id='tour-card'>
-              <i class='fas fa-home'></i>
-              <h5 class='card__subtitle'>Subtitle</h5>
-              <h2 class='card__title'>Title</h2>
-              <p class='card__extra'>Simple Information</p>
-            </div>
-          </div>
-        </div> -->
-        <div class='ptable-card'>
-	          <h2>PetBoard</h2>
-		          <table class='ptable'>
-			           <thead>
-			              <tr>
-					          <td width="10%" class="text-center">번호</td>
-					          <td width="45%" class="text-center">제목</td>
-					          <td width="15%" class="text-center">작성자</td>
-					          <td width="20%" class="text-center">작성일</td>
-					          <td width="10%" class="text-center">조회수</td>
-					        </tr>
-			            </thead>
-		           
-		                <c:forEach var="vo" items="${list }">
-						        <tr>
-						          <%--
-						              adadadaadad (3) ==> reply ==> insert  freeboard=>rcount++
-						              
-						              .do ==> DispatcherServlet
-						                  ==> ~Model 
-						                      @RequestMapping(.do)
-						                      메소드 ==> 호출 
-						                      {
-						                          DB연동 
-						                          이동할 JSP지정 
-						                      }
-						           --%>
-						          <td width="10%" class="text-center">${vo.p_no }</td>
-						          <td width="45%"><a href="../pboard/detail.do?p_no=${vo.p_no }">${vo.subject }</a>
-						            &nbsp;&nbsp;
-						            <c:if test="${vo.rcount>0 }">
+			<div class='main'>
+				<div class='main__content'>
+					<div class='ptable-card'>
+						<h2>PetBoard</h2>
+						<a href="#" class="btn square btn-default best"><i
+							class="fa fa-star"></i>인기글</a>
+						<c:if test="${sessionScope.id!=null }">
+							<!-- 로그인한 사람만 보임  -->
+							<a href="../pboard/insert.do"
+								class="btn square btn-primary write" id="WriteBtn"> <i
+								class="fa fa-pencil"></i> 글 쓰기
+							</a>
+						</c:if>
+						<table class='ptable'>
+							<thead>
+								<tr>
+									<td width="10%" class="text-center">번호</td>
+									<td width="45%" class="text-center">제목</td>
+									<td width="15%" class="text-center">작성자</td>
+									<td width="20%" class="text-center">작성일</td>
+									<td width="10%" class="text-center">조회수</td>
+								</tr>
+							</thead>
+<!-- 글 리스트 -->
+							<c:forEach var="vo" items="${list }">
+								<tr>
+									<td width="10%" class="text-center">${vo.p_no }</td>
+									<td width="45%"><a
+										href="../pboard/detail.do?p_no=${vo.p_no }">${vo.subject }</a>
+										&nbsp;&nbsp; <c:if test="${vo.rcount>0 }">
 						             (${vo.rcount })
 						             	 <small class="favo"><i class="fa fa-heart"></i></small>
-						            </c:if>
-						          </td>
-						          <td width="15%" class="text-center">${vo.id }</td>
-						          <td width="20%" class="text-center">${vo.dbday }</td>
-						          <td width="10%" class="text-center">${vo.hit }</td>
-						          
-						        </tr>
-						</c:forEach>
-						
-				</table>
-		 </div>
-				     <!--  <table class="table">  원래 기본 
-				         <tr>
-					         <td class="text-right">
-						          <input type="checkbox" name=fd value="name">이름
-						          <input type="checkbox" name=fd value="subject">제목
-						          <input type="checkbox" name=fd value="content">내용
-						          <input type=text name=ss size=15 class="input-sm">
-						          <input type=button value=검색 class="btn btn-sm btn-primary">
-						         </td>
-						  </tr>
-						
-				<!--    </table>  -->
-						
-								<div id="article-list-menu">
-									<a href="#" class="btn square btn-default best"><i class="fa fa-star"></i>인기글</a> 
-									<button class="btn square del btn-danger" type="button" id="deleteAllBtn"><i class="fa fa-trash"></i>삭제</button>
-								
-									<div class="pagination">
-										  <ul class="active">
-									          <c:if test="${startPage>1 }">
-									            <li><a href="../pboard/list.do?page=${startPage-1 }">&lt;</a></li>
-									          </c:if>
-									          <c:forEach var="i" begin="${startPage }" end="${endPage }">
-									            <c:if test="${i==curpage }">
-									             
-									            </c:if>
-									            <c:if test="${i!=curpage }">
-									             
-									            </c:if>
-									            <li><a href="../pboard/list.do?page=${i }">${i }</a></li>
-									          </c:forEach>
-									          <c:if test="${endPage<totalpage }">
-									            <li><a href="../pboard/list.do?page=${endPage+1 }">&gt;</a></li>
-									          </c:if>
-									      </ul>
-									 </div>
-								 </div>
-				   <c:if test="${sessionScope.id!=null }"><!-- 로그인한 사람만 보임  -->
-								<a href="../pboard/insert.do" class="btn square btn-primary write" id="WriteBtn">
-								<i class="fa fa-pencil"></i> 글 쓰기</a>
-					</c:if>							
-								</div>
-		
-								<form class="input-group" method="get" id="boardSearchForm">
-									<input type="hidden" name="search_type" value="title"/>
-									 <span class="input-group-btn">
-										<button type="button"
-											class="btn square btn-default dropdown-toggle"
-											data-toggle="dropdown" aria-haspopup="true"
-											aria-expanded="false">
-											<span id="search-type-desc">제목</span> <span class="caret"></span>
-										</button>
-										
-										<ul class="dropdown-menu">
-											<li><a href="#" data-value="title">제목</a></li>
-											<li><a href="#" data-value="titlecont">제목+내용</a></li>
-											<li><a href="#" data-value="nickname">작성자</a></li>
-									</ul><!--  원래 div였음 -->
-									</span>
-									    <input type="text" name="search_term" class="form-control" placeholder="검색어" value=""> 
-									    	<span class="input-group-btn">
-												<button class="btn square btn-default" type="submit">
-													<i class="fa fa-search"></i>
-												</button>
-											</span>
-								</form>
-							
+										</c:if></td>
+									<td width="15%" class="text-center">${vo.id }</td>
+									<td width="20%" class="text-center">${vo.dbday }</td>
+									<td width="10%" class="text-center">${vo.hit }</td>
+
+								</tr>
+							</c:forEach>
+
+						</table>
+					</div>
+<!-- 페이징  -->					
+					<div class="container" align="center">
+						<div class="pagination">
+							<ul>
+								<c:if test="${startPage>1 }">
+									<li><a href="../pboard/list.do?page=${startPage-1 }">&laquo;</a></li>
+								</c:if>
+								<c:forEach var="i" begin="${startPage }" end="${endPage }">
+									<c:if test="${i==curpage }">
+										<li class="active"><a href="../pboard/list.do?page=${i }">${i }</a></li>
+									</c:if>
+									<c:if test="${i!=curpage }">
+										<li><a href="../pboard/list.do?page=${i }">${i }</a></li>
+									</c:if>
+								</c:forEach>
+								<c:if test="${endPage<totalpage }">
+									<li><a href="../pboard/list.do?page=${endPage+1 }">&raquo;</a></li>
+								</c:if>
+							</ul>
 						</div>
-				 </div>
+					</div>
+				</div>
+<!--  게시글 검색 -->
+				<div class="container" align="center">
+					<form class="input-group" method="get" id="boardSearchForm">
+						<input type="hidden" name="search_type" value="title" /> <span
+							class="input-group-btn">
+							<button type="button"
+								class="btn square btn-default dropdown-toggle"
+								data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false">
+								<span id="search-type-desc">제목</span> <span class="caret"></span>
+							</button>
+
+							<ul class="dropdown-menu">
+								<li><a href="#" data-value="title">제목</a></li>
+								<li><a href="#" data-value="titlecont">제목+내용</a></li>
+								<li><a href="#" data-value="nickname">작성자</a></li>
+							</ul><
+						</span> <input type="text" name="search_term" class="form-control"
+							placeholder="검색어" value=""> <span class="input-group-btn">
+							<button class="btn square btn-default" type="submit">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</form>
+				</div>
+			</div>
+		</div>
 			 </div>
-	  </div>
+	
 
 		
 <!-- partial -->
   <script  src="pboarddist/pboard_script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

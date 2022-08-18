@@ -30,41 +30,6 @@ $(function(){
 		}
 	})
 	
-	// 삭제
-	/*
-	    $('#delBtn')
-	    let btn=document.querySelector("delBtn")
-	    => 태그명($(태그명)) , 아이디명($(#아이디명)) , 클래스명($(.클래스명)) 
-	    인접 ($(태그명 + 태그명)) , 후손 ($(태그명 태그명))  자손 (태그명 > 태그명)
-	    
-	    이벤트 
-	      onclick 
-	        $("태그명").click(function(){
-	        	처리내용
-	        })
-	        $("태그명").on("click",function(){
-	        	
-	        })
-	      onmouseover
-	      hover 
-	        $("태그명").hover(function(){
-	        	
-	        })
-	      onchange
-	        <select> => 예약 (달력)
-	        $('태그명').change(function(){
-	        	
-	        })
-	      onkeydown , onkeyup (searchbar)
-	      ---------- 채팅 
-	      
-	      <input value=> ==> value  ==> val()
-	      <td>JQuery</td>  ==> $("td").text()
-	      <a href="data" class=""><img src="data" width="" height="">
-	      $("a").attr("href") $("img").attr("src")
-	      
-	      $('a').html() 
-	*/
 	$('#delBtn').on("click",function(){
 		let pwd=$('#delPwd').val();
 		let p_no=$(this).attr("data-p_no");
@@ -73,28 +38,6 @@ $(function(){
 			$("#delPwd").focus();
 			return;
 		}
-		// ajax=>요청 , 데이터 받기
-		//alert("password:"+pwd+"\n번호:"+no)
-		/*
-		   type => GET/POST
-		   url  => 처리할 URL주소 => .do
-		   data: => ?()
-		   success:function(result)
-		   {
-			   정상 수행 : 200 ========> text(html),xml,json
-		   }
-		   error:function(ex)
-		   {
-			   에러 : 404 , 500 , 412 , 415 , 403....
-		   }
-			   
-			   ../freeoard/delete.do?no=1&pwd=1111
-					   
-			   HttpRequest request; // 브라우저에 존재
-			   --------------------
-			   
-			   request.open("post","../freeboard/delete.do",true) => 비동기 , false=동기 
-		*/
 		$.ajax({
 			type:'post',
 			url:'../pboard/delete.do',
@@ -204,8 +147,7 @@ $(function(){
 	        <a href="../pboard/detail.do?p_no=${(vo.p_no)-1}" class="subject">${vo.subject }</a>
 	    </div>
 	    </div>
-	    
-    
+	
      <div id="comments">    
         <h2>댓글</h2>
         <ul>
