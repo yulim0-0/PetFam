@@ -332,7 +332,6 @@
 	          </li>
 	        </ul>
 	        
-	        
 	          <ul class="faq-list2" data-aos="fade-up" data-aos-delay="100">
 	
 	          <li>

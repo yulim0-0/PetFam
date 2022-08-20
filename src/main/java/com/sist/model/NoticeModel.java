@@ -46,9 +46,7 @@ public class NoticeModel {
    @RequestMapping("notice/insert.do")
    public String notice_insert(HttpServletRequest request,HttpServletResponse response)
    {
-//	   HttpSession session=request.getSession();
-//	   String id=(String)session.getAttribute("id");
-//	   String name=(String)session.getAttribute("name");
+
 	   request.setAttribute("main_jsp", "../notice/insert.jsp");
 	   return "../main/main.jsp";
    }
@@ -63,17 +61,18 @@ public class NoticeModel {
 	   
 	   HttpSession session=request.getSession();//id 세션 받아오기 
 	   String id=(String)session.getAttribute("id");
-	 
+	
 	   System.out.println("id="+id);
 	   String subject=request.getParameter("subject");
 	   String content=request.getParameter("content");
-	  
+	   
 	   
 	  NoticeVO vo=new  NoticeVO();
 	   vo.setId(id);
-	
+	 
 	   vo.setSubject(subject);
 	   vo.setContent(content);
+	  
 	  
 	   
 	   NoticeDAO.noticeInsert(vo);
@@ -109,19 +108,21 @@ public class NoticeModel {
 		   request.setCharacterEncoding("UTF-8");
 	   }catch(Exception ex) {}
 	   
-	   String id=request.getParameter("id");
+	   String id=request.getParameter("id"); 
 	   System.out.println("id="+id);
-	 
+	
 	   String subject=request.getParameter("subject");
 	   String content=request.getParameter("content");
 	   String n_no=request.getParameter("n_no");
-	   NoticeVO vo=new NoticeVO();
 	  
+	   NoticeVO vo=new NoticeVO();
 	   vo.setId(id);
+	 
 	   vo.setSubject(subject);
 	   vo.setContent(content);
-	  
+	
 	   vo.setN_no(Integer.parseInt(n_no));
+	   
 	   NoticeDAO.noticeUpdate(vo);
 	   return "redirect:../notice/detail.do?n_no="+n_no;// sendRedirect
 //	   insert_ok, update_ok, delete_ok 데이터 전송은 없고 처리후 바로 (이전에 실행된 화면)페이지 이동(list,detail)

@@ -139,7 +139,6 @@
 
 								</tr>
 							</c:forEach>
-
 						</table>
 					</div>
 <!-- 페이징  -->					
@@ -180,7 +179,7 @@
 								<li><a href="#" data-value="title">제목</a></li>
 								<li><a href="#" data-value="titlecont">제목+내용</a></li>
 								<li><a href="#" data-value="nickname">작성자</a></li>
-							</ul><
+							</ul>
 						</span> <input type="text" name="search_term" class="form-control"
 							placeholder="검색어" value=""> <span class="input-group-btn">
 							<button class="btn square btn-default" type="submit">

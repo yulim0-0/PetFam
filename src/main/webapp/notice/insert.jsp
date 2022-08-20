@@ -5,12 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../paboard/pboarddist/pboard_style.css">
+<link rel="stylesheet" href="../pboard/pboarddist/pboard_style.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
 	$('#writeBtn').click(function(){
-		
 		let subject=$('#subject').val();
 		if(subject.trim()=="")
 		{
@@ -25,12 +24,6 @@ $(function(){
 			return;
 		}
 		
-		let pwd=$('#pwd').val();
-		if(pwd.trim()=="")
-		{
-			$('#pwd').focus();
-			return;
-		}
 		
 		$('#frm').submit();
 	})
@@ -45,7 +38,7 @@ $(function(){
 	    <ul>
 	      <li><a href="../main/main.do">Home</a></li>
 	      <li><a href="../pboard/list.do">커뮤니티</a></li>
-	      <li><a href="../qna/list.do">문의게시판</a></li>
+	      <li><a href="../notice/list.do">공지사항</a></li>
 	    </ul>
 	  </div>
 	</div>
@@ -55,12 +48,12 @@ $(function(){
 	    <!-- main body --> 
 	    <h2 class="sectiontitle">글쓰기</h2>
 	    <div class="two_third first">
-	     <form method=post action="../qna/insert_ok.do" id="frm">
+	     <form method=post action="../notice/insert_ok.do" id="frm">
 	      <table class="table">
 	        <tr>
 	          <th width=20% class="text-right">작성자</th>
-	          <td width=80%>${id }
-	             <input type=hidden name=id size=50 class="input-sm" id="id" value="${vo.id }">
+	          <td width=80%>${id }<!--  아이디 세션정보를 가져와야함 -->
+	            <input type=hidden name=id size=50 class="input-sm" id="id" value="${sessionScope.admin=='y'}">
 	          </td>
 	        </tr>
 	        <tr>
@@ -75,12 +68,7 @@ $(function(){
 	            <textarea rows="10" cols="50" name=content id="content"></textarea>
 	          </td>
 	        </tr>
-	        <tr>
-	          <th width=20% class="text-right">비밀번호</th>
-	          <td width=80%>
-	            <input type="password" name=pwd size=10 class="input-sm" id="pwd">
-	          </td>
-	        </tr>
+	        
 	        <tr>
 	          <td colspan="2" class="text-center">
 	            <input type=button value="글쓰기" class="btn btn-sm btn-success" id="writeBtn">

@@ -11,6 +11,66 @@
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css'>
 <link rel="stylesheet" href="pboarddist/pboard_style.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+let i=0;
+let u=0;
+$(function(){
+	$('#del').click(function(){
+		if(i==0)
+		{
+			$('#delTr').show("slow");
+			$('#del').text("취소")
+			i=1;
+		}
+		else
+		{
+			$('#delTr').hide();
+			$('#del').text("삭제")
+			i=0;
+		}
+	})
+
+ $('#delBtn').on("click",function(){
+		let n_no=$(this).attr("data-n_no");
+	
+	
+		$.ajax({
+			type:'post',
+			url:'../notice/delete.do',
+			data:{"n_no":n_no},
+			success:function(result)
+			{
+				let res=result.trim();
+				alert("삭제되었습니다.")
+				{
+					location.href="../notice/list.do"; // sendRedirect()
+				}
+				
+			},
+			error:function(request, status, error)
+			{
+				alert(error);
+			}
+			
+		})
+	}) 
+	
+	$('.up').click(function(){
+		$('.updates').hide();
+		let n_no=$(this).attr("data-n_no");
+		if(u==0)
+		{
+			$('#update'+n_no).show();
+			u=1;
+		}
+		else
+		{
+            $('#update'+n_no).hide();
+            u=0;
+		}
+	})
+})
+</script>
 </head>
 <body>
 <div class="wrapper row3">
@@ -55,14 +115,12 @@
        <tr>
        
  
- <td colspan="4" class="text-right">
-   <a href="../notice/list.do" class="btn btn-xs btn-warning">목록</a> 
-   </td> 
+ 
      
-   <!-- 관리자 페이지용  -->  
-        <%--  <td colspan="4" class="text-right">
-         <c:if test="${vo.admin==y}">관리자가 작성 (1) , (0) 사용자 작성
-           <a href="../notice/update.do?p_no=${vo.n_no }" class="btn btn-xs btn-danger">수정</a>
+   <!-- 관리자용  -->  
+       <td colspan="4" class="text-right">
+         <c:if test="${sessionScope.admin=='y'}">
+           <a href="../notice/update.do?n_no=${vo.n_no }" class="btn btn-xs btn-danger">수정</a>
            <span class="btn btn-xs btn-info" id="del">삭제</span>
            </c:if>
            <a href="../notice/list.do" class="btn btn-xs btn-warning">목록</a>
@@ -70,9 +128,9 @@
        </tr>
        <tr id="delTr" style="display:none">
          <td colspan="4" class="text-right inline">
-        
+        정말 삭제 하시겠습니까? &nbsp;
           <input type=button value="삭제" class="btn btn-sm btn-danger" id="delBtn" data-n_no="${vo.n_no }">
-         </td> --%>
+         </td> 
        </tr>
      </table>
 	

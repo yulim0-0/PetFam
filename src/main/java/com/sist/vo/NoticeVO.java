@@ -13,12 +13,26 @@ TYPE             VARCHAR2(20)
 HIT              NUMBER         
 FAQ              VARCHAR2(1000) 
 ID      NOT NULL VARCHAR2(20)   
+NAME				VARCHAR2(20)
 
  */
 public class NoticeVO {
  private int hit,n_no;
  private String subject,content,type,faq,id,dbday;
  private Date regdate;
+// 
+//public String getPwd() {
+//	return pwd;
+//}
+//public void setPwd(String pwd) {
+//	this.pwd = pwd;
+//}
+//public String getName() {
+//	return name;
+//}
+//public void setName(String name) {
+//	this.name = name;
+//}
 public int getHit() {
 	return hit;
 }

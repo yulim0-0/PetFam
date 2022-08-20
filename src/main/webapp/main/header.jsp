@@ -47,7 +47,7 @@
 							<li><a href="../pboard/list.do">자유 게시판</a></li>
 							<li><a href="../ppboard/list.do">반려동물 자랑 게시판</a></li>
 							<li><a href="../qna/list.do">문의 게시판</a></li>
-							<li><a href="../qna/list.do">공지사항</a></li>
+							<li><a href="../notice/list.do">공지사항</a></li>
 						</ul> 
 						<c:if test="${sessionScope.id!=null }">
 							<li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>

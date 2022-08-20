@@ -104,7 +104,13 @@
 				<div class='main__content'>
 					<div class='ptable-card'>
 						<h2>Notice</h2>
-						
+						<c:if test="${sessionScope.admin=='y'}">
+							<!-- 로그인한 사람만 보임  -->
+							<a href="../notice/insert.do"
+								class="btn square btn-primary write" id="WriteBtn"> <i
+								class="fa fa-pencil"></i> 글 쓰기
+							</a>
+						</c:if>
 						<table class='ptable'>
 							<thead>
 								<tr>

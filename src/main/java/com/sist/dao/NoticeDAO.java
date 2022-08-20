@@ -66,7 +66,7 @@ public class NoticeDAO {
 	   try
 	   {
 		   session=ssf.openSession(true);//openSession(true);
-		   session.insert("pboardInsert",vo); // commit(X)
+		   session.insert("noticeInsert",vo); // commit(X)
 		   //session.commit();
 	   }catch(Exception ex)
 	   {

@@ -14,12 +14,12 @@
     SELECT CEIL(COUNT(*)/10.0) FROM  noti_4
   </select>
  
- <!--  <insert id="noticeInsert" parameterType="NoticeVO">
+  <insert id="noticeInsert" parameterType="NoticeVO">
     INSERT INTO noti_4(n_no,id,subject,content) 
     VALUES((SELECT NVL(MAX(n_no)+1,1) FROM noti_4),
   #{id},#{subject},#{content}
     )
-  </insert> -->
+  </insert> 
   <!--  vo.getName() -->
   <update id="n_hitIncrement" parameterType="int">
     UPDATE noti_4 SET
