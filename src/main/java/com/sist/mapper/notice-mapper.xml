@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.notice-mapper">
+	 <!--  목록 : 페이징  select -->
+  <!-- findAll() -->
+  <select id="noticeListData" resultType="NoticeVO" parameterType="hashmap">
+    SELECT n_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,num
+    FROM (SELECT n_no,subject,id,regdate,hit,rownum as num 
+    FROM (SELECT n_no,subject,id,regdate,hit
+    FROM  noti_4 ORDER BY n_no DESC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select> 
+  <select id="noticeTotalPage" resultType="int">
+    SELECT CEIL(COUNT(*)/10.0) FROM  noti_4
+  </select>
+ 
+ <!--  <insert id="noticeInsert" parameterType="NoticeVO">
+    INSERT INTO noti_4(n_no,id,subject,content) 
+    VALUES((SELECT NVL(MAX(n_no)+1,1) FROM noti_4),
+  #{id},#{subject},#{content}
+    )
+  </insert> -->
+  <!--  vo.getName() -->
+  <update id="n_hitIncrement" parameterType="int">
+    UPDATE noti_4 SET
+    hit=hit+1
+    WHERE n_no=#{n_no}
+  </update>
+  <!-- findOne(int no) -->
+  <select id="noticeDetailData" resultType="NoticeVO" parameterType="int">
+    SELECT n_no,id,subject,content,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit
+    FROM noti_4
+    WHERE n_no=#{n_no}
+  </select>
+  
+
+  <!-- save(NoticeVO vo) -->
+  <update id="noticeUpdate" parameterType="NoticeVO">
+    UPDATE noti_4 SET
+    id=#{id},subject=#{subject},content=#{content}
+    WHERE n_no=#{n_no}
+  </update>
+  <!-- delete(int no) -->
+  <delete id="noticeDelete" parameterType="int">
+    DELETE FROM noti_4
+    WHERE n_no=#{n_no}
+  </delete>
+</mapper>

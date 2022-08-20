@@ -2,7 +2,7 @@ package com.sist.vo;
 
 import java.util.*;
 
-/*
+/*noti_4
  * Name    Null?    Type           
 ------- -------- -------------- 
 N_NO    NOT NULL NUMBER         

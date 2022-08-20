@@ -38,6 +38,7 @@
 		<mapper resource="com/sist/mapper/pboard-mapper.xml" />
 		<mapper resource="com/sist/mapper/ppboard-mapper.xml" />
 		<mapper resource="com/sist/mapper/preply-mapper.xml" />
+		<mapper resource="com/sist/mapper/notice-mapper.xml" />
 		<mapper resource="com/sist/mapper/booking-mapper.xml" />
 		<mapper resource="com/sist/mapper/qna-mapper.xml" />
 		<mapper resource="com/sist/mapper/petplace-mapper.xml" />
