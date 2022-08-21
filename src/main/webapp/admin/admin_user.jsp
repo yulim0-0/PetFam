@@ -8,47 +8,78 @@
 <meta charset="UTF-8">
 <title>UserList</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<!-- <link rel='stylesheet' href='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css'>-->
 <link rel="stylesheet" href="css/admin_user_indigo-pink.css">
 <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 <link rel="stylesheet" href="css/admin_user.css">
-<script type="text/javascript">
-$(function(){
-	$('#delBtn').click(function(){
-		if(i==0)
-		{
-			$('')
-		}
-		location.href='../admin/admin_user_del.do'
-	})
-	$.ajax({
-	    type:'post',
-	    url:'../admin/user_del_ok.do',
-	    data:{"pwd":pwd},
-	    success:function(result)
-	    {
-	        let res=result.trim();
-	        // NOID , NOPWD , OK ==> Model => JSP에 출력시에 읽어 온다 
-	        if(res==='NOPWD')
-	        {
-	            alert("비밀번호가 틀립니다");
-	            $('#pwd').val("")
-	            $('#pwd').focus();
-	            let pwd=$('#pwd').val();
-	        }
-	        else
-	        {
-	           let pwd=$('#pwd').val();
-	            parent.location.href="../admin/admin_user.do";
-	        }
-	    }
-	})
-})
+<link rel="stylesheet" href="css/admin_user_del.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 
+<script type="text/javascript">
+let i=0;
+let u=0;
+$(function(){
+    $('#delBtn').on("click",function(){
+        let pwd=$('#del_pwd').val();
+        if(pwd.trim()="")
+      	{
+      	 $('#del_pwd").focus();
+      	 alert('사용자 삭제를 위해서는 관리자의 비밀번호가 필요합니다. 비밀번호를 입력하여 주세요.');
+      	 return;
+      	}
+    
+        $.ajax({
+      	    type:'post'
+      	    url:"../"
+        })
+    })
+
+    $.ajax({
+        type:'post',
+        url:'',
+        data:{"pwd":pwd},
+        success:function(result)
+        {
+            let res=result.trim();
+            // NOID , NOPWD , OK ==> Model => JSP에 출력시에 읽어 온다 
+            if(res==='NOPWD')
+            {
+                alert("비밀번호가 틀립니다");
+                $('#pwd').val("")
+                $('#pwd').focus();
+                let pwd=$('#pwd').val();
+            }
+            else
+            {
+               let pwd=$('#pwd').val();
+                parent.location.href="../admin/admin_user.do";
+            }
+        }
+    })
+})
 </script>
 </head>
 <body>
-<main class="main">
+<!-- 	<div id="modal-container">
+		<div class="modal-background">
+			<div class="modal">
+				<h2>삭제 확인 비밀번호</h2>
+				<input type="password" placeholder="비밀번호">
+				<svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none">
+                    <rect x="0" y="0" fill="none" width="226"height="162" rx="3" ry="3"></rect>
+                </svg>
+                <button>확인</button>
+			</div>
+		</div>
+	</div>
+	<div class="modalcontent">
+		<h1>Modal Animations</h1>
+		<div class="buttons">
+			<div id="one" class="button">Unfolding</div>
+
+		</div>
+	</div> -->
+
+
 	<!-- partial:index.partial.html -->
 	<div class="app-page" ng-app="clientsApp" ng-controller="ClientsCtrl">
 		<div class="mdl-grid">
@@ -97,9 +128,28 @@ $(function(){
 									<td>${vo.joindate }</td>
 									<td class="controls mdl-data-table__cell--non-numeric">
 										<button style="background:#192f61;" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" id="editBtn" name="editBtn" ng-click="edit(client)">Edit</button>
-										<button style="background:#f34100;" 
-										  class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" 
-										  id="delBtn" name="delBtn" ng-click="delete(client)" >Delete</button>
+										<!-- <button style="background:#f34100;"class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent mdl-js-ripple-effect" 
+										  id="delBtn" name="delBtn" ng-click="delete(client)" >Delete</button> -->
+										  
+									<!-- <div class="modalcontent">
+										<div class="buttons">
+											<div id="one" class="button">Delete</div>
+
+										</div>
+									</div>-->
+										<div class="modal-container">
+											<input id="modal-toggle" type="checkbox"> 
+											     <label class="modal-btn" for="modal-toggle">Delete</label> 
+											     <label class="modal-backdrop" for="modal-toggle"></label>
+                                                <div class="modal-content">
+												    <label class="modal-close" for="modal-toggle">&#x2715;</label>
+												<h2>Modal title</h2>
+												<hr />
+												<p><input type="password" placeholder="Password" id=del_pwd></p>
+												<label class="modal-content-btn" for="modal-toggle">OK</label>
+											</div>
+										</div>
+
 									</td>
 								</tr>
 							</tbody>
@@ -166,7 +216,21 @@ $(function(){
 	<!-- partial -->
 	<script src='https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js'></script>
 	<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js'></script>
-	<!-- <script src="js/admin_user.js"></script> -->
+	<script src="js/admin_user_del.js"></script>
+	<script>
+	$('.delBtn').click(function(){
+		  var buttonId = $(this).attr('id');
+		  $('#modal-container').removeAttr('class').addClass(buttonId);
+		  $('body').addClass('modal-active');
+		})
+
+		$('#modal-container').click(function(){
+		  $(this).addClass('out');
+		  $('body').removeClass('modal-active');
+		});
+	</script>
+	
+	
 </main>
 </body>
 </html>
