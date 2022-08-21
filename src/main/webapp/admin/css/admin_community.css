@@ -118,6 +118,9 @@ h1 {
 	margin-bottom: 10px;
 	text-align: center;
 }
+tbody:hover {
+    background : #c0c0c0;
+}
 
 /** page structure **/
 #wrapper {

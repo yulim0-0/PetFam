@@ -22,5 +22,46 @@
 	<select id="userWriteTotalPage" resultType="int">
     	SELECT CEIL(COUNT(*)/10.0) FROM pbo_4
 	</select>
+	
+	<!-- 문의 내역 리스트 -->
+	<select id="adminQnaListData" resultType="QnaVO">
+        SELECT q_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit, isreply, group_id, group_step, group_tab
+		FROM qbo_4
+		WHERE isreply!=1 AND group_step!=1
+		ORDER BY q_no DESC
+    </select> 
+    
+    <select id="adminQnaTotalPage" resultType="int">
+        SELECT CEIL(COUNT(*)/10.0) FROM qbo_4
+    </select>
+    <!-- 문의 내역 자세히 보기 -> 답글달기  -->
+    <select id="adminQnaDetail" resultType="QnaVO" parameterType="int">
+        SELECT q_no,subject,content, id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit, group_id, group_step, group_tab
+        FROM qbo_4
+        WHERE q_no=#{q_no}
+        
+    </select>
+    
+    <!-- 문의 내역 답변 -->
+    <select id="adminQnaAnswer" resultType="QnaVO" parameterType="int">
+        SELECT q_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit, group_id, group_step, group_tab
+        FROM qbo_4
+        WHERE q_no=#{q_no}
+    </select>
+    
+    <!-- 문의내역 답변 추가 -->
+    <insert id="adminQnaInsert" parameterType="QnaVO">
+        INSERT INTO qbo_4(q_no, name, id, subject, content, pwd, group_id, group_step)
+        VALUES ((SELECT NVL(MAX(q_no)+1,1) FROM qbo_4), 
+        #{name}, #{id}, #{subject}, #{content}, #{pwd}, #{group_id},
+        (SELECT NVL(MAX(group_step)+1,1) FROM qbo_4 WHERE group_id=#{group_id})
+        )
+    </insert>
+    
+    <!-- 답변된 문의게시글에 isreply 변경 -->
+    <update id="adminQnaIsreply"  parameterType="int">
+        UPDATE qbo_4 SET isreply=isreply+1
+        WHERE q_no=#{q_no}
+    </update>
 
 </mapper>

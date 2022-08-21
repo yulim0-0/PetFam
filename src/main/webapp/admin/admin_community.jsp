@@ -67,30 +67,30 @@
 						</tr>
 					</tbody>
 				</c:forEach>
-				
-				<!-- paging start -->
-				<div class="pagination">
-					  <ul>
-				          <c:if test="${startPage>1 }">
-				            <li><a href="../admin/admin_community.do?page=${startPage-1 }">&lt;</a></li>
-				          </c:if>
-				          <c:forEach var="i" begin="${startPage }" end="${endPage }">
-				            <c:if test="${i==curpage }">
-				            	<li><a href="../admin/admin_community.do?page=${i }">${i }</a>
-				            </c:if>
-				            
-				            <c:if test="${i!=curpage }">
-				            	<li><a href="../admin/admin_community.do?page=${i }">${i }</a>
-				            </c:if>
-				            
-				          </c:forEach>
-				          
-				          <c:if test="${endPage<totalpage }">
-				            <li><a href="../admin/admin_community.do?page=${endPage+1 }">&raquo;</a></li>
-				          </c:if>
-				      </ul>
-				 </div>
 			</table>
+
+			<!-- paging start -->
+			<div class="pagination">
+				<ul>
+					<c:if test="${startPage>1 }">
+						<li><a href="../admin/admin_community.do?page=${startPage-1 }">&lt;</a></li>
+					</c:if>
+					<c:forEach var="i" begin="${startPage }" end="${endPage }">
+						<c:if test="${i==curpage }">
+							<li><a href="../admin/admin_community.do?page=${i }">${i }</a>
+						</c:if>
+
+						<c:if test="${i!=curpage }">
+							<li><a href="../admin/admin_community.do?page=${i }">${i }</a>
+						</c:if>
+
+					</c:forEach>
+
+					<c:if test="${endPage<totalpage }">
+						<li><a href="../admin/admin_community.do?page=${endPage+1 }">&raquo;</a></li>
+					</c:if>
+				</ul>
+			</div>
 		</div>
 	</main>
 </body>

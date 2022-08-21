@@ -23,7 +23,7 @@
 						<div class="card_content">
 							<h2 class="card_title">${vo.j_no }</h2>
 							<p class="card_text">${vo.name }</p>
-							<p class="card_msg">90,000원</p>
+							<p class="card_msg">${vo.price }</p>
 							<button class="btn card_btn" onclick="location.href='../booking/hos_detail.do?o_no=${vo.o_no }'">Read More</button>
 						</div>
 					</div>

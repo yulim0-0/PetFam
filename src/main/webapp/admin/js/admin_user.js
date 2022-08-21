@@ -8,10 +8,6 @@ var app = angular.module('clientsApp', []); //
 app.directive('mdlCheckbox', function ($timeout) {
   return {
     restrict: 'E',
-
-    /*scope: {
-        ngModel: '='
-    },*/
     replace: true,
     transclude: true,
     template: '\

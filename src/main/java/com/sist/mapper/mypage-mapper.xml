@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.mypage-mapper">
 
- <!-- 비밀번호 읽기 -->
 <select id="userInfoData" resultType="UserVO" parameterType="string">
 	SELECT * FROM user_4 WHERE id=#{id}
 </select>
@@ -64,7 +63,7 @@ RCOUNT              NUMBER    -->
 
 <!-- 찜 목록 -->
 <select id="userlikeData" resultType="JjimVO" parameterType="string">
-	SELECT ord_jjim_4.j_no, ord_jjim_4.id, ord_jjim_4.o_no, ord_4.poster, ord_4.name 
+	SELECT ord_jjim_4.j_no, ord_jjim_4.id, ord_jjim_4.o_no, ord_4.poster, ord_4.name, ord_4.price 
 	FROM ord_jjim_4 
 	LEFT JOIN ord_4
 	ON ord_jjim_4.o_no = ord_4.o_no 

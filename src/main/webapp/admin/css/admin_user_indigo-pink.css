@@ -2890,6 +2890,7 @@ ul,ol {
 	text-align: center;
 	line-height: 36px;
 	vertical-align: middle;
+	border-radius : 10px;
 }
 
 .mdl-button::-moz-focus-inner {
@@ -6325,6 +6326,7 @@ _:-ms-input-placeholder,:root .mdl-slider.mdl-slider.is-upgraded {
 	-webkit-align-items: stretch;
 	-ms-flex-align: stretch;
 	align-items: stretch;
+	width:60%;
 }
 
 .mdl-grid.mdl-grid--no-spacing {

@@ -142,6 +142,35 @@ public class UserDAO {
 		return vo;
 	}
 	
+	public static boolean userDelete(String id, String pwd)
+	{
+		boolean bCheck=false;
+		SqlSession session=null;
+		try
+		   {
+			   session=ssf.openSession();
+			   UserVO pvo=session.selectOne("userInfoData", id);
+			   if(pvo.getPwd().equals(pwd))
+			   {
+				   bCheck=true;
+				   session.delete("userDelete",id);
+				   session.commit();
+			   }
+			   else
+			   {
+				  bCheck=false; 
+			   }
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return bCheck;
+	}
 
 	
 }

@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8244d253186302ea3726a5f1803e7dfe"></script>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메인</title>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8244d253186302ea3726a5f1803e7dfe"></script>
 <script type="text/javascript">
 	function enterkey(){
 		if(window.event.keyCode == 13) {
@@ -28,7 +28,12 @@
           <h1>Service for the busy worker who wants to spend time with your fluffy friends</h1>
           <h2>털복숭이 친구들과 함께 하고싶은 바쁜 직장인을 위해</h2>
           <div>
-            <a href="#about" class="btn-get-started scrollto">예약하러 가기</a>
+          	<c:if test="${sessionScope.id!=null }">
+            	<a href="../booking/hospital_list.do" class="btn-get-started scrollto">예약하러 가기</a>
+            </c:if>
+            <c:if test="${sessionScope.id==null }">
+            	<a href="../user/login.do" class="btn-get-started scrollto">예약하러 가기</a>
+            </c:if>
           </div>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
