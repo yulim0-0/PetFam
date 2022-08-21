@@ -16,6 +16,7 @@ Version: - v1.0
 @import url(css/magnific-popup.css);
 @import url(css/font-awesome.min.css);
 @import url(css/elegant-icon.css);
+@import url(media.css);
 /* :: 3.0 Base CSS */
 * {
   margin: 0;
@@ -63,7 +64,8 @@ ol {
 img {
   height: auto;
   max-width: 100%; }
-
+  
+ 
 /* :: 3.1.0 Spacing */
 .mt-15 {
   margin-top: 15px !important; }
