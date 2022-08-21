@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -36,15 +37,6 @@
     color: #F34100;
 }
 </style>
-<script type="text/javascript">
-$(function(){
-	$('#list').addEventListner('mouseover', function(event){
-		  event.target.style.color = "red";
-	}, false);
-	
-	
-})
-</script>
 </head>
 <body>
     <main class="main">
@@ -61,22 +53,30 @@ $(function(){
                         <th><span>Clicks</span></th>
                         <th><span>RegDate</span></th>
                         <th><span>GroupID</span></th>
+                        <th><span>IsReply</span></th>
                     </tr>
                 </thead>
                 
-                <c:forEach var="vo" items="${list }">
-                    <tbody>
-                        <tr style="cursor:pointer;" onclick="location.href='../admin/admin_qna_detail.do?q_no=${vo.q_no}'" >
-                            <td><input type=checkbox /></td>
-                            <td style="width:10%">${vo.q_no }</td>
-                            <td style="text-align : left;">${vo.subject }</td>
-                            <td>${vo.id }</td>
-                            <td>${vo.hit }</td>
-                            <td>${vo.dbday }</td>
-                            <td>${vo.group_id }</td>
-                        </tr>
-                    </tbody>
-                </c:forEach>
+	                <c:forEach var="vo" items="${list }">
+	                   <c:if test="${vo.isreply!=1 && vo.group_step==0}">
+	                    <tbody>
+	                        <tr style="cursor:pointer;" onclick="location.href='../admin/admin_qna_detail.do?q_no=${vo.q_no}'" >
+	                            <td><input type=checkbox /></td>
+	                            <td style="width:10%">${vo.q_no }</td>
+	                            <td style="text-align : left;">${vo.subject }</td>
+	                            <td>${vo.id }</td>
+	                            <td>${vo.hit }</td>
+	                            <td>${vo.dbday }</td>
+	                            <td>${vo.group_id }</td>
+                                <td>${vo.isreply }</td>
+	                        </tr>
+	                    </tbody>
+	                    </c:if>
+	                </c:forEach>
+                
+                
+               
+                
             </table>
             
             <!-- paging start -->

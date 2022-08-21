@@ -15,22 +15,9 @@
 let i=0;
 let u=0;
 $(function(){
-	$('#del').click(function(){
-		if(i==0)
-		{
-			$('#delTr').show("slow");
-			$('#del').text("취소")
-			i=1;
-		}
-		else
-		{
-			$('#delTr').hide();
-			$('#del').text("삭제")
-			i=0;
-		}
-	})
 
 	$('#delBtn').on("click",function(){
+		
 		let pwd=$('#delPwd').val();
 		let q_no=$(this).attr("data-q_no");
 		if(pwd.trim()=="")

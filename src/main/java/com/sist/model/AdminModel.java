@@ -65,7 +65,6 @@ public class AdminModel {
 	{
 		List<UserVO> list=AdminDAO.userInfoList();
 		request.setAttribute("list", list);
-		System.out.println(list);
 		request.setAttribute("main_jsp", "../admin/admin_user.jsp");
 		return "../main/main.jsp";
 	}
@@ -81,12 +80,12 @@ public class AdminModel {
 		return "../main/main.jsp";
 	}
 	
-	@RequestMapping("admin/admin_user_del.do")
-	public String user_join_del(HttpServletRequest request, HttpServletResponse response)
-	{
-		request.setAttribute("main_jsp", "../admin/admin_user_del.jsp");
-		return "../main/main.jsp";
-	}
+//	@RequestMapping("admin/admin_user_del.do")
+//	public String user_join_del(HttpServletRequest request, HttpServletResponse response)
+//	{
+//		request.setAttribute("main_jsp", "../admin/admin_user_del.jsp");
+//		return "../main/main.jsp";
+//	}
 	
 	@RequestMapping("admin/admin_qna_detail.do")
 	public String admin_qna_detail(HttpServletRequest request, HttpServletResponse response)
