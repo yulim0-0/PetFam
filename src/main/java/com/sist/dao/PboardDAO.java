@@ -42,6 +42,23 @@ public class PboardDAO {
 	   }
 	   return list;
    }
+   public static List<PboardVO> pboardHitListData(Map map)
+   {
+	   List<PboardVO> list=null;
+	   SqlSession session=null;
+	   try {
+		session=ssf.openSession();
+		list=session.selectList("pboardHitListData",map);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	   finally
+	   {
+		   if(session!=null)
+			   session.close();
+	   }
+	   return list;
+   }
    public static int pboardTotalPage()
    {
 	   int total=0;

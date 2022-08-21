@@ -7,15 +7,15 @@ import java.util.*;
 PRE_NO     NOT NULL NUMBER        
 MSG        NOT NULL VARCHAR2(200) 
 REGDATE             DATE          
-GROUP_ID            NUMBER        
-GROUP_STEP          NUMBER        
-GROUP_TAB           NUMBER        
-PP_NO      NOT NULL NUMBER        
-P_NO       NOT NULL NUMBER        
-DEPTH               NUMBER        
-ID         NOT NULL VARCHAR2(20)  
-TYPE                NUMBER        
-ROOT                NUMBER        
+GROUP_ID            NUMBER          몇번째 그룹인지 
+GROUP_STEP          NUMBER          그룹내에서 몇번째인지 
+GROUP_TAB           NUMBER          탭을 몇번 띄고 출력할 것인지 
+PP_NO      NOT NULL NUMBER          ppbo 게시글 
+P_NO       NOT NULL NUMBER          pbo  게시글 
+DEPTH               NUMBER          댓글 아래 달린 대댓글의 갯수 
+ID         NOT NULL VARCHAR2(20)    작성자 
+TYPE                NUMBER          1 = pbo , 2 = ppbo
+ROOT                NUMBER          가장 상위 댓글의 번호 
 
  */
 public class PReplyVO {

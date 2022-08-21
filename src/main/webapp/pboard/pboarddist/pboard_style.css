@@ -57,7 +57,7 @@
 
 
 body {
-  margin-top: 10px;
+  margin-top: 90px;
 }
 .row {
   display: flex;
@@ -108,7 +108,7 @@ button {
 .pheader {
   background: #fff;
   flex: 0 0 40px;
-  box-shadow: 0px 4px 10px #de5c4130;
+
 }
 
 .logo {
@@ -161,7 +161,7 @@ button {
 */
 .psidebar {
   flex: 0 0 20%;
-  margin-top:20px;
+  margin-top: -60px;
 }
 
 .psidebar-nav {
@@ -219,6 +219,7 @@ button.primary:hover {
 .main {
   flex: 0 0 80%;
   background: #eee;
+  margin-top: -40px;
 }
 
 .main__content {

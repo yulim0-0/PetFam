@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../ppboard/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="../ppboard/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../ppboard/css/style.css" type="text/css">
-<!--  <link rel="stylesheet" type="text/css" href="https://d4fodtu7cqfym.cloudfront.net/fad0d3bf8c478ce27ec4b20657d43000.min.css?v=200103-10"> -->
+
 <link rel="stylesheet" href="../pboard/pboarddist/pboard_style.css">
 <style type="text/css">
 .pagination {
@@ -111,18 +111,25 @@
       <div class='main__content'>
         <div class='ptable-card'>
 	          <h2>Pet Pride Board</h2>
+	         <div>
+	          <a href="#" class="btn square btn-default best"><i class="fa fa-star"></i>인기글</a> 
+	             <c:if test="${sessionScope.id!=null }"><!-- 로그인한 사람만 보임  -->
+								<a href="../ppboard/insert.do" class="btn square btn-primary write" id="WriteBtn">
+								<i class="fa fa-pencil"></i> 글 쓰기</a>
+					</c:if>	
+				</div>	
 		          <table class='ptable'>
-			     <c:forEach var="vo" items="${list }">        
-		<!-- <div class="col-lg-4 col-md-3">  -->
+			   		  <c:forEach var="vo" items="${list }">        
+				<div class="col-lg-4 col-md-3">  
                     <div class="row">
-                       <!--  <div class="col-lg-4 col-md-4 col-sm-4"> -->
+                     <!--  <div class="col-lg-4 col-md-4 col-sm-4">  -->
                             <div class="blog__item">
-                            <tr>
-                                <div class="blog__item__pic">
+                            
+                                <!-- <div class="blog__item__pic"> -->
                                 <a href="../ppboard/detail.do?pp_no=${vo.pp_no }">
                                     <img src="../ppboard/test.jpg" alt=""></a>
                                     <input type=hidden name=pp_no size=50 class="input-sm" id="pp_no" value="${vo.pp_no }">
-                                </div>
+                                <!-- </div> -->
                                 <div class="blog__item__text">
                                     <ul>
                                         <li><i class="bi bi-calendar-heart"></i>&nbsp;&nbsp;${vo.dbday }</li>
@@ -136,68 +143,54 @@
                                     <ul><li>작성자 :</li><li> ${vo.id }</li></ul>
                                     <h5><a href="../ppboard/detail.do?pp_no=${vo.pp_no }">${vo.subject }</a></h5>
                                     <ul>${vo.content }</ul>
-                                
                                 </div>
-                                </tr>
                             </div>
                         </div>
-                    <!-- </div> -->
-              <!--   </div>  -->
+                      </div>
               </c:forEach>
 				</table>
 		 </div>
-								<div id="article-list-menu">
-									<a href="#" class="btn square btn-default best"><i class="fa fa-star"></i>인기글</a> 
-								
-									<div class="pagination">
-										  <ul class="active">
-									          <c:if test="${startPage>1 }">
-									            <li><a href="../ppboard/list.do?page=${startPage-1 }">&lt;</a></li>
-									          </c:if>
-									          <c:forEach var="i" begin="${startPage }" end="${endPage }">
-									            <c:if test="${i==curpage }">
-									             
-									            </c:if>
-									            <c:if test="${i!=curpage }">
-									             
-									            </c:if>
-									            <li><a href="../ppboard/list.do?page=${i }">${i }</a></li>
-									          </c:forEach>
-									          <c:if test="${endPage<totalpage }">
-									            <li><a href="../ppboard/list.do?page=${endPage+1 }">&gt;</a></li>
-									          </c:if>
-									      </ul>
-									 </div>
-								 </div>
-				   <c:if test="${sessionScope.id!=null }"><!-- 로그인한 사람만 보임  -->
-								<a href="../ppboard/insert.do" class="btn square btn-primary write" id="WriteBtn">
-								<i class="fa fa-pencil"></i> 글 쓰기</a>
-					</c:if>							
+								<div class="container" align="center">
+									<div class="pagination" style="width:200px;">
+										<ul>
+											<c:if test="${startPage>1 }">
+												<li><a href="../pboard/list.do?page=${startPage-1 }">&laquo;</a></li>
+											</c:if>
+											<c:forEach var="i" begin="${startPage }" end="${endPage }">
+												<c:if test="${i==curpage }">
+													<li class="active"><a href="../pboard/list.do?page=${i }">${i }</a></li>
+												</c:if>
+												<c:if test="${i!=curpage }">
+													<li><a href="../pboard/list.do?page=${i }">${i }</a></li>
+												</c:if>
+											</c:forEach>
+											<c:if test="${endPage<totalpage }">
+												<li><a href="../pboard/list.do?page=${endPage+1 }">&raquo;</a></li>
+											</c:if>
+										</ul>
+									</div>
 								</div>
-		
-								<form class="input-group" method="get" id="boardSearchForm">
-									<input type="hidden" name="search_type" value="title"/>
-									 <span class="input-group-btn">
-										<button type="button"
-											class="btn square btn-default dropdown-toggle"
-											data-toggle="dropdown" aria-haspopup="true"
-											aria-expanded="false">
-											<span id="search-type-desc">제목</span> <span class="caret"></span>
-										</button>
-										
-										<ul class="dropdown-menu">
-											<li><a href="#" data-value="title">제목</a></li>
-											<li><a href="#" data-value="titlecont">제목+내용</a></li>
-											<li><a href="#" data-value="nickname">작성자</a></li>
-									</ul><!--  원래 div였음 -->
-									</span>
-									    <input type="text" name="search_term" class="form-control" placeholder="검색어" value=""> 
-									    	<span class="input-group-btn">
-												<button class="btn square btn-default" type="submit">
-													<i class="fa fa-search"></i>
-												</button>
-											</span>
-								</form>
+							</div>
+			
+								</div>
+		<!-- 검색  -->
+								<form class="search_bar large">
+									  <div class="search_dropdown" style="width: 16px;">
+									    <span >제목+내용</span>
+									    <ul>
+									      <li class="selected" value="T" >제목+내용</li>
+									      <li value="A">제목</li>
+									      <li value="TA">작성자</li>
+									    </ul>
+									  </div>
+									
+									  <input type="text" placeholder="검색어를 입력해 주세요." id="keyword" autocomplete=off/>
+									  <input type="hidden" id="page" value="${curpage }">
+							          <input type="hidden" id="cno" value="${curcno}">
+							      <div class="input-group-append">
+									  <button type="submit" value="Search" id="findBtn">Search</button>
+								  </div>
+								</form> 
 							
 						</div>
 				 </div>

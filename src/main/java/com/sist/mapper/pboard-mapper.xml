@@ -10,6 +10,15 @@
     FROM pbo_4 ORDER BY p_no DESC))
     WHERE num BETWEEN #{start} AND #{end}
   </select> 
+  <!-- 인기순 정렬(조회수) -->
+  <select id="pboardHitListData" resultType="PboardVO" parameterType="hashmap">
+    SELECT p_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
+    FROM (SELECT p_no,subject,id,regdate,hit,rcount,rownum as num 
+    FROM (SELECT p_no,subject,id,regdate,hit,rcount 
+    FROM pbo_4 ORDER BY hit DESC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  
   <select id="pboardTotalPage" resultType="int">
     SELECT CEIL(COUNT(*)/10.0) FROM pbo_4
   </select>
@@ -51,4 +60,29 @@
     DELETE FROM pbo_4
     WHERE p_no=#{p_no}
   </delete>
+  
+
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
