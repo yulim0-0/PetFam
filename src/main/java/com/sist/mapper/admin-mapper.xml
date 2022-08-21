@@ -24,11 +24,14 @@
 	</select>
 	
 	<!-- 문의 내역 리스트 -->
-	<select id="adminQnaListData" resultType="QnaVO">
-        SELECT q_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit, isreply, group_id, group_step, group_tab
-		FROM qbo_4
-		WHERE isreply!=1 AND group_step!=1
-		ORDER BY q_no DESC
+	<select id="adminQnaListData" resultType="QnaVO" parameterType="hashmap">
+        SELECT q_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit, 
+                isreply, group_id, group_step, group_tab, num
+        FROM (SELECT q_no,subject,id, regdate, hit,isreply, group_id, group_step, group_tab, rownum as num
+        FROM (SELECT q_no,subject,id, regdate, hit,isreply, group_id, group_step, group_tab
+		FROM qbo_4 ORDER BY q_no DESC))
+		WHERE num BETWEEN #{start} AND #{end}
+		
     </select> 
     
     <select id="adminQnaTotalPage" resultType="int">
