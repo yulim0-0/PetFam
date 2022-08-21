@@ -5,10 +5,12 @@ import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 
+import com.sist.vo.JjimVO2;
 import com.sist.vo.PetplaceVO;
 
 import com.sist.dao.PetplaceDAO;
@@ -32,8 +34,8 @@ public class PetplaceModel {
 		map.put("start", start);
 		map.put("end", end);
 		
-		map.put("s", 1);
-		map.put("e", 48);
+		map.put("s", 250);
+		map.put("e", 252);
 		List<PetplaceVO> list=PetplaceDAO.petplaceListData(map);
 		
 		 int totalpage=PetplaceDAO.petplaceTotalPage(map);
@@ -76,8 +78,11 @@ public class PetplaceModel {
 		map.put("start", start);
 		map.put("end", end);
 	
-		map.put("s", 49);
-		map.put("e", 120);
+		//map.put("s", 49);
+		//map.put("e", 50);
+		map.put("s", 250);
+		map.put("e", 252);
+		
 		List<PetplaceVO> list=PetplaceDAO.petplaceListData(map);
 		
 		 int totalpage=PetplaceDAO.petplaceTotalPage(map);
@@ -114,8 +119,10 @@ public class PetplaceModel {
 		map.put("start", start);
 		map.put("end", end);
 		
-		map.put("s", 137);
-		map.put("e", 248);
+		//map.put("s", 137);
+		//map.put("e", 138);
+		map.put("s", 250);
+		map.put("e", 252);
 		List<PetplaceVO> list=PetplaceDAO.petplaceListData(map);
 		
 		 int totalpage=PetplaceDAO.petplaceTotalPage(map);
@@ -149,15 +156,83 @@ public class PetplaceModel {
 		   map.put("c_no",c_no);
 		   map.put("table_name", table_name);
 		   PetplaceVO vo=PetplaceDAO.petplaceDetailData(map);
-		   
-		   
 		   request.setAttribute("vo", vo);
 		   request.setAttribute("main_jsp", "../petplace/petplace_detail.jsp");
+		   
+		   JjimVO2 jvo=new JjimVO2();
+		   jvo.setC_no(Integer.parseInt(c_no));
+		   HttpSession session=request.getSession();
+		   String id=(String)session.getAttribute("id");
+		   
+		   jvo.setId(id);
+		   int jcount=PetplaceDAO.petplaceJjimCount(jvo);
+		   
+		   request.setAttribute("jcount",jcount);
+		  
 		   return "../main/main.jsp";
+		 
+
+		   
+	   }
+	
+	@RequestMapping("petplace/jjim.do")
+	   public String petplace_jjim(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   String c_no=request.getParameter("c_no");
+		   HttpSession session=request.getSession();
+		   String id=(String)session.getAttribute("id");
+		   JjimVO2 vo=new JjimVO2();
+		   vo.setC_no(Integer.parseInt(c_no));
+		   vo.setId(id);
+		   PetplaceDAO.petplaceJjimInsert(vo);
+		   
+		   return "redirect:../petplace/petplace_detail.do?c_no="+c_no;
 	   }
 	
 	
 	
+	 // 마이페이지에서 찜 목록 출력 
+	   @RequestMapping("mypage/jjim_list.do")
+	   public String petplace_jjim_list(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   HttpSession session=request.getSession();
+		   String id=(String)session.getAttribute("id");
+		   
+		   List<Integer> list=PetplaceDAO.petplaceJjimGetC_no(id);
+		   
+		   List<PetplaceVO> plist=new ArrayList<PetplaceVO>();
+		   for(int c_no:list)
+		   {
+			
+			   PetplaceVO vo=PetplaceDAO.petplaceJjimListData(c_no);
+		
+			   plist.add(vo);
+		
+		   }
+		   
+		   request.setAttribute("plist", plist);
+		
+		 
+		   request.setAttribute("main_jsp", "../mypage/jjim_list.jsp");
+		   
+		   return "../main/main.jsp";
+		   
+
+	   }
+	   
+	   // 찜 취소 
+	   @RequestMapping("petplace/jjim_cancel.do")
+	   public String petplace_jjim_cancel(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   String c_no=request.getParameter("c_no");
+		   HttpSession session=request.getSession();
+		   String id=(String)session.getAttribute("id");
+		   JjimVO2 vo=new JjimVO2();
+		   vo.setId(id);
+		   vo.setC_no(Integer.parseInt(c_no));
+		   // DAO연동
+		   PetplaceDAO.petplaceJjimDelete(vo);
+		   return "redirect:../mypage/jjim_list.do";
+	   }
+	
 }
-	
-	

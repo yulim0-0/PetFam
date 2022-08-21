@@ -63,6 +63,7 @@
 									<li><a href="../mypage/mylike.do">좋아요 내역</a></li>
 									<li><a href="../mypage/mywrite.do">게시글 내역</a></li>
 									<li><a href="../mypage/myqna.do">문의 내역</a></li>
+									<li><a href="../mypage/jjim_list.do">찜 내역</a>
 								</ul>
 							</li>
 

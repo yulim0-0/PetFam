@@ -47,5 +47,40 @@
 <!--     SELECT CEIL(COUNT(*)/12.0) FROM rcpg_4
     WHERE addr LIKE '%'||#{addr}||'%' -->
   </select>
+  
+  <!-- 찜하기 -->
+  <insert id="petplaceJjimInsert" parameterType="com.sist.vo.JjimVO2">
+  	<selectKey keyProperty="no" resultType="int" order="BEFORE">
+  	SELECT NVL(MAX(no)+1,1) as no FROM jjim_p_4
+  	</selectKey>
+  	INSERT INTO jjim_p_4 VALUES(#{no},#{id},#{c_no})
+  
+  </insert>
+  
+  
+    <!-- 찜 여부 확인 -->
+  <select id="petplaceJjimCount" resultType="int" parameterType="com.sist.vo.JjimVO2">
+    SELECT COUNT(*) FROM jjim_p_4
+    WHERE c_no=#{c_no} AND id=#{id}
+  </select>
+  
+  <!-- 찜 출력 (마이페이지) : forEach -->
+  <select id="petplaceJjimListData" resultType="PetplaceVO" parameterType="int">
+    SELECT * FROM rcpg_4
+    WHERE c_no=#{c_no}
+  </select>
+  
+  <select id="petplaceJjimGetC_no" resultType="int" parameterType="string">
+    SELECT c_no FROM jjim_p_4
+    WHERE id=#{id}
+  </select>
+  
+  <!--  찜 취소 -->
+  <delete id="petplaceJjimDelete" parameterType="com.sist.vo.PetplaceVO">
+   DELETE FROM jjim_p_4
+   WHERE id=#{id} AND c_no=#{c_no}
+  </delete>
+  
+  
  
 </mapper>

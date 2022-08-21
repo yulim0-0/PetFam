@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.sist.vo.*,com.sist.dao.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,11 +42,11 @@
 
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
-
- <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
+       
+        <!-- Top Breadcrumb Area -->
+       <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
             <h2>반려동물 동반 장소 추천 </h2>
-        </div>
-
+       </div>
         
     </div>
     <!-- ##### Breadcrumb Area End ##### -->
@@ -71,29 +73,27 @@
 				
                     <div class="col-12 col-md-6">
                         <div class="single_product_desc">
-                            <h4 class="title">${vo.title }</h4>
-                     			
-                            </div>
-
-                            <div class="cart--area d-flex flex-wrap align-items-center">
-                                <!-- Add to Cart Form -->
-                                   
-                               <button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">Add to cart</button>
-                                <form class="cart clearfix d-flex align-items-center" method="post" action="petplace.do">
-                                    <button type="submit" name="buy" value="5" class="btn alazea-btn ml-15">BUY NOW </button>
-                                </form>
-                                  <div class="wishlist-compare d-flex flex-wrap align-items-center">
-                                 <!-- Wishlist & Compare -->
-                                 	<a href="#" class="wishlist-btn ml-15"><i class="icon_heart_alt"></i></a>
-                                 </div> 
-                                 
-                                  <div class="products--meta">
-                            	
-                                <p><span>Address:</span> <span>${vo.addr }</span></p>
-                                <p><span>Tel:</span><span>${vo.tel }</span></p> 
-                                <p><span>Category:</span> 
-                                	<span>
-	                                	<c:if test="${vo.category eq '2' }"> 카페,식당</c:if>
+                            <h4 class="title">${vo.title}</h4>
+                         </div>
+                         <div class="one_half first">
+						      <table class="table">
+						       <tr>
+						        <td colspan="2">
+						         <h4> <span style="color:orange">상세정보</span></h4>
+						        </td>
+						       </tr>
+						       <tr>
+						        <th width=30%>주소</th>
+						        <td width=70%>${vo.addr }</td>
+						       </tr>
+						       <tr>
+						        <th width=30%>전화번호</th>
+						        <td width=70%>${vo.tel }</td>
+						       </tr>
+						       <tr>
+						       	 <th width=30%>카테고리</th>
+						       	 <td width=70%>
+						        	<c:if test="${vo.category eq '2' }"> 카페,식당</c:if>
 								         <c:if test="${vo.category eq '3' }"> 카페,식당</c:if>  
 								        <c:if test="${vo.category eq '11' }"> 공원</c:if>
 								        <c:if test="${vo.category eq '1' }"> 펜션</c:if>
@@ -103,26 +103,57 @@
 								        <c:if test="${vo.category eq '7' }"> 펜션</c:if>
 								        <c:if test="${vo.category eq '8' }"> 펜션</c:if>
 								        <c:if test="${vo.category eq '9' }"> 펜션</c:if>
-								    
-                                	</span></p>
+						        </td>
+						       </tr>
+						       
+						        <tr>
+						       <td colspan="2" class="text-center">
+							       
+							       <p>
+                                	    <span>Share on:</span>
+                                    	<span>
+	                                    	<a href="#"><i class="fa fa-facebook"></i></a>
+	                                    	<a href="#"><i class="fa fa-twitter"></i></a>
+	                                    	<a href="#"><i class="fa fa-pinterest"></i></a>
+	                                    	<a href="#"><i class="fa fa-google-plus"></i></a>
+                                		</span>
+                                	   </p>
+                                	   
+                                	   
+							       </td>
+							      </tr>
+							      </table>            
+							    
+							    
+							    
+							                         
+
+                           <!--  <div class="cart--area d-flex flex-wrap align-items-center" > -->
+                                <!-- Add to Cart Form -->
+                               
+                              
+                              <div class="wishlist-compare d-flex flex-wrap align-items-center">
+                                  <!-- 로그인 된 상태에서 -->
+                                   <c:if test="${sessionScope.id!=null }">
+                                  	<c:if test="${jcount==0 }">
+							        	 <a href="../petplace/jjim.do?c_no=${vo.c_no }" class="btn alazea-btn ml-15">찜하기</a>
+							        </c:if>
+							        <c:if test="${jcount!=0 }">
+							       		  <span class="btn alazea-btn ml-15">찜하기</span>
+							        </c:if>
+                                	</c:if>
                                 
-                                <p>
-                                    <span>Share on:</span>
-                                    <span>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                </span>
-                                </p>
-                            </div>       
+							        <a href="javascript:history.back()" class="btn alazea-btn ml-15">목록</a>
+							         
+                             </div> 
                             </div>
-                          </div>
-                     </div>
-                 </div>
-                 
-                            
-          <div class="container">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="product_details_tab clearfix">
@@ -135,14 +166,14 @@
                                 <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">Additional Information</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">Reviews <span class="text-muted">0</span></a>
+                                <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">Reviews <span class="text-muted">(1)</span></a>
                             </li>
                         </ul>
                         <!-- Tab Content -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade show active" id="description">
                                 <div class="description_area">
-                                    <p>설명${vo.subtitle } </p>
+                                  <p> ${vo.subtitle } </p>
                                     
                                 </div><br>
                                 <br>
@@ -151,7 +182,7 @@
                              <div role="tabpanel" class="tab-pane fade show active" id="addi-info">
                              <div class="aside" style="width:100%;height:100%;margin:auto;">
 						       <div id="map" style="width:100%;height:350px;"></div>
-								<p><span>주소:</span> <span>${vo.addr }</span></p>
+								<p><span>주소:</span> <span>${vo.addr}</span></p>
 								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b258686433a9d9db37e9d1bbb85cdae3&libraries=services"></script>
 								<script>
 								var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -169,7 +200,7 @@
 								// 주소로 좌표를 검색합니다
 								
 							
-								geocoder.addressSearch('${vo.addr}', function(result, status) {
+								geocoder.addressSearch('${vo.addr }', function(result, status) {
 								
 								    // 정상적으로 검색이 완료됐으면 
 								     if (status === kakao.maps.services.Status.OK) {
@@ -184,7 +215,7 @@
 								
 								        // 인포윈도우로 장소에 대한 설명을 표시합니다
 								        var infowindow = new kakao.maps.InfoWindow({
-								            content: '<div style="width:150px;text-align:center;padding:6px 0;">${vo.title}</div>'
+								            content: '<div style="width:150px;text-align:center;padding:6px 0;">${vo.title }</div>'
 								        });
 								        infowindow.open(map, marker);
 								
@@ -196,11 +227,6 @@
 						    </div>
                              </div>
                             
-                            
-                                    
-                           </div>
-                           
-
                         </div>
                     </div>
                 </div>
@@ -208,8 +234,18 @@
         </div>
     </section>
     <!-- ##### Single Product Details Area End ##### -->
+  
+ 
+  
+   
+  
 
    
+
+
+
+    
+    <!-- ##### Related Product Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
    
