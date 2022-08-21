@@ -138,7 +138,7 @@
 					</div>
 <!-- 페이징  -->					
 					<div class="container" align="center">
-						<div class="pagination">
+						<div class="pagination" style="width:200px; margin-top: 35px;">
 							<ul>
 								<c:if test="${startPage>1 }">
 									<li><a href="../notice/list.do?page=${startPage-1 }">&laquo;</a></li>
@@ -158,7 +158,7 @@
 						</div>
 					</div>
 				</div>
-
+					
 		
 <!-- partial -->
   <script  src="../pboard/pboarddist/pboard_script.js"></script>

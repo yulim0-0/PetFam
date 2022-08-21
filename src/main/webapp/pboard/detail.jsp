@@ -7,9 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css'>
 <link rel="stylesheet" href="pboarddist/pboard_style.css">
+<style type="text/css">
+#comments{
+margin-top:32px;
+}
+</style>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 let i=0;
@@ -88,7 +93,7 @@ $(function(){
     <ul>
       <li><a href="../main/main.do">Home</a></li>
       <li><a href="../pboard/list.do">커뮤니티</a></li>
-      <li><a href="../pboard/detail.do">상세보기</a></li>
+      <li><a href="../pboard/detail.do?p_no=${vo.p_no }">상세보기</a></li>
     </ul>
    
   </div>
@@ -122,7 +127,7 @@ $(function(){
         </td>
        </tr>
        <tr>
-         <td colspan="4" class="text-right">
+         <td colspan="4" class="text-right" style="text-align: right;">
            <a href="../pboard/update.do?p_no=${vo.p_no }" class="btn btn-xs btn-danger">수정</a>
            <span class="btn btn-xs btn-info" id="del">삭제</span>
            <a href="../pboard/list.do" class="btn btn-xs btn-warning">목록</a>
@@ -153,17 +158,19 @@ $(function(){
         <ul>
          <c:forEach var="rvo" items="${list }">
           <li>
+          
             <article>
-              <header>
-                <figure class="avatar">
+              <header style="display: -webkit-inline-box;">
+               
+                <address>
+               <a href="#">${rvo.id }&nbsp;(${rvo.dbday })&nbsp;&nbsp;&nbsp;</a>
+                </address>
+                 <figure class="avatar">
                  <c:if test="${sessionScope.id==rvo.id}"><!-- 본인이면 -->
                   <span class="btn btn-xs btn-danger up" style="color:black" data-p_no="${rvo.p_no }">수정</span>
-                  <a href="../preply/preply_delete.do?p_no=${rvo.p_no }&p_no=${vo.p_no}" class="btn btn-xs btn-success" style="color:black">삭제</a>
+                  <a href="../preply/preply_delete.do?pre_no=${rvo.pre_no }&p_no=${vo.p_no}" class="btn btn-xs btn-success" style="color:black">삭제</a>
                  </c:if>
                 </figure>
-                <address>
-               <a href="#">${rvo.id }&nbsp;(${rvo.dbday })</a>
-                </address>
               </header>
               <div class="comcont">
                 <p><pre style="white-space: pre-wrap;background-color:white;border:none">${rvo.msg }</pre></p>
@@ -178,7 +185,7 @@ $(function(){
 		             <form method=post action="../preply/preply_update.do">
 		               <input type=hidden name=p_no value="${vo.p_no }">
 		               <input type=hidden name=type value="1">
-		               <input type=hidden name=pre_no value="${rvo.p_no }">
+		               <input type=hidden name=pre_no value="${rvo.pre_no }">
 		               <textarea rows="5" cols="70" name="msg" style="float: left">${rvo.msg }</textarea>
 		               <input type=submit class="btn btn-sm btn-primary" style="height: 105px"
 		                value="댓글수정">

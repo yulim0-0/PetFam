@@ -19,12 +19,14 @@ public class PboardModel {
 		   page="1";
 	   int curpage=Integer.parseInt(page);
 	   Map map=new HashMap();
-	   int rowSize=9;
+	   int rowSize=10;
 	   int start=(curpage*rowSize)-(rowSize-1);
 	   int end=curpage*rowSize;
 	   map.put("start", start);
 	   map.put("end",end);
 	   List<PboardVO> list=PboardDAO.pboardListData(map);
+//	   조회수 정렬 (인기순)
+	   List<PboardVO> h_list=PboardDAO.pboardHitListData(map);
 	   
 	   int totalpage=PboardDAO.pboardTotalPage();
 	  
@@ -64,8 +66,7 @@ public class PboardModel {
 	   HttpSession session=request.getSession();//id 세션 받아오기 
 	   String id=(String)session.getAttribute("id");
 	   String name=(String)session.getAttribute("name");
-//	  / String id=request.getParameter("id");
-//	   String name=request.getParameter("name");
+
 	   System.out.println("id="+id);
 	   String subject=request.getParameter("subject");
 	   String content=request.getParameter("content");
@@ -154,6 +155,9 @@ public class PboardModel {
 	   request.setAttribute("result", result);
 	   return "../pboard/delete.jsp";
    }
+   
+
+  
 }
 
 
