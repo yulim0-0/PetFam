@@ -67,7 +67,9 @@
    <li class="one_quarter first">
    <li class="cards_item">
     <div class="card">
-     <div class="card_image"><img src=${vo.poster }"></div>
+     <div class="card_image"><img src="${vo.poster }"></div>
+     
+     
      <div class="card_content">
     
       <p class="card_title">${vo.title }</p>
@@ -82,7 +84,7 @@
    <li class="one_quarter">
    <li class="cards_item">
     <div class="card">
-     <div class="card_image"><img src=${vo.poster }"></div>
+     <div class="card_image"><img src="${vo.poster }"></div>
      <div class="card_content">
      
       <p class="card_title">${vo.title }</p>

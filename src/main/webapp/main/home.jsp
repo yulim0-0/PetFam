@@ -104,7 +104,7 @@
 	        
 	          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" >
 	          		 <div class="icon-box">
-	      				  <img src="https://i0.holapet.com/v0.holapet.com/data2/20211124/16377322407986_78.jpg?resize=400,300" class="img-fluid" alt="">
+	      				   <img src="../assets/img/petplace/hatdog.jpg" class="img-fluid" alt="">
 		              <h4 class="title"><a href=""><br>바람구름</a></h4>
 		              <p class="description">대구 남구 명덕로64길 26 1층</p>
 		            </div>
@@ -114,8 +114,7 @@
                
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
-            <img src="https://i0.holapet.com/v0.holapet.com/data2/20211125/16378047755484_52.jpeg?resize=400,300" class="img-fluid" alt="">
-              
+             <img src="../assets/img/petplace/hatdog.jpg" class="img-fluid" alt="">
               <h4 class="title"><a href=""><br>루체</a></h4>
               <p class="description">강원 원주시</p><p class="description">판부면 매봉길 16-4</p>
             </div>
@@ -123,8 +122,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
-            <img src="https://i0.holapet.com/v0.holapet.com/data2/20211122/16375598086284_64.jpg?resize=400,300" class="img-fluid" alt="">
-              
+           <img src="../assets/img/petplace/hatdog.jpg" class="img-fluid" alt="">
               <h4 class="title"><a href=""><br>오늘 카페</a></h4>
               <p class="description">서울 서초구 명달로4길 4 1층</p>
             </div>
@@ -132,7 +130,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
            <div class="icon-box">
-            <img src="https://i0.holapet.com/v0.holapet.com/data2/20210528/16221694971084_17.jpg?resize=400,300" class="img-fluid" alt="">
+             <img src="../assets/img/petplace/hatdog2.jpg" class="img-fluid" alt="">
               <h4 class="title"><a href=""><br>삼락생태공원</a></h4>
               <p class="description">부산 사상구 삼락동 29-46</p>
             </div>
