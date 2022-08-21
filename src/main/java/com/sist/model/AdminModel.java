@@ -91,8 +91,8 @@ public class AdminModel {
 	@RequestMapping("admin/admin_qna_detail.do")
 	public String admin_qna_detail(HttpServletRequest request, HttpServletResponse response)
 	{
-		String group_id = request.getParameter("group_id");
-		List<QnaVO> list=AdminDAO.adminQnaDetail(Integer.parseInt(group_id));
+		String q_no = request.getParameter("q_no");
+		List<QnaVO> list=AdminDAO.adminQnaDetail(Integer.parseInt(q_no));
 		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../admin/admin_qna_detail.jsp");
 		return "../main/main.jsp";

@@ -66,7 +66,7 @@ $(function(){
                 
                 <c:forEach var="vo" items="${list }">
                     <tbody>
-                        <tr style="cursor:pointer;" onclick="location.href='../admin/admin_qna_detail.do?group_id=${vo.group_id}'" >
+                        <tr style="cursor:pointer;" onclick="location.href='../admin/admin_qna_detail.do?q_no=${vo.q_no}'" >
                             <td><input type=checkbox /></td>
                             <td style="width:10%">${vo.q_no }</td>
                             <td style="text-align : left;">${vo.subject }</td>
