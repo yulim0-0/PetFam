@@ -82,6 +82,7 @@
 </head>
 <body>
  <div class="main">
+ <jsp:include page="filter.jsp"/>
   <ul class="cards">
   <c:forEach var="vo" items="${list }" varStatus="s">
    <c:if test="${s.index%3==0 }">
@@ -92,7 +93,7 @@
      <div class="card_content">
       <h2 class="card_store">${vo.store }</h2>
       <p class="card_title">${vo.name }</p>
-      <p class="card_price">${vo.price }\</p>
+      <p class="card_price">${vo.strPrice }원</p>
       <a href="../booking/detail_before.jsp?o_no=${vo.o_no }"><button class="btn card_btn">Read More</button></a>
      </div>
     </div>
@@ -107,9 +108,8 @@
      <div class="card_content">
       <h2 class="card_store">${vo.store }</h2>
       <p class="card_title">${vo.name }</p>
-      <p class="card_price">${vo.price }\</p>
+      <p class="card_price">${vo.strPrice }원</p>
      <a href="../booking/detail_before.jsp?o_no=${vo.o_no }"> <button class="btn card_btn">Read More</button></a>
-      
      </div>
     </div>
    </li>
@@ -117,7 +117,6 @@
   </c:if>
   </c:forEach>
   </ul>
-  
   <!-- paging start-->
   <div class="container" align="center">
 		 <div class="pagination">
@@ -142,7 +141,6 @@
 	<!-- paging end-->
  </div>
  	<!-- cookie -->
- 	
  	<div style="height: 10px"></div>
  		<div class="cookie-row">
     <h3>최근에 본 상품</h3>
@@ -160,7 +158,6 @@
         }
      %>
     </div>
- 	
  	<!-- cookie end  -->
 </body>
 </html>

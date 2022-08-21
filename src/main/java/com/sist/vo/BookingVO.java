@@ -11,8 +11,14 @@ ADDRESS NOT NULL VARCHAR2(500)
  */
 public class BookingVO {
 	private int o_no,price;
-	private String name,store,s_info,poster,img,address;
+	private String name,store,s_info,poster,img,address,strPrice;
 	
+	public String getStrPrice() {
+		return strPrice;
+	}
+	public void setStrPrice(String strPrice) {
+		this.strPrice = strPrice;
+	}
 	public int getO_no() {
 		return o_no;
 	}
