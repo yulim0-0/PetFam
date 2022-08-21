@@ -34,8 +34,8 @@ public class PetplaceModel {
 		map.put("start", start);
 		map.put("end", end);
 		
-		map.put("s", 250);
-		map.put("e", 252);
+		map.put("s", 252);
+		map.put("e", 304);
 		List<PetplaceVO> list=PetplaceDAO.petplaceListData(map);
 		
 		 int totalpage=PetplaceDAO.petplaceTotalPage(map);
