@@ -331,3 +331,13 @@ select option {
     margin-top: -5px;
     margin-bottom: 10px;
 }
+.idMsg {
+	position : absolute;
+	
+}
+
+.miss {
+	position : absolute;
+	padding : 15px 0 0 225px;
+	
+}

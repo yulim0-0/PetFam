@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.main-mapper">
+
+    <!-- 커뮤니티 검색 -->
+    <select id="totalComFindData" resultType="PboardVO" parameterType="string">
+        SELECT p_no, subject FROM PBO_4
+        WHERE subject LIKE '%'||#{search}||'%'
+    </select>
+    
+    <!-- 추천 검색 -->
+    <select id="totalRecFindData" resultType="PetplaceVO" parameterType="string">
+        SELECT c_no, title FROM RCPG_4
+        WHERE title LIKE '%'||#{search}||'%'
+    </select>
+    
+    <!-- 예약 검색 -->
+    <select id="totalBookFindData" resultType="BookingVO" parameterType="string">
+        SELECT o_no,store FROM ORD_4
+        WHERE store LIKE '%'||#{search}||'%'
+    </select>
+
+</mapper>

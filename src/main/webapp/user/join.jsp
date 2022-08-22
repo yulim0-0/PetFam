@@ -27,12 +27,14 @@
 			<div class="row">
 				<div class="col-66 input-group input-group-icon">
 					<input type="text" name=id id=id placeholder="아이디" />
+					<span class="none" id="idMsg"></span>
 					<div class="input-icon">
 						<i class="fa fa-envelope"></i>
 					</div>
 				</div>
 				<div class="col-33">
-					<input type="button" name="checkBtn" id="checkBtn" value="중복확인" />
+					<input type="button" name="checkBtn" id="checkBtn" value="중복확인"/>
+					<!-- 아이디 확인 창 띄우지 않고 중복확인을 해당 페이지에서 진행할 수 있을까? -->
 				</div>
 			</div>
 				
@@ -109,7 +111,7 @@
 			
 			<div class="row">
 				<div class="col-66 input-group input-group-icon">
-					<input type="email" id="email" name="email" placeholder="이메일" />
+					<input type="email" id="email" name="email" placeholder="이메일" onblur="ck_email()" />
 					<div class="input-icon">
 						<i class="fa fa-envelope"></i>
 					</div>

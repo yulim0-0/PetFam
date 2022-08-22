@@ -13,9 +13,9 @@ function ck_email(){
         var isEmail = /([\w\-]+\@[\w\-]+\.[\w\-]+)/
 
         if(!isEmail.test(email.value)){
-            email.style.display="block";
-            email.className='error'
-            email.innerHTML="이메일 형식을 확인하세요"
+            MsgId.style.display="block";
+            MsgId.className='error'
+            MsgId.innerHTML="이메일 형식을 확인하세요"
             email.focus()
             return false;
         } else{
@@ -97,11 +97,51 @@ function ck_gender(){
     
 }
 
+function ck_id(){
+    var id = document.getElementById("id")
+    var idMsg=document.getElementById("idMsg");
+    
+    if(id.value=='')
+    {
+        $("id").focus();
+        idMsg.style.display="block";
+        idMsg.className='miss'
+        idMsg.innerHTML="아이디를 입력하세요"
+        id.focus()
+        return;
+    }
+    /*
+    $.ajax({
+        type:'post',
+        url : '../user/id_check.do',
+        data : {"id" : id},
+        success : function(result)
+        {
+            let count=parseInt(result.trim())
+            if(count==0)
+            {
+                idMsg.style.display="block";
+                idMsg.style=color="forestgreen";
+                idMsg.className='valid'
+                idMsg.innerHTML="사용 가능한 아이디입니다"
+            }
+            else
+            {
+                idMsg.style.display="block";
+                idMsg.style.color="red";
+                idMsg.innerHTML="사용중인 아이디입니다"
+                id.focus();
+            }
+        }
+    })
+    */
+}
+
 Shadowbox.init({
 	players : [ 'iframe' ]
 })
 $(function() {
-	$('#checkBtn').click(function() {
+    $('#checkBtn').click(function() {
 		Shadowbox.open({
 			content : '../user/idcheck.do',
 			player : 'iframe',
@@ -110,6 +150,7 @@ $(function() {
 			height : 200
 		})
 	})
+	
 	$('#postBtn').click(function() {
 		// 우편번호 검색 처리 
 		new daum.Postcode({
@@ -124,6 +165,7 @@ $(function() {
     $('#eBtn').click(function(){
 	    let email=$('#email').val();
 	    let emailcheck_msg=document.getElementById("emailcheck_msg");
+	    
 	    if(email.trim()=="")
 		{
 		 $("email").focus();
