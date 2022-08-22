@@ -8,7 +8,10 @@
 <title>메인</title>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8244d253186302ea3726a5f1803e7dfe"></script>
 <script type="text/javascript">
-
+function jjBtn(){
+	
+	alert('좋아요 완료! \n좋아요를 누른 상품은 마이페이지에서 확인하실 수 있습니다');
+}
 
 </script>
 </head>
@@ -127,8 +130,10 @@
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_%EC%A4%91%EC%84%B1%ED%99%94_34.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+              <c:if test="${sessionScope.id!=null }"> 
+                <a href="../booking/jjim.do?o_no=19" onclick="jjBtn()" title="좋아요 추가"><i class="bi bi-plus"></i></a>
+                </c:if>
+                <a href="../booking/hos_detail.do?o_no=19" title="상세보기"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
                 <p>플러스동물메디컬센터</p>
@@ -140,8 +145,10 @@
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_52.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                <c:if test="${sessionScope.id!=null }"> 
+                <a href="../booking/jjim.do?o_no=231" onclick="jjBtn()" title="좋아요 추가"><i class="bi bi-plus"></i></a>
+                </c:if>
+                <a href="../booking/hos_detail.do?o_no=231" title="상세보기"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
                 <p>순수동물병원</p>
@@ -153,8 +160,10 @@
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_%EC%A4%91%EC%84%B1%ED%99%94_44.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+               <c:if test="${sessionScope.id!=null }"> 
+                <a href="../booking/jjim.do?o_no=25" title="좋아요 추가"><i class="bi bi-plus"></i></a>
+                </c:if>
+                <a href="../booking/hos_detail.do?o_no=25" title="상세보기"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
                 <p>치료해주오 광명점</p>
@@ -166,8 +175,10 @@
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_%EA%B5%90%EC%9C%A1_1.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 2"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                <c:if test="${sessionScope.id!=null }"> 
+                <a href="../booking/jjim.do?o_no=1" onclick="jjBtn()" title="좋아요 추가"><i class="bi bi-plus"></i></a>
+                </c:if>
+                <a href="../booking/hos_detail.do?o_no=1" title="상세보기"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
                 <p>초롱스쿨 반려견교육센터</p>
@@ -179,8 +190,10 @@
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_%EC%95%84%EC%B9%B4%EB%8D%B0%EB%AF%B8.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 2"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                <c:if test="${sessionScope.id!=null }"> 
+                <a href="../booking/jjim.do?o_no=2" onclick="jjBtn()" title="좋아요 추가"><i class="bi bi-plus"></i></a>
+                </c:if>
+                <a href="../booking/hos_detail.do?o_no=2" title="상세보기"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
                 <p>바우라움서울캠퍼스</p>
@@ -192,8 +205,10 @@
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_%EC%B9%B4%EB%B0%8D%EC%8B%9C%EA%B7%B8%EB%84%90.jpg" data-gallery="portfolioGallery" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="" class="portfolio-lightbox" title="App 3"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                <c:if test="${sessionScope.id!=null }"> 
+                <a href="../booking/jjim.do?o_no=3" onclick="jjBtn()" title="좋아요 추가"><i class="bi bi-plus"></i></a>
+                </c:if>
+                <a href="../booking/hos_detail.do?o_no=3" title="상세보기"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
                 <p>조이플마인드케어</p>
@@ -205,8 +220,10 @@
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_6.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 1"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                <c:if test="${sessionScope.id!=null }"> 
+                <a href="../booking/jjim.do?o_no=12" onclick="jjBtn()" title="좋아요 추가"><i class="bi bi-plus"></i></a>
+                </c:if>
+                <a href="../booking/hos_detail.do?o_no=12" title="상세보기"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
                 <p>도그플러스 애견미용</p>
@@ -218,8 +235,10 @@
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_%EA%B3%A0%EC%96%91%EC%9D%B4%EB%AF%B8%EC%9A%A9.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="https://www.mypetplus.co.kr/Upload/Product/Pro_%EC%83%81%EC%84%B8%EB%A9%94%EC%9D%B8_%EB%AF%B8%EC%9A%A9_13.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Card 3"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                <c:if test="${sessionScope.id!=null }"> 
+                <a href="../booking/jjim.do?o_no=8" onclick="jjBtn()" title="좋아요 추가"><i class="bi bi-plus"></i></a>
+                </c:if>
+                <a href="../booking/hos_detail.do?o_no=8" title="상세보기"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
                 <p>우리들동물종합병원</p>
@@ -231,8 +250,10 @@
             <div class="portfolio-wrap">
               <img src="https://www.mypetplus.co.kr/upload/201710092001410.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bi bi-plus"></i></a>
-                <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+                <c:if test="${sessionScope.id!=null }"> 
+                <a href="../booking/jjim.do?o_no=14" onclick="jjBtn()" title="좋아요 추가"><i class="bi bi-plus"></i></a>
+                </c:if>
+                <a href="../booking/hos_detail.do?o_no=14" title="상세보기"><i class="bi bi-link"></i></a>
               </div>
               <div class="portfolio-info">
                 <p>잇츠그루밍타임</p>

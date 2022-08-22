@@ -152,7 +152,7 @@
         	if(k>13) break;
      %>
      	<a href="hos_detail.do?o_no=<%= vo.getO_no()%>"> 
-          <img src="http://<%=vo.getPoster() %>" style="width: 263px;height: 100px">
+          <img src="http://<%=vo.getPoster() %>" style="width: 263px;height: 100px"></a>
      <%
      		k++;
         }

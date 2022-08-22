@@ -7,8 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <header id="header" class="fixed-top d-flex align-items-center" style="
-    font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;
-">
+    font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;">
 		<div class="container d-flex align-items-center justify-content-between">
 			<div class="logo">
 				<!-- Uncomment below if you prefer to use an image logo -->
@@ -72,7 +71,7 @@
 
 					<!-- 로그인 상태인 경우 -->
 
-						<li><a class="start" id="logout_header" href="../user/logout.do">로그아웃</a></li>
+						<li><a class="start" id="login_header" href="../user/login.do">로그인</a></li>
 
 				</ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
@@ -82,17 +81,12 @@
 	</header>
 
 <head>
-
-<head>
     
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-    <!-- Title -->
-    
 
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -101,10 +95,9 @@
     <link rel="stylesheet" href="../booking/detaildist/media.css">
     <link rel="stylesheet" href="../booking/detaildist/style.css">
 
-    <!-- heart icon -->
-<!-- Add icon library -->
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+	<!-- heart icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 .jjim_btn {
@@ -147,25 +140,16 @@ body {
   font-size: 16px;
   color: #707070; }
 
-
-
 </style>
-
-
 </head>
 
 <body>
 
-
-    <!-- ##### Header Area End ##### -->
-
     <!-- ##### Breadcrumb Area Start ##### -->
     <div class="breadcrumb-area">
         <!-- Top Breadcrumb Area -->
-        <div class="row" style=margin-top:100px;>
-           
-        </div>
-        
+        <div class="row" style=margin-top:100px;></div>
+
     </div>
     <!-- ##### Breadcrumb Area End ##### -->
 
@@ -193,7 +177,7 @@ body {
                         <div class="single_product_desc">
                             <h4 class="title">${vo.name }</h4>
                             <h7>${vo.store }</h7>
-                            <h4 class="price">${vo.price }</h4>
+                            <h4 class="price">${vo.price }원</h4>
                             <div class="short_overview">
                                 <p>${vo.s_info }</p>
                             </div>
