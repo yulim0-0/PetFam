@@ -13,7 +13,8 @@
 	
 	<!-- partial:index.partial.html -->
 	<main class="main">
-		<ul class="cards">
+	 <h2>내 좋아요 내역</h2>
+		<ul class="cards" >
 			<c:forEach var="vo" items="${list }">
 				<li class="cards_item">
 					<div class="card">
@@ -21,10 +22,15 @@
 							<img src="http://${vo.poster }">
 						</div>
 						<div class="card_content">
-							<h2 class="card_title">${vo.j_no }</h2>
+							<h2 class="card_title"></h2>
 							<p class="card_text">${vo.name }</p>
-							<p class="card_msg">${vo.price }</p>
-							<button class="btn card_btn" onclick="location.href='../booking/hos_detail.do?o_no=${vo.o_no }'">Read More</button>
+							<p class="card_msg">${vo.price }원</p>
+							<div class="btnbtn">
+							<button class="btn card_btn" onclick="location.href='../booking/hos_detail.do?o_no=${vo.o_no }'" 
+								 style="width: 150px; float: left;  margin-left: 4px; margin-right: 23px; background-color: skyblue ">상세보기</button> 
+							<button class="btn card_btn1" onclick="location.href='../booking/jjim_cancel.do?o_no=${vo.o_no }'"
+								 style="width: 150px;" >좋아요 취소</button>
+							</div>
 						</div>
 					</div>
 				</li>

@@ -46,7 +46,7 @@
 							<li><a href="../qna/list.do">문의 게시판</a></li>
 							<li><a href="../notice/list.do">공지사항</a></li>
 						</ul> 
-						
+
 							</li><li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
 								<ul>
 									<li class="dropdown">
@@ -63,17 +63,17 @@
 								</ul>
 							</li>
 
-							
+
 						 <!-- 로그인 상태가 아닌 경우 --> 
 					<li><a class="nav-link scrollto" href="#contact">문의</a></li>
 
 					<!-- 로그인 상태가 아닌 경우 -->
-					
+
 
 					<!-- 로그인 상태인 경우 -->
-					
+
 						<li><a class="start" id="logout_header" href="../user/logout.do">로그아웃</a></li>
-					
+
 				</ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
 			</nav>
@@ -82,16 +82,8 @@
 	</header>
 
 <head>
-	<script src="js/jquery/jquery-2.2.4.min.js"></script>
-    
-    <script src="js/bootstrap/popper.min.js"></script>
-   
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    
-    <script src="js/plugins/plugins.js"></script>
-    
-    <script src="js/active.js"></script>
-     
+
+<head>
     
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -106,14 +98,14 @@
     <link rel="icon" href="img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="../booking/detaildist/media.css">
     <link rel="stylesheet" href="../booking/detaildist/style.css">
 
     <!-- heart icon -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Add icon library -->
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../booking/detaildist/media.css">
+
 <style>
 .jjim_btn {
   background-color: #f2f4f5;

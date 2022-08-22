@@ -153,4 +153,28 @@ public class BookingDAO {
 		 }
 		 return count;
 	 }
+	 /*
+	  *  <delete id="bookingJjimDelete" parameterType="JjimVO">
+		 	DELETE FROM ord_jjim_4
+		 	WHERE o_no=#{o_no} AND id=#{id}
+		 </delete>
+	  */
+	 public static void bookingJjimDelete(JjimVO vo)
+	 {
+		 SqlSession session=null;
+		 try
+		 {
+			 session=ssf.openSession(true);
+			 session.delete("bookingJjimDelete", vo);
+		 }catch(Exception ex)
+		 {
+			 ex.printStackTrace();
+		 }
+		 finally
+		 {
+			 if(session!=null)
+				 session.close();
+		 }
+		 
+	 }
 }

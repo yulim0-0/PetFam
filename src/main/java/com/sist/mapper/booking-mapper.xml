@@ -38,4 +38,10 @@
  	SELECT COUNT(*) FROM ORD_JJIM_4
  	WHERE o_no=#{o_no} AND id=#{id}
  </select>
+ 
+ <!--찜 삭제  -->
+ <delete id="bookingJjimDelete" parameterType="JjimVO">
+ 	DELETE FROM ord_jjim_4
+ 	WHERE o_no=#{o_no} AND id=#{id}
+ </delete>
 </mapper>

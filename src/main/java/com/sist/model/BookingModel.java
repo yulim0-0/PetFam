@@ -191,4 +191,17 @@ public class BookingModel {
 	 	request.setAttribute("main_jsp", "../booking/booking.jsp");
 	 	return "../main/main.jsp";
 	 }
+	 
+	 @RequestMapping("booking/jjim_cancel.do")
+	 public String booking_jjim_cancel(HttpServletRequest request, HttpServletResponse response)
+	 {
+		 String o_no=request.getParameter("o_no");
+		 HttpSession session=request.getSession();
+		 String id=(String)session.getAttribute("id");
+		 JjimVO vo=new JjimVO();
+		 vo.setO_no(Integer.parseInt(o_no));
+		 vo.setId(id);
+		 BookingDAO.bookingJjimDelete(vo);
+		 return "redirect:../mypage/mylike.do";
+	 }
 }
