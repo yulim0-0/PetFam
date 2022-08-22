@@ -8,83 +8,46 @@
 <title>메인</title>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8244d253186302ea3726a5f1803e7dfe"></script>
 <script type="text/javascript">
-	function enterkey(){
-		if(window.event.keyCode == 13) {
-			location.href="../main/search.do";
-		}
-		else {
-			alert('실패');
-		}
-	}
+
 
 </script>
 </head>
 <body>
 <main id="main">
-<section id="hero" class="d-flex align-items-center">
-    <div class="container">
-      <div class="row gy-4">
-        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1>Service for the busy worker who wants to spend time with your fluffy friends</h1>
-          <h2>털복숭이 친구들과 함께 하고싶은 바쁜 직장인을 위해</h2>
-          <div>
-          	<c:if test="${sessionScope.id!=null }">
-            	<a href="../booking/hospital_list.do" class="btn-get-started scrollto">예약하러 가기</a>
-            </c:if>
-            <c:if test="${sessionScope.id==null }">
-            	<a href="../user/login.do" class="btn-get-started scrollto">예약하러 가기</a>
-            </c:if>
-          </div>
-        </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img">
-          <img src="../assets/img/main_dogcat.png" class="img-fluid animated" alt="">
-        </div>
-      </div>
-    </div>
-</section>
-    <!-- ======= About Section ======= -->
-    <!-- <section id="about" class="about">
-      <div class="container">
-
-        <div class="row justify-content-between">
-          <div class="col-lg-5 d-flex align-items-center justify-content-center about-img">
-            <img src="assets/img/about-img.svg" class="img-fluid" alt="" data-aos="zoom-in">
-          </div>
-          <div class="col-lg-6 pt-5 pt-lg-0">
-            <h3 data-aos="fade-up">Voluptatem dignissimos provident quasi</h3>
-            <p data-aos="fade-up" data-aos-delay="100">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-            </p>
-            <div class="row">
-              <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <i class="bx bx-receipt"></i>
-                <h4>Corporis voluptates sit</h4>
-                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-              </div>
-              <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <i class="bx bx-cube-alt"></i>
-                <h4>Ullamco laboris nisi</h4>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section> -->
-    <!-- End About Section -->
-
-
-
+	<section id="hero" class="d-flex align-items-center">
+	    <div class="container">
+	      <div class="row gy-4">
+	        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+	          <h1>Service for the busy worker who wants to spend time with your fluffy friends</h1>
+	          <h2>털복숭이 친구들과 함께 하고싶은 바쁜 직장인을 위해</h2>
+	          <div>
+	          	<c:if test="${sessionScope.id!=null }">
+	            	<a href="../booking/hospital_list.do" class="btn-get-started scrollto">예약하러 가기</a>
+	            </c:if>
+	            <c:if test="${sessionScope.id==null }">
+	            	<a href="../user/login.do" class="btn-get-started scrollto">예약하러 가기</a>
+	            </c:if>
+	          </div>
+	        </div>
+	        <div class="col-lg-6 order-1 order-lg-2 hero-img">
+	          <img src="../assets/img/main_dogcat.png" class="img-fluid animated" alt="">
+	        </div>
+	      </div>
+	    </div>
+	</section>
 
 		<!-- ======= Searchbar Section ======= -->
 		<section id="searchbar" class="searchbar section-bg">
 			<div class="container" data-aos="fade-up">
 				<div class="searchsection-title">
 					<h2>SearchBar</h2>
-
-					<p><input placeholder="Search" type="text" value="${search }" name="search" id="search" class="searchbar" onkeyup="enterkey()"></p>
-					<img style="width: 20px; length: 20px;" alt="searchBtn" src="../assets/img/search.png">
+                    <form method="post" action="../main/search.do">
+						<p><input placeholder="Search" type="text" value="${searchAll }"
+								name="searchAll" id="searchAll" class="searchbar"></p>
+						<!-- <img style="width: 20px; length: 20px; position:" alt="searchBtn"
+							src="../assets/img/search.png"> -->
+						<input type=submit value="검색" class="btn btn-sm btn-primary">
+					</form>
 				</div>
 			</div>
 		</section>

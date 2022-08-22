@@ -110,13 +110,15 @@
     <div class='main'>
       <div class='main__content'>
         <div class='ptable-card'>
+        <div class="row">
 	          <h2>Pet Pride Board</h2>
-	         <div>
+	         <div style="margin-top: 15px;padding-right: 21px;padding-left: 21px;">
 	          <a href="#" class="btn square btn-default best"><i class="fa fa-star"></i>인기글</a> 
 	             <c:if test="${sessionScope.id!=null }"><!-- 로그인한 사람만 보임  -->
 								<a href="../ppboard/insert.do" class="btn square btn-primary write" id="WriteBtn">
 								<i class="fa fa-pencil"></i> 글 쓰기</a>
 					</c:if>	
+				</div>
 				</div>	
 		          <table class='ptable'>
 			   		  <c:forEach var="vo" items="${list }">        

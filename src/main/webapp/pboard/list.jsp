@@ -141,8 +141,9 @@ body {
 									<td width="10%" class="text-center">${vo.p_no }</td>
 									<td width="45%"><a
 										href="../pboard/detail.do?p_no=${vo.p_no }">${vo.subject }</a>
-										&nbsp;&nbsp; <c:if test="${vo.rcount>0 }">
-						             (${vo.rcount })
+										&nbsp;&nbsp; 
+										<c:if test="${vo.rcount>0 }">
+						             		(${vo.rcount })
 						             	 <small class="favo"><i class="fa fa-heart"></i></small>
 										</c:if></td>
 									<td width="15%" class="text-center">${vo.id }</td>

@@ -1,5 +1,7 @@
 package com.sist.model;
 
+import java.util.*;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -59,7 +61,14 @@ public class PReplyModel {
 	   String p_no=request.getParameter("p_no");// 게시물번호 => detail로 이동
 	   String pre_no=request.getParameter("pre_no"); // 댓글 번호 => 삭제
 	   // 삭제 ==> DAO
-	   PReplyDAO.preplyDelete(Integer.parseInt(pre_no));
+	   //PReplyVO vo=new PReplyVO();
+	   //vo.setPre_no(Integer.parseInt(p_no)); 
+	   //vo.setTable_name("pbo_4");
+	   Map map=new HashMap();
+	   map.put("p_no", Integer.parseInt(p_no));
+	   map.put("table_name","pbo_4");
+	   PReplyDAO.preplyDelete(Integer.parseInt(pre_no),map);
+	 
 	   return "redirect:../pboard/detail.do?p_no="+p_no;
    }
    @RequestMapping("preply/preply_update.do")
@@ -121,7 +130,14 @@ public class PReplyModel {
 	   String pp_no=request.getParameter("pp_no");// 게시물번호 => detail로 이동
 	   String pre_no=request.getParameter("pre_no"); // 댓글 번호 => 삭제
 	   // 삭제 ==> DAO
-	   PReplyDAO.preplyDelete(Integer.parseInt(pre_no));
+//	   PReplyVO vo=new PReplyVO();
+//	   vo.setPre_no(Integer.parseInt(pre_no));
+//	   vo.setTable_name("pbo_4");
+//	   PReplyDAO.preplyDelete(Integer.parseInt(pre_no),vo);
+//	   
+	   Map map=new HashMap();
+	   map.put("p_no", Integer.parseInt(pre_no));
+	   map.put("table_name","pbo_4");
 	   return "redirect:../pboard/detail.do?pp_no="+pp_no;
    }
    @RequestMapping("preply/preply_update.do")
