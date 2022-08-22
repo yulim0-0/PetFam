@@ -20,41 +20,35 @@ let u=0;
 $(function(){
     $('#delBtn').on("click",function(){
         let pwd=$('#del_pwd').val();
-        if(pwd.trim()="")
+        if(pwd.trim()=="")
       	{
-      	 $('#del_pwd").focus();
       	 alert('사용자 삭제를 위해서는 관리자의 비밀번호가 필요합니다. 비밀번호를 입력하여 주세요.');
+      	 $('#del_pwd').focus();
       	 return;
       	}
-    
         $.ajax({
-      	    type:'post'
-      	    url:"../"
-        })
+		    type:'post',
+		    url:'../admin/admin_user_del.do',
+		    data:{"pwd":pwd},
+		    success:function(result)
+		    {
+		        let res=result.trim();
+		        if(res==="yes")
+		        {
+		            alert('정상 삭제 처리 되었습니다.');
+		            location.href="../admin/admin_user.do";
+		        }
+		        else
+		        {
+		           alert("비밀번호 오류");
+		           $('#del_pwd').val("");
+		           $('#del_pwd').focus();
+		        }
+		    }
+		})
     })
 
-    $.ajax({
-        type:'post',
-        url:'',
-        data:{"pwd":pwd},
-        success:function(result)
-        {
-            let res=result.trim();
-            // NOID , NOPWD , OK ==> Model => JSP에 출력시에 읽어 온다 
-            if(res==='NOPWD')
-            {
-                alert("비밀번호가 틀립니다");
-                $('#pwd').val("")
-                $('#pwd').focus();
-                let pwd=$('#pwd').val();
-            }
-            else
-            {
-               let pwd=$('#pwd').val();
-                parent.location.href="../admin/admin_user.do";
-            }
-        }
-    })
+   
 })
 </script>
 </head>
@@ -121,7 +115,7 @@ $(function(){
 							<tbody ng-repeat="client in clients | filter:search">
 								<tr ng-if="client != activeClient">
 									<td><mdl-checkbox></mdl-checkbox></td>
-									<td>${vo.id }</td>
+									<td>${vo.id }<input type=hidden name=id id=id value="${vo.id }"></td>
 									<td>${vo.name }
 									<td class="mdl-data-table__cell--non-numeric">[${vo.zipcode }] ${vo.addr1 } ${vo.addr2 }</td>
 									<td>${vo.birthday }
@@ -139,14 +133,14 @@ $(function(){
 									</div>-->
 										<div class="modal-container">
 											<input id="modal-toggle" type="checkbox"> 
-											     <label class="modal-btn" for="modal-toggle">Delete</label> 
+											     <label class="modal-btn" for="modal-toggle" >Delete</label> 
 											     <label class="modal-backdrop" for="modal-toggle"></label>
                                                 <div class="modal-content">
 												    <label class="modal-close" for="modal-toggle">&#x2715;</label>
 												<h2>Modal title</h2>
 												<hr />
 												<p><input type="password" placeholder="Password" id=del_pwd></p>
-												<label class="modal-content-btn" for="modal-toggle">OK</label>
+												<label class="modal-content-btn" for="modal-toggle" id=delBtn name=delBtn>OK</label>
 											</div>
 										</div>
 

@@ -7,13 +7,11 @@
 		SELECT COUNT(*) FROM user_4 WHERE id=#{id}
 	</select>
 	<!-- 이메일 중복 체크 -->
-	<select id="userEmailCheck" resultType="int"
-		parameterType="string">
+	<select id="userEmailCheck" resultType="int" parameterType="string">
 		SELECT COUNT(*) FROM user_4 WHERE email=#{email}
 	</select>
 
-	<select id="userPhoneCheck" resultType="int"
-		parameterType="string">
+	<select id="userPhoneCheck" resultType="int" parameterType="string">
 		SELECT COUNT(*) FROM user_4 WHERE phone=#{phone}
 	</select>
 
@@ -45,14 +43,8 @@
 		SELECT pwd, id, name FROM user_4 WHERE id=#{id}
 	</select>
 	
-	<!-- 계정 삭제 전 비밀번호 확인 -->
-	<select id="userInfoDelPwd" resultType="string" parameterType="int">
-	   WHERE pwd FROM user_4
-	   WHERE id=#{id}
-	</select>
-	
 	<!-- 계정 삭제 -->
-	<delete id="userInfoDelete" parameterType="string">
+	<delete id="userInfoDelete"  parameterType="string" >
 		DELETE FROM user_4 WHERE id=#{id}
 	</delete>
 

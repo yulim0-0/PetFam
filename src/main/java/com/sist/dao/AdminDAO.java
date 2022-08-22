@@ -65,13 +65,21 @@ public class AdminDAO {
 		return result;
 	}
 	
-	public static void UserInfoDelete(String id)
+	public static String UserInfoDelete(String id, String pwd, String db_pwd)
 	{
+		String result="";
 		SqlSession session=null;
 		
 		try {
 			session=ssf.openSession(true);
-			session.delete("userInfoDelete",id);
+			if(db_pwd.equals(pwd))
+			{
+				result="yes";
+				session.delete("userInfoDelete",id);
+				session.commit();
+			} else {
+				result="no";
+			}
 		} catch (Exception e) {
 			System.out.println("userInfoDelete : error");
 			e.printStackTrace();
@@ -79,6 +87,7 @@ public class AdminDAO {
 			if(session!=null)
 				session.close();
 		}
+		return result;
 	}
 	
 	public static List<UserVO> userInfoDetailData()

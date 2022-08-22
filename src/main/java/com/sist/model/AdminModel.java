@@ -80,12 +80,20 @@ public class AdminModel {
 		return "../main/main.jsp";
 	}
 	
-//	@RequestMapping("admin/admin_user_del.do")
-//	public String user_join_del(HttpServletRequest request, HttpServletResponse response)
-//	{
-//		request.setAttribute("main_jsp", "../admin/admin_user_del.jsp");
-//		return "../main/main.jsp";
-//	}
+	@RequestMapping("admin/admin_user_del.do")
+	public String user_join_del(HttpServletRequest request, HttpServletResponse response)
+	{
+		String id=request.getParameter("id");
+		HttpSession session=request.getSession();
+		String pwd=(String)session.getAttribute("pwd");
+		System.out.println(pwd);
+		
+		
+		String db_pwd=request.getParameter("pwd");
+		String result=AdminDAO.UserInfoDelete(id, pwd, db_pwd);
+		request.setAttribute("result", result);
+		return "../admin/admin_user_del.jsp";
+	}
 	
 	@RequestMapping("admin/admin_qna_detail.do")
 	public String admin_qna_detail(HttpServletRequest request, HttpServletResponse response)

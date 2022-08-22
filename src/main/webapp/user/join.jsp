@@ -97,9 +97,12 @@
 				</div>
 				<div class="col-33">
 					<input type="button" id="tBtn" value="전화번호 확인">
-					<span style="display: none;" id="phoneck_msg"></span>
-	        		<!-- &nbsp;<span style="color:blue" id="tPrint"></span> -->
 				</div>
+				<div class="row">
+	                <div class="col-66 notify1">
+                        <span class="none" id="phoneck_msg">확인</span>
+	                </div>
+	            </div>
 			</div>
 			
 			
@@ -113,9 +116,12 @@
 				</div>
 				<div class="col-33">
 					<input type="button" id="eBtn" value="이메일 확인" />
-					<span style="display: none;" id="emailcheck_msg"></span>
-					<!-- &nbsp;<span style="color:blue" id="ePrint"></span> -->
 				</div>
+			</div>
+			<div class="row">
+                <div class="col-66 notify2">
+                    <span class="none" id="emailcheck_msg">확인</span>
+                </div>
 			</div>
 
 

@@ -296,7 +296,11 @@ select option {
 	}
 }
 
-.error {
+.none{
+    display: none;
+}
+
+.coll-66 .error {
 	font-size: 0.8em;
     position: absolute;
     width: auto;
@@ -307,7 +311,7 @@ select option {
     margin : 5px 20px 0 0;
 }
 
-.vaild{
+.col-66 .vaild{
     font-size: 0.8em;
     position: absolute;
     width: 150px;
@@ -316,3 +320,14 @@ select option {
     color: forestgreen;
 }
 
+.notify1 {
+    height: 10px;
+    margin-top: -5px;
+    margin-bottom: 20px;
+}
+
+.notify2 {
+    height: 10px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}

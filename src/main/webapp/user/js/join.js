@@ -123,7 +123,7 @@ $(function() {
 	// 유효성 검사
     $('#eBtn').click(function(){
 	    let email=$('#email').val();
-	    let eck=document.getElementById("emailcheck_msg");
+	    let emailcheck_msg=document.getElementById("emailcheck_msg");
 	    if(email.trim()=="")
 		{
 		 $("email").focus();
@@ -139,11 +139,15 @@ $(function() {
 			    let count=parseInt(result.trim())
 			    if(count==0)
 				{
-				    eck.className='error'
-            		eck.innerHTML="사용 가능한 이메일입니다"
+                    emailcheck_msg.style.display="block";
+                    emailcheck_msg.style.color="forestgreen";
+                    emailcheck_msg.className='valid'
+				    $('#emailcheck_msg').text("사용가능한 이메일입니다");
 				}
 			    else
 				{
+                    emailcheck_msg.style.display="block";
+                    emailcheck_msg.style.color="red";
 				    $('#emailcheck_msg').text("사용중인 이메일입니다");
 				    $('#email').val("")
 				    $('#email').focus()
@@ -154,6 +158,8 @@ $(function() {
 
      $('#tBtn').click(function(){
         let phone=$('#phone').val();
+        var phoneck_msg = document.getElementById("phoneck_msg")
+
         if(phone.trim()=="")
         {
          $("phone").focus();
@@ -169,10 +175,16 @@ $(function() {
                 let count=parseInt(result.trim())
                 if(count==0)
                 {
-                    $('#phoneck_msg').text("사용가능한 번호입니다");
+                    phoneck_msg.style.display="block";
+                    phoneck_msg.style.color="forestgreen";
+                    phoneck_msg.className='valid'
+                    phoneck_msg.innerHTML="사용가능한 전화번호입니다"
                 }
                 else
                 {
+                    phoneck_msg.style.display="block";
+                    phoneck_msg.style.color="red";
+                    phoneck_msg.className='error'
                     $('#phoneck_msg').text("사용중인 번호입니다");
                     $('#phone').val("")
                     $('#phone').focus()

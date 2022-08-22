@@ -3,7 +3,7 @@
 <mapper namespace="com.sist.mapper.admin-mapper">
 
 	<select id="userInfoList" resultType="UserVO">
-		SELECT * FROM user_4 
+		SELECT * FROM user_4 ORDER BY joindate DESC
 	</select>
 	
 	<select id="userInfoDetailData" resultType="String">
