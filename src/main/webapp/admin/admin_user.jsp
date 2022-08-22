@@ -137,7 +137,7 @@ $(function(){
 											     <label class="modal-backdrop" for="modal-toggle"></label>
                                                 <div class="modal-content">
 												    <label class="modal-close" for="modal-toggle">&#x2715;</label>
-												<h2>Modal title</h2>
+												<h2>계정 삭제 확인</h2>
 												<hr />
 												<p><input type="password" placeholder="Password" id=del_pwd></p>
 												<label class="modal-content-btn" for="modal-toggle" id=delBtn name=delBtn>OK</label>

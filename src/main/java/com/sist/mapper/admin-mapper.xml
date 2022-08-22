@@ -25,12 +25,11 @@
 	
 	<!-- 문의 내역 리스트 -->
 	<select id="adminQnaListData" resultType="QnaVO" parameterType="hashmap">
-        SELECT q_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit, 
-                isreply, group_id, group_step, group_tab, num
+        SELECT q_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit, isreply, group_id, group_step, group_tab, num
         FROM (SELECT q_no,subject,id, regdate, hit,isreply, group_id, group_step, group_tab, rownum as num
-        FROM (SELECT q_no,subject,id, regdate, hit,isreply, group_id, group_step, group_tab
-		FROM qbo_4 ORDER BY q_no DESC))
-		WHERE num BETWEEN #{start} AND #{end}
+        FROM (SELECT q_no,subject,id, regdate, hit,isreply, group_id, group_step, group_tab 
+        FROM qbo_4 WHERE isreply = '0' AND GROUP_STEP = '0' ORDER BY q_no DESC ))
+        WHERE num BETWEEN #{start} AND #{end}
 		
     </select> 
     
@@ -54,9 +53,9 @@
     
     <!-- 문의내역 답변 추가 -->
     <insert id="adminQnaInsert" parameterType="QnaVO">
-        INSERT INTO qbo_4(q_no, name, id, subject, content, pwd, group_id, group_step)
+        INSERT INTO qbo_4(q_no, name, id, subject, content, pwd, group_id, group_tab, group_step)
         VALUES ((SELECT NVL(MAX(q_no)+1,1) FROM qbo_4), 
-        #{name}, #{id}, #{subject}, #{content}, #{pwd}, #{group_id},
+        #{name}, #{id}, #{subject}, #{content}, #{pwd}, #{group_id}, #{group_tab},
         (SELECT NVL(MAX(group_step)+1,1) FROM qbo_4 WHERE group_id=#{group_id})
         )
     </insert>

@@ -74,7 +74,7 @@
 
 			</div>
 			<div class="bottom-button">
-				<input type="button" class="control-button up" id="editBtn" value="수정하기" onclick="../mypage/myinfo_edit.do">
+				<input type="button" class="control-button up" id="editBtn" value="수정하기" onclick="location.href='../mypage/myinfo_edit.do'">
 			</div>
 		</div>
 	</main>

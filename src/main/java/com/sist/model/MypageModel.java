@@ -24,7 +24,7 @@ public class MypageModel {
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");	// 다운캐스팅
 		
-		List<UserVO> list=MypageDAO.userInfoData(id);
+		List<UserVO> list=MypageDAO.myInfoData(id);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../mypage/myinfo.jsp");

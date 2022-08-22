@@ -154,7 +154,7 @@ public class AdminModel {
 		String group_id = request.getParameter("group_id");
 		String group_step = request.getParameter("group_step");
 		String q_no = request.getParameter("q_no");
-
+		String group_tab = request.getParameter("group_tab");
 		
 		QnaVO vo = new QnaVO();
 		vo.setName(name);
@@ -164,8 +164,8 @@ public class AdminModel {
 		vo.setPwd(pwd);
 		vo.setGroup_id(Integer.parseInt(group_id));
 		vo.setGroup_step(Integer.parseInt(group_step));
+		vo.setGroup_tab(Integer.parseInt(group_tab));
 		AdminDAO.adminQnaIsreply(Integer.parseInt(q_no));
-		System.out.println(group_step);
 		
 		AdminDAO.adminQnaInsert(vo);
 		return "redirect:../admin/admin_qna.do";

@@ -25,13 +25,13 @@ public class MypageDAO {
 		}
 	}
 	// 정보 불러오기 전용
-	public static List<UserVO> userInfoData(String id)
+	public static List<UserVO> myInfoData(String id)
 	{
 		List<UserVO> list=null;
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			list=session.selectList("userInfoData",id);
+			list=session.selectList("myInfoData",id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -47,7 +47,7 @@ public class MypageDAO {
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			list=session.selectList("userInfoData",id);
+			list=session.selectList("myInfoData",id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

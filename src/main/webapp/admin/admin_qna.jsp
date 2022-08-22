@@ -10,6 +10,23 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/admin_community.css">
 <style>
+ .pagination {
+    margin: 20px 0;
+    overflow: hidden;
+    position: relative;
+}
+.pagination li {
+    float: left;
+}
+.pagination ul {
+    float: left;
+    left: 50%;
+    position: relative;
+}
+.pagination ul > li {
+    left: -50%;
+    position: relative;
+}
 .pagination li a {
     transition: all 100ms ease-in-out 0s;
     background-color: #FFFFFF;
@@ -58,7 +75,6 @@
                 </thead>
                 
 	                <c:forEach var="vo" items="${list }">
-	                   <c:if test="${vo.isreply!=1 && vo.group_step==0}">
 	                    <tbody>
 	                        <tr style="cursor:pointer;" onclick="location.href='../admin/admin_qna_detail.do?q_no=${vo.q_no}'" >
 	                            <td><input type=checkbox /></td>
@@ -71,7 +87,6 @@
                                 <td>${vo.isreply }</td>
 	                        </tr>
 	                    </tbody>
-	                    </c:if>
 	                </c:forEach>
                 
                 
@@ -87,7 +102,7 @@
                           </c:if>
                           <c:forEach var="i" begin="${startPage }" end="${endPage }">
                             <c:if test="${i==curpage }">
-                                <li><a href="../admin/admin_qna.do?page=${i }">${i }</a>
+                                <li class="active"><a href="../admin/admin_qna.do?page=${i }">${i }</a>
                             </c:if>
                             
                             <c:if test="${i!=curpage }">

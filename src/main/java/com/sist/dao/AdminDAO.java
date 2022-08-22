@@ -191,7 +191,7 @@ public class AdminDAO {
 		SqlSession session = null;
 		List<QnaVO> list=null;
 		try {
-			session = ssf.openSession();// getConnection() : 미리 생성된 Connection주소 읽기
+			session = ssf.openSession();
 			list = session.selectList("adminQnaDetail", q_no);
 		} catch (Exception ex) {
 			System.out.println("qnaDetailData: error");

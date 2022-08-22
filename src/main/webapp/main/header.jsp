@@ -15,7 +15,8 @@
 		<div class="container d-flex align-items-center justify-content-between">
 			<div class="logo">
 				<!-- Uncomment below if you prefer to use an image logo -->
-				<a href="../main/main.do"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
+				<a href="../main/main.do">
+				    <img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
 				<h1 class="text-light">
 					<a href="../main/main.do"><span style="font-family: geller-headline, serif">PetFam</span></a>
 				</h1>

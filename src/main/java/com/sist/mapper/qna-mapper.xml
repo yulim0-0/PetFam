@@ -15,10 +15,10 @@
   </select>
   <!-- 
                        group_id(게시물=답변)    group_step(답변,일반게시물)  group_tab  isreply(답변완료)
-         AAAAA            2            0           0         1
-           =>BBBBBB       2            1           1         0
-         CCCCC            1            0           0         1
-           =>DDDDDD       1            1           1         0
+         AAAAA            2                         0                       0         1
+           =>BBBBBB       2                         1                       1         0
+         CCCCC            1                         0                       0         1
+           =>DDDDDD       1                         1                       1         0
   
    -->
   

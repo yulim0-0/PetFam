@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.mypage-mapper">
 
-<select id="userInfoData" resultType="UserVO" parameterType="string">
+<select id="myInfoData" resultType="UserVO" parameterType="string">
 	SELECT * FROM user_4 WHERE id=#{id}
 </select>
 <!-- 
