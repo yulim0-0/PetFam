@@ -11,6 +11,7 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.vo.BookingVO;
 import com.sist.vo.JjimVO;
+import com.sist.vo.UserVO;
 import com.sist.dao.BookingDAO;
 
 
@@ -182,9 +183,17 @@ public class BookingModel {
 	 @RequestMapping("booking/booking.do")
 	 public String booking(HttpServletRequest request, HttpServletResponse response)
 	 {
-		  String o_no=request.getParameter("o_no");
+		  HttpSession session=request.getSession();
+		  String id=(String)session.getAttribute("id");
+		  String name=(String)session.getAttribute("name");
+		  String phone=(String)session.getAttribute("phone");
+		  String email=(String)session.getAttribute("email");
 		  
-		   BookingVO vo=BookingDAO.bookingDetailData(Integer.parseInt(o_no));
+		  List<UserVO> list=BookingDAO.bookingUserInfo(id);
+		  
+		  request.setAttribute("list", list);
+		  String o_no=request.getParameter("o_no");
+		  BookingVO vo=BookingDAO.bookingDetailData(Integer.parseInt(o_no));
 		   
 		   request.setAttribute("vo", vo);
 		 

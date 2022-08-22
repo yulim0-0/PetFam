@@ -51,10 +51,11 @@
 			
 			<h4>예약자 정보</h4>
 			<!-- 회원ID -->
+			<c:forEach var="vo" items="${list }">
 			<div class="row">
 				<div class="input-group input-group-icon">
-					<input class="row-100" type="text" name=id id=id placeholder="아이디" />
-					<div class="input-icon" style="margin-top : 6px; ">
+					<input class="row-100" type="text" name=id id=id value="${vo.id }" readonly/>
+					<div class="input-icon" style="margin-top : 6px;">
 						<i class="fa fa-envelope"></i>
 					</div>
 				</div>
@@ -62,7 +63,7 @@
 			<!-- 이름 -->
 			<div class="row">
 				<div class="input-group input-group-icon">
-					<input class="row-100" type="text" id="name" name="name" placeholder="이름" />
+					<input class="row-100" type="text" id="name" name="name" value="${vo.name }" readonly/>
 					<div class="input-icon" style="margin-top : 6px; ">
 						<i class="fa fa-smile-o"></i>
 					</div>
@@ -72,7 +73,7 @@
 			<!-- 전화번호 -->
 			<div class="row">
 				<div class="input-group input-group-icon">
-					<input class="row-100" type="tel" id=phone name="phone" placeholder="전화번호" />
+					<input class="row-100" type="tel" id=phone name="phone" value="${vo.phone }" readonly/>
 					<div class="input-icon" style="margin-top : 6px; ">
 						<i class="fa fa-phone"></i>
 					</div>
@@ -81,12 +82,13 @@
 			<!-- 이메일 -->
 			<div class="row">
 				<div class="input-group input-group-icon">
-					<input class="row-100" type="email" id="email" name="email" placeholder="이메일" />
+					<input class="row-100" type="email" id="email" name="email" value="${vo.email }" readonly/>
 					<div class="input-icon" style="margin-top : 6px; ">
 						<i class="fa fa-envelope"></i>
 					</div>
 				</div>
 			</div>
+			</c:forEach>
 			
 			<h4>예약</h4>
 			<!-- 날짜/시간 -->

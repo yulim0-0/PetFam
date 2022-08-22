@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.BookingVO;
 import com.sist.vo.JjimVO;
+import com.sist.vo.UserVO;
 
 
 public class BookingDAO {
@@ -177,4 +178,22 @@ public class BookingDAO {
 		 }
 		 
 	 }
+	 /* 예약자정보 */
+	 public static List<UserVO> bookingUserInfo(String id) {
+			List<UserVO> list=null;
+			SqlSession session=null;
+			try
+			{
+				session=ssf.openSession();
+				list=session.selectList("bookingUserInfo",id);
+			} catch (Exception ex)
+			{
+				System.out.println("bookinguserInfo: error");
+				ex.printStackTrace();
+			} finally {
+				if(session!=null)
+					session.close();
+			}
+			return list;
+		}
 }
