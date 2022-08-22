@@ -35,18 +35,22 @@ public class PReplyModel {
  	   String p_no=request.getParameter("p_no");// 게시물 번호 
 	   String type=request.getParameter("type"); // 카테고리 
 	   String msg=request.getParameter("msg");
+	   String root=request.getParameter("root");
 	   HttpSession session=request.getSession();
 	   String id=(String)session.getAttribute("id");
-//	   String p_no=(String)session.getAttribute("p_no");
-//	   String name=(String)session.getAttribute("name");
 	   
 	   PReplyVO vo=new PReplyVO();
 	   vo.setP_no(Integer.parseInt(p_no));
 	   vo.setId(id);
-//	   vo.setName(name);
 	   vo.setMsg(msg);
-	   vo.setType(Integer.parseInt(type));
 	   
+	   PReplyVO pvo=new PReplyVO();
+	     vo.setType(Integer.parseInt(type));
+		 vo.setGroup_id(pvo.getGroup_id());
+	   	 vo.setGroup_step(pvo.getGroup_step()+1);
+	   	 vo.setGroup_tab(pvo.getGroup_tab()+1);
+	   	 vo.setRoot(Integer.parseInt(root));
+	   	 
 	   String[] temp={"","pbo_4","ppbo_4"};//p_bo_4 가 1번(자유게시판) ,ppbo_4가 2번(자랑게시판) 
 	   
 	   String table=temp[Integer.parseInt(type)];
@@ -140,7 +144,7 @@ public class PReplyModel {
 	   map.put("table_name","pbo_4");
 	   return "redirect:../pboard/detail.do?pp_no="+pp_no;
    }
-   @RequestMapping("preply/preply_update.do")
+   @RequestMapping("ppreply/ppreply_update.do")
    public String ppreply_update(HttpServletRequest request,HttpServletResponse response)
    {
 	   try

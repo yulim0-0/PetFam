@@ -65,7 +65,7 @@ $(function(){
 	      <table class="table">
 	        <tr>
 	          <th width=20% class="text-right">작성자</th>
-	          <td width=80%>${id }<!--  아이디 세션정보를 가져와야함 -->
+	         <td width=80%>${id }<!--  아이디 세션정보를 가져와야함 --> 
 	            <input type=hidden name=id size=50 class="input-sm" id="id" value="${vo.id }">
 	          </td>
 	        </tr>

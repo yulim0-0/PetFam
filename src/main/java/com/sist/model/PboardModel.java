@@ -95,6 +95,7 @@ public class PboardModel {
 	   rvo.setP_no(vo.getP_no());
 	   rvo.setType(1);// pbo_4 자유게시판 
 	   List<PReplyVO> list=PReplyDAO.preplyListData(rvo);
+	
 	   request.setAttribute("list", list);
 	   request.setAttribute("main_jsp", "../pboard/detail.jsp");
 	   return "../main/main.jsp";

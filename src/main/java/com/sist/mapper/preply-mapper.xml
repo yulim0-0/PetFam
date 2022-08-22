@@ -27,31 +27,36 @@ P_NO       NOT NULL NUMBER          pbo  게시글
 DEPTH               NUMBER          댓글 아래 달린 대댓글의 갯수 
 ID         NOT NULL VARCHAR2(20)    작성자 
 TYPE                NUMBER          1 = pbo , 2 = ppbo
-ROOT                NUMBER          가장 상위 댓글의 번호 
+ROOT                NUMBER          가장 상위 댓글의 번호 => 어느 게시물에 대한 답변인지 
 
    -->
+   <!--  총 댓글 증가 -->
   <update id="countIncrement" parameterType="PReplyVO">
     UPDATE ${table_name} SET
     rcount=rcount+1
     WHERE p_no=#{p_no}
   </update>
+  <!-- 총 댓글 감소  -->
   <update id="countDecrement" parameterType="PReplyVO">
     UPDATE ${table_name} SET
     rcount=rcount-1
     WHERE p_no=#{p_no}
   </update>
+  
   <select id="preplyListData" resultType="PReplyVO" parameterType="PReplyVO">
-    SELECT  pre_no,p_no,type,id,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday
+    SELECT  pre_no,p_no,type,id,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday,group_tab
     FROM p_repl_4
     WHERE p_no=#{p_no} AND type=#{type}
     ORDER BY group_id DESC,group_step ASC
   </select>
+  
   <!-- 추가 -->
   <insert id="preplyInsert" parameterType="PReplyVO">
     <!-- sequence 
          order 순서 => BEFORE는 먼저 수행 
          고급 => JOIN , SUBQUERY , 동적쿼리 
     -->
+    <!--  댓글을 쓰는 코드 자동증가번호는 select key로 대체 -->
     <selectKey keyProperty="pre_no" resultType="int" order="BEFORE">
       SELECT NVL(MAX(pre_no)+1,1) as pre_no FROM p_repl_4
     </selectKey>
@@ -89,24 +94,32 @@ ROOT                NUMBER          가장 상위 댓글의 번호
    WHERE pre_no=#{pre_no}
   </delete>
   
+  <!--  테이블에서 완전히 삭제를 해준다. 그리고 난 뒤 상위 댓글의 depth를 -1해준다.-->
    <update id="pdepthDecrement" parameterType="int">
     UPDATE p_repl_4 SET
     depth=depth-1
     WHERE pre_no=#{pre_no}
   </update>
-  <!--  대댓글 -->
+  <!-- 댓글을 삭제하기 위해서는 root가 되는 댓글의 번호와 depth를 알아야한다. 
+	   그리고 우선 관리자가 삭제한 댓글이라고 내용을 update 해야함  -->
+  
+  <!-- ======================================================== 대댓글 ==========================================================-->
+  
+  <!-- 대댓글이 달리는 상위 댓글의 정보  -->
   <select id="preplyParentInfoData" resultType="PReplyVO" parameterType="int">
   SELECT group_id,group_step,group_tab
   FROM p_repl_4
   WHERE pre_no=#{pre_no}
   </select>
   
+  <!-- 대댓글이 달리면 group_step을 +1해준다.  -->
   <update id="preplyGroupStepInvrement" parameterType="PReplyVO">
   UPDATE p_repl_4 SET
   group_step=group_step+1
-  WHERE group_id=#{group_id} AND group_step> #{group_step}
+  WHERE group_id=#{group_id} AND group_step &gt; #{group_step}
   </update>
   
+  <!-- 그냥 댓글이 아닌 대댓글을 올릴때 쓰는 코드 -->
  <insert id="preplyToReplyInsert" parameterType="PReplyVO">
     <selectKey keyProperty="pre_no" resultType="int" order="BEFORE">
       SELECT NVL(MAX(pre_no)+1,1) as pre_no FROM p_repl_4
@@ -123,7 +136,9 @@ ROOT                NUMBER          가장 상위 댓글의 번호
       #{root},
       0
     )
-  </insert>
+ </insert>
+  
+  <!--  대댓글이 써지면 depth를 +1 해준다 -->
   <update id="preplyDepthIncrement" parameterType="int">
     UPDATE p_repl_4 SET
     depth=depth+1

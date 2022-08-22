@@ -71,19 +71,44 @@ $(function(){
 	
 	$('.up').click(function(){
 		$('.updates').hide();
+		$('.inserts').hide();
 		let p_no=$(this).attr("data-p_no");
 		if(u==0)
 		{
 			$('#update'+p_no).show();
+			$(this).text("취소")
 			u=1;
 		}
 		else
 		{
             $('#update'+p_no).hide();
+            $(this).text("수정");
             u=0;
 		}
 	})
+	
+	$('.uBtn').click(function(){
+		let data_p_no=$(this).attr("data-p_no");
+		let p_no=$('#update_p_no'+data_p_no).val();
+		let msg=$('#update_msg'+data_p_no).val();
+		if(msg.trim()=="")
+		{
+			$('#update_msg'+data_p_no).focus();
+			return;
+		}
+		$.ajax({
+			type:'post',
+			url:'preply_update.do',
+			data:{"p_no":p_no,"msg":msg},
+			success:function(result)
+			{
+				$('#reply_data').html(result);
+			}
+		})
+	})
+	/*  #reply_data 이게 뭐지 ...........*/
 })
+
 </script>
 </head>
 <body>
@@ -152,42 +177,55 @@ $(function(){
 	        <a href="../pboard/detail.do?p_no=${(vo.p_no)-1}" class="subject">${vo.subject }</a>
 	    </div>
 	    </div>
-	
+<!-- 댓글  -->	
      <div id="comments">    
         <h2>댓글</h2>
-        <ul>
+        <ul style="margin-top: 33px;">
          <c:forEach var="rvo" items="${list }">
           <li>
           
             <article>
-              <header style="display: -webkit-inline-box;">
+              <header style="display: -webkit-inline-box;margin-bottom: -30px;">
                
                 <address>
                <a href="#">${rvo.id }&nbsp;(${rvo.dbday })&nbsp;&nbsp;&nbsp;</a>
                 </address>
                  <figure class="avatar">
-                 <c:if test="${sessionScope.id==rvo.id}"><!-- 본인이면 -->
-                  <span class="btn btn-xs btn-danger up" style="color:black" data-p_no="${rvo.p_no }">수정</span>
-                  <a href="../preply/preply_delete.do?pre_no=${rvo.pre_no }&p_no=${vo.p_no}" class="btn btn-xs btn-success" style="color:black">삭제</a>
-                 </c:if>
+		               <c:if test="${sessionScope.id!=null }">  
+			                 <c:if test="${sessionScope.id==rvo.id}"><!-- 본인이면 -->
+			                  <span class="btn btn-xs btn-danger up" style="color:black" data-p_no="${rvo.p_no }">수정</span>
+			                  <a href="../preply/preply_delete.do?pre_no=${rvo.pre_no }&p_no=${vo.p_no}" class="btn btn-xs btn-success" style="color:black">삭제</a>
+		                 	 </c:if>
+		                  <c:if test="${sessionScope.id!=rvo.id}"><!--아이디가 있지만 같지않을 경우에는 대댓글 허용  -->
+		                    <span class="btn btn-xs btn-danger insertBtn" data-p_no="${rvo.p_no }">댓글</span>
+						  </c:if>	                
+		                </c:if>
                 </figure>
               </header>
               <div class="comcont">
-                <p><pre style="white-space: pre-wrap;background-color:white;border:none">${rvo.msg }</pre></p>
+              		<c:if test="${rvo.group_tab>0 }"><!--  group_tab 있는지 따져주고 -->
+              				<c:forEach var="i" begin="1" end="${rvo.group_tab }">
+              					&nbsp;&nbsp;
+	              		  	</c:forEach>
+	              		  	<img src="re_icon.gif"><!--  있으면 공백과 아이콘을 추가 -->
+              		</c:if>
+              			<p><pre style="white-space: pre-wrap;background-color:white;border:none">${rvo.msg }</pre></p>
               </div>
             </article>
-            
           </li>
+          
+ <!-- 댓글 수정 데이터  -->     
             <div style="display:none" id="update${rvo.p_no }" class="updates">
 	            <table class="table">
 		          <tr>
 		            <td>
 		             <form method=post action="../preply/preply_update.do">
-		               <input type=hidden name=p_no value="${vo.p_no }">
+		             	
+		               <input type=hidden name=p_no value="${vo.p_no }" id="update_p_no${rvo.p_no }">
 		               <input type=hidden name=type value="1">
 		               <input type=hidden name=pre_no value="${rvo.pre_no }">
 		               <textarea rows="5" cols="70" name="msg" style="float: left">${rvo.msg }</textarea>
-		               <input type=submit class="btn btn-sm btn-primary" style="height: 105px"
+		               <input type=submit class="btn btn-sm btn-primary uBtn" style="height: 105px" data-p_no="${rvo.p_no }"
 		                value="댓글수정">
 		              </form>
 		            </td>
@@ -197,16 +235,19 @@ $(function(){
           </c:forEach>
         </ul> 
        </div>
+       
+ <!-- 댓글쓰기 버튼  -->    
        <c:if test="${sessionScope.id!=null }"><!-- 로그인시에만 보여준다 -->
         <table class="table">
           <tr>
             <td>
              <form method=post action="../preply/preply_insert.do">
-               <input type=hidden name=p_no value="${vo.p_no }">
-               <input type=hidden name=type value="1">
+           
+               <input type=hidden name=p_no value="${vo.p_no }" id="pinsert_p_no${rvo.p_no }">
+               <input type=hidden name=type value="1"><!-- 1 = pbo_4 -->
                <textarea rows="5" cols="100" name="msg" style="float: left"></textarea>
-               <input type=submit class="btn btn-sm btn-primary" style="height: 105px"
-                value="댓글쓰기">
+               <input type=submit class="btn btn-sm btn-primary rrBtn" style="height: 105px"
+                value="댓글쓰기" data-p_no="${rvo.p_no }">
               </form>
             </td>
           </tr>
