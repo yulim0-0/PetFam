@@ -2,6 +2,7 @@ package com.sist.dao;
 
 import java.io.Reader;
 import java.util.List;
+import java.util.*;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -78,11 +79,26 @@ public class PReplyDAO {
 			   WHERE no=#{no}
 			  </delete>
 	    */
-	   public static void preplyDelete(int pre_no)
+	   public static void preplyDelete(int pre_no,Map map)
 	   {
-		   SqlSession session=ssf.openSession(true);
+		   SqlSession session=null;
+		   try {
+		   
+		   session=ssf.openSession();
+		   session.update("countDecrement",map);// 댓글 삭제 
 		   session.delete("preplyDelete",pre_no);
-		   session.close();
+		  
+		  session.commit();
+		   }
+		   catch(Exception ex) {
+			   System.out.println("preplyDelete: error");
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
 	   }
 	   /*
 	    *  <update id="replyUpdate" parameterType="ReplyVO">

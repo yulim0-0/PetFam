@@ -35,6 +35,11 @@ ROOT                NUMBER          가장 상위 댓글의 번호
     rcount=rcount+1
     WHERE p_no=#{p_no}
   </update>
+  <update id="countDecrement" parameterType="PReplyVO">
+    UPDATE ${table_name} SET
+    rcount=rcount-1
+    WHERE p_no=#{p_no}
+  </update>
   <select id="preplyListData" resultType="PReplyVO" parameterType="PReplyVO">
     SELECT  pre_no,p_no,type,id,msg,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS') as dbday
     FROM p_repl_4
