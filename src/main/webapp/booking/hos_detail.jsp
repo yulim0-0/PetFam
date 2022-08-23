@@ -67,12 +67,16 @@
 					<li><a class="nav-link scrollto" href="#contact">문의</a></li>
 
 					<!-- 로그인 상태가 아닌 경우 -->
-
+					<c:if test="${sessionScope.id==null }">
+						<li>
+							<a class="start" id="login_header" href="../user/login.do">로그인</a>
+						</li>
+					</c:if>
 
 					<!-- 로그인 상태인 경우 -->
-
-						<li><a class="start" id="login_header" href="../user/login.do">로그인</a></li>
-
+					<c:if test="${sessionScope.id!=null }">
+						<li><a class="start" id="logout_header" href="../user/logout.do">로그아웃</a></li>
+					</c:if>
 				</ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
 			</nav>
@@ -183,10 +187,8 @@ body {
                             </div>
 
                             <div class="cart--area d-flex flex-wrap align-items-center" >
-                                <!-- Add to Cart Form -->
-                                
-                               <button type="submit" name="addtocart" value="5" class="btn alazea-btn ml-15">장바구니</button>
-                               
+                                <!-- Reserve -->
+  
                                <a href="../booking/booking.do?o_no=${vo.o_no }"><button class="btn alazea-btn ml-15">예약하기</button></a>
                                    
              					  <!-- Wishlist  -->
