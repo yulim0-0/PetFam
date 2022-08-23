@@ -80,8 +80,8 @@ public class PetplaceModel {
 	
 		//map.put("s", 49);
 		//map.put("e", 50);
-		map.put("s", 250);
-		map.put("e", 252);
+		map.put("s", 319);
+		map.put("e", 481);
 		
 		List<PetplaceVO> list=PetplaceDAO.petplaceListData(map);
 		
@@ -121,8 +121,8 @@ public class PetplaceModel {
 		
 		//map.put("s", 137);
 		//map.put("e", 138);
-		map.put("s", 250);
-		map.put("e", 252);
+		map.put("s", 482);
+		map.put("e", 525);
 		List<PetplaceVO> list=PetplaceDAO.petplaceListData(map);
 		
 		 int totalpage=PetplaceDAO.petplaceTotalPage(map);
