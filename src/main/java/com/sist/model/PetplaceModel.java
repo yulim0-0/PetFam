@@ -159,10 +159,12 @@ public class PetplaceModel {
 		   request.setAttribute("vo", vo);
 		   request.setAttribute("main_jsp", "../petplace/petplace_detail.jsp");
 		   
+		   //찜목록
 		   JjimVO2 jvo=new JjimVO2();
 		   jvo.setC_no(Integer.parseInt(c_no));
 		   HttpSession session=request.getSession();
 		   String id=(String)session.getAttribute("id");
+		   
 		   
 		   jvo.setId(id);
 		   int jcount=PetplaceDAO.petplaceJjimCount(jvo);
@@ -170,9 +172,6 @@ public class PetplaceModel {
 		   request.setAttribute("jcount",jcount);
 		  
 		   return "../main/main.jsp";
-		 
-
-		   
 	   }
 	
 	@RequestMapping("petplace/jjim.do")
@@ -185,7 +184,6 @@ public class PetplaceModel {
 		   vo.setC_no(Integer.parseInt(c_no));
 		   vo.setId(id);
 		   PetplaceDAO.petplaceJjimInsert(vo);
-		   
 		   return "redirect:../petplace/petplace_detail.do?c_no="+c_no;
 	   }
 	
@@ -205,7 +203,7 @@ public class PetplaceModel {
 		   {
 			
 			   PetplaceVO vo=PetplaceDAO.petplaceJjimListData(c_no);
-		
+			   
 			   plist.add(vo);
 		
 		   }

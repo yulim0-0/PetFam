@@ -54,9 +54,7 @@
   	SELECT NVL(MAX(no)+1,1) as no FROM jjim_p_4
   	</selectKey>
   	INSERT INTO jjim_p_4 VALUES(#{no},#{id},#{c_no})
-  
   </insert>
-  
   
     <!-- 찜 여부 확인 -->
   <select id="petplaceJjimCount" resultType="int" parameterType="com.sist.vo.JjimVO2">

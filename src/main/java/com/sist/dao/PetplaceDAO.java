@@ -147,7 +147,7 @@ public class PetplaceDAO {
 			   SqlSession session=null;
 			   try
 			   {
-				   session=ssf.openSession(true) ;
+				   session=ssf.openSession(true);
 				   session.insert("petplaceJjimInsert",vo);
 				  
 			   }catch(Exception ex) {
