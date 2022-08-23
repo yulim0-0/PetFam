@@ -28,11 +28,11 @@ public class MainModel {
 			request.setCharacterEncoding("UTF-8");
 		} catch (Exception e) {}
 		String search=request.getParameter("searchAll");
-		System.out.println(search);
 		
 		List<PboardVO> comList=MainDAO.totalComFindData(search);
 		List<PetplaceVO> recList=MainDAO.totalRecFindData(search);
 		List<BookingVO> bookList=MainDAO.totalBookFindData(search);
+		request.setAttribute("search", search);
 		request.setAttribute("comList", comList);
 		request.setAttribute("recList", recList);
 		request.setAttribute("bookList", bookList);

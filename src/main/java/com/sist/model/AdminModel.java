@@ -73,7 +73,7 @@ public class AdminModel {
 	public String admin_user_detail(HttpServletRequest request,HttpServletResponse response)
 	{
 		String id=request.getParameter("id");
-		List<UserVO> list=MypageDAO.userInfoData(id);
+		List<UserVO> list=MypageDAO.myInfoData(id);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../admin/admin_user_detail.jsp");

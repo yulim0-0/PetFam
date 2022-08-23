@@ -46,7 +46,7 @@
 	</script>
 	
 	<style>
-	.btn-list {
+	.listBtn {
 		height: 30px;
 		width: 50px;
 		font-size: 14px;

@@ -10,14 +10,14 @@
     
     <!-- 추천 검색 -->
     <select id="totalRecFindData" resultType="PetplaceVO" parameterType="string">
-        SELECT c_no, title FROM RCPG_4
+        SELECT c_no, title, poster, subtitle FROM RCPG_4
         WHERE title LIKE '%'||#{search}||'%'
     </select>
     
     <!-- 예약 검색 -->
     <select id="totalBookFindData" resultType="BookingVO" parameterType="string">
-        SELECT o_no,store FROM ORD_4
-        WHERE store LIKE '%'||#{search}||'%'
+        SELECT o_no,store,poster,s_info,address FROM ORD_4
+        WHERE store LIKE '%'||#{search}||'%' or address LIKE '%'||#{search}||'%'
     </select>
 
 </mapper>

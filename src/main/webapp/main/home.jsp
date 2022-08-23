@@ -12,7 +12,29 @@ function jjBtn(){
 	
 	alert('좋아요 완료! \n좋아요를 누른 상품은 마이페이지에서 확인하실 수 있습니다');
 }
-
+function hide(){
+	document.getElementById("searchMsg").style.display="none";
+}
+$(function(){
+	setInterval(function(){
+      $('#searchMsg').hide('blind',{},200)
+  },2000);
+});
+self.setInterval("hide()",3000);
+function validation(){
+	var searchAll = document.getElementById("searchAll")
+	var searchMsg = document.getElementById("searchMsg")
+		if (searchAll.value == '') {
+			searchAll.focus();
+			searchMsg.style.display="block";
+			searchMsg.innerHTML="검색어 입력이 필요합니다";
+			
+			return false;
+		}
+		else {
+			return true;
+		}
+	}
 </script>
 </head>
 <body>
@@ -39,22 +61,18 @@ function jjBtn(){
 	    </div>
 	</section>
 
-		<!-- ======= Searchbar Section ======= -->
-		<section id="searchbar" class="searchbar section-bg">
-			<div class="container" data-aos="fade-up">
-				<div class="searchsection-title">
-					<h2>SearchBar</h2>
-                    <form method="post" action="../main/search.do">
-						<p><input placeholder="Search" type="text" value="${searchAll }"
-								name="searchAll" id="searchAll" class="searchbar"></p>
-						<!-- <img style="width: 20px; length: 20px; position:" alt="searchBtn"
-							src="../assets/img/search.png"> -->
-						<input type=submit value="검색" class="btn btn-sm btn-primary">
-					</form>
-				</div>
-			</div>
-		</section>
-		<!-- End Services Section -->
+
+	<!-- ======= Searchbar Section ======= -->
+	<section id="searchbar">
+		<div class="search-container">
+			<form method="post" action="../main/search.do" onsubmit="return validation();">
+				<input placeholder="Search" type="text" value="${searchAll }" name="searchAll" id="searchAll" class="searchbar">
+				<input type=image class="search-icon" id=searchBtn src="../assets/img/searchBtn.png">
+			</form>
+			<span class="searchMsg" id="searchMsg" ></span>
+		</div>
+	</section>
+	<!-- End Services Section -->
 
 
 
