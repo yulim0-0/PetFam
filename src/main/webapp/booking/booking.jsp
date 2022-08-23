@@ -21,6 +21,7 @@
 <script>
 
         $(function() {
+            	$('#time').hide();
             //input을 datepicker로 선언
             $("#datepicker").datepicker({
             	dateFormat: 'yy-mm-dd' //Input Display Format 변경
@@ -40,6 +41,11 @@
                     ,minDate: "+1D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
                     ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
             		,beforeShowDay: disableAllTheseDays
+            		,onSelect:function(selected, evnt) {
+
+            			$('#time').show();
+
+            			}
             });                    
             
             //초기값을 오늘 날짜로 설정
@@ -68,7 +74,6 @@
  .joincontainer{
     overflow:hidden;
     height:auto;
-    color:red;
    }
   .ui-datepicker{
   width: 18em;
@@ -157,25 +162,26 @@
 				<div class="row">
 				<!-- 날짜 -->
 				<div class="col-half" style="padding-top : 5px">
-					 <input type="text" id="datepicker">
+					 <p><input type="text" id="datepicker"></p>
 				</div>
 
 				<!-- 시간 -->
 				<div class="col-half">
 					<div class="input-group">
 							<select id="time">
-								<optgroup label="오전">
-									<option value="09">09:00AM</option>
-									<option value="10">10:00AM</option>
-									<option value="11">11:00AM</option>
-									<option value="12">12:00PM</option>
-								</optgroup>
-								<optgroup label="오후">
-									<option value="13">13:00PM</option>
-									<option value="14">14:00PM</option>
-									<option value="15">15:00PM</option>
-									<option value="16">16:00PM</option>
-									<option value="17">17:00PM</option>
+								<optgroup label="예약가능시간">
+									<option value="09:00AM">09:00AM</option>
+									<option value="10:00AM">10:00AM</option>
+									<option value="11:00AM">11:00AM</option>
+									<option value="12:00PM">12:00PM</option>
+									<option value="13:00PM">13:00PM</option>
+									<option value="14:00PM">14:00PM</option>
+									<option value="15:00PM">15:00PM</option>
+									<option value="16:00PM">16:00PM</option>
+									<option value="17:00PM">17:00PM</option>
+									<option value="18:00PM">18:00PM</option>
+									<option value="19:00PM">19:00PM</option>
+									<option value="20:00PM">20:00PM</option>
 								</optgroup>
 							</select>
 						</div>
@@ -184,7 +190,7 @@
 			
 			<!-- MSG -->
 			<div class="row">
-            <label for="comments" style="color: #192f61">&#8251;펫펨에게 반려동물에 대해 알려주세요!(필수)<br></label>
+            <label for="comments" style="color: #F34100">&#8251;펫펨에게 반려동물에 대해 알려주세요!(필수)<br></label>
 			<div class="input-group input-group-icon">
             <textarea class="form-control" id="comments" rows="5" data-max-length="150"></textarea>
 			</div>
