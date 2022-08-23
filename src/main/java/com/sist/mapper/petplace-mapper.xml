@@ -79,6 +79,17 @@
    WHERE id=#{id} AND c_no=#{c_no}
   </delete>
   
-  
+   <!-- 검색기능  -->
+   <select id="placeLocationFindData" resultType="PetplaceVO" parameterType="hashmap">
+    SELECT c_no,title,category,poster,addr,tel,num
+    FROM (SELECT c_no,title,category,poster,addr,tel,rownum as num 
+    FROM (SELECT c_no,title,category,poster,addr,tel 
+    FROM rcpg_4 WHERE addr LIKE '%'||#{addr}||'%' ORDER BY c_no ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select> 
+  <select id="placeLocationFindTotalPage" resultType="int" parameterType="string">
+     SELECT CEIL(COUNT(*)/9.0) FROM rcpg_4
+    WHERE addr LIKE '%'||#{addr}||'%' 
+  </select>
  
 </mapper>

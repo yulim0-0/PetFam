@@ -232,5 +232,41 @@ public class PetplaceModel {
 		   PetplaceDAO.petplaceJjimDelete(vo);
 		   return "redirect:../mypage/jjim_list.do";
 	   }
+	   
+	   
+	   @RequestMapping("petplace/place_find.do")
+	   public String place_find(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) {}
+		   String page=request.getParameter("page");
+		   if(page==null)
+			   page="1";
+		   String addr=request.getParameter("addr");
+		   if(addr==null)
+			   addr="경기";
+		   
+		   int curpage=Integer.parseInt(page);
+		   int rowSize=9;
+		   int start=(rowSize*curpage)-(rowSize-1);
+		   int end=rowSize*curpage;
+		   
+		   Map map=new HashMap();
+		   map.put("start", start);
+		   map.put("end", end);
+		   map.put("addr", addr);
+		   
+		   List<PetplaceVO> list=PetplaceDAO.placeLocationFindData(map);
+		   int totalpage=PetplaceDAO.placeLocationFindTotalPage(addr);
+		   
+		   request.setAttribute("curpage", curpage);
+		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("list", list);
+		   request.setAttribute("addr", addr);
+		   request.setAttribute("main_jsp", "../petplace/place_find.jsp");
+		   return "../main/main.jsp";
+	   }
 	
 }
