@@ -11,6 +11,7 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.vo.BookingVO;
 import com.sist.vo.JjimVO;
+import com.sist.vo.OrderVO;
 import com.sist.vo.UserVO;
 import com.sist.dao.BookingDAO;
 
@@ -213,4 +214,47 @@ public class BookingModel {
 		 BookingDAO.bookingJjimDelete(vo);
 		 return "redirect:../mypage/mylike.do";
 	 }
+	 
+	 @RequestMapping("booking/booking_ok.do")
+	    public String booking_ok(HttpServletRequest request,HttpServletResponse response)
+	    {
+	    	try
+	    	{
+	    		request.setCharacterEncoding("UTF-8");
+	    	}catch(Exception ex){}
+	    	/*
+			 * OI_NO NUMBER No 1 예약정보 
+			 * ORDER_DATE VARCHAR2(2000 BYTE) No 2 
+			 * 예약일 ORDER_TIME VARCHAR2(2000 BYTE) No 3
+			 * 예약시간 REGDATE DATE No SYSDATE 4 예약등록날짜
+			 * MSG VARCHAR2(1000 BYTE) No 5 기타요구사항 
+			 * O_NO NUMBER No 6 상품번호 
+			 * ID VARCHAR2(20 BYTE) No 7 회원ID 
+			 * STATE VARCHAR2(20 BYTE) No 'n' 8 예약상태
+			 */
+	    	String o_no=request.getParameter("o_no");
+	    	String order_date=request.getParameter("order_date");
+	    	String order_time=request.getParameter("order_time");
+	    	String msg=request.getParameter("msg");
+	    	
+	    	
+	    	
+	    	System.out.println(o_no);
+	    	System.out.println(order_date);
+	    	System.out.println(order_time);
+	    	System.out.println(msg);
+	    	HttpSession session=request.getSession();
+	    	String id=(String)session.getAttribute("id");
+			
+	    	OrderVO vo=new OrderVO();
+	    	vo.setO_no(Integer.parseInt(o_no));
+	    	vo.setId(id);
+	    	vo.setOrder_date(order_date);
+	    	vo.setOrder_time(order_time);
+	    	vo.setMsg(msg);
+	    	
+	    	System.out.println(id+"."+o_no+"예약완료");
+	    	BookingDAO.bookingInsert(vo);
+	    	return "redirect:../main/main.do";
+	    }
 }

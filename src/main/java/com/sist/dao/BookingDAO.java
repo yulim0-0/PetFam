@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.BookingVO;
 import com.sist.vo.JjimVO;
+import com.sist.vo.OrderVO;
 import com.sist.vo.UserVO;
 
 
@@ -196,4 +197,23 @@ public class BookingDAO {
 			}
 			return list;
 		}
+	 /* 예약 */
+	 public static void bookingInsert(OrderVO vo)
+	   {
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(true);//autocommit
+			   session.insert("bookingInsert",vo);
+		   }catch(Exception ex)
+		   {
+			   System.out.println("bookingInsert: error");
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+	   }
 }

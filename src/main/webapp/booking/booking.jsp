@@ -49,7 +49,10 @@
             });                    
             
             //초기값을 오늘 날짜로 설정
-            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
+            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+            $('#bookingBtn').click(function(){
+    	    	$('#booking_frm').submit();
+    	    });
         });
         var disabledDays = ["2022-9-9","2022-9-10","2022-9-11","2022-9-12"];
 //////////////////////////////////////////////////////////
@@ -102,7 +105,7 @@
 
 	<!-- partial:index.partial.html -->
 	<div class="joincontainer" height=100%>
-		<form method="post" action="" name="join_frm" id="join_frm" >
+		<form method="post" action="../booking/booking_ok.do" name="booking_frm" id="booking_frm" >
 			<h4>선택한 상품 정보</h4>
 		
 			<div class="row" style="border-bottom: 2px solid #ebebe">
@@ -156,19 +159,19 @@
 			</div>
 			</c:forEach>
 			
-			<h4>예약</h4>
+			<h4>날짜/시간선택</h4>
 			<!-- 날짜/시간 -->
 			
 				<div class="row">
 				<!-- 날짜 -->
 				<div class="col-half" style="padding-top : 5px">
-					 <p><input type="text" id="datepicker"></p>
+					 <p><input type="text" id="datepicker" name="order_date"><input type="hidden" name="o_no" value="${vo.o_no }"></p>
 				</div>
 
 				<!-- 시간 -->
 				<div class="col-half">
 					<div class="input-group">
-							<select id="time">
+							<select id="time" name="order_time">
 								<optgroup label="예약가능시간">
 									<option value="09:00AM">09:00AM</option>
 									<option value="10:00AM">10:00AM</option>
@@ -192,7 +195,7 @@
 			<div class="row">
             <label for="comments" style="color: #F34100">&#8251;펫펨에게 반려동물에 대해 알려주세요!(필수)<br></label>
 			<div class="input-group input-group-icon">
-            <textarea class="form-control" id="comments" rows="5" data-max-length="150"></textarea>
+            <textarea class="form-control" id="comments" rows="5" data-max-length="150" name="msg"></textarea>
 			</div>
 			</div>
 			<!-- 동의사항 -->
@@ -209,7 +212,7 @@
 			<div>
 				<div class="col-16"></div>
 				<input class="col-33" style="float:center; margin-left:10px;" type="button" value="취소" onclick="javascript:history.back()">
-				<input class="col-33" style="float:center; margin-right:10px;" type="button" id="joinBtn" value="예약신청" />
+				<input class="col-33" style="float:center; margin-right:10px;" type="button" id="bookingBtn" value="예약신청" />
 				<div class="col-16"></div>
 			</div>
 
