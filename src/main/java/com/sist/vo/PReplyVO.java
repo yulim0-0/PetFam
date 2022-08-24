@@ -19,16 +19,9 @@ ROOT                NUMBER          가장 상위 댓글의 번호
 
  */
 public class PReplyVO {
-	private int pre_no,p_no,pp_no,group_id,group_tab,group_step,depth,root,type;
+	private int pre_no,p_no,pp_no,type;
 	private String dbday,msg,id,table_name;
 	private Date regdate;
-	
-	public String getTable_name() {
-		return table_name;
-	}
-	public void setTable_name(String table_name) {
-		this.table_name = table_name;
-	}
 	public int getPre_no() {
 		return pre_no;
 	}
@@ -46,36 +39,6 @@ public class PReplyVO {
 	}
 	public void setPp_no(int pp_no) {
 		this.pp_no = pp_no;
-	}
-	public int getGroup_id() {
-		return group_id;
-	}
-	public void setGroup_id(int group_id) {
-		this.group_id = group_id;
-	}
-	public int getGroup_tab() {
-		return group_tab;
-	}
-	public void setGroup_tab(int group_tab) {
-		this.group_tab = group_tab;
-	}
-	public int getGroup_step() {
-		return group_step;
-	}
-	public void setGroup_step(int group_step) {
-		this.group_step = group_step;
-	}
-	public int getDepth() {
-		return depth;
-	}
-	public void setDepth(int depth) {
-		this.depth = depth;
-	}
-	public int getRoot() {
-		return root;
-	}
-	public void setRoot(int root) {
-		this.root = root;
 	}
 	public int getType() {
 		return type;
@@ -100,6 +63,12 @@ public class PReplyVO {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getTable_name() {
+		return table_name;
+	}
+	public void setTable_name(String table_name) {
+		this.table_name = table_name;
 	}
 	public Date getRegdate() {
 		return regdate;

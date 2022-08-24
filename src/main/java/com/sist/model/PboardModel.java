@@ -26,7 +26,7 @@ public class PboardModel {
 	   map.put("end",end);
 	   List<PboardVO> list=PboardDAO.pboardListData(map);
 //	   조회수 정렬 (인기순)
-	   List<PboardVO> h_list=PboardDAO.pboardHitListData(map);
+	  
 	   
 	   int totalpage=PboardDAO.pboardTotalPage();
 	  
@@ -45,6 +45,41 @@ public class PboardModel {
 	   request.setAttribute("main_jsp", "../pboard/list.jsp");
 	   return "../main/main.jsp";
    }
+   
+   @RequestMapping("pboard/list_hit.do")
+   public String pboard_list_hit(HttpServletRequest request,HttpServletResponse response)
+   {
+	   String page=request.getParameter("page");
+	   if(page==null)
+		   page="1";
+	   int curpage=Integer.parseInt(page);
+	   Map map=new HashMap();
+	   int rowSize=10;
+	   int start=(curpage*rowSize)-(rowSize-1);
+	   int end=curpage*rowSize;
+	   map.put("start", start);
+	   map.put("end",end);
+	   
+	   List<PboardVO> list=PboardDAO.pboardHitListData(map);
+	   
+	   int totalpage=PboardDAO.pboardTotalPage();
+	  
+	   final int BLOCK=5;
+	   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+	   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+	   
+	   if(endPage>totalpage)
+		    endPage=totalpage;
+	   
+	   request.setAttribute("curpage", curpage);
+       request.setAttribute("totalpage", totalpage);
+       request.setAttribute("startPage", startPage);
+	   request.setAttribute("endPage", endPage);
+       request.setAttribute("list", list);
+	   request.setAttribute("main_jsp", "../pboard/list_hit.jsp");
+	   return "../main/main.jsp";
+   }
+   
    @RequestMapping("pboard/insert.do")
    public String pboard_insert(HttpServletRequest request,HttpServletResponse response)
    {

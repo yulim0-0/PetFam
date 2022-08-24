@@ -120,7 +120,7 @@ body {
 						<div>
 							<a href="../pboard/list_hit.do" class="btn square btn-default best" id="hit"><i
 								class="fa fa-star"></i>인기글</a>
-								<a href="../pboard/list.do" class="btn square btn-default best" id="hit"><i
+							<a href="../pboard/list.do" class="btn square btn-default best" id="hit"><i
 								class="fa fa-star"></i>최신글</a>	
 						</div>
 						<c:if test="${sessionScope.id!=null }">
@@ -166,18 +166,18 @@ body {
 						<div class="pagination" style="width:200px;">
 							<ul>
 								<c:if test="${startPage>1 }">
-									<li><a href="../pboard/list.do?page=${startPage-1 }">&laquo;</a></li>
+									<li><a href="../pboard/list_hit.do?page=${startPage-1 }">&laquo;</a></li>
 								</c:if>
 								<c:forEach var="i" begin="${startPage }" end="${endPage }">
 									<c:if test="${i==curpage }">
-										<li class="active"><a href="../pboard/list.do?page=${i }">${i }</a></li>
+										<li class="active"><a href="../pboard/list_hit.do?page=${i }">${i }</a></li>
 									</c:if>
 									<c:if test="${i!=curpage }">
-										<li><a href="../pboard/list.do?page=${i }">${i }</a></li>
+										<li><a href="../pboard/list_hit.do?page=${i }">${i }</a></li>
 									</c:if>
 								</c:forEach>
 								<c:if test="${endPage<totalpage }">
-									<li><a href="../pboard/list.do?page=${endPage+1 }">&raquo;</a></li>
+									<li><a href="../pboard/list_hit.do?page=${endPage+1 }">&raquo;</a></li>
 								</c:if>
 							</ul>
 						</div>
