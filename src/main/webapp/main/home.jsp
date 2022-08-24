@@ -1,6 +1,12 @@
+<%@page import="com.sist.dao.MainDAO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-   
+<%
+
+
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,6 +18,27 @@ function jjBtn(){
 	
 	alert('좋아요 완료! \n좋아요를 누른 상품은 마이페이지에서 확인하실 수 있습니다');
 }
+
+ setCookieArray: function( cname, carray, exdays ) {
+       var str = "";   for( var key in carray ){
+            if(str != "" ) str += ",";    str += key+":"+carray[key];  
+        }   
+this.setCookie( cname, str, exdays );  
+}
+
+function setCookie(cookie_name, value, days){
+	var exdate = new Date();
+	exdate.setDate(exdate.getDate()+days);
+	
+	var cookie_value=escape(value) + ((days==null)?":';expires=' + exdate.toUTCString*());
+	document.cookie=cookie_name + '=' + cookie_value;
+}
+
+
+response.addCookie(cookie)
+cookie.setMaxAge(60*60);
+response.sendRedirect("../main/search.do");
+
 function hide(){
 	document.getElementById("searchMsg").style.display="none";
 }
@@ -32,6 +59,8 @@ function validation(){
 			return false;
 		}
 		else {
+			setCookie('sHistory','searchAll','2');
+			document.cookie;
 			return true;
 		}
 	}
@@ -67,7 +96,7 @@ function validation(){
 		<div class="search-container">
 			<form method="post" action="../main/search.do" onsubmit="return validation();">
 				<input placeholder="Search" type="text" value="${searchAll }" name="searchAll" id="searchAll" class="searchbar">
-				<input type=image class="search-icon" id=searchBtn src="../assets/img/searchBtn.png">
+				<input type=image class="search-icon" id=searchBtn src="../assets/img/searchBtn.png" onclick="function(searchAll,searchAll,1)">
 			</form>
 			<span class="searchMsg" id="searchMsg" ></span>
 		</div>

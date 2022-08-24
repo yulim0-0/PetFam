@@ -11,7 +11,7 @@
 	</select>
 	
 	<!-- 전체 쓴 글 목록, 체크 후 일괄 삭제 가능 (예정) -->
-	<select id="userWriteList" resultType="PboardVO" parameterType="hashmap">
+	<select id="adminWriteList" resultType="PboardVO" parameterType="hashmap">
 	    SELECT p_no,subject,id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,rcount,num
 	    FROM (SELECT p_no,subject,id,regdate,hit,rcount,rownum as num 
 	    FROM (SELECT p_no,subject,id,regdate,hit,rcount 
@@ -19,7 +19,7 @@
 	    WHERE num BETWEEN #{start} AND #{end}
   	</select> 
 	
-	<select id="userWriteTotalPage" resultType="int">
+	<select id="adminWriteTotalPage" resultType="int">
     	SELECT CEIL(COUNT(*)/10.0) FROM pbo_4
 	</select>
 	
@@ -34,14 +34,7 @@
     </select> 
     
     <select id="adminQnaTotalPage" resultType="int">
-        SELECT CEIL(COUNT(*)/10.0) FROM qbo_4
-    </select>
-    <!-- 문의 내역 자세히 보기 -> 답글달기  -->
-    <select id="adminQnaDetail" resultType="QnaVO" parameterType="int">
-        SELECT q_no,subject,content, id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit, group_id, group_step, group_tab
-        FROM qbo_4
-        WHERE q_no=#{q_no}
-        
+        SELECT CEIL(COUNT(*)/10.0) FROM qbo_4 WHERE isreply='0' AND GROUP_STEP='0'
     </select>
     
     <!-- 문의 내역 답변 -->

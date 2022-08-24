@@ -8,7 +8,51 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/mywrite.css">
-
+<style>
+ .pagination {
+    margin: 20px 0;
+    overflow: hidden;
+    position: relative;
+}
+.pagination li {
+    float: left;
+}
+.pagination ul {
+    float: left;
+    left: 50%;
+    position: relative;
+}
+.pagination ul > li {
+    left: -50%;
+    position: relative;
+}
+.pagination li a {
+    transition: all 100ms ease-in-out 0s;
+    background-color: #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+    color: #69696E;
+    display: block;
+    font: 16px/30px Noto Sans KR, sans-serif;
+    height: 30px;
+    margin: 0 3px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 30px;
+}
+.pagination li a:hover {
+    background-color: #F34100;
+    color: #FFFFFF;
+}
+.pagination li.active a {
+    background-color: #F34100;
+    color: #FFFFFF;
+}
+.pagination li.active a:hover {
+    color: #F34100;
+}
+</style>
 </head>
 <body>
 	<main class=main>
@@ -39,6 +83,30 @@
 						</tbody>
 					</c:forEach>
 				</table>
+
+				<!-- paging start -->
+				<div class="pagination">
+					<ul>
+						<c:if test="${startPage>1 }">
+							<li><a href="../mypage/mywrite.do?page=${startPage-1 }">&lt;</a></li>
+						</c:if>
+						<c:forEach var="i" begin="${startPage }" end="${endPage }">
+							<c:if test="${i==curpage }">
+								<li class="active"><a href="../mypage/mywrite?page=${i }">${i }</a>
+							</c:if>
+
+							<c:if test="${i!=curpage }">
+								<li><a href="../mypage/mywrite.do?page=${i }">${i }</a>
+							</c:if>
+
+						</c:forEach>
+
+						<c:if test="${endPage<totalpage }">
+							<li><a href="../mypage/mywrite.do?page=${endPage+1 }">&raquo;</a></li>
+						</c:if>
+					</ul>
+				</div>
+				<!-- paging end -->
 			</div>
 		</body>
 	</main>

@@ -57,66 +57,68 @@
 </head>
 <body>
     <main class="main">
-        <div id="wrapper">
-            <h1>문의 관리</h1>
+		<div id="wrapper">
+			<h1>문의 관리</h1>
 
-            <table id="keywords" cellspacing="0" cellpadding="0">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th><span>No</span></th>
-                        <th><span>Subject</span></th>
-                        <th><span>Writer</span></th>
-                        <th><span>Clicks</span></th>
-                        <th><span>RegDate</span></th>
-                        <th><span>GroupID</span></th>
-                        <th><span>IsReply</span></th>
-                    </tr>
-                </thead>
-                
-	                <c:forEach var="vo" items="${list }">
-	                    <tbody>
-	                        <tr style="cursor:pointer;" onclick="location.href='../admin/admin_qna_detail.do?q_no=${vo.q_no}'" >
-	                            <td><input type=checkbox /></td>
-	                            <td style="width:10%">${vo.q_no }</td>
-	                            <td style="text-align : left;">${vo.subject }</td>
-	                            <td>${vo.id }</td>
-	                            <td>${vo.hit }</td>
-	                            <td>${vo.dbday }</td>
-	                            <td>${vo.group_id }</td>
-                                <td>${vo.isreply }</td>
-	                        </tr>
-	                    </tbody>
-	                </c:forEach>
-                
-                
-               
-                
-            </table>
-            
-            <!-- paging start -->
-            <div class="pagination">
-                      <ul>
-                          <c:if test="${startPage>1 }">
-                            <li><a href="../admin/admin_qna.do?page=${startPage-1 }">&lt;</a></li>
-                          </c:if>
-                          <c:forEach var="i" begin="${startPage }" end="${endPage }">
-                            <c:if test="${i==curpage }">
-                                <li class="active"><a href="../admin/admin_qna.do?page=${i }">${i }</a>
-                            </c:if>
-                            
-                            <c:if test="${i!=curpage }">
-                                <li><a href="../admin/admin_qna.do?page=${i }">${i }</a>
-                            </c:if>
-                            
-                          </c:forEach>
-                          
-                          <c:if test="${endPage<totalpage }">
-                            <li><a href="../admin/admin_qna.do?page=${endPage+1 }">&raquo;</a></li>
-                          </c:if>
-                      </ul>
-                 </div>
-        </div>
-    </main>
+			<table id="keywords" cellspacing="0" cellpadding="0">
+				<thead>
+					<tr>
+						<th></th>
+						<th><span>No</span></th>
+						<th><span>Subject</span></th>
+						<th><span>Writer</span></th>
+						<th><span>Clicks</span></th>
+						<th><span>RegDate</span></th>
+						<th><span>GroupID</span></th>
+						<th><span>IsReply</span></th>
+					</tr>
+				</thead>
+
+				<c:forEach var="vo" items="${list }">
+					<tbody>
+						<tr style="cursor: pointer;"
+							onclick="location.href='../admin/admin_qna_detail.do?q_no=${vo.q_no}'">
+							<td><input type=checkbox /></td>
+							<td style="width: 10%">${vo.q_no }</td>
+							<td style="text-align: left;">${vo.subject }</td>
+							<td>${vo.id }</td>
+							<td>${vo.hit }</td>
+							<td>${vo.dbday }</td>
+							<td>${vo.group_id }</td>
+							<td>${vo.isreply }</td>
+						</tr>
+					</tbody>
+				</c:forEach>
+
+
+
+
+			</table>
+
+			<!-- paging start -->
+			<div class="pagination">
+				<ul>
+					<c:if test="${startPage>1 }">
+						<li><a href="../admin/admin_qna.do?page=${startPage-1 }">&lt;</a></li>
+					</c:if>
+					<c:forEach var="i" begin="${startPage }" end="${endPage }">
+						<c:if test="${i==curpage }">
+							<li class="active"><a href="../admin/admin_qna.do?page=${i }">${i }</a>
+						</c:if>
+
+						<c:if test="${i!=curpage }">
+							<li><a href="../admin/admin_qna.do?page=${i }">${i }</a>
+						</c:if>
+
+					</c:forEach>
+
+					<c:if test="${endPage<totalpage }">
+						<li><a href="../admin/admin_qna.do?page=${endPage+1 }">&raquo;</a></li>
+					</c:if>
+				</ul>
+			</div>
+			<!-- paging end -->
+		</div>
+	</main>
 </body>
 </html>

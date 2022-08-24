@@ -35,14 +35,14 @@ public class AdminModel {
 			page="1";
 		int curpage=Integer.parseInt(page);
 		Map map=new HashMap();
-		int rowSize=9;
+		int rowSize=10;
 		int start=(curpage*rowSize)-(rowSize-1);
 		int end=curpage*rowSize;
 		map.put("start", start);
 		map.put("end",end);
 		
-		List<PboardVO> list=AdminDAO.userWriteList(map);
-		int totalpage=AdminDAO.userWriteTotalPage();
+		List<PboardVO> list=AdminDAO.adminWriteList(map);
+		int totalpage=AdminDAO.adminWriteTotalPage();
 		final int BLOCK=5;
 		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
 		int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
@@ -69,17 +69,6 @@ public class AdminModel {
 		return "../main/main.jsp";
 	}
 	
-	@RequestMapping("admin/admin_user_detail.do")
-	public String admin_user_detail(HttpServletRequest request,HttpServletResponse response)
-	{
-		String id=request.getParameter("id");
-		List<UserVO> list=MypageDAO.myInfoData(id);
-		
-		request.setAttribute("list", list);
-		request.setAttribute("main_jsp", "../admin/admin_user_detail.jsp");
-		return "../main/main.jsp";
-	}
-	
 	@RequestMapping("admin/admin_user_del.do")
 	public String user_join_del(HttpServletRequest request, HttpServletResponse response)
 	{
@@ -95,16 +84,6 @@ public class AdminModel {
 		return "../admin/admin_user_del.jsp";
 	}
 	
-	@RequestMapping("admin/admin_qna_detail.do")
-	public String admin_qna_detail(HttpServletRequest request, HttpServletResponse response)
-	{
-		String q_no = request.getParameter("q_no");
-		List<QnaVO> list=AdminDAO.adminQnaDetail(Integer.parseInt(q_no));
-		request.setAttribute("list", list);
-		request.setAttribute("main_jsp", "../admin/admin_qna_detail.jsp");
-		return "../main/main.jsp";
-	}
-	
 //	관리자 문의 답글달기
 	@RequestMapping("admin/admin_qna.do")
 	public String admin_qna(HttpServletRequest request, HttpServletResponse response)
@@ -114,7 +93,7 @@ public class AdminModel {
 			page="1";
 		int curpage=Integer.parseInt(page);
 		Map map=new HashMap();
-		int rowSize=9;
+		int rowSize=10;
 		int start=(curpage*rowSize)-(rowSize-1);
 		int end=curpage*rowSize;
 		map.put("start", start);
@@ -170,12 +149,6 @@ public class AdminModel {
 		AdminDAO.adminQnaInsert(vo);
 		return "redirect:../admin/admin_qna.do";
 	}
-	
-	@RequestMapping("admin/admin_qna_sidebar.do")
-	public String admin_qna_sidebar(HttpServletRequest request, HttpServletResponse response)
-	{
-		request.setAttribute("qna_sidebar", "../admin/admin_qna_sidebar.jsp");
-		return "../admin/admin_qna.jsp";
-	}
+
 	
 }

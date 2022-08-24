@@ -38,8 +38,7 @@
 		SELECT pwd, id, name, admin FROM user_4 WHERE id=#{id}
 	</select>
 
-	<select id="userInfoData" resultType="UserVO"
-		parameterType="string">
+	<select id="userInfoData" resultType="UserVO" parameterType="string">
 		SELECT pwd, id, name FROM user_4 WHERE id=#{id}
 	</select>
 	

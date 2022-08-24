@@ -77,7 +77,7 @@
 					</c:if>
 					<c:forEach var="i" begin="${startPage }" end="${endPage }">
 						<c:if test="${i==curpage }">
-							<li><a href="../admin/admin_community.do?page=${i }">${i }</a>
+							<li class="active"><a href="../admin/admin_community.do?page=${i }">${i }</a>
 						</c:if>
 
 						<c:if test="${i!=curpage }">

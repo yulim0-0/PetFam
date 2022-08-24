@@ -3,7 +3,7 @@
 <mapper namespace="com.sist.mapper.mypage-mapper">
 
 <select id="myInfoData" resultType="UserVO" parameterType="string">
-	SELECT * FROM user_4 WHERE id=#{id}
+    SELECT * FROM user_4 WHERE id=#{id}
 </select>
 
 <!-- 
@@ -18,57 +18,82 @@ ID                  VARCHAR2(20)
 NAME       NOT NULL VARCHAR2(20)  
 RCOUNT              NUMBER    -->
 <!-- 게시글 목록 -->
-<select id="userWriteData" resultType="PboardVO" parameterType="string">
-	SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
-	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
-	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
-	FROM pbo_4 ))
-	WHERE id=#{id}
+<select id="userWriteData" resultType="PboardVO" parameterType="map">
+    SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
+    FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
+    FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
+    FROM pbo_4 WHERE id=#{id}))
+    WHERE num BETWEEN #{start} AND #{end}
+    
+</select>
+<!-- 게시글 페이징 -->
+<select id="userWriteTotalPage" resultType="int" >
+    SELECT CEIL(COUNT(*)/10.0) FROM pbo_4
 </select>
  
 <!-- 게시글 상세보기 -->
 <select id="userWriteDetailData" resultType="PboardVO" parameterType="int">
-	SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
-	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
-	FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
-	FROM pbo_4 ))
-	WHERE p_no=#{p_no}
+    SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
+    FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
+    FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
+    FROM pbo_4 ))
+    WHERE p_no=#{p_no}
 </select>
 
 <!-- 개인정보 수정 -->
 <select id="userInfoEdit" resultType="UserVO" parameterType="string">
-	SELECT * FROM user_4 WHERE id=#{id}
+    SELECT * FROM user_4 WHERE id=#{id}
 </select>
 
 <!-- 개인정보 수정 처리 -->
 <update id="userEdit" parameterType="UserVO">
-	UPDATE user_4 
-	SET pwd=#{pwd}, name=#{name}, phone=#{phone}, birthday=#{birthday}, zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2}, gender=#{gender}
-	WHERE id=#{id}
+    UPDATE user_4 
+    SET pwd=#{pwd}, name=#{name}, phone=#{phone}, birthday=#{birthday}, zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2}, gender=#{gender}
+    WHERE id=#{id}
 </update>
 
 <!-- 문의내역 목록 -->
-<select id="userQnaData" resultType="QnaVO" parameterType="string">
-	SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, id, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, num
-	FROM (SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id, rownum as num
-	FROM (seleCT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id
-	FROM qbo_4))
-	WHERE id=#{id}
+<select id="userQnaData" resultType="QnaVO" parameterType="hashmap">
+    SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, id, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, num
+    FROM (SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id, rownum as num
+    FROM (seleCT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id
+    FROM qbo_4 WHERE id=#{id}))
+    WHERE num BETWEEN #{start} AND #{end}
+    
+</select>
+
+<!-- 문의글 페이징 -->
+<select id="userQnaTotalPage" resultType="int">
+    SELECT CEIL(COUNT(*)/10.0) FROM qbo_4)
 </select>
 
 <!-- 찜 여부 확인 -->
-<select id="userLiikeCount" resultType="int" parameterType="com.sist.vo.JjimVO">
-	SELECT COuNT(*) FROM jjim_4
-	WHERE fno=#{fno} AND id=#{id}
+<select id="useLiikeCount" resultType="int" parameterType="com.sist.vo.JjimVO">
+    SELECT COUNT(*) FROM jjim_4
+    WHERE fno=#{fno} AND id=#{id}
 </select>
 
-<!-- 찜 목록 -->
-<select id="userlikeData" resultType="JjimVO" parameterType="string">
-	SELECT ord_jjim_4.j_no, ord_jjim_4.id, ord_jjim_4.o_no, ord_4.poster, ord_4.name, ord_4.price 
-	FROM ord_jjim_4 
-	LEFT JOIN ord_4
-	ON ord_jjim_4.o_no = ord_4.o_no 
-	WHERE id=#{id}
+<!-- 예약 좋아요 목록 -->
+<select id="userBookingLikeData" resultType="JjimVO" parameterType="string">
+    SELECT ord_jjim_4.j_no, ord_jjim_4.id, ord_jjim_4.o_no, ord_4.poster, ord_4.name, ord_4.price 
+    FROM ord_jjim_4 
+    LEFT JOIN ord_4
+    ON ord_jjim_4.o_no = ord_4.o_no 
+    WHERE id=#{id}
+</select>
+
+<!-- 추천 좋아요 목록 -->
+<select id="userRecLikeData" resultType="int" parameterType="string">
+    SELECT jjim_p_4.c_no, jjim_p_4.id, jjim_p_4.no, rcpg_4.poster, rcpg_4.title
+    FROM rcpg_4
+    LEFT JOIN jjim_p_4
+    ON jjim_p_4.c_no = rcpg_4.c_no
+    WHERE id=#{id}
+</select>
+
+<select id="userRecLikeCount" resultType="int" parameterType="com.sist.vo.PetplaceVO">
+    SELECT * FROM rcpg_4
+    WHERE c_no=#{c_no} AND id=#{id}
 </select>
 
 </mapper>

@@ -1,0 +1,112 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') 
+    	format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+body {
+  box-sizing: border-box;
+  padding: 0 20px 20px;
+  background: #fafafa;
+  position: relative;
+}
+
+a {
+  color: #f34100;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ef7f4d;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-primary {
+  font-family: "GmarketSansMedium", "Noto Sans" sans-serif;
+}
+.mdl-data-table {
+  margin-bottom: 12px;
+}
+
+.mdl-data-table td {
+  padding-bottom: 12px;
+  vertical-align: middle;
+}
+
+.mdl-data-table_full {
+  max-width: 100%;
+  width: 100%;
+}
+
+.mdl-data-table .controls {
+  text-align: center;
+}
+
+.app-page {  
+  margin: 0 auto;
+}
+
+.mdl-data-table th ,
+.mdl-data-table td {
+	text-align : center;
+}
+.mdl-data-table {
+	border : 0px;
+	border-radius:30px;
+}
+
+.modal-container {
+	width:20px;
+}
+
+/********************************
+Modal Start
+********************************/
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

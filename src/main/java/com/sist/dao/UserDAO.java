@@ -4,6 +4,7 @@ import java.io.Reader;
 import java.util.List;
 
 import javax.annotation.Resources;
+import javax.lang.model.element.Element;
 
 import org.apache.ibatis.io.*;
 import org.apache.ibatis.session.*;
@@ -82,34 +83,6 @@ public class UserDAO {
 				session.close();
 		}
 	}
-	
-	public static boolean userEdit(UserVO vo)
-	{
-		boolean bCheck=false;
-		SqlSession session=null;
-		try {
-			session=ssf.openSession();
-			UserVO uvo=session.selectOne("userInfoData", vo.getId());
-			if(uvo.getPwd().equals(vo.getPwd()))
-			{
-				bCheck=true;
-				session.update("userUpdate",vo);
-				session.commit();
-			}
-			else 
-			{
-				bCheck=false;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		finally {
-			if(session!=null)
-				session.close();
-		}
-		return bCheck;
-	}
-	
 	public static UserVO isLogin(String id, String pwd)
 	{
 		UserVO vo=new UserVO();
@@ -141,7 +114,32 @@ public class UserDAO {
 		}
 		return vo;
 	}
-	
+	public static boolean userEdit(UserVO vo)
+	{
+		boolean bCheck=false;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			UserVO uvo=session.selectOne("userInfoData", vo.getId());
+			if(uvo.getPwd().equals(vo.getPwd()))
+			{
+				bCheck=true;
+				session.update("userUpdate",vo);
+				session.commit();
+			}
+			else 
+			{
+				bCheck=false;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			if(session!=null)
+				session.close();
+		}
+		return bCheck;
+	}
 	public static boolean userDelete(String id, String pwd)
 	{
 		boolean bCheck=false;

@@ -8,6 +8,7 @@
   <c:otherwise>
    <script>
      alert("비밀번호가 틀립니다");
+     
      history.back();
    </script>
   </c:otherwise>

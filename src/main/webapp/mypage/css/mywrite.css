@@ -118,6 +118,7 @@ h1 {
 }
 
 #keywords {
+	width:100%;
 	margin: 0 auto;
 	font-size: 1.2em;
 	margin-bottom: 15px;
@@ -125,13 +126,14 @@ h1 {
 
 #keywords thead {
 	cursor: pointer;
-	background: #c9dff0;
+	background: #192f61;
 }
 
 #keywords thead tr th {
 	font-weight: bold;
 	padding: 12px 30px;
 	text-align : center;
+	color : #fff;
 	
 }
 

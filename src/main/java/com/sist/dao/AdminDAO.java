@@ -107,13 +107,13 @@ public class AdminDAO {
 		return list;
 	}
 	
-	public static List<PboardVO> userWriteList(Map map)
+	public static List<PboardVO> adminWriteList(Map map)
 	{
 		List<PboardVO> list=null;
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			list=session.selectList("userWriteList", map);
+			list=session.selectList("adminWriteList", map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -122,13 +122,13 @@ public class AdminDAO {
 		return list;
 	}
 	
-	public static int userWriteTotalPage()
+	public static int adminWriteTotalPage()
 	{
 		int total=0;
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			total=session.selectOne("userWriteTotalPage");
+			total=session.selectOne("adminWriteTotalPage");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -169,38 +169,6 @@ public class AdminDAO {
 				session.close(); // disConnection() ps.close(),conn.close() : 반환
 		}
 		return total;
-	}
-	
-	public static List<QnaVO> adminQnaAnswer(int q_no) {
-		List<QnaVO> list=null;
-		SqlSession session=null;
-		try {
-			session=ssf.openSession();
-			list=session.selectList("adminQnaAnswer");
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if(session!=null)
-				session.close();
-		}
-		return list;
-	}
-
-	public static List<QnaVO> adminQnaDetail(int q_no) {
-		SqlSession session = null;
-		List<QnaVO> list=null;
-		try {
-			session = ssf.openSession();
-			list = session.selectList("adminQnaDetail", q_no);
-		} catch (Exception ex) {
-			System.out.println("qnaDetailData: error");
-			ex.printStackTrace();
-		} finally {
-			if (session != null)
-				session.close(); // disConnection() ps.close(),conn.close() : 반환
-		}
-		return list;
 	}
 	
 	public static void adminQnaInsert(QnaVO vo){

@@ -1,69 +1,70 @@
-@font-face {
-    font-family: 'GmarketSansMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') 
-    	format('woff');
+@charset "UTF-8";
+table.dataTable thead th {
+    background-color: #2596be;
+    color: white;
+    text-align: center;
+}
+
+table.dataTable tbody tr td {
+    vertical-align: middle;
+}
+
+.table-hover > tbody > tr:hover {
+    background-color: #bee0ec;
+}
+
+.buttonsDiv {
+    margin: inherit;
+    padding-bottom: 3px;
+}
+
+.middleAlign {
+    vertical-align: middle;
+}
+.loader {
+    width: 320px;
+    height: 90px;
+    left: 45%;
+    top: 45%;
+    border: 1px solid silver;
+    border-radius: 13px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-left: 10px;
+    background-color: ghostwhite;
+    position: fixed;
+}
+
+.loading {
+    display: flex;
+    justify-content: left;
+}
+
+.loading--full-height {
+    align-items: center;
+    height: 100%;
+}
+
+.loading-message {
+    margin-left: 6px;
+    font-size: 20px;
     font-weight: normal;
-    font-style: normal;
-}
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-
-body {
-  box-sizing: border-box;
-  padding: 0 20px 20px;
-  background: #fafafa;
-  position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-a {
-  color: #f34100;
-  text-decoration: none;
+.loading::before {
+    content: "";
+    width: 55px;
+    height: 55px;
+    border-left: 12px solid rgba(0,174,239,.15);
+    border-right: 12px solid rgba(0,174,239,.15);
+    border-bottom: 12px solid rgba(0,174,239,.15);
+    border-top: 12px solid rgba(0,174,239,.8);
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
 }
 
-a:hover {
-  color: #ef7f4d;
-  text-decoration: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.font-primary {
-  font-family: "GmarketSansMedium", "Noto Sans" sans-serif;
-}
-.mdl-data-table {
-  margin-bottom: 12px;
-}
-
-.mdl-data-table td {
-  padding-bottom: 12px;
-  vertical-align: middle;
-}
-
-.mdl-data-table_full {
-  max-width: 100%;
-  width: 100%;
-}
-
-.mdl-data-table .controls {
-  text-align: center;
-}
-
-.app-page {  
-  margin: 0 auto;
-}
-
-.mdl-data-table th ,
-.mdl-data-table td {
-	text-align : center;
-}
-.mdl-data-table {
-	border : 0px;
-	border-radius:30px;
-}
-
-.modal-container {
-	width:20px;
+@keyframes loading {
+    to {
+        transform: rotate(1turn);
+    }
 }
