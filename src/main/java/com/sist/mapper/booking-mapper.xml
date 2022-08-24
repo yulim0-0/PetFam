@@ -5,12 +5,14 @@
  SELECT o_no,name,store,poster,TO_CHAR(price,'fm999&#44;999&#44;999&#44;999&#44;999') as strPrice,num
  FROM(SELECT o_no,name,store,poster,price,rownum as num
  FROM(SELECT o_no,name,store,poster,price
- FROM ord_4 WHERE o_no BETWEEN #{s} AND #{e} ORDER BY o_no ASC))
+ FROM ord_4 WHERE (o_no BETWEEN #{s} AND #{e}) AND (store LIKE '%'||#{store}||'%')
+ ORDER BY o_no ASC))
  WHERE num BETWEEN #{start} AND #{end}
  </select>
  
- <select id="bookingTotalPage" resultType="int" parameterType="hashmap">
-   SELECT CEIL(COUNT(*)/9.0) FROM ord_4 WHERE o_no BETWEEN #{s} AND #{e}
+ <select id="bookingTotalPage" resultType="int" parameterType="string">
+   SELECT CEIL(COUNT(*)/9.0) FROM ord_4 
+   WHERE store LIKE '%'||#{store}||'%'
  </select>
  
  <select id="hospitalDetailData" resultType="BookingVO" parameterType="int">

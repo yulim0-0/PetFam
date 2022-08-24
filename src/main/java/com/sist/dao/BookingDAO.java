@@ -33,8 +33,8 @@ public class BookingDAO {
 	//<select id="bookingListData" resultType="BookingVO" parameterType="hashmap">
 	public static List<BookingVO> bookingListData(Map map)
 	{
-		SqlSession session=null;
 		List<BookingVO> list=null;
+		SqlSession session=null;
 		try
 		{
 			session=ssf.openSession();
@@ -54,14 +54,14 @@ public class BookingDAO {
 		return list;
 	}
 	
-	 public static int bookingTotalPage(Map map)
+	public static int bookingTotalPage(String store)
 	   {
 		   int total=0;
 		   SqlSession session=null;
 		   try
 		   {
 			   session=ssf.openSession();
-			   total=session.selectOne("bookingTotalPage", map);
+			   total=session.selectOne("bookingTotalPage", store);
 		   }catch(Exception ex)
 		   {
 			   System.out.println("bookingTotalPage : error");

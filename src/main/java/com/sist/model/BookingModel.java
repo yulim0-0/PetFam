@@ -22,24 +22,34 @@ public class BookingModel {
 	@RequestMapping("booking/hospital_list.do")
 	public String booking_Hospital(HttpServletRequest request, HttpServletResponse response)
 	{
+		try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) {}
 		String page=request.getParameter("page");
 		if(page==null)
 			page="1";
+		String store=request.getParameter("store");
+		if(store==null) 
+			store="병원";
+		System.out.println(store+":");   
+		 
 		int curpage=Integer.parseInt(page);
-		Map map=new HashMap();
 		int rowSize=9;
 		int start=(rowSize*curpage)-(rowSize-1);//rownum=1
 		int end=(curpage*rowSize);
 		
+		Map map=new HashMap();
 		map.put("start", start);
 		map.put("end", end);
-		
 		map.put("s", 19);
 		map.put("e", 515);
+		map.put("store", store);
+		
 		List<BookingVO> list=BookingDAO.bookingListData(map);
 		
-		 int totalpage=BookingDAO.bookingTotalPage(map);
-		   //System.out.println("totalpage="+totalpage);
+		 int totalpage=BookingDAO.bookingTotalPage(store);
+		   System.out.println("totalpage="+totalpage);
 		   final int BLOCK=5;
 		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
 		   /*
@@ -58,6 +68,7 @@ public class BookingModel {
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
 		   request.setAttribute("list", list);
+		   request.setAttribute("store", store);
 		
 		request.setAttribute("main_jsp", "../booking/hospital_list.jsp");
 		return "../main/main.jsp";
@@ -68,7 +79,7 @@ public class BookingModel {
 	@RequestMapping("booking/salon_list.do")
 	public String booking_salon(HttpServletRequest request, HttpServletResponse response)
 	{
-		String page=request.getParameter("page");
+		/*String page=request.getParameter("page");
 		if(page==null)
 			page="1";
 		int curpage=Integer.parseInt(page);
@@ -97,7 +108,8 @@ public class BookingModel {
 		   request.setAttribute("totalpage", totalpage);
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
-		   request.setAttribute("list", list);
+		   request.setAttribute("list", list);*/
+		
 		
 		request.setAttribute("main_jsp", "../booking/salon_list.jsp");
 		return "../main/main.jsp";
@@ -106,7 +118,7 @@ public class BookingModel {
 	@RequestMapping("booking/training_list.do")
 	public String booking_training(HttpServletRequest request, HttpServletResponse response)
 	{
-		String page=request.getParameter("page");
+		/*String page=request.getParameter("page");
 		if(page==null)
 			page="1";
 		int curpage=Integer.parseInt(page);
@@ -135,7 +147,7 @@ public class BookingModel {
 		   request.setAttribute("totalpage", totalpage);
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
-		   request.setAttribute("list", list);
+		   request.setAttribute("list", list);*/
 		
 		request.setAttribute("main_jsp", "../booking/training_list.jsp");
 		return "../main/main.jsp";

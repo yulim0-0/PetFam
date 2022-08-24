@@ -29,6 +29,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="../booking/listdist/list_style.css">
+  <link rel="stylesheet" href="../booking/filterdist/filter_style.css">
+  <link rel="stylesheet" href="../booking/searchdist/search_style.css">
   
   <!-- pagination css-->
  <style type="text/css">
@@ -81,8 +83,60 @@
  </style>
 </head>
 <body>
+ <div class="joincontainer">
+		<!-- <form method="post" action="../user/join_ok.do" name="join_frm" id="join_frm" > -->
+			<h4>병원 예약</h4>
+			<!-- 동의사항 -->
+			<div class="row">
+				<div class="input-group">
+					<form method="post" action="../booking/hospital_list.do" class="search-container">
+						<input type="text" name=store id="search-bar" value="${store }" placeholder="병원명 검색">
+							<%-- <input type="hidden" name=store value="${vo.store }"> --%>
+							<input type="image" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png" name="Submit" value="Submit" class="search-icon">
+					</form>
+				</div>
+			</div>
+			<!-- 동의사항 -->
+			<div class="row">
+			<h4>지역선택</h4>
+			<div class="input-group" >
+					<input type="checkbox" id="faa"> <label for="faa" style="display: inline-block; text-align: center; margin-left: 20px">서울&nbsp;</label>
+					<input type="checkbox" id="fbb"> <label for="fbb" style="display: inline-block; text-align: center; margin-left: 20px">인천&nbsp;</label>
+					<input type="checkbox" id="fcc"> <label for="fcc" style="display: inline-block; text-align: center; margin-left: 20px">경기&nbsp;</label>
+					<input type="checkbox" id="fdd"> <label for="fdd" style="display: inline-block; text-align: center; margin-left: 20px">충청&nbsp;</label>
+					<input type="checkbox" id="fee"> <label for="fee" style="display: inline-block; text-align: center; margin-left: 20px">대전&nbsp;</label>
+					<input type="checkbox" id="fff"> <label for="fff" style="display: inline-block; text-align: center; margin-left: 20px">전라&nbsp;</label>
+					<input type="checkbox" id="fgg"> <label for="fgg" style="display: inline-block; text-align: center; margin-left: 20px">경상&nbsp;</label>
+				</div>
+				</div>
+				
+			<!-- 동의사항 -->
+			<div class="row">
+			<h4>항목선택</h4>
+			<div class="input-group" >
+					<input type="checkbox" id="faaa"> <label for="faaa" style="display: inline-block; text-align: center; margin-left: 20px">중성화&nbsp;</label>
+					<input type="checkbox" id="fbbb"> <label for="fbbb" style="display: inline-block; text-align: center; margin-left: 20px">스케일링&nbsp;</label>
+					<input type="checkbox" id="fccc"> <label for="fccc" style="display: inline-block; text-align: center; margin-left: 20px">안과수술&nbsp;</label>
+					<input type="checkbox" id="fddd"> <label for="fddd" style="display: inline-block; text-align: center; margin-left: 20px">슬개골 탈구&nbsp;</label>
+					<input type="checkbox" id="feee"> <label for="feee" style="display: inline-block; text-align: center; margin-left: 20px">반려견접종&nbsp;</label>
+					<input type="checkbox" id="ffff"> <label for="ffff" style="display: inline-block; text-align: center; margin-left: 20px">반려묘접종&nbsp;</label>
+					<input type="checkbox" id="fggg"> <label for="fggg" style="display: inline-block; text-align: center; margin-left: 20px">심장사상충접종&nbsp;</label>
+					<input type="checkbox" id="fhhh"> <label for="fhhh" style="display: inline-block; text-align: center; margin-left: 20px">건강검진&nbsp;</label>
+					<input type="checkbox" id="fiii"> <label for="fiii" style="display: inline-block; text-align: center; margin-left: 20px">혈액검사&nbsp;</label>
+					<input type="checkbox" id="fjjj"> <label for="fjjj" style="display: inline-block; text-align: center; margin-left: 20px">피부알러지검사&nbsp;</label>
+					<input type="checkbox" id="fkkk"> <label for="fkkk" style="display: inline-block; text-align: center; margin-left: 20px">심장사상충검사&nbsp;</label>
+				</div>
+			<!-- 확인 및 취소 -->
+			<!-- <div>
+				<div class="col-16"></div>
+				<input class="col-33" style="float:center; margin-left:10px;" type="button" value="취소" onclick="javascript:history.back()">
+				<input class="col-33" style="float:center; margin-right:10px;" type="button" id="joinBtn" value="회원가입" />
+				<div class="col-16"></div>
+			</div> -->
+		</form>
+	</div>
+	</div>
  <div class="main">
- <jsp:include page="filter.jsp"/>
   <ul class="cards">
   <c:forEach var="vo" items="${list }" varStatus="s">
    <c:if test="${s.index%3==0 }">
@@ -122,18 +176,18 @@
 		 <div class="pagination">
           <ul>
 		  <c:if test="${startPage>1 }">
-		   <li><a href="../booking/hospital_list.do?page=${startPage-1 }">&laquo;</a></li>
+		   <li><a href="../booking/hospital_list.do?store=${store }&page=${startPage-1 }">&laquo;</a></li>
 		  </c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
 			<c:if test="${i==curpage }">
-		     <li class="active"><a href="../booking/hospital_list.do?page=${i }">${i }</a></li>
+		     <li class="active"><a href="../booking/hospital_list.do?store=${store }&page=${i }">${i }</a></li>
 			</c:if>
 			<c:if test="${i!=curpage }">
-		    <li><a href="../booking/hospital_list.do?page=${i }">${i }</a></li>
+		    <li><a href="../booking/hospital_list.do?store=${store }&page=${i }">${i }</a></li>
 			</c:if>
 		    </c:forEach>
 			<c:if test="${endPage<totalpage }">
-			 <li><a href="../booking/hospital_list.do?page=${endPage+1 }">&raquo;</a></li>
+			 <li><a href="../booking/hospital_list.do?store=${store }&page=${endPage+1 }">&raquo;</a></li>
 			</c:if>
 		  </ul>
 		 </div>
