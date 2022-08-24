@@ -1,12 +1,6 @@
-<%@page import="com.sist.dao.MainDAO"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-
-
-
-%>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,97 +9,74 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8244d253186302ea3726a5f1803e7dfe"></script>
 <script type="text/javascript">
 function jjBtn(){
-	
-	alert('좋아요 완료! \n좋아요를 누른 상품은 마이페이지에서 확인하실 수 있습니다');
+    
+    alert('좋아요 완료! \n좋아요를 누른 상품은 마이페이지에서 확인하실 수 있습니다');
 }
-
- setCookieArray: function( cname, carray, exdays ) {
-       var str = "";   for( var key in carray ){
-            if(str != "" ) str += ",";    str += key+":"+carray[key];  
-        }   
-this.setCookie( cname, str, exdays );  
-}
-
-function setCookie(cookie_name, value, days){
-	var exdate = new Date();
-	exdate.setDate(exdate.getDate()+days);
-	
-	var cookie_value=escape(value) + ((days==null)?":';expires=' + exdate.toUTCString*());
-	document.cookie=cookie_name + '=' + cookie_value;
-}
-
-
-response.addCookie(cookie)
-cookie.setMaxAge(60*60);
-response.sendRedirect("../main/search.do");
-
 function hide(){
-	document.getElementById("searchMsg").style.display="none";
+    document.getElementById("searchMsg").style.display="none";
 }
 $(function(){
-	setInterval(function(){
+    setInterval(function(){
       $('#searchMsg').hide('blind',{},200)
   },2000);
 });
 self.setInterval("hide()",3000);
 function validation(){
-	var searchAll = document.getElementById("searchAll")
-	var searchMsg = document.getElementById("searchMsg")
-		if (searchAll.value == '') {
-			searchAll.focus();
-			searchMsg.style.display="block";
-			searchMsg.innerHTML="검색어 입력이 필요합니다";
-			
-			return false;
-		}
-		else {
-			setCookie('sHistory','searchAll','2');
-			document.cookie;
-			return true;
-		}
-	}
+    var searchAll = document.getElementById("searchAll")
+    var searchMsg = document.getElementById("searchMsg")
+        if (searchAll.value == '') {
+            searchAll.focus();
+            searchMsg.style.display="block";
+            searchMsg.innerHTML="검색어 입력이 필요합니다";
+            
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 </script>
 </head>
 <body>
 <main id="main">
-	<section id="hero" class="d-flex align-items-center">
-	    <div class="container">
-	      <div class="row gy-4">
-	        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-	          <h1>Service for the busy worker who wants to spend time with your fluffy friends</h1>
-	          <h2>털복숭이 친구들과 함께 하고싶은 바쁜 직장인을 위해</h2>
-	          <div>
-	          	<c:if test="${sessionScope.id!=null }">
-	            	<a href="../booking/hospital_list.do" class="btn-get-started scrollto">예약하러 가기</a>
-	            </c:if>
-	            <c:if test="${sessionScope.id==null }">
-	            	<a href="../user/login.do" class="btn-get-started scrollto">예약하러 가기</a>
-	            </c:if>
-	          </div>
-	        </div>
-	        <div class="col-lg-6 order-1 order-lg-2 hero-img">
-	          <img src="../assets/img/main_dogcat.png" class="img-fluid animated" alt="">
-	        </div>
-	      </div>
-	    </div>
-	</section>
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+              <h1>Service for the busy worker who wants to spend time with your fluffy friends</h1>
+              <h2>털복숭이 친구들과 함께 하고싶은 바쁜 직장인을 위해</h2>
+              <div>
+                <c:if test="${sessionScope.id!=null }">
+                    <a href="../booking/hospital_list.do" class="btn-get-started scrollto">예약하러 가기</a>
+                </c:if>
+                <c:if test="${sessionScope.id==null }">
+                    <a href="../user/login.do" class="btn-get-started scrollto">예약하러 가기</a>
+                </c:if>
+              </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2 hero-img">
+              <img src="../assets/img/main_dogcat.png" class="img-fluid animated" alt="">
+            </div>
+          </div>
+        </div>
+    </section>
 
 
-	<!-- ======= Searchbar Section ======= -->
-	<section id="searchbar">
-		<div class="search-container">
-			<form method="post" action="../main/search.do" onsubmit="return validation();">
-				<input placeholder="Search" type="text" value="${searchAll }" name="searchAll" id="searchAll" class="searchbar">
-				<input type=image class="search-icon" id=searchBtn src="../assets/img/searchBtn.png" onclick="function(searchAll,searchAll,1)">
-			</form>
-			<span class="searchMsg" id="searchMsg" ></span>
-		</div>
-	</section>
-	<!-- End Services Section -->
+    <!-- ======= Searchbar Section ======= -->
+    <section id="searchbar">
+        <div class="search-container">
+            <form method="post" action="../main/search.do" onsubmit="return validation();">
+                <input placeholder="Search" type="text" value="${searchAll }" name="searchAll" id="searchAll" class="searchbar">
+                <input type=image class="search-icon" id=searchBtn src="../assets/img/searchBtn.png">
+            </form>
+            <span class="searchMsg" id="searchMsg" ></span>
+        </div>
+    </section>
+    <!-- End Services Section -->
 
 
 
-		<!-- ======= Services Section ======= -->
+        <!-- ======= Services Section ======= -->
     <section id="services" class="services section-bg">
       <div class="container" data-aos="fade-up">
         <div class="section-title">
@@ -113,20 +84,20 @@ function validation(){
           <p>펫펨이 추천하는 이번 주말 반려견과의 외출</p>
         </div>
 
-	        <div class="row"style="justify-content : space-evenly;word-break : keep-all;">
-	        
-	          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" >
-	          		
-	          		 <div class="icon-box">
-	          		 <a href="../petplace/cafe.do">
-	      				   <img src="http://appdata.hungryapp.co.kr/images/hatdog/ar/2018_07/M153069977357141108.jpg" class="img-fluid" alt="cafe/restaurant">
-		             </a>
-		              <h4 class="title"><br>바람구름</h4>
-		              <p class="description">대구 남구 명덕로64길 26 1층</p>
-		            </div>
-		              
-	          </div>
-	    
+            <div class="row"style="justify-content : space-evenly;word-break : keep-all;">
+            
+              <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" >
+                    
+                     <div class="icon-box">
+                     <a href="../petplace/cafe.do">
+                           <img src="http://appdata.hungryapp.co.kr/images/hatdog/ar/2018_07/M153069977357141108.jpg" class="img-fluid" alt="cafe/restaurant">
+                     </a>
+                      <h4 class="title"><br>바람구름</h4>
+                      <p class="description">대구 남구 명덕로64길 26 1층</p>
+                    </div>
+                      
+              </div>
+        
                
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
@@ -328,85 +299,85 @@ function validation(){
         
         
         <div class="inner">
-	        
-	          <ul class="faq-list1" data-aos="fade-up" data-aos-delay="100">
-	
-	          <li>
-	            <a id="faq1" data-bs-toggle="collapse" class="collapsed question" href="#faq1">펫팸은 어떤 서비스를 제공하나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-	            <div id="faq1" class="collapse" data-bs-parent=".faq-list1">
-	              <p>
-	              	저희는 국내 최고 반려동물 전문가들의 교육을 받은 펫시터분들의 전문 케어와 픽업 서비스 등 이용가능한 다양한 서비스 옵션을 제공하고 있습니다. 또한, 프리미엄 안전보장 프로그램과 모바일 앱을 통해 간단하고 쉽게 서비스를 이용할 수 있습니다.
-	              </p>
-	            </div>
-	          </li>
-	
-	          <li>
-	            <a data-bs-toggle="collapse" href="#faq2" class="collapsed question">예약 취소 및 환불 규정은 어떻게 되나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-	            <div id="faq2" class="collapse" data-bs-parent=".faq-list1">
-	              <p>
-	               	예약 취소에 따른 환불 가능 금액은 체크인 전 시간에 따라 달라집니다. 체크인 시간을 기준으로 3일(72시간) 전 취소 시 100% 환불, 3일(72시간) 이내 취소 시 50% 환불됩니다. 1일(24시간) 이내 취소 시엔 환불이 불가하고 조기 서비스 종료 시에도 남은 일수에 해당하는 금액 또한 환불 불가합니다. 다만, 펫시터님의 요청 수락 이후 (매칭 이후) 2시간 이내 취소는 전액 환불이 가능합니다. 예약 변경은 예약 취소 후 다시 예약 신청하셔야 하며, 되도록이면 5일 이전에 해주시길 바랍니다. 예약일 연장에 대해서는 앱 내 [ 프로필 > 고객센터 > 채팅문의/전화문의 ] 로 연락주시면 친절히 안내드리겠습니다.
-	              </p>
-	            </div>
-	          </li>
-	
-	          <li>
-	            <a data-bs-toggle="collapse" href="#faq3" class="collapsed question">훈련 예약시 반려동물을 추가하면 비용이 어떻게 되나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-	            <div id="faq3" class="collapse" data-bs-parent=".faq-list1">
-	              <p>
-	               맡기시는 반려동물이 2마리 이상일 경우 2번째 반려동물부터 할인된 비용이 적용될 수 있습니다. 각 이용업체마다 0~20000원 사이의 할인 금액이 있을 수 있으니 유의바랍니다. 
-	              </p>
-	            </div>
-	          </li>
-	
-	          <li>
-	            <a data-bs-toggle="collapse" href="#faq4" class="collapsed question">예약 대기상태는 무엇인가요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-	            <div id="faq4" class="collapse" data-bs-parent=".faq-list1">
-	              <p>
-	                펫팸은 이용업체에서 예약 요청을 승인해야 매칭이 완료됩니다. 예약 대기상태란 아직 이용업체가 예약을 승인하기 전 대기상태를 말합니다. 이 상태에서는 결제가 이뤄지지 않습니다. 24시간 내로 승인하지 않으면 자동으로 예약은 취소됩니다.
-	              </p>
-	            </div>
-	          </li>
-	        </ul>
-	        
-	          <ul class="faq-list2" data-aos="fade-up" data-aos-delay="100">
-	
-	          <li>
-	            <a data-bs-toggle="collapse" class="collapsed question" href="#faq5">예약된 체크인 또는 체크아웃 시간보다 늦어졌어요.<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-	            <div id="faq5" class="collapse" data-bs-parent=".faq-list2">
-	              <p>
-	              	먼저 체크인 또는 체크아웃 시간보다 늦어지는 경우 반드시 펫시터님께 연락해서 얼만큼 늦어지게 되는 지 연락해주세요. 체크아웃이 늦어지는 경우는 펫시터님이 늦어진 시간 만큼 추가금 결제 요청을 할 수 있습니다.
-	              </p>
-	            </div>
-	          </li>
-	
-	          <li>
-	            <a data-bs-toggle="collapse" href="#faq6" class="collapsed question">예약이 확정되고 난 후, 날짜를 다시 변경하고 싶어요<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-	            <div id="faq6" class="collapse" data-bs-parent=".faq-list2">
-	              <p>
-	               	날짜를 다시 변경하시고 싶은 경우, 예약을 취소하고 다시 예약요청을 하셔야합니다. 만약 예약을 취소함으로써 수수료가 발생하는 경우, 고객센터(070-4756-2223)으로 문의해주시면 수수료 환불이 가능합니다.
-	              </p>
-	            </div>
-	          </li>
-	
-	          <li>
-	            <a data-bs-toggle="collapse" href="#faq7" class="collapsed question">펫팸을 탈퇴하고 싶어요 <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-	            <div id="faq7" class="collapse" data-bs-parent=".faq-list2">
-	              <p>
-	            	 하단의 프로필 탭을 누르면 환경설정에서 회원 탈퇴가 가능합니다. 회원 탈퇴시 이전의 대화, 일지는 모두 볼 수 없게 됩니다. 신중히 진행해주시길 부탁드립니다.
-	              </p>
-	            </div>
-	          </li>
-	
-	          <li>
-	            <a data-bs-toggle="collapse" href="#faq8" class="collapsed question">아이디랑 비밀번호를 잃어버렸어요. 어떻게 다시 찾죠? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
-	            <div id="faq8" class="collapse" data-bs-parent=".faq-list2">
-	              <p>
-	              	첫 화면에서 로그인 버튼을 눌러 아이디,비밀번호 찾기 버튼을 누르면 아이디 혹은 비밀번호를 찾을 수 있는 페이지로 이동합니다. 아이디의 경우 실명과 휴대폰 번호, 비밀번호의 경우 가입한 아이디를 입력하고 찾기 버튼을 누르면 문자로 해당내용을 받아보실 수 있습니다.
-	              </p>
-	            </div>
-	          </li>
-	         </div>
-	        </ul>  
+            
+              <ul class="faq-list1" data-aos="fade-up" data-aos-delay="100">
+    
+              <li>
+                <a id="faq1" data-bs-toggle="collapse" class="collapsed question" href="#faq1">펫팸은 어떤 서비스를 제공하나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+                <div id="faq1" class="collapse" data-bs-parent=".faq-list1">
+                  <p>
+                    저희는 국내 최고 반려동물 전문가들의 교육을 받은 펫시터분들의 전문 케어와 픽업 서비스 등 이용가능한 다양한 서비스 옵션을 제공하고 있습니다. 또한, 프리미엄 안전보장 프로그램과 모바일 앱을 통해 간단하고 쉽게 서비스를 이용할 수 있습니다.
+                  </p>
+                </div>
+              </li>
+    
+              <li>
+                <a data-bs-toggle="collapse" href="#faq2" class="collapsed question">예약 취소 및 환불 규정은 어떻게 되나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+                <div id="faq2" class="collapse" data-bs-parent=".faq-list1">
+                  <p>
+                    예약 취소에 따른 환불 가능 금액은 체크인 전 시간에 따라 달라집니다. 체크인 시간을 기준으로 3일(72시간) 전 취소 시 100% 환불, 3일(72시간) 이내 취소 시 50% 환불됩니다. 1일(24시간) 이내 취소 시엔 환불이 불가하고 조기 서비스 종료 시에도 남은 일수에 해당하는 금액 또한 환불 불가합니다. 다만, 펫시터님의 요청 수락 이후 (매칭 이후) 2시간 이내 취소는 전액 환불이 가능합니다. 예약 변경은 예약 취소 후 다시 예약 신청하셔야 하며, 되도록이면 5일 이전에 해주시길 바랍니다. 예약일 연장에 대해서는 앱 내 [ 프로필 > 고객센터 > 채팅문의/전화문의 ] 로 연락주시면 친절히 안내드리겠습니다.
+                  </p>
+                </div>
+              </li>
+    
+              <li>
+                <a data-bs-toggle="collapse" href="#faq3" class="collapsed question">훈련 예약시 반려동물을 추가하면 비용이 어떻게 되나요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+                <div id="faq3" class="collapse" data-bs-parent=".faq-list1">
+                  <p>
+                   맡기시는 반려동물이 2마리 이상일 경우 2번째 반려동물부터 할인된 비용이 적용될 수 있습니다. 각 이용업체마다 0~20000원 사이의 할인 금액이 있을 수 있으니 유의바랍니다. 
+                  </p>
+                </div>
+              </li>
+    
+              <li>
+                <a data-bs-toggle="collapse" href="#faq4" class="collapsed question">예약 대기상태는 무엇인가요?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+                <div id="faq4" class="collapse" data-bs-parent=".faq-list1">
+                  <p>
+                    펫팸은 이용업체에서 예약 요청을 승인해야 매칭이 완료됩니다. 예약 대기상태란 아직 이용업체가 예약을 승인하기 전 대기상태를 말합니다. 이 상태에서는 결제가 이뤄지지 않습니다. 24시간 내로 승인하지 않으면 자동으로 예약은 취소됩니다.
+                  </p>
+                </div>
+              </li>
+            </ul>
+            
+              <ul class="faq-list2" data-aos="fade-up" data-aos-delay="100">
+    
+              <li>
+                <a data-bs-toggle="collapse" class="collapsed question" href="#faq5">예약된 체크인 또는 체크아웃 시간보다 늦어졌어요.<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+                <div id="faq5" class="collapse" data-bs-parent=".faq-list2">
+                  <p>
+                    먼저 체크인 또는 체크아웃 시간보다 늦어지는 경우 반드시 펫시터님께 연락해서 얼만큼 늦어지게 되는 지 연락해주세요. 체크아웃이 늦어지는 경우는 펫시터님이 늦어진 시간 만큼 추가금 결제 요청을 할 수 있습니다.
+                  </p>
+                </div>
+              </li>
+    
+              <li>
+                <a data-bs-toggle="collapse" href="#faq6" class="collapsed question">예약이 확정되고 난 후, 날짜를 다시 변경하고 싶어요<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+                <div id="faq6" class="collapse" data-bs-parent=".faq-list2">
+                  <p>
+                    날짜를 다시 변경하시고 싶은 경우, 예약을 취소하고 다시 예약요청을 하셔야합니다. 만약 예약을 취소함으로써 수수료가 발생하는 경우, 고객센터(070-4756-2223)으로 문의해주시면 수수료 환불이 가능합니다.
+                  </p>
+                </div>
+              </li>
+    
+              <li>
+                <a data-bs-toggle="collapse" href="#faq7" class="collapsed question">펫팸을 탈퇴하고 싶어요 <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+                <div id="faq7" class="collapse" data-bs-parent=".faq-list2">
+                  <p>
+                     하단의 프로필 탭을 누르면 환경설정에서 회원 탈퇴가 가능합니다. 회원 탈퇴시 이전의 대화, 일지는 모두 볼 수 없게 됩니다. 신중히 진행해주시길 부탁드립니다.
+                  </p>
+                </div>
+              </li>
+    
+              <li>
+                <a data-bs-toggle="collapse" href="#faq8" class="collapsed question">아이디랑 비밀번호를 잃어버렸어요. 어떻게 다시 찾죠? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
+                <div id="faq8" class="collapse" data-bs-parent=".faq-list2">
+                  <p>
+                    첫 화면에서 로그인 버튼을 눌러 아이디,비밀번호 찾기 버튼을 누르면 아이디 혹은 비밀번호를 찾을 수 있는 페이지로 이동합니다. 아이디의 경우 실명과 휴대폰 번호, 비밀번호의 경우 가입한 아이디를 입력하고 찾기 버튼을 누르면 문자로 해당내용을 받아보실 수 있습니다.
+                  </p>
+                </div>
+              </li>
+             </div>
+            </ul>  
        </div>
 
     </section><!-- End F.A.Q Section -->
@@ -556,8 +527,8 @@ function validation(){
                 <i class="bi bi-geo-alt"></i>
                 <h4>Location:</h4>
                 <p style="padding: 0 0 10px 60px; margin-bottom: -10px;
-	  			font-size: 14px; color: #ab9d95;">서울특별시 강남구 테헤란로 132(역삼동)</p>
-	  			<p>한독약품빌딩 8층 쌍용교육센터</p>
+                font-size: 14px; color: #ab9d95;">서울특별시 강남구 테헤란로 132(역삼동)</p>
+                <p>한독약품빌딩 8층 쌍용교육센터</p>
               </div>
 
               <div class="email">

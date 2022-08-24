@@ -89,42 +89,6 @@ public class MypageDAO {
 		}
 		return bCheck;
 	}
-	
-	// 예약 좋아요 목록
-	public static int userLiikeCount(JjimVO vo)
-	{
-		int count=0;
-		SqlSession session=null;
-		try {
-			session=ssf.openSession();
-			count=session.selectOne("userLiikeCount",vo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if(session!=null)
-				session.close();
-		}
-		return count;
-	}
-	
-	
-	// 추천 좋아요 목록
-	public static int userRecLikeCount(PetplaceVO vo)
-	{
-		int count=0;
-		SqlSession session=null;
-		try {
-			session=ssf.openSession();
-			count=session.selectOne("userRecLikeCount",vo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if(session!=null)
-				session.close();
-		}
-		return count;
-	}
-	
 	// 나의 좋아요 목록 - 예약
 	public static List<JjimVO> userBookingLikeData(String id)
 	{
@@ -143,26 +107,21 @@ public class MypageDAO {
 	}
 
 	// 나의 좋아요 목록 - 추천
-	public static List<PetplaceVO> userRecLikeData(String id)
-	   {
-		   List<PetplaceVO> plist=null;
-		   SqlSession session=null;
-		   try
-		   {
-			   session=ssf.openSession();
-			   plist=session.selectList("userRecLikeData",id);
-			   
-		   }catch(Exception ex)
-		   {
-			   ex.printStackTrace();
-		   }
-		   finally
-		   {
-			   if(session!=null)
-				   session.close();
-		   }
-		   return plist;
-	   }
+	public static List<PetplaceVO> userRecLikeData(String id) {
+		List<PetplaceVO> list=null;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("userRecLikeData",id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	
 	// 커뮤니티 작성 글 목록
 	public static List<PboardVO> userWriteData(Map map)
 	{

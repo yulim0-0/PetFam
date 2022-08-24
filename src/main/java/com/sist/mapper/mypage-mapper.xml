@@ -22,7 +22,7 @@ RCOUNT              NUMBER    -->
     SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
     FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
     FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
-    FROM pbo_4 WHERE id=#{id}))
+    FROM pbo_4 WHERE id=#{id} ORDER BY regdate DESC))
     WHERE num BETWEEN #{start} AND #{end}
     
 </select>
@@ -36,7 +36,7 @@ RCOUNT              NUMBER    -->
     SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
     FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
     FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
-    FROM pbo_4 ))
+    FROM pbo_4 ORDER BY regdate DESC))
     WHERE p_no=#{p_no}
 </select>
 
@@ -57,7 +57,7 @@ RCOUNT              NUMBER    -->
     SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, id, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, num
     FROM (SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id, rownum as num
     FROM (seleCT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id
-    FROM qbo_4 WHERE id=#{id}))
+    FROM qbo_4 WHERE id=#{id} ORDER BY regdate ASC))
     WHERE num BETWEEN #{start} AND #{end}
     
 </select>
@@ -67,33 +67,24 @@ RCOUNT              NUMBER    -->
     SELECT CEIL(COUNT(*)/10.0) FROM qbo_4)
 </select>
 
-<!-- 찜 여부 확인 -->
-<select id="useLiikeCount" resultType="int" parameterType="com.sist.vo.JjimVO">
-    SELECT COUNT(*) FROM jjim_4
-    WHERE fno=#{fno} AND id=#{id}
-</select>
-
-<!-- 예약 좋아요 목록 -->
+<!-- 예약 - 좋아요 목록 -->
 <select id="userBookingLikeData" resultType="JjimVO" parameterType="string">
-    SELECT ord_jjim_4.j_no, ord_jjim_4.id, ord_jjim_4.o_no, ord_4.poster, ord_4.name, ord_4.price 
+    SELECT ord_jjim_4.j_no, ord_jjim_4.id, ord_jjim_4.o_no, ord_4.poster, ord_4.name, ord_4.s_info, ord_4.price
     FROM ord_jjim_4 
     LEFT JOIN ord_4
     ON ord_jjim_4.o_no = ord_4.o_no 
     WHERE id=#{id}
 </select>
 
-<!-- 추천 좋아요 목록 -->
-<select id="userRecLikeData" resultType="int" parameterType="string">
-    SELECT jjim_p_4.c_no, jjim_p_4.id, jjim_p_4.no, rcpg_4.poster, rcpg_4.title
+
+<!-- 추천 - 좋아요 목록 -->
+<select id="userRecLikeData" resultType="PetplaceVO" parameterType="string">
+    SELECT jjim_p_4.c_no, jjim_p_4.id, jjim_p_4.no, rcpg_4.poster, rcpg_4.title, rcpg_4.tel
     FROM rcpg_4
     LEFT JOIN jjim_p_4
     ON jjim_p_4.c_no = rcpg_4.c_no
     WHERE id=#{id}
 </select>
 
-<select id="userRecLikeCount" resultType="int" parameterType="com.sist.vo.PetplaceVO">
-    SELECT * FROM rcpg_4
-    WHERE c_no=#{c_no} AND id=#{id}
-</select>
 
 </mapper>

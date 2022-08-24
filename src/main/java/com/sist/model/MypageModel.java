@@ -176,28 +176,18 @@ public class MypageModel {
 	
 	// 나의 좋아요 - 예약
 	@RequestMapping("mypage/mylike.do")
-	public String user_booking_like(HttpServletRequest request, HttpServletResponse response)
+	public String user_like(HttpServletRequest request, HttpServletResponse response)
 	{	
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
 		List<JjimVO> list=MypageDAO.userBookingLikeData(id);
-		
+		List<PetplaceVO> plist = MypageDAO.userRecLikeData(id);
+
+		request.setAttribute("plist", plist);
 		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../mypage/mylike.jsp");
 		return "../main/main.jsp";
 	}
 	
-	// 나의 좋아요 - 추천
-	@RequestMapping("mypage/mylike.do")
-	public String user_rec_like(HttpServletRequest request, HttpServletResponse response) 
-	{
-		HttpSession session = request.getSession();
-		String id = (String) session.getAttribute("id");
-		List<PetplaceVO> plist = MypageDAO.userRecLikeData(id);
-
-		request.setAttribute("plist", plist);
-		request.setAttribute("main_jsp", "../mypage/mylike.jsp");
-		return "../main/main.jsp";
-	}
 	
 }

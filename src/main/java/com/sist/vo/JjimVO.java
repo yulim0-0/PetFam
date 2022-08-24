@@ -8,8 +8,14 @@ public class JjimVO {
 	private int j_no;
 	private String id;
 	private int o_no;
-	private String poster, name, price;
+	private String poster, name, price, s_info;
 	
+	public String getS_info() {
+		return s_info;
+	}
+	public void setS_info(String s_info) {
+		this.s_info = s_info;
+	}
 	public String getPrice() {
 		return price;
 	}
