@@ -33,24 +33,9 @@
 
 <body>
 
-    <!-- ##### Header Area Start ##### -->
-   
-
-        <!-- ***** Top Header Area ***** -->
-        
-    <!-- ##### Header Area End ##### -->
-
-    <!-- ##### Breadcrumb Area Start ##### -->
-    <div class="breadcrumb-area">
-       
-        <!-- Top Breadcrumb Area -->
-       <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/24.jpg);">
-            <h2>반려동물 동반 장소 추천 </h2>
-       </div>
-        
-    </div>
-    <!-- ##### Breadcrumb Area End ##### -->
-
+    
+<br><br>
+<br><br>
     <!-- ##### Single Product Details Area Start ##### -->
     <section class="single_product_details_area mb-50">
         <div class="produts-details--content mb-50">
@@ -160,14 +145,12 @@
                         <!-- Tabs -->
                         <ul class="nav nav-tabs" role="tablist" id="product-details-tab">
                             <li class="nav-item">
-                                <a href="#description" class="nav-link active" data-toggle="tab" role="tab">Description</a>
+                                <a href="#description" class="nav-link active" data-toggle="tab" role="tab">상세정보</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#addi-info" class="nav-link" data-toggle="tab" role="tab">Additional Information</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="#reviews" class="nav-link" data-toggle="tab" role="tab">Reviews <span class="text-muted">(1)</span></a>
-                            </li>
+                           
                         </ul>
                         <!-- Tab Content -->
                         <div class="tab-content">

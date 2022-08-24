@@ -72,14 +72,14 @@ public class PetplaceDAO {
 		return total;
 	}
 	
-		 public static PetplaceVO petplaceDetailData(Map map)
+		 public static PetplaceVO petplaceDetailData(int c_no)
 		   {
 			    PetplaceVO vo=new PetplaceVO();
 			    SqlSession session=null;
 			    try
 			    {
 			    	session=ssf.openSession();
-			    	vo=session.selectOne("petplaceDetailData", map);//row
+			    	vo=session.selectOne("petplaceDetailData", c_no);//row
 			    }catch(Exception ex)
 			    {
 			    	System.out.println("petplaceDetailData: error");
@@ -94,45 +94,8 @@ public class PetplaceDAO {
 		   }
 		 
 		 
-		   public static List<PetplaceVO> petplaceLocationFindData(Map map)
-		   {
-			   List<PetplaceVO> list=null;
-			   SqlSession session=null;
-			   try
-			   {
-				   session=ssf.openSession();
-				   list=session.selectList("petplaceLocationFindData", map);
-			   }catch(Exception ex)
-			   {
-				   ex.printStackTrace();
-			   }
-			   finally
-			   {
-				   if(session!=null)
-					   session.close();
-			   }
-			   return list;
-		   }
-		   
-		   public static int petplaceLocationFindTotalPage(String addr)
-		   {
-			   int total=0;
-			   SqlSession session=null;
-			   try
-			   {
-				   session=ssf.openSession();
-				   total=session.selectOne("petplaceLocationFindTotalPage", addr);
-			   }catch(Exception ex)
-			   {
-				   ex.printStackTrace();
-			   }
-			   finally
-			   {
-				   if(session!=null)
-					   session.close();
-			   }
-			   return total;
-		   }	 
+		 
+		 
 		   
 //		   <!-- 찜하기 -->
 //		   <insert id="petplaceJjimInsert" parameterType="com.sist.vo.JjimVO2">
