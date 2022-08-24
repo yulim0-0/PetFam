@@ -150,12 +150,10 @@ public class PetplaceModel {
 	   public String petplace_detail(HttpServletRequest request,HttpServletResponse response)
 	   {
 		   String c_no=request.getParameter("c_no");
-		   String table_name="rcpg_4";
+		   
 		  
-		   Map map=new HashMap();
-		   map.put("c_no",c_no);
-		   map.put("table_name", table_name);
-		   PetplaceVO vo=PetplaceDAO.petplaceDetailData(map);
+		   
+		   PetplaceVO vo=PetplaceDAO.petplaceDetailData(Integer.parseInt(c_no));
 		   request.setAttribute("vo", vo);
 		   request.setAttribute("main_jsp", "../petplace/petplace_detail.jsp");
 		   

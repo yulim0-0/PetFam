@@ -89,11 +89,12 @@ function validation(){
               <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" >
                     
                      <div class="icon-box">
+                     <p>카페/식당</p>
                      <a href="../petplace/cafe.do">
-                           <img src="http://appdata.hungryapp.co.kr/images/hatdog/ar/2018_07/M153069977357141108.jpg" class="img-fluid" alt="cafe/restaurant">
+                           <img src="http://appdata.hungryapp.co.kr/images/hatdog/ar/2020_02/M158129527416974249.jpg" class="img-fluid" >
                      </a>
-                      <h4 class="title"><br>바람구름</h4>
-                      <p class="description">대구 남구 명덕로64길 26 1층</p>
+                      <h4 class="title"><br>트윈트리</h4>
+                      <p class="description">경기도 남양주시 고산로126번길 33-8</p>
                     </div>
                       
               </div>
@@ -101,21 +102,23 @@ function validation(){
                
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
+            <p>공원</p>
             <a href="../petplace/park.do">
-             <img src="../assets/img/petplace/hatdog.jpg" class="img-fluid" alt="">
+             <img src="http://appdata.hungryapp.co.kr/images/hatdog/ar/2022_08/M166122896920548193.jpg" class="img-fluid" alt="">
              </a>
-              <h4 class="title"><a href=""><br>루체</a></h4>
-              <p class="description">강원 원주시</p><p class="description">판부면 매봉길 16-4</p>
+              <h4 class="title"><a href=""><br>물빛찬 수변공원</a></h4>
+              <p class="description">세종특별자치시 한누리대로 157</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
+            <p>펜션</p>
             <a href="../petplace/pension.do">
-           <img src="../assets/img/petplace/hatdog.jpg" class="img-fluid" alt="">
+           <img src="http://appdata.hungryapp.co.kr/images/hatdog/ar/2022_04/M165086934703313193.jpg" class="img-fluid" alt="">
            </a>
-              <h4 class="title"><a href=""><br>오늘 카페</a></h4>
-              <p class="description">서울 서초구 명달로4길 4 1층</p>
+              <h4 class="title"><a href=""><br>오색애견펜션</a></h4>
+              <p class="description">경상북도 김천시 남면 오봉로 362</p>
             </div>
           </div>
 

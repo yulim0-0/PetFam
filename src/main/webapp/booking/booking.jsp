@@ -10,67 +10,62 @@
 
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 <script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<!-- <script type="text/javascript" src="shadow/js/shadowbox.js"></script> -->
-
-
+<script type="text/javascript" src="shadow/js/shadowbox.js"></script>
 <link rel="stylesheet" href="../booking/bookingdist/booking_style.css">
+<!-- datepicker -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $(function() {
+	  	$('#time').hide();
+		//input을 datepicker로 선언
+		$("#datepicker").datepicker({
+		dateFormat: 'yy-mm-dd' //달력 날짜 형태
+		/* ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시 */
+		,showMonthAfterYear:true // 월- 년 순서가아닌 년도 - 월 순서
+		/* ,changeYear: true //option값 년 선택 가능
+		,changeMonth: true //option값 월 선택 가능 */
+		/* ,showOn: "both" */ //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시
+		,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+		,buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
+		,buttonText: "선택" //버튼 호버 텍스트
+		,yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+		,monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 텍스트
+		,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip
+		,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 텍스트
+		,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 Tooltip
+		,minDate: "+1D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+		,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
+		,onSelect:function(selected, evnt) {
 
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
+			$('#time').show();
 
-        $(function() {
-            	$('#time').hide();
-            //input을 datepicker로 선언
-            $("#datepicker").datepicker({
-            	dateFormat: 'yy-mm-dd' //Input Display Format 변경
-                    ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시 
-                    ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시 
-                    /* ,changeYear: true //콤보박스에서 년 선택 가능
-                    ,changeMonth: true //콤보박스에서 월 선택 가능    */             
-                    /* ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
-                    ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로 */
-                    ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
-                    ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
-                    ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
-                    ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
-                    ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
-                    ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
-                    ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
-                    ,minDate: "+1D" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-                    ,maxDate: "+1M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)  
-            		,beforeShowDay: disableAllTheseDays
-            		,onSelect:function(selected, evnt) {
+			}
+		});
+		//초기값을 오늘 날짜로 설정해줘야 합니다.
+		$('#datepicker').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+		$('#bookingBtn').click(function(){
+			if($('#comments').val().length == 0){ // 이름 길이가 0 이면
+				alert("펫팸에게 반려동물에 대해 알려주세요!");
+				$('#comments').focus();
+				return;
+				}
+			else{
+	    	$('#booking_frm').submit();
+			}
+			/* if($('#time').attr('checked', false){
+				alert("방문시간을 설정해주세요!");
+				}
+			else{
+	    	$('#booking_frm').submit();
+			} */
+	    });
 
-            			$('#time').show();
-
-            			}
-            });                    
-            
-            //초기값을 오늘 날짜로 설정
-            $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-            $('#bookingBtn').click(function(){
-    	    	$('#booking_frm').submit();
-    	    });
-        });
-        var disabledDays = ["2022-9-9","2022-9-10","2022-9-11","2022-9-12"];
-//////////////////////////////////////////////////////////
-    	
-    	//특정일 선택막기 
-    	function disableAllTheseDays(date) { 
-    	   var month = date.getMonth(); 
-    	   var day = date.getDate();
-    	   var year = date.getFullYear(); 
-    	   for (i = 0; i < disabledDays.length; i++) { 
-    	       if($.inArray(year + '-' +(month+1) + '-' + day,disabledDays) != -1) { 
-    	           return [false]; 
-    	       } 
-    	   } 
-    	   return [true];
-    	}
-
- </script>
+	});
+	</script>
+<!-- datepicker end -->
 
 
 <style>
@@ -193,17 +188,18 @@
 			
 			<!-- MSG -->
 			<div class="row">
-            <label for="comments" style="color: #F34100">&#8251;펫펨에게 반려동물에 대해 알려주세요!(필수)<br></label>
+            <label for="comments">&#8251;펫펨에게 반려동물에 대해 알려주세요!(필수)<br></label>
 			<div class="input-group input-group-icon">
             <textarea class="form-control" id="comments" rows="5" data-max-length="150" name="msg"></textarea>
 			</div>
+			
 			</div>
 			<!-- 동의사항 -->
 			<div class="row">
-				<h4>확인사항</h4>
+				<h4>결제안내</h4>
 				<div class="input-group">
-					<input id="terms" type="checkbox" /> <label for="terms">
-						지금 결제하지 마세요!<br>
+					<label for="terms">
+						<p style="color: #F34100">&#8251;지금 결제하지 마세요!</p>
 						펫펨은 선결제 없이 예약하고 나중에 직접 결제해요!</label>
 				</div>
 			</div>

@@ -1,7 +1,27 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*,com.sist.vo.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
+
+<%
+	
+	PetplaceDAO dao=new PetplaceDAO();
+	Cookie[] cookies=request.getCookies(); //쿠키 읽기
+	List<PetplaceVO> cList=new ArrayList<PetplaceVO>();
+	if(cookies!=null)
+	{
+		for(int i=cookies.length-1;i>=0;i--) // 최신부터 출력 
+		{
+			if(cookies[i].getName().startsWith("petplace")) //movie1
+			{
+				String c_no=cookies[i].getValue();// 1
+				PetplaceVO vo=dao.petplaceDetailData(Integer.parseInt(c_no));
+				cList.add(vo);
+			}
+		}
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,7 +94,7 @@
     
       <p class="card_title">${vo.title }</p>
      
-      <a href="../petplace/petplace_detail.do?c_no=${vo.c_no }"><button class="btn card_btn">Read More</button></a>
+      <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"><button class="btn card_btn">Read More</button></a>
      </div>
     </div>
    </li>
@@ -89,7 +109,7 @@
      
       <p class="card_title">${vo.title }</p>
       
-    <a href="../petplace/petplace_detail.do?c_no=${vo.c_no }"> <button class="btn card_btn">Read More</button></a>
+    <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"> <button class="btn card_btn">Read More</button></a>
       
      </div>
     </div>
@@ -122,6 +142,23 @@
 		 </div>
 	<!-- paging end-->
  </div>
- 
+ <div style="height: 10px"></div>
+ 		<div class="cookie-row">
+    <h3>최근에 본 장소</h3>
+    <hr>
+     <%
+     	int k=0;
+        for(PetplaceVO vo:cList)
+        {
+        	if(k>13) break;
+     %>
+     	<a href="petplace_detail.do?c_no=<%= vo.getC_no()%>"> 
+          <img src="<%=vo.getPoster() %>" style="width: 263px;height: 100px"></a>
+     <%
+     		k++;
+        }
+     %>
+    </div>
+ 	<!-- cookie end  -->
 </body>
 </html>

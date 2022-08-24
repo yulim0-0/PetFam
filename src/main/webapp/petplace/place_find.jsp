@@ -1,6 +1,27 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*,com.sist.vo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<%
+	
+	PetplaceDAO dao=new PetplaceDAO();
+	Cookie[] cookies=request.getCookies(); //쿠키 읽기
+	List<PetplaceVO> List=new ArrayList<PetplaceVO>();
+	if(cookies!=null)
+	{
+		for(int i=cookies.length-1;i>=0;i--) // 최신부터 출력 
+		{
+			if(cookies[i].getName().startsWith("petplace")) //movie1
+			{
+				String c_no=cookies[i].getValue();// 1
+				PetplaceVO vo=dao.petplaceDetailData(Integer.parseInt(c_no));
+				List.add(vo);
+			}
+		}
+	}
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,10 +81,10 @@
 <body>
 <br><br><br><b></b><br><br>
 
-<div class="wrapper row3">
+<div class="wrapper row3" align="center">
   <main class="container clear"> 
     <!-- main body --> 
-    <h2 class="sectiontitle">지역별 추천장소 찾기</h2>
+    <h2 class="card_title">지역명 검색 추천</h2>
     <div class="row inline">
       <form method="post" action="../petplace/place_find.do">
        <input type=text name=addr size=35 class="input-sm" value="${addr }">
@@ -84,8 +105,8 @@
      <div class="card_content">
     
       <p class="card_title">${vo.title }</p>
-     
-      <a href="../petplace/petplace_detail.do?c_no=${vo.c_no }"><button class="btn card_btn">Read More</button></a>
+     <p class="place">${vo.addr }</p>
+      <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"><button class="btn card_btn">Read More</button></a>
      </div>
     </div>
    </li>
@@ -99,8 +120,8 @@
      <div class="card_content">
      
       <p class="card_title">${vo.title }</p>
-      
-    <a href="../petplace/petplace_detail.do?c_no=${vo.c_no }"> <button class="btn card_btn">Read More</button></a>
+      <p class="place">${vo.addr }</p>
+    <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"> <button class="btn card_btn">Read More</button></a>
       
      </div>
     </div>
@@ -109,14 +130,35 @@
   </c:if>
   </c:forEach>
   </ul>
-    <div class="row">
-      <div class="text-center">
-        <a href="../petplace/place_find.do?addr=${addr }&page=${curpage>1?curpage-1:curpage}" class="btn btn-sm btn-success">이전</a>
+    <div class="container" align="center">
+      <div class="pagination" align="center">
+       <a href="../petplace/place_find.do?addr=${addr }&page=${curpage>1?curpage-1:curpage}">이전</a>
         ${curpage } page / ${totalpage } pages
-        <a href="../petplace/place_find.do?addr=${addr }&page=${curpage<totalpage?curpage+1:curpage}" class="btn btn-sm btn-info">다음</a>
+        <a href="../petplace/place_find.do?addr=${addr }&page=${curpage<totalpage?curpage+1:curpage}">다음</a>
+      
       </div>
     </div>
   </main>
 </div>
+
+
+<div style="height: 10px"></div>
+ 		<div class="cookie-row">
+    <h3>최근에 본 장소</h3>
+    <hr>
+     <%
+     	int k=0;
+        for(PetplaceVO vo:List)
+        {
+        	if(k>13) break;
+     %>
+     	<a href="petplace_detail.do?c_no=<%= vo.getC_no()%>"> 
+          <img src="<%=vo.getPoster() %>" style="width: 263px;height: 100px"></a>
+     <%
+     		k++;
+        }
+     %>
+    </div>
+ 	<!-- cookie end  -->
 </body>
 </html>

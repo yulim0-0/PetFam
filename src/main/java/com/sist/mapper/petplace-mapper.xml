@@ -30,8 +30,8 @@
  </select>
  
  <!-- 상세보기 -->
-  <select id="petplaceDetailData" resultType="petplaceVO" parameterType="hashmap">
-   SELECT * FROM ${table_name}
+  <select id="petplaceDetailData" resultType="petplaceVO" parameterType="int">
+   SELECT * FROM rcpg_4
    WHERE c_no=#{c_no}
  </select>
  
@@ -43,10 +43,10 @@
     FROM rcpg_4 WHERE addr LIKE '%'||#{addr}||'%' ORDER BY c_no ASC))
     WHERE num BETWEEN #{start} AND #{end}
   </select> -->
-  <select id="petplaceLocationFindTotalPage" resultType="int" parameterType="string">
-<!--     SELECT CEIL(COUNT(*)/12.0) FROM rcpg_4
-    WHERE addr LIKE '%'||#{addr}||'%' -->
-  </select>
+<!--   <select id="petplaceLocationFindTotalPage" resultType="int" parameterType="string">
+     SELECT CEIL(COUNT(*)/12.0) FROM rcpg_4
+    WHERE addr LIKE '%'||#{addr}||'%' 
+  </select> -->
   
   <!-- 찜하기 -->
   <insert id="petplaceJjimInsert" parameterType="com.sist.vo.JjimVO2">
