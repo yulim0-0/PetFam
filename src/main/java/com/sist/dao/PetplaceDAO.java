@@ -259,4 +259,45 @@ public class PetplaceDAO {
 			   }
 		   }
 		   
+		   public static List<PetplaceVO> placeLocationFindData(Map map)
+		   {
+			   List<PetplaceVO> list=null;
+			   SqlSession session=null;
+			   try
+			   {
+				   session=ssf.openSession();
+				   list=session.selectList("placeLocationFindData", map);
+			   }catch(Exception ex)
+			   {
+				   ex.printStackTrace();
+			   }
+			   finally
+			   {
+				   if(session!=null)
+					   session.close();
+			   }
+			   return list;
+		   }
+		   
+		   public static int placeLocationFindTotalPage(String addr)
+		   {
+			   int total=0;
+			   SqlSession session=null;
+			   try
+			   {
+				   session=ssf.openSession();
+				   total=session.selectOne("placeLocationFindTotalPage", addr);
+			   }catch(Exception ex)
+			   {
+				   ex.printStackTrace();
+			   }
+			   finally
+			   {
+				   if(session!=null)
+					   session.close();
+			   }
+			   return total;
+		   }
+		   
+		   
 	}

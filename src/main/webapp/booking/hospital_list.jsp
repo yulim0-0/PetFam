@@ -82,7 +82,7 @@
 </head>
 <body>
  <div class="main">
- <%-- <jsp:include page="filter.jsp"/> --%>
+ <jsp:include page="filter.jsp"/>
   <ul class="cards">
   <c:forEach var="vo" items="${list }" varStatus="s">
    <c:if test="${s.index%3==0 }">

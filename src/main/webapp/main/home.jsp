@@ -116,18 +116,23 @@ function validation(){
 	        <div class="row"style="justify-content : space-evenly;word-break : keep-all;">
 	        
 	          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" >
+	          		
 	          		 <div class="icon-box">
-	      				   <img src="../assets/img/petplace/hatdog.jpg" class="img-fluid" alt="">
-		              <h4 class="title"><a href=""><br>바람구름</a></h4>
+	          		 <a href="../petplace/cafe.do">
+	      				   <img src="http://appdata.hungryapp.co.kr/images/hatdog/ar/2018_07/M153069977357141108.jpg" class="img-fluid" alt="cafe/restaurant">
+		             </a>
+		              <h4 class="title"><br>바람구름</h4>
 		              <p class="description">대구 남구 명덕로64길 26 1층</p>
 		            </div>
+		              
 	          </div>
-	      
-	  
+	    
                
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-box">
+            <a href="../petplace/park.do">
              <img src="../assets/img/petplace/hatdog.jpg" class="img-fluid" alt="">
+             </a>
               <h4 class="title"><a href=""><br>루체</a></h4>
               <p class="description">강원 원주시</p><p class="description">판부면 매봉길 16-4</p>
             </div>
@@ -135,18 +140,15 @@ function validation(){
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-box">
+            <a href="../petplace/pension.do">
            <img src="../assets/img/petplace/hatdog.jpg" class="img-fluid" alt="">
+           </a>
               <h4 class="title"><a href=""><br>오늘 카페</a></h4>
               <p class="description">서울 서초구 명달로4길 4 1층</p>
             </div>
           </div>
 
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="400">
-           <div class="icon-box">
-             <img src="../assets/img/petplace/hatdog2.jpg" class="img-fluid" alt="">
-              <h4 class="title"><a href=""><br>삼락생태공원</a></h4>
-              <p class="description">부산 사상구 삼락동 29-46</p>
-            </div>
+        
           </div>
         </div>
       </div>
