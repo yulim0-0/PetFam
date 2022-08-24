@@ -43,7 +43,6 @@ $(function(){
 		$('#frm').submit();
 	})
 })
-
 let fileIndex=0;
 $(function(){
     $('#addBtn').click(function(){
