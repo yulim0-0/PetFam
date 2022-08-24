@@ -575,9 +575,10 @@ SearchBar Start
  .search-icon {
      position: relative;
      float: right;
-     width: 75px;
-     height: 75px;
-     top: -62px;
+     width: 85px;
+     height: 85px;
+     top: -70px;
+     left :38px;
 }
 
 .searchMsg {

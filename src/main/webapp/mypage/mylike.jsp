@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>My Like</title>
-<link rel="stylesheet" href="dist/style.css">
+<link rel="stylesheet" href="css/mylike.css">
 <script type="text/javascript">
 	function priceToString(price) {
 		return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -108,7 +108,7 @@
 	<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 	<script
 		src='//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script>
-	<script src="dist/script.js"></script>
+	<script src="js/mylike.js"></script>
 
 </body>
 </html>
