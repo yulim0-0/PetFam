@@ -11,8 +11,9 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 
 import com.sist.vo.JjimVO2;
+import com.sist.vo.PboardVO;
 import com.sist.vo.PetplaceVO;
-
+import com.sist.dao.PboardDAO;
 import com.sist.dao.PetplaceDAO;
 
 
@@ -25,18 +26,26 @@ public class PetplaceModel {
 		String page=request.getParameter("page");
 		if(page==null)
 			page="1";
+		
+		
 		int curpage=Integer.parseInt(page);
 		Map map=new HashMap();
 		int rowSize=9;
 		int start=(rowSize*curpage)-(rowSize-1);//rownum=1
 		int end=(curpage*rowSize);
 		
+		
+		
+		
 		map.put("start", start);
 		map.put("end", end);
 		
 		map.put("s", 252);
 		map.put("e", 304);
+		
+
 		List<PetplaceVO> list=PetplaceDAO.petplaceListData(map);
+
 		
 		 int totalpage=PetplaceDAO.petplaceTotalPage(map);
 		   //System.out.println("totalpage="+totalpage);
@@ -228,7 +237,8 @@ public class PetplaceModel {
 		   vo.setC_no(Integer.parseInt(c_no));
 		   // DAO연동
 		   PetplaceDAO.petplaceJjimDelete(vo);
-		   return "redirect:../mypage/jjim_list.do";
+		   return "redirect:../mypage/mylike.do";
+		  
 	   }
 	   
 	   
@@ -266,5 +276,7 @@ public class PetplaceModel {
 		   request.setAttribute("main_jsp", "../petplace/place_find.jsp");
 		   return "../main/main.jsp";
 	   }
+	   
+	 
 	
 }

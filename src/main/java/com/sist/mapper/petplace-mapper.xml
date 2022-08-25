@@ -4,26 +4,18 @@
  <select id="petplaceListData" resultType="PetplaceVO" parameterType="hashmap">
 
    <!-- parameterType은 1개 지정이 가능 : 여러개 데이터를 첨부 (VO,Map) -->
-		SELECT c_no,title,category,poster,addr,tel,subtitle,map,good,num
-		FROM(SELECT c_no,title,category,poster,addr,tel,subtitle,map,good,rownum as num
-		FROM(SELECT c_no,title,category,poster,addr,tel,subtitle,map,good
+   
+		SELECT c_no,title,category,poster,addr,tel,subtitle,map,good,hit,num
+		FROM(SELECT c_no,title,category,poster,addr,tel,subtitle,map,good,hit,rownum as num
+		FROM(SELECT c_no,title,category,poster,addr,tel,subtitle,map,good,hit
 		FROM rcpg_4 WHERE c_no BETWEEN #{s} AND #{e} ORDER BY c_no ASC))
 		WHERE num BETWEEN #{start} AND #{end}
 		
-
-	<!--    SELECT c_no,title,poster,num
-    FROM (
-   			SELECT c_no,title,poster,rownum as num 
-   			FROM (
-   					SELECT 	c_no,title,poster 
-   					FROM 	${table_name} 
-   					WHERE 	c_no BETWEEN #{start} AND #{end} 
-   					ORDER BY c_no ASC
-   				  )
-   		)
-    WHERE num BETWEEN #{s} AND #{e} -->
 	
  </select>
+ 
+ 
+ 
  <select id="petplaceTotalPage" resultType="int" parameterType="hashmap">
    SELECT CEIL(COUNT(*)/9.0) FROM rcpg_4 WHERE c_no BETWEEN #{s} AND #{e}
    
@@ -33,20 +25,8 @@
   <select id="petplaceDetailData" resultType="petplaceVO" parameterType="int">
    SELECT * FROM rcpg_4
    WHERE c_no=#{c_no}
- </select>
  
-  <!--  지역별 추천장소 찾기 -->
-  <!-- <select id="petplaceLocationFindData" resultType="PetplaceVO" parameterType="hashmap">
-    SELECT c_no,title,score,poster,addr,num
-    FROM (SELECT c_no,title,poster,addr,rownum as num 
-    FROM (SELECT c_no,title,poster,addr 
-    FROM rcpg_4 WHERE addr LIKE '%'||#{addr}||'%' ORDER BY c_no ASC))
-    WHERE num BETWEEN #{start} AND #{end}
-  </select> -->
-<!--   <select id="petplaceLocationFindTotalPage" resultType="int" parameterType="string">
-     SELECT CEIL(COUNT(*)/12.0) FROM rcpg_4
-    WHERE addr LIKE '%'||#{addr}||'%' 
-  </select> -->
+ </select>
   
   <!-- 찜하기 -->
   <insert id="petplaceJjimInsert" parameterType="com.sist.vo.JjimVO2">
@@ -91,5 +71,12 @@
      SELECT CEIL(COUNT(*)/9.0) FROM rcpg_4
     WHERE addr LIKE '%'||#{addr}||'%' 
   </select>
+ 
+ <update id="placehitIncrement" parameterType="int">
+    UPDATE rcpg_4 
+    SET    hit=NVL(hit , 0) +1
+    WHERE  c_no=#{c_no}
+  </update>
+  
  
 </mapper>

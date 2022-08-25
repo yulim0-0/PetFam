@@ -14,7 +14,7 @@ public class PetplaceVO {
 	GOOD              NUMBER         
 	 */
 	
-	private int c_no, good, category;
+	private int c_no, good, category, hit;
 	private String title,poster,addr,tel, subtitle, map;
 	public int getC_no() {
 		return c_no;
@@ -33,6 +33,12 @@ public class PetplaceVO {
 	}
 	public void setCategory(int category) {
 		this.category = category;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
 	public String getTitle() {
 		return title;
@@ -70,6 +76,7 @@ public class PetplaceVO {
 	public void setMap(String map) {
 		this.map = map;
 	}
+	
 	
 	
 }
