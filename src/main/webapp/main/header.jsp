@@ -79,12 +79,12 @@
 						</c:if> <!-- 로그인 상태가 아닌 경우 --> <c:if test="${sessionScope.id==null }">
 							<li><a href="../user/join.do">회원가입</a></li>
 						</c:if>
-					<li><a class="nav-link scrollto" href="../main/main.do">문의</a></li>
+					<li><a class="nav-link scrollto" href="../main/main#contact">문의</a></li>
 
 					<!-- 로그인 상태가 아닌 경우 -->
 					<c:if test="${sessionScope.id==null }">
 						<li>
-							<a class="start" id="login_header" href="../user/login.do#contact">로그인</a>
+							<a class="start" id="login_header" href="../user/login.do">로그인</a>
 						</li>
 					</c:if>
 

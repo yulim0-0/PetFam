@@ -162,7 +162,7 @@ button {
 */
 .psidebar {
   flex: 0 0 20%;
-  margin-top: -60px;
+  margin-top: 20px;
   width : 10%;
 }
 
@@ -258,11 +258,11 @@ button.primary:hover {
 
 .ptable-card {
   background: white;
-  padding: 20px;
+  padding: 40px;
   border-radius: 5px;
 }
 .ptable-card h2 {
-	
+	width : 90%;
 	color:#192f61;
 }
 
@@ -278,8 +278,9 @@ button.primary:hover {
 }
 
 .ptable {
-  width: 100%;
+  width: 90%;
   border-spacing: 0;
+  margin : 0 auto;
 }
 
 .ptable td {
@@ -360,6 +361,7 @@ ul:hover{
 	background: #192f61 !important;/* 글쓰기 버튼 */
 	float:right;
 	margin-bottom:30px;
+	margin-right : 60px;
 
 }
 .btn-danger .btn-default{

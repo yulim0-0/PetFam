@@ -16,7 +16,7 @@ import com.sist.vo.PetplaceVO;
 public class MainModel {
 	@RequestMapping("main/main.do")
 	public String main_page(HttpServletRequest reqeust, HttpServletResponse response)
-	{
+	{	
 		reqeust.setAttribute("main_jsp", "../main/home.jsp");
 		return "../main/main.jsp";
 	}

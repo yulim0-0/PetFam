@@ -1,511 +1,420 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+   pageEncoding="UTF-8"%><%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="js/admin_user.js"></script>
-<style type="text/css">
-body {
-	margin: 2em;
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="styleshee" href="css/icomoon.css">
+<title>[ADMIN] User Info</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<script type="text/javascript">
+    var alert = function(msg, type) {
+        swal({
+            title : '',
+            text : msg,
+            type : type,
+            timer : 1500,
+            customClass : 'sweet-size',
+            showConfirmButton : false
+        });
+    }
+var stop = function(msg, title, type){
+        swal({
+              title : title,
+              text : msg,
+              type : type,
+              timer : 5000,
+              customClass : 'sweet-size',
+              showConfirmButton : true
+          })
+      }
+    var confirm = function(msg, title, resvNum) {
+        swal({
+            title : title,
+            text : msg,
+            type : "warning",
+            showCancelButton : true,
+            confirmButtonClass : "btn-danger",
+            confirmButtonText : "Y",
+            cancelButtonText : "N",
+            closeOnConfirm : false,
+            closeOnCancel : true,
+        }, function(isConfirm) {
+            if (isConfirm) {
+                var oi_no=document.getElementById('oi_no').value;
+                location.href="../admin/admin_booking_ok.do?oi_no="+oi_no
+                swal('', '예약이 승인되었습니다.', "success");
+            }
+            else {
+                swal('', '예약이 승인이 취소되었습니다.', "warning",{
+                    closeOnClickOutside : true,
+                    closeOnEsc : true,
+                    buttons : {
+                        confirm : {
+                            text : 'OK',
+                            value : true
+                        }
+                    }
+                });
+            }
+        });
+    }
+    
+    var cancel = function(msg, title, resvNum) {
+        swal({
+            title : title,
+            text : msg,
+            type : "warning",
+            showCancelButton : true,
+            confirmButtonClass : "btn-danger",
+            confirmButtonText : "Y",
+            cancelButtonText : "N",
+            closeOnConfirm : false,
+            closeOnCancel : true
+        }, function(isConfirm) {
+            if (isConfirm) {
+                var oi="";
+                var oi=document.getElementById('oi').value;
+                location.href="../admin/admin_cancel.do?oi_no="+oi
+                swal('', '예약이 취소되었습니다.', "success");
+            }
+            else {
+                swal('', '취소에 실패하였습니다.', "failed");
+            }
+
+        });
+    }
+
+    function Cancel() {
+        cancel('', '예약을 취소할까요?');
+    }
+    function Confirm() {
+        confirm('한번 실행하면 취소할 수 없습니다.', '계정을 삭제할까요?');
+    }  
+    function Alert() {
+        alert('예약을 보류합니다');
+    }
+        
+    
+</script>
+    
+    
+<style>
+/* 전체 설정 */
+.main {
+    width : 1200px;
+    margin : 160px auto 0 auto;
+    font-size  : 12px;
 }
 
-td:last-child {
-	text-align: center;
+/* 페이지 헤더 */
+.user_header {
+    display : flex;
+}
+/* 확인 버튼 */
+.saveBtn {
+    width : 60px;
+    height : 30px;
+    margin : 0 0 0 auto;
+}
+
+/* 버튼 */
+.custom-table{
+    min-width:900px
+}
+.custom-table thead tr,.custom-table thead th{
+    padding-bottom:30px;
+    border-top:none;
+    border-bottom:none!important;
+    color:#000;
+    border-right-width : 10px; 
+    border-right-color : transparent;
+
+}
+.custom-table tbody th,.custom-table tbody td{
+    color:#777;
+    font-weight:400;
+    padding-bottom:20px;
+    padding-top:20px;
+    font-weight:300;
+    border:none;
+    -webkit-transition:.3s all ease;
+    -o-transition:.3s all ease;
+    transition:.3s all ease
+}
+.custom-table tbody th small,.custom-table tbody td small{
+    color:#b3b3b3;
+    font-weight:300
+}
+.custom-table tbody tr{
+    -webkit-transition:.3s all ease;
+    -o-transition:.3s all ease;
+    transition:.3s all ease
+}
+.custom-table .td-box-wrap{
+    padding:0
+}
+.custom-table .box{
+    background:#fff;
+    border-radius:4px;
+    margin-top:15px;
+    margin-bottom:15px
+}
+.custom-table .box td,.custom-table .box th{
+    border:none!important
+}
+.custom-control.ios-switch{
+    --color:#4cd964;
+    padding-left:0
+}
+.custom-control.ios-switch .ios-switch-control-input{
+    display:none
+}
+.custom-control.ios-switch .ios-switch-control-input:active ~ .ios-switch-control-indicator::after {
+    width:20px
+}
+.custom-control.ios-switch .ios-switch-control-input:checked ~ .ios-switch-control-indicator {
+    border:10px solid var(--color)
+}
+.custom-control.ios-switch .ios-switch-control-input:checked ~ .ios-switch-control-indicator::after {
+    top:-8px;
+    left:4px
+}
+.custom-control.ios-switch .ios-switch-control-input:checked:active ~ .ios-switch-control-indicator::after {
+    left:0
+}
+.custom-control.ios-switch .ios-switch-control-input:disabled ~ .ios-switch-control-indicator {
+    opacity:.4
+}
+.custom-control.ios-switch .ios-switch-control-indicator{
+    display:inline-block;
+    position:relative;
+    margin:0 10px;
+    top:4px;
+    width:32px;
+    height:20px;
+    background:#fff;
+    border-radius:16px;
+    -webkit-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
+    border:2px solid #ddd
+}
+.custom-control.ios-switch .ios-switch-control-indicator::after{
+    content:'';
+    display:block;
+    position:absolute;
+    width:16px;
+    height:16px;
+    border-radius:16px;
+    -webkit-transition:.3s;
+    -o-transition:.3s;
+    transition:.3s;
+    top:0;
+    left:0;
+    background:#fff;
+    -webkit-box-shadow:0 0 2px #aaa , 0 2px 5px #999;
+    box-shadow:0 0 2px #aaa , 0 2px 5px #999
+}
+.control{
+    display:block;
+    position:relative;
+    margin-bottom:25px;
+    cursor:pointer;
+    font-size:18px
+}
+.control input{
+    position:absolute;
+    z-index:-1;
+    opacity:0
+}
+.control__indicator{
+    position:absolute;
+    top:2px;
+    left:0;
+    height:20px;
+    width:20px;
+    border-radius:4px;
+    border:2px solid #ccc;
+    background:transparent
+}
+.control--radio .control__indicator{
+    border-radius:50%
+}
+.control:hover input ~ .control__indicator, .control input:focus ~ .control__indicator {
+    border:2px solid #007bff
+}
+.control input:checked ~ .control__indicator {
+    border:2px solid #007bff;
+    background:#007bff
+}
+.control input:disabled ~ .control__indicator {
+    background:#e6e6e6;
+    opacity:.6;
+    pointer-events:none;
+    border:2px solid #ccc
+}
+.control__indicator:after{
+    font-family:'icomoon';
+    content:'\e5ca';
+    position:absolute;
+    display:none
+}
+.control input:checked ~ .control__indicator:after {
+    display:block;
+    color:#fff
+}
+.control--checkbox .control__indicator:after{
+    top:50%;
+    left:50%;
+    -webkit-transform:translate(-50%,-52%);
+    -ms-transform:translate(-50%,-52%);
+    transform:translate(-50%,-52%)
+}
+.control--checkbox input:disabled ~ .control__indicator:after {
+    border-color:#7b7b7b
+}
+.control--checkbox input:disabled:checked ~ .control__indicator {
+    background-color:#007bff;
+    opacity:.2;
+    border:2px solid #007bff
+}
+
+/* 모달 */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 </style>
 </head>
+
+
+
+
 <body>
-	<div class="alert alert-danger" role="alert"><strong>Info!</strong> Add row and Delete row are working. Edit row displays modal with row cells information.</div>
-<a class="btn btn-success" style="float:left;margin-right:20px;" href="https://codepen.io/collection/XKgNLN/" target="_blank">Other examples on Codepen</a>
-<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <th>Order</th>
-            <th>Description</th>
-            <th>Deadline</th>
-            <th>Status</th>
-            <th>Amount</th>
-            <th style="text-align:center;width:100px;">Add row <button type="button" data-func="dt-add" class="btn btn-success btn-xs dt-add">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Alphabet puzzle</td>
-            <td>2016/01/15</td>
-            <td>Done</td>
-            <td>1000</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Layout for poster</td>
-            <td>2016/01/31</td>
-            <td>Planned</td>
-            <td>1834</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Image creation</td>
-            <td>2016/01/23</td>
-            <td>To Do</td>
-            <td>1500</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Create font</td>
-            <td>2016/02/26</td>
-            <td>Done</td>
-            <td>1200</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>Sticker production</td>
-            <td>2016/02/18</td>
-            <td>Planned</td>
-            <td>2100</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>Glossy poster</td>
-            <td>2016/03/17</td>
-            <td>To Do</td>
-            <td>899</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>Beer label</td>
-            <td>2016/05/28</td>
-            <td>Confirmed</td>
-            <td>2499</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>Shop sign</td>
-            <td>2016/04/19</td>
-            <td>Offer</td>
-            <td>1099</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>X-Mas decoration</td>
-            <td>2016/10/31</td>
-            <td>Confirmed</td>
-            <td>1750</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>Halloween invite</td>
-            <td>2016/09/12</td>
-            <td>Planned</td>
-            <td>400</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>11</td>
-            <td>Wedding announcement</td>
-            <td>2016/07/09</td>
-            <td>To Do</td>
-            <td>299</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>Member pasport</td>
-            <td>2016/06/22</td>
-            <td>Offer</td>
-            <td>149</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>13</td>
-            <td>Drink tickets</td>
-            <td>2016/11/01</td>
-            <td>Confirmed</td>
-            <td>199</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>14</td>
-            <td>Album cover</td>
-            <td>2017/03/15</td>
-            <td>To Do</td>
-            <td>4999</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>15</td>
-            <td>Shipment box</td>
-            <td>2017/02/08</td>
-            <td>Offer</td>
-            <td>1399</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        
-        <tr>
-            <td>16</td>
-            <td>Wooden puzzle</td>
-            <td>2017/01/11</td>
-            <td>Done</td>
-            <td>1000</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>17</td>
-            <td>Fashion Layout</td>
-            <td>2016/01/30</td>
-            <td>Planned</td>
-            <td>1834</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>18</td>
-            <td>Toy creation</td>
-            <td>2016/01/10</td>
-            <td>To Do</td>
-            <td>1550</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>19</td>
-            <td>Create stamps</td>
-            <td>2016/02/26</td>
-            <td>Done</td>
-            <td>1220</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>20</td>
-            <td>Sticker design</td>
-            <td>2017/02/18</td>
-            <td>Planned</td>
-            <td>2100</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>21</td>
-            <td>Poster rock concert</td>
-            <td>2017/04/17</td>
-            <td>To Do</td>
-            <td>899</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>22</td>
-            <td>Wine label</td>
-            <td>2017/05/28</td>
-            <td>Confirmed</td>
-            <td>2799</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>23</td>
-            <td>Shopping bag</td>
-            <td>2017/04/19</td>
-            <td>Offer</td>
-            <td>1299</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>24</td>
-            <td>Decoration for Easter</td>
-            <td>2017/10/31</td>
-            <td>Confirmed</td>
-            <td>1650</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>25</td>
-            <td>Saint Nicolas colorbook</td>
-            <td>2017/09/12</td>
-            <td>Planned</td>
-            <td>510</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>26</td>
-            <td>Wedding invites</td>
-            <td>2017/07/09</td>
-            <td>To Do</td>
-            <td>399</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>27</td>
-            <td>Member pasport</td>
-            <td>2017/06/22</td>
-            <td>Offer</td>
-            <td>249</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>28</td>
-            <td>Drink tickets</td>
-            <td>2017/11/01</td>
-            <td>Confirmed</td>
-            <td>199</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>29</td>
-            <td>Blue-Ray cover</td>
-            <td>2018/03/15</td>
-            <td>To Do</td>
-            <td>1999</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td>30</td>
-            <td>TV carton</td>
-            <td>2019/02/08</td>
-            <td>Offer</td>
-            <td>1369</td>
-            <td>
-                <button type="button" class="btn btn-primary btn-xs dt-edit" style="margin-right:16px;">
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                </button>
-                <button type="button" class="btn btn-danger btn-xs dt-delete">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+	<main class="main">
+		<div class="user_header">
+			<h2 class="mb-5">User Information</h2>
 
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+		</div>
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Row information</h4>
-      </div>
-      <div class="modal-body">
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
 
-  </div>
-</div>
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1"
+			role="dialog" aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">...</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="user_content">
+			<div class="user_container">
+
+				<div class="table-responsive">
+					<table class="table table-striped custom-table">
+						<thead>
+							<tr>
+								<th scope="col"><label class="control control--checkbox"><input
+										type="checkbox" class="js-check-all" />
+										<div class="control__indicator"></div> </label></th>
+								<th scope="col">ID</th>
+								<th scope="col">Name</th>
+								<th scope="col">Occupation</th>
+								<th scope="col">Contact</th>
+								<th scope="col">Address</th>
+								<th scope="col"></th>
+							</tr>
+						</thead>
+
+
+						<tbody>
+							<c:forEach var="vo" items="${list }">
+								<tr scope="row">
+									<td><label class="control control--checkbox"><input
+											type="checkbox" />
+											<div class="control__indicator"></div> </label></td>
+									<td>${vo.id }</td>
+									<td class="pl-0">
+										<div class="d-flex align-items-center">
+											<label class="custom-control ios-switch"> <c:if
+													test="${vo.admin  == 'y'}">
+													<input type="checkbox" id=adminBtn
+														class="ios-switch-control-input" onchange="YnCheck(this);"
+														checked>
+												</c:if> <c:if test="${vo.admin == 'n'}">
+													<input type="checkbox" id=adminBtn
+														class="ios-switch-control-input">
+												</c:if> <span class="ios-switch-control-indicator"></span>
+											</label> <a href="#">${vo.name } ${vo.admin }</a>
+										</div>
+									</td>
+									<td>Web Designer <small class="d-block">Far far away,
+											behind the word mountains</small></td>
+									<td>${vo.phone }</td>
+									<td>[${vo.zipcode }] ${vo.addr1 } ${vo.addr2 }</td>
+									<td><a href="#" class="more" onclick="Confirm();">Delete</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+
+
+					</table>
+				</div>
+			</div>
+		</div>
+		<script src="js/admin_user.js"></script>
+	</main>
 </body>
 </html>
