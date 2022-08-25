@@ -130,7 +130,17 @@ public class AdminModel {
 		return "../admin/admin_user_del.jsp";
 	}
 	
-//	관리자 문의 답글달기
+	@RequestMapping("admin/admin_qna_detail.do")
+	public String admin_qna_detail(HttpServletRequest request, HttpServletResponse response)
+	{
+		String q_no = request.getParameter("q_no");
+		System.out.println(q_no);
+		List<QnaVO> list=AdminDAO.adminQnaDetail(Integer.parseInt(q_no));
+		request.setAttribute("list", list);
+		request.setAttribute("main_jsp", "../admin/admin_qna_detail.jsp");
+		return "../main/main.jsp";
+	}
+	//	관리자 문의 답글달기
 	@RequestMapping("admin/admin_qna.do")
 	public String admin_qna(HttpServletRequest request, HttpServletResponse response)
 	{
@@ -163,7 +173,7 @@ public class AdminModel {
 		return "../main/main.jsp";
 	}
 	
-//	답변 달고나서 admin_insert_ok
+	//	답변 달고나서 admin_insert_ok
 	@RequestMapping("admin/admin_qna_insert_ok.do")
 	public String admin_qna_insert_ok(HttpServletRequest request, HttpServletResponse response) {
 		try {

@@ -221,7 +221,21 @@ public class AdminDAO {
 		}
 		return list;
 	}
-
+	public static List<QnaVO> adminQnaDetail(int q_no) {
+		SqlSession session = null;
+		List<QnaVO> list=null;
+		try {
+			session = ssf.openSession();
+			list = session.selectList("adminQnaDetail", q_no);
+		} catch (Exception ex) {
+			System.out.println("qnaDetailData: error");
+			ex.printStackTrace();
+		} finally {
+			if (session != null)
+				session.close(); // disConnection() ps.close(),conn.close() : 반환
+		}
+		return list;
+	}
 	public static int adminQnaTotalPage() {
 		SqlSession session = null;
 		int total = 0;
@@ -252,7 +266,7 @@ public class AdminDAO {
 				session.close();
 		}
 	}
-//	답글 달고나면 isReply +1 하기
+	//	답글 달고나면 isReply +1 하기
 	public static int adminQnaIsreply(int q_no) {
 		SqlSession session=null;
 		try {

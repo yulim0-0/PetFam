@@ -54,7 +54,7 @@ $('#editBtn').click(function(){
                             <tr>
                                 <td></td>
                                 <td data-title="ID" class="info_cate">비밀번호</td>
-                                <td><input type=password name="pwd" id="pwd"></td>
+                                <td><input type=password name="pwd" id="pwd" placeholder="사용중인 비밀번호 입력"></td>
                                 <td></td>
                             </tr>
                             <tr>
