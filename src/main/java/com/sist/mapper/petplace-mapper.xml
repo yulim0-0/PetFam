@@ -74,7 +74,7 @@
  
  <update id="placehitIncrement" parameterType="int">
     UPDATE rcpg_4 
-    SET    hit=NVL(hit , 0) +1
+    SET    hit=NVL(hit,0) +1
     WHERE  c_no=#{c_no}
   </update>
   

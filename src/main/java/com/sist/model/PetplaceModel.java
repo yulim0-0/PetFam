@@ -160,8 +160,6 @@ public class PetplaceModel {
 	   {
 		   String c_no=request.getParameter("c_no");
 		   
-		  
-		   
 		   PetplaceVO vo=PetplaceDAO.petplaceDetailData(Integer.parseInt(c_no));
 		   request.setAttribute("vo", vo);
 		   request.setAttribute("main_jsp", "../petplace/petplace_detail.jsp");

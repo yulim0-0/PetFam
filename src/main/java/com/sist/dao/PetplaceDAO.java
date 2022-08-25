@@ -79,7 +79,9 @@ public class PetplaceDAO {
 			    try
 			    {
 			    	session=ssf.openSession();
+			    	session.update("placehitIncrement",c_no);
 			    	vo=session.selectOne("petplaceDetailData", c_no);//row
+			    	session.commit();
 			    }catch(Exception ex)
 			    {
 			    	System.out.println("petplaceDetailData: error");
@@ -94,8 +96,7 @@ public class PetplaceDAO {
 		   }
 		 
 		 
-		 
-		 
+		   
 		   
 //		   <!-- 찜하기 -->
 //		   <insert id="petplaceJjimInsert" parameterType="com.sist.vo.JjimVO2">
@@ -262,5 +263,7 @@ public class PetplaceDAO {
 			   return total;
 		   }
 		   
+		  
+ 
 		   
 	}
