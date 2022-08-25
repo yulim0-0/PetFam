@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*,com.sist.vo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -79,7 +79,7 @@
  </style>
 </head>
 <body>
-<br><br><br><b></b><br><br>
+<br><br><br><br><br>
 
 <div class="wrapper row3" align="center">
   <main class="container clear"> 
@@ -99,13 +99,14 @@
    <li class="one_quarter first">
    <li class="cards_item">
     <div class="card">
-     <div class="card_image"><img src="${vo.poster }"></div>
+     <div class="card_image"><img src="${vo.poster }" class="img2"></div>
      
      
      <div class="card_content">
+     
+      <b class="card_title">${vo.title }</b> <br> ${addr }
     
-      <p class="card_title">${vo.title }</p>
-     <p class="place">${vo.addr }</p>
+     
       <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"><button class="btn card_btn">Read More</button></a>
      </div>
     </div>
@@ -116,11 +117,11 @@
    <li class="one_quarter">
    <li class="cards_item">
     <div class="card">
-     <div class="card_image"><img src="${vo.poster }"></div>
+     <div class="card_image"><img src="${vo.poster }" class="img2"></div>
      <div class="card_content">
      
-      <p class="card_title">${vo.title }</p>
-      <p class="place">${vo.addr }</p>
+      <b class="card_title">${vo.title }</b><br> ${addr }
+     
     <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"> <button class="btn card_btn">Read More</button></a>
       
      </div>
@@ -130,12 +131,34 @@
   </c:if>
   </c:forEach>
   </ul>
-    <div class="container" align="center">
+   <%--  <div class="container" align="center">
       <div class="pagination" align="center">
        <a href="../petplace/place_find.do?addr=${addr }&page=${curpage>1?curpage-1:curpage}">이전</a>
         ${curpage } page / ${totalpage } pages
-        <a href="../petplace/place_find.do?addr=${addr }&page=${curpage<totalpage?curpage+1:curpage}">다음</a>
-      
+        <a href="../petplace/place_find.do?addr=${addr }&page=${curpage<totalpage?curpage+1:curpage}">다음</a> --%>
+      <!-- paging start-->
+  <div class="container" align="center">
+		 <div class="pagination">
+          <ul>
+         
+		  <c:if test="${startPage>1 }">
+		   <li><a href="../petplace/place_find.do?addr=${addr }&page=${startPage-1 }">&laquo;</a></li>
+		  </c:if>
+			<c:forEach var="i" begin="${startPage }" end="${endPage }">
+			<c:if test="${i==curpage }">
+		     <li class="active"><a href="../petplace/place_find.do?addr=${addr }&page=${i }">${i }</a></li>
+			</c:if>
+			<c:if test="${i!=curpage }">
+		    <li><a href="../petplace/place_find.do?addr=${addr }&page=${i }">${i }</a></li>
+			</c:if>
+		    </c:forEach>
+			<c:if test="${endPage<totalpage }">
+			 <li><a href="../petplace/place_find.do?addr=${addr}&page=${endPage+1 }">&raquo;</a></li>
+			</c:if>
+		  </ul>
+		 </div>
+		 </div>
+	<!-- paging end-->
       </div>
     </div>
   </main>

@@ -57,7 +57,9 @@
                     </div>
 				
                     <div class="col-12 col-md-6">
+                  
                         <div class="single_product_desc">
+                        
                             <h4 class="title">${vo.title}</h4>
                          </div>
                          <div class="one_half first">
@@ -76,18 +78,16 @@
 						        <td width=70%>${vo.tel }</td>
 						       </tr>
 						       <tr>
+						        <th width=30%>조회수</th>
+						        <td width=70%>${vo.hit }</td>
+						       </tr>
+						       <tr>
 						       	 <th width=30%>카테고리</th>
 						       	 <td width=70%>
 						        	<c:if test="${vo.category eq '2' }"> 카페,식당</c:if>
-								         <c:if test="${vo.category eq '3' }"> 카페,식당</c:if>  
-								        <c:if test="${vo.category eq '11' }"> 공원</c:if>
-								        <c:if test="${vo.category eq '1' }"> 펜션</c:if>
-								        <c:if test="${vo.category eq '4' }"> 펜션</c:if>
-								        <c:if test="${vo.category eq '5' }"> 펜션</c:if>
+								         <c:if test="${vo.category eq '4' }"> 공원</c:if>  
 								        <c:if test="${vo.category eq '6' }"> 펜션</c:if>
-								        <c:if test="${vo.category eq '7' }"> 펜션</c:if>
-								        <c:if test="${vo.category eq '8' }"> 펜션</c:if>
-								        <c:if test="${vo.category eq '9' }"> 펜션</c:if>
+								     
 						        </td>
 						       </tr>
 						       

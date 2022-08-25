@@ -94,7 +94,7 @@
 									onclick="location.href='../petplace/cafe.do?o_no=${po.c_no }'"
 									class="btn">Read more</button>
 								<button
-									onclick="location.href='../booking/jjim_cancel.do?o_no=${po.c_no }'"
+									onclick="location.href='../petplace/jjim_cancel.do?c_no=${po.c_no }'"
 									class="btn">Cancel Like</button>
 							</div>
 						</div>
@@ -112,3 +112,4 @@
 
 </body>
 </html>
+
