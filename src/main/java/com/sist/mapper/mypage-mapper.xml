@@ -105,7 +105,7 @@ RCOUNT              NUMBER    -->
 <!-- 예약내역 출력 -->
 <select id="bookingMypageData" resultType="com.sist.vo.OrderVO" parameterType="string">
 <!-- 조인으로 바꿀것 -->
-    SELECT oi_no,order_date,order_time,msg,state,
+    SELECT o_no,oi_no,order_date,order_time,msg,state,
            (SELECT store FROM ord_4 WHERE o_no=ord_info_4.o_no) as store,
            (SELECT name FROM ord_4 WHERE o_no=ord_info_4.o_no) as name,
            (SELECT poster FROM ord_4 WHERE o_no=ord_info_4.o_no) as poster,

@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.sist.vo.BookingVO;
 import com.sist.vo.JjimVO;
 import com.sist.vo.OrderVO;
+import com.sist.vo.ReviewVO;
 import com.sist.vo.UserVO;
 
 
@@ -224,4 +225,43 @@ public class BookingDAO {
 				   session.close();
 		   }
 	   }
+	 
+	//리뷰 달기
+	 public static void reviewInsert(ReviewVO vo)
+	   {
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   session.insert("reviewInsert",vo);
+		   }catch(Exception ex)
+		   {
+			   System.out.println("reviewInsert: error");
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+	   }
+	 
+	 /* 리뷰 리스트*/
+     public static List<ReviewVO> reviewListData(int o_no) {
+		List<ReviewVO> list=null;
+		SqlSession session=null;
+		try
+		{
+			session=ssf.openSession();
+			list=session.selectList("reviewListData",o_no);
+		} catch (Exception ex)
+		{
+			System.out.println("reviewListData: error");
+			ex.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
 }

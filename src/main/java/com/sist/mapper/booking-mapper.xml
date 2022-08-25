@@ -72,4 +72,19 @@
    INSERT INTO ord_info_4(oi_no,id,o_no,order_date,order_time,msg)
    VALUES(#{oi_no},#{id},#{o_no},#{order_date},#{order_time},#{msg})
   </insert>
+  
+  <!-- 예약 리뷰달기 -->
+ <insert id="reviewInsert" parameterType="com.sist.vo.ReviewVO">
+   <selectKey keyProperty="rv_no" resultType="int" order="BEFORE">
+     SELECT NVL(Max(rv_no)+1,1) as rv_no FROM rev_4
+   </selectKey>
+   INSERT INTO rev_4(rv_no,id,oi_no,content,options)
+   VALUES(#{rv_no},#{id},#{oi_no},#{content},#{options})
+ </insert>
+ 
+   <!-- 리뷰 리스트 -->
+ <select id="reviewListData" resultType="com.sist.vo.ReviewVO" parameterType="int">
+  SELECT * FROM rev_4 
+  WHERE oi_no=#{oi_no}
+ </select>
 </mapper>

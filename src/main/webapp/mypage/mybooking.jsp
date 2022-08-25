@@ -239,8 +239,9 @@ var stop = function(msg, title, type){
                                         <!-- <button class="btn" onclick="Confirm();" style="color:red">승인</button> -->
                                         <button class="btn" onclick="Cancel();" style="color:darkgreen">취소</button>
                                     </c:if>
+                                    <input type="hidden" value="${vo.o_no }">
                                     <c:if test="${vo.state=='y' }">
-                                        <button class="btn" onclick="">리뷰 작성</button>
+                                        <button class="btn" onclick="window.open('../booking/new_detail.do?o_no=${vo.o_no}&oi_no=${vo.oi_no }')">리뷰 작성</button>
                                     </c:if>
 
 								</div>

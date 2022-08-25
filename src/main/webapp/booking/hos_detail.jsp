@@ -181,7 +181,22 @@ body {
                         <div class="single_product_desc">
                             <h4 class="title">${vo.name }</h4>
                             <h7>${vo.store }</h7>
-                            <h4 class="price">${vo.price }원</h4>
+                            <h4 class="price"> <input type="hidden" value="${vo.price }" id=price>
+									   <script>
+		                                var n1 = document
+		                                        .getElementById("price").value;
+		
+		                                function numberWithCommas(x) {
+		                                    return x
+		                                            .toString()
+		                                            .replace(
+		                                                    /\B(?=(\d{3})+(?!\d))/g,
+		                                                    ",");
+		                                }
+		                                numberWithCommas(n1);
+		                                document
+		                                        .write(numberWithCommas(n1));
+			                            </script> 원</h4>
                             <div class="short_overview">
                                 <p>${vo.s_info }</p>
                             </div>
@@ -211,7 +226,7 @@ body {
                     </div>
                 </div>
             </div>
-        </div>
+        
 
         <div class="container">
             <div class="row">
@@ -290,103 +305,60 @@ body {
 
                                 <div class="submit_a_review_area mt-50">
                                     <h4>Reviews</h4>
-                                    <form action="#" method="post">
+                                    <form  method="post" action="../booking/review_ok.do" name="review_frm" id="review_frm" >
+                                     
                                         <div class="row">
-                                            <div class="col-12">
-                                                <div class="form-group d-flex align-items-center">
-                                                    <span class="mr-15">평점:</span>
-                                                    <div class="stars">
-                                                        <input type="radio" name="star" class="star-1" id="star-1">
-                                                        <label class="star-1" for="star-1">1</label>
-                                                        <input type="radio" name="star" class="star-2" id="star-2">
-                                                        <label class="star-2" for="star-2">2</label>
-                                                        <input type="radio" name="star" class="star-3" id="star-3">
-                                                        <label class="star-3" for="star-3">3</label>
-                                                        <input type="radio" name="star" class="star-4" id="star-4">
-                                                        <label class="star-4" for="star-4">4</label>
-                                                        <input type="radio" name="star" class="star-5" id="star-5">
-                                                        <label class="star-5" for="star-5">5</label>
-                                                        <span></span>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="name">Name</label>
-                                                    <input type="email" class="form-control" id="name" placeholder="이름">
+                                                    <label for="id" style="font-size: 15px;font-weight: 700;">아이디</label>
+                                                    <input type="text" class="form-control" id="id" name="id" value="${id }" readonly>
                                                 </div>
                                             </div>
+                                          
                                             <div class="col-12 col-md-6">
                                                 <div class="form-group">
-                                                    <label for="options">Reason for your rating</label>
-                                                    <select class="form-control" id="options">
+                                                    <label for="options" style="font-size: 15px;font-weight: 700;">이 평가를 준 이유</label>
+                                                    <select class="form-control" id="options" name="options">
                                                           
-                                                          <option>가격</option>
-                                                          <option>서비스</option>
-                                                          <option>위치</option>
-                                                          <option>기타</option>
+                                                          <option value="가격">가격</option>
+                                                          <option value="서비스">서비스</option>
+                                                          <option value="위치">위치</option>
+                                                          <option value="기타">기타</option>
                                                     </select>
+                                                    <input type="hidden" name="o_no" value="${o_no }">
+                                                    <input type="hidden" name="oi_no" value="${ oi_no }">
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label for="comments">Comments</label>
-                                                    <textarea class="form-control" id="comments" rows="5" data-max-length="150"></textarea>
+                                                    <label for="comments" style="font-size: 15px;font-weight: 700;">리뷰후기</label>
+                                                    <textarea class="form-control" id="comments" rows="5" data-max-length="150" name="content"></textarea>
+                                                   
                                                 </div>
                                             </div>
                                             <div class="col-12">
-                                                <button type="submit" class="btn alazea-btn">상품 리뷰 쓰기</button>
+                                                <button type="submit" class="btn alazea-btn" id="reviewBtn" value="리뷰쓰기">상품 리뷰 쓰기</button>
                                             </div>
                                         </div>
+                                        
                                     </form>
                                 </div>
                                 
                                 <div class="reviews_area"><br>
                                 <div class="row">
+                                   <c:forEach var="vo" items="${list }"> 
                                     <ul>
                                         <li>
                                             <div class="single_user_review mb-15">
-                                                <div class="review-rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    
-                                                </div>
+                                               
                                                 <div class="review-details">
-                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
-                                                    <p>리뷰 내용입니다aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                                                    <p style="font-weight: 700;">리뷰 작성자: &nbsp; <a href="#" style="font-size: 16px;">${vo.id }</a>&nbsp;&nbsp;---- <span>${vo.options }</span> </p>
+                                                    <p>${vo.content }</p>
                                                 </div>
-                                            </div>
-                                            <div class="single_user_review mb-15">
-                                                <div class="review-rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <p></p>
-                                                </div>
-                                                <div class="review-details">
-                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
-                                                </div>
-                                            </div>
-                                            <div class="single_user_review">
-                                                <div class="review-rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <p></p>
-                                                </div>
-                                                <div class="review-details">
-                                                    <p>by <a href="#">Colorlib</a> on <span>12 Sep 2018</span></p>
-                                                </div>
-                                            </div>
+                                            </div> 
                                         </li>
                                     </ul>
+                              </c:forEach> 
                                 </div>
                                 </div>
                             </div>
@@ -444,7 +416,7 @@ body {
                                 <p>1:1방문교육 - 초롱스쿨</p>
                                
                             </a>
-                            <h6>150000</h6>
+                            <h6>150,000원</h6>
                         </div>
                     </div>
                 </div>
@@ -466,7 +438,7 @@ body {
                             <a href="shop-details.html">
                                 <p>반려견·반려묘 중성화 수술</p>
                             </a>
-                            <h6>90000</h6>
+                            <h6>90,000원</h6>
                         </div>
                     </div>
                 </div>
@@ -488,7 +460,7 @@ body {
                             <a href="shop-details.html">
                                 <p>중형견 미용 - 참사랑동물병원</p>
                             </a>
-                            <h6>28000</h6>
+                            <h6>28,000원</h6>
                         </div>
                     </div>
                 </div>
@@ -514,7 +486,7 @@ body {
                             <a href="shop-details.html">
                                 <p>예절 및 산책 교육 - 네발아이들</p>
                             </a>
-                            <h6>550000</h6>
+                            <h6>550,000원</h6>
                         </div>
                     </div>
                 </div>

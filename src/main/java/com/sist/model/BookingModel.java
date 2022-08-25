@@ -12,6 +12,7 @@ import com.sist.controller.RequestMapping;
 import com.sist.vo.BookingVO;
 import com.sist.vo.JjimVO;
 import com.sist.vo.OrderVO;
+import com.sist.vo.ReviewVO;
 import com.sist.vo.UserVO;
 import com.sist.dao.BookingDAO;
 
@@ -206,6 +207,39 @@ public class BookingModel {
 		   
 		   return "../main/main.jsp";
 	   }
+	 
+	 @RequestMapping("booking/new_detail.do")
+	   public String review(HttpServletRequest request,HttpServletResponse response)
+	   {
+		   String o_no=request.getParameter("o_no");
+		   String oi_no=request.getParameter("oi_no");
+		   
+		   BookingVO vo=BookingDAO.hospitalDetailData(Integer.parseInt(o_no));
+		   
+		   request.setAttribute("vo", vo);
+		   request.setAttribute("main_jsp", "../booking/new_detail.jsp");
+		   
+		   JjimVO jvo=new JjimVO();
+		   jvo.setO_no(Integer.parseInt(o_no));
+		   HttpSession session=request.getSession();
+		   String id=(String)session.getAttribute("id");
+		   
+		   jvo.setId(id);
+		   int jcount=0;
+		   if(id!=null) // 로그인이 된 상태라면
+		   {
+		     jcount=BookingDAO.bookingJjimCount(jvo);
+		   }
+		   request.setAttribute("jcount", jcount);
+		   
+		   request.setAttribute("o_no", o_no);
+		   request.setAttribute("oi_no", oi_no);
+		   List<ReviewVO> list=BookingDAO.reviewListData(Integer.parseInt(oi_no));
+		   request.setAttribute("list", list);
+		   
+		   
+		   return "../main/main.jsp";
+	   }
 	
 	 @RequestMapping("booking/jjim.do")
 	 public String booking_jjim(HttpServletRequest request,HttpServletResponse response)
@@ -296,5 +330,55 @@ public class BookingModel {
 	    	System.out.println(id+"."+o_no+"예약완료");
 	    	BookingDAO.bookingInsert(vo);
 	    	return "redirect:../main/main.do";
+	    }
+	 
+	 @RequestMapping("booking/review_ok.do")
+	    public String review_ok(HttpServletRequest request,HttpServletResponse response)
+	    {
+		   //System.out.println("1111111111111111111");
+		   String o_no="",oi_no="";
+	    	try
+	    	{
+	    		request.setCharacterEncoding("UTF-8");
+	    	
+	    	/*
+			 * RV_NO   NOT NULL NUMBER          리뷰번호(pk)
+				CONTENT NOT NULL VARCHAR2(2000) 리뷰내용
+				ID      NOT NULL VARCHAR2(20)   아이디 (fk)
+				OI_NO   NOT NULL NUMBER         예약번호 (fk)
+				OPTIONS NOT NULL VARCHAR2(10)   옵션
+			 */
+	    	//String rv_no=request.getParameter("rv_no");
+	    	o_no=request.getParameter("o_no");
+	        oi_no=request.getParameter("oi_no");
+	    	String content=request.getParameter("content");
+	    	String options=request.getParameter("options");
+	    	
+	    	
+	    	System.out.println(content);
+	    	System.out.println(options);
+	    	System.out.println("o_no="+o_no);
+	    	System.out.println("oi_no="+oi_no);
+	    	HttpSession session=request.getSession();
+	    	String id=(String)session.getAttribute("id");
+	    	
+	    
+			System.out.println(id);
+			
+	    	
+	    	ReviewVO vo=new ReviewVO();
+	    	
+	    	//vo.setRv_no(Integer.parseInt(rv_no));
+	    	vo.setContent(content);
+	    	vo.setId(id);
+	    	vo.setOptions(options);
+	    	vo.setOi_no(Integer.parseInt(oi_no));
+	    	
+	    	BookingDAO.reviewInsert(vo);
+			System.out.println(id + "." +"리뷰 쓰기 완료");
+	    	}catch(Exception ex){ex.printStackTrace();}
+	    	return "redirect:../booking/new_detail.do?o_no="+o_no+"&oi_no="+oi_no;
+	    	
+	    	
 	    }
 }
