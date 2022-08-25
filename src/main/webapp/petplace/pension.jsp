@@ -90,7 +90,8 @@
      <div class="card_image"><img src="${vo.poster }" ></div>
      <div class="card_content">
     
-      <p class="card_title">${vo.title }</p>
+       <b class="card_title">${vo.title }</b> &ensp;&ensp;&ensp; 조회수:${vo.hit }
+      
      
       <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"><button class="btn card_btn">Read More</button></a>
      </div>
@@ -105,7 +106,8 @@
      <div class="card_image"><img src="${vo.poster }" ></div>
      <div class="card_content">
      
-      <p class="card_title">${vo.title }</p>
+       <b class="card_title">${vo.title }</b> &ensp;&ensp;&ensp; 조회수:${vo.hit }
+      
       
     <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"> <button class="btn card_btn">Read More</button></a>
       
