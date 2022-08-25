@@ -102,5 +102,15 @@ RCOUNT              NUMBER    -->
     WHERE id=#{id}
 </select>
 
-
+<!-- 예약내역 출력 -->
+<select id="bookingMypageData" resultType="com.sist.vo.OrderVO" parameterType="string">
+    SELECT oi_no,order_date,order_time,msg,state,
+           (SELECT store FROM ord_4 WHERE o_no=ord_info_4.o_no) as store,
+           (SELECT name FROM ord_4 WHERE o_no=ord_info_4.o_no) as name,
+           (SELECT poster FROM ord_4 WHERE o_no=ord_info_4.o_no) as poster,
+           (SELECT price FROM ord_4 WHERE o_no=ord_info_4.o_no) as price
+    FROM ord_info_4
+    WHERE id=#{id}
+    ORDER BY oi_no DESC
+  </select>
 </mapper>

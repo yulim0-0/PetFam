@@ -3,16 +3,88 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
+
 <!DOCTYPE html>
 <html lang="en">
+<header id="header" class="fixed-top d-flex align-items-center" style="
+    font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;">
+		<div class="container d-flex align-items-center justify-content-between">
+			<div class="logo">
+				<!-- Uncomment below if you prefer to use an image logo -->
+				<a href="../main/main.do"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
+				<h1 class="text-light">
+					<a href="../main/main.do"><span style="font-family: geller-headline, serif">PetFam</span></a>
+				</h1>
+			</div>
+
+			<nav id="navbar" class="navbar">
+				<ul>
+					<!-- <li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
+					<li class="dropdown">
+						<a href="#"><span>예약</span><i class="bi bi-chevron-down"></i></a>
+						<ul>
+							<li><a href="../booking/hospital_list.do">병원</a></li>
+							<li><a href="../booking/salon_list.do">미용</a></li>
+							<li><a href="../booking/training_list.do">훈련</a>
+						</li></ul> 
+						<!--   <li><a class="nav-link scrollto" href="#portfolio" hover="Recommendation")>추천</a></li>-->
+					</li><li class="dropdown"><a href="#"><span>추천</span> <i class="bi bi-chevron-down"></i></a>
+						<ul>
+							<li><a href="../petplace/cafe.do">카페/식당</a></li>
+							<li><a href="../petplace/park.do">공원</a></li>
+							<li><a href="../petplace/pension.do">펜션</a></li>
+						</ul>
+					</li>
+
+
+					<li class="dropdown">
+						<a href="../pboard/list.do"><span>커뮤니티</span><i class="bi bi-chevron-down"></i></a>
+						<ul>
+							<li><a href="../pboard/list.do">자유 게시판</a></li>
+							<li><a href="../ppboard/list.do">반려동물 자랑 게시판</a></li>
+							<li><a href="../qna/list.do">문의 게시판</a></li>
+							<li><a href="../notice/list.do">공지사항</a></li>
+						</ul> 
+
+							</li><li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
+								<ul>
+									<li class="dropdown">
+										<a href="#"><span>마이페이지</span> <i class="bi bi-chevron-right"></i></a>
+										<ul>
+											<li><a href="../mypage/myinfo.do">나의정보</a></li>
+											<li><a href="../mypage/myinfo_edit.do">나의정보 수정</a></li>
+										</ul>
+									</li>
+									<li><a href="../mypage/mybooking.do">예약 내역</a></li>
+									<li><a href="../mypage/mylike.do">좋아요 내역</a></li>
+									<li><a href="../mypage/mywrite.do">게시글 내역</a></li>
+									<li><a href="../mypage/myqna.do">문의 내역</a></li>
+								</ul>
+							</li>
+
+
+						 <!-- 로그인 상태가 아닌 경우 --> 
+					<li><a class="nav-link scrollto" href="#contact">문의</a></li>
+
+					<!-- 로그인 상태가 아닌 경우 -->
+					<c:if test="${sessionScope.id==null }">
+						<li>
+							<a class="start" id="login_header" href="../user/login.do">로그인</a>
+						</li>
+					</c:if>
+
+					<!-- 로그인 상태인 경우 -->
+					<c:if test="${sessionScope.id!=null }">
+						<li><a class="start" id="logout_header" href="../user/logout.do">로그아웃</a></li>
+					</c:if>
+				</ul>
+				<i class="bi bi-list mobile-nav-toggle"></i>
+			</nav>
+			<!-- .navbar -->
+		</div>
+	</header>
 
 <head>
-	<script src="js/jquery/jquery-2.2.4.min.js"></script>
-    <script src="js/bootstrap/popper.min.js"></script>
-    <script src="js/bootstrap/bootstrap.min.js"></script>
-    <script src="js/plugins/plugins.js"></script>
-    <script src="js/active.js"></script>
-     
     
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -20,16 +92,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <!-- Title -->
-    
-
     <!-- Favicon -->
     <link rel="icon" href="img/core-img/favicon.ico">
 
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="../petplace/detail_layout/style.css">
+    <link rel="stylesheet" href="../booking/detaildist/media.css">
+    <link rel="stylesheet" href="../booking/detaildist/style.css">
 
+    
+	<!-- heart icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+.jjim_btn {
+  background-color: #f2f4f5;
+  border: none;
+  color: grey;
+  border-color: 1px solid red;
+  padding: 1px 19px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.jjim_btn1 {
+  background-color: #ffeebc;
+  border: none;
+  color: #F34100;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Darker background on mouse-over */
+.jjim_btn:hover {
+  background-color: #ffeebc;
+  color: #F34100;
+  
+  
+}
+#header .logo h1 a, #header .logo h1 a:hover {
+    color: #192f61;
+    text-decoration: none;
+    padding-left: 12px;
+    font-family: geller-headline, serif;
+    font-weight: 900;
+    font-style: normal;
+    font-size: 30px;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  color: #707070; }
+
+</style>
 </head>
+
 
 <body>
 

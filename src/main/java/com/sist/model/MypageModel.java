@@ -11,8 +11,10 @@ import javax.servlet.http.HttpSession;
 import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.AdminDAO;
+import com.sist.dao.BookingDAO;
 import com.sist.dao.MypageDAO;
 import com.sist.vo.JjimVO;
+import com.sist.vo.OrderVO;
 import com.sist.vo.PboardVO;
 import com.sist.vo.PetplaceVO;
 import com.sist.vo.QnaVO;
@@ -194,5 +196,16 @@ public class MypageModel {
 		return "../main/main.jsp";
 	}
 	
-	
+	//예약내역 출력
+	@RequestMapping("mypage/mybooking.do")
+    public String bookingMypageData(HttpServletRequest request,HttpServletResponse response)
+    {
+    	HttpSession session=request.getSession();
+    	String id=(String)session.getAttribute("id");
+    	List<OrderVO> list=MypageDAO.bookingMypageData(id);
+    	request.setAttribute("list", list);
+		/* System.out.println(id+","+list); */
+    	request.setAttribute("main_jsp", "../mypage/mybooking.jsp");
+    	return "../main/main.jsp";
+    }
 }
