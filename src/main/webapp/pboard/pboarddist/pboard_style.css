@@ -58,6 +58,7 @@
 
 body {
   margin-top: 90px;
+  overflow-x : hidden;
 }
 .row {
   display: flex;
@@ -93,7 +94,7 @@ button {
 
 */
 
-.app {
+.papp {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -162,6 +163,7 @@ button {
 .psidebar {
   flex: 0 0 20%;
   margin-top: -60px;
+  width : 10%;
 }
 
 .psidebar-nav {
@@ -216,14 +218,15 @@ button.primary:hover {
 
 */
 
-.main {
+.pmain {
   flex: 0 0 80%;
   background: #eee;
-  margin-top: -40px;
+  margin-top: -80px;
+  width : 80%
 }
 
-.main__content {
-  padding: 40px;
+.pmain__content {
+  padding: 80px 40px 40px 40px;
 }
 
 .ptitle {

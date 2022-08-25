@@ -5,7 +5,9 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Tour Bus</title>
+  <title>[Community] 자유게시판</title>
+  <link rel="stylesheet" href="../pboard/pboarddist/pboard_style.css">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css'>
@@ -17,7 +19,6 @@
     <link rel="stylesheet" href="../ppboard/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="../ppboard/css/style.css" type="text/css">
 
-<link rel="stylesheet" href="../pboard/pboarddist/pboard_style.css">
 <style type="text/css">
 .pagination {
     margin: 20px 0;
