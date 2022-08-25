@@ -31,7 +31,7 @@ public class BookingModel {
 			page="1";
 		String store=request.getParameter("store");
 		if(store==null) 
-			store="병원";
+			store="";
 		System.out.println(store+":");   
 		 
 		int curpage=Integer.parseInt(page);

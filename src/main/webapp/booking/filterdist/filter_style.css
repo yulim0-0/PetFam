@@ -8,7 +8,7 @@ form {
 	align-items: center;
 }
 
-input, input[type="checkbox"]+label:before,
+input[type="text"], input[type="checkbox"]+label:before,
 	select option, select {
 	width: 100%;
 	padding: 1em;
@@ -17,6 +17,15 @@ input, input[type="checkbox"]+label:before,
 	border: 1px solid #e5e5e5;
 	border-radius: 3px;
 	-webkit-transition: 0.35s ease-in-out;
+	-moz-transition: 0.35s ease-in-out;
+	-o-transition: 0.35s ease-in-out;
+	transition: 0.35s ease-in-out;
+	transition: all 0.35s ease-in-out;
+}
+
+input[type="image"]{
+	padding: 0em;
+	webkit-transition: 0.35s ease-in-out;
 	-moz-transition: 0.35s ease-in-out;
 	-o-transition: 0.35s ease-in-out;
 	transition: 0.35s ease-in-out;

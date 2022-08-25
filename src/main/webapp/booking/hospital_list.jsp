@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*,com.sist.vo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <%
 	
@@ -91,8 +92,7 @@
 				<div class="input-group">
 					<form method="post" action="../booking/hospital_list.do" class="search-container">
 						<input type="text" name=store id="search-bar" value="${store }" placeholder="병원명 검색">
-							<%-- <input type="hidden" name=store value="${vo.store }"> --%>
-							<input type="image" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png" name="Submit" value="Submit" class="search-icon">
+							<input type="image" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png" class="search-icon" id=searchBtn>
 					</form>
 				</div>
 			</div>
@@ -140,33 +140,43 @@
   <ul class="cards">
   <c:forEach var="vo" items="${list }" varStatus="s">
    <c:if test="${s.index%3==0 }">
-   <li class="one_quarter first">
    <li class="cards_item">
     <div class="card">
      <div class="card_image"><img src="http://${vo.poster }"></div>
      <div class="card_content">
       <h2 class="card_store">${vo.store }</h2>
-      <p class="card_title">${vo.name }</p>
+      <c:choose>
+      <c:when test="${fn:length(vo.strName)>=20 }">
+      <p class="card_title">${vo.strName }..</p>
+      </c:when>
+      <c:otherwise>
+      <p class="card_title">${vo.strName }</p>
+      </c:otherwise>
+      </c:choose>
       <p class="card_price">${vo.strPrice }원</p>
       <a href="../booking/detail_before.jsp?o_no=${vo.o_no }"><button class="btn card_btn">Read More</button></a>
      </div>
     </div>
    </li>
-   </li>
   </c:if>
    <c:if test="${s.index%3!=0 }">
-   <li class="one_quarter">
    <li class="cards_item">
     <div class="card">
      <div class="card_image"><img src="http://${vo.poster }"></div>
      <div class="card_content">
       <h2 class="card_store">${vo.store }</h2>
-      <p class="card_title">${vo.name }</p>
+      <c:choose>
+      <c:when test="${fn:length(vo.strName)>=20 }">
+      <p class="card_title">${vo.strName }..</p>
+      </c:when>
+      <c:otherwise>
+      <p class="card_title">${vo.strName }</p>
+      </c:otherwise>
+      </c:choose>
       <p class="card_price">${vo.strPrice }원</p>
      <a href="../booking/detail_before.jsp?o_no=${vo.o_no }"> <button class="btn card_btn">Read More</button></a>
      </div>
     </div>
-   </li>
    </li>
   </c:if>
   </c:forEach>

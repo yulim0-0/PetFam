@@ -10,8 +10,14 @@ IMG     NOT NULL VARCHAR2(1000)
 ADDRESS NOT NULL VARCHAR2(500)  
  */
 public class BookingVO {
+	public String getStrName() {
+		return strName;
+	}
+	public void setStrName(String strName) {
+		this.strName = strName;
+	}
 	private int o_no,price;
-	private String name,store,s_info,poster,img,address,strPrice;
+	private String name,store,s_info,poster,img,address,strPrice,strName;
 	
 	public String getStrPrice() {
 		return strPrice;

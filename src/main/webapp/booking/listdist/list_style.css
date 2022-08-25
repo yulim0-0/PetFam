@@ -27,9 +27,12 @@ body {
   padding: 1rem;
 }
 
+
+
 .main{
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: -50px;
 }
 
 h1 {
@@ -74,6 +77,8 @@ img {
 .cards_item {
   display: flex;
   padding: 1rem;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 @media (min-width: 40rem) {
