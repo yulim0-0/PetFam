@@ -60,13 +60,12 @@
     </update>
     
     <!-- 예약 정보 승인 여부 -->
-    <select id="adminBookingCheck" resultType="com.sist.vo.OrderVO" >
-        SELECT ord_info_4.oi_no, ord_info_4.order_date, ord_info_4.order_time, ord_info_4.regdate
-        , ord_info_4.msg, ord_info_4.o_no, id, state, ord_4.poster, ord_4.price, ord_4.store, ord_4.name
-        FROM ORD_INFO_4
-        LEFT JOIN ORD_4
-        ON ORD_INFO_4.o_no = ord_4.o_no
-        ORDER BY state ASC
+    <select id="adminBookingCheck" resultType="com.sist.vo.OrderVO" parameterType="hashmap">
+        SELECT oi_no, order_date, order_time, regdate , msg, o_no, id, state, poster, poster, name, price
+        FROM (SELECT oi_no,order_date, order_time, regdate ,  msg,  o_no, id, state, rownum as num, poster, name, price
+        FROM (SELECT ord_info_4.oi_no, ord_info_4.order_date, ord_info_4.order_time, ord_info_4.regdate , ord_info_4.msg, ord_info_4.o_no, ord_info_4.id, ord_info_4.state, ord_4.poster, ord_4.name, ord_4.price
+        FROM  ORD_INFO_4 LEFT JOIN ORD_4 ON  ord_info_4.o_no = ord_4.o_no ORDER BY state ASC)) 
+        WHERE num BETWEEN #{start} and #{end}
     </select>
     
     <!-- 예약 승인 -->

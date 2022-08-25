@@ -25,7 +25,31 @@ public class AdminModel {
 	@RequestMapping("admin/admin_booking.do")
 	public String admin_booking(HttpServletRequest request, HttpServletResponse response) 
 	{
-		List<OrderVO> list=AdminDAO.adminBookingCheck();
+		String page=request.getParameter("page");
+		if(page==null)
+			page="1";
+		int curpage=Integer.parseInt(page);
+		Map map=new HashMap();
+		int rowSize=10;
+		int start=(curpage*rowSize)-(rowSize-1);
+		int end=curpage*rowSize;
+		map.put("start", start);
+		map.put("end",end);
+		
+		List<OrderVO> list=AdminDAO.adminBookingCheck(map);
+		int totalpage=AdminDAO.adminBookingTotal();
+		final int BLOCK=5;
+		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		
+		if(endPage>totalpage)
+			endPage=totalpage;
+		
+		request.setAttribute("curpage", curpage);
+		request.setAttribute("totalpage", totalpage);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("endPage", endPage);
+		
 		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../admin/admin_booking.jsp");
 		return "../main/main.jsp";

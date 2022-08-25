@@ -71,7 +71,9 @@ public class MypageModel {
 		String phone=request.getParameter("phone");
 		String email=request.getParameter("email");
 		String birthday=request.getParameter("birthday");
+		System.out.println("1");
 		String zipcode=request.getParameter("zipcode");
+		System.out.println(zipcode);
 		String addr1=request.getParameter("addr1");
 		String addr2=request.getParameter("addr2");
 		String gender=request.getParameter("gender");

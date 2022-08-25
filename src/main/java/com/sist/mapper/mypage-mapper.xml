@@ -62,7 +62,7 @@ RCOUNT              NUMBER    -->
 
 
 <!-- 개인정보 수정 처리 -->
-<update id="userEdit" parameterType="UserVO">
+<update id="userEdit" parameterType="com.sist.vo.UserVO">
     UPDATE user_4 
     SET name=#{name}, phone=#{phone}, email=#{email}, birthday=#{birthday}, zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2}, gender=#{gender}
     WHERE id=#{id}

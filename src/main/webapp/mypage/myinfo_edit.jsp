@@ -48,7 +48,7 @@ $('#editBtn').click(function(){
                             <tr>
                                 <td></td>
                                 <td data-title="ID" class="info_cate">아이디</td>
-                                <td data-title="Name" id=id>${vo.id }</td>
+                                <td><input data-title="Name" name=id id=id value=${vo.id } readonly></td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -78,7 +78,7 @@ $('#editBtn').click(function(){
                             <tr>
                                 <td></td>
                                 <td data-title="ID" class="info_cate">생일</td>
-                                <td><input type=date name=birthday id=birthday placeholder=${vo.birthday }></td>
+                                <td><input type=date name=birthday id=birthday data-placeholder=${vo.birthday }></td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -86,14 +86,16 @@ $('#editBtn').click(function(){
                                 <td data-title="ID" class="info_cate">주소</td>
                                 <td>
                                     <input type=text name=zipcode id=zipcode value=${vo.zipcode } placeholder="[${vo.zipcode }]  ${vo.addr1 }" disabled>
-                                    <input type="hidden" name=addr1 id=addr1 value=${vo.addr1 }>
                                 </td>
                                 <td class="checkBtn"><input type=button name=zipBtn id=zipBtn class=zipBtn value="우편번호" /></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td data-title="ID" class="info_cate">상세주소</td>
-                                <td><input type=text name=addr2 id=addr2 value="${vo.addr2 }"></td>
+                                
+                                <td><input type=text name=addr2 id=addr2 value="${vo.addr2 }">                                    
+                                    <input type="hidden" name=addr1 id=addr1 value=${vo.addr1 }>
+                                </td>
                                 <td></td>
                             </tr>
                             <tr>

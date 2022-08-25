@@ -44,7 +44,7 @@ public class MypageDAO {
 		return vo;
 	}
 	
-	// 수정용 정보 불러오기 전용
+	// 수정용 정보 전용
 	public static UserVO myInfoDataforEdit(String id)
 	{
 		UserVO vo=new UserVO();

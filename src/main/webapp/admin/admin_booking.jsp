@@ -15,6 +15,7 @@
     margin: 20px 0;
     overflow: hidden;
     position: relative;
+    max-width : fit-content;
 }
 .pagination li {
     float: left;
@@ -30,7 +31,7 @@
 }
 .pagination li a {
     transition: all 100ms ease-in-out 0s;
-    background-color: #FFFFFF;
+    background-color: transparent;
     border-radius: 5px 5px 5px 5px;
     color: #69696E;
     display: block;
@@ -237,8 +238,8 @@ var stop = function(msg, title, type){
 								    예약자 연락처 : 
 								</div>
 									<c:if test="${vo.state=='n' }">
-                                        <button class="btn" onclick="Confirm();" style="color:red">승인</button>
-                                        <button class="btn" onclick="Alert();" style="color:darkgreen">보류</button>
+                                        <button class="btn" onclick="Confirm();" style="color:red; border:solid 0.5px;">승인</button>
+                                        <button class="btn" onclick="Alert();" style="color:darkgreen; border:solid 0.5px;">보류</button>
                                     </c:if>
                                     <c:if test="${vo.state=='y' }">
                                         <!-- <button class="btn" onclick="Cancel();">취소</button> -->
@@ -255,26 +256,25 @@ var stop = function(msg, title, type){
 			</c:forEach>
 		</section>
 		
-<%-- 		<div class="container" align="center">
+       <div class="container" align="center">
 			<ul class="pagination">
 				<c:if test="${startPage>1 }">
-					<li><a href="../booking/training_list.do?page=${startPage-1 }">&laquo;</a></li>
+					<li><a href="../admin/admin_booking.do?page=${startPage-1 }">&laquo;</a></li>
 				</c:if>
 				<c:forEach var="i" begin="${startPage }" end="${endPage }">
 					<c:if test="${i==curpage }">
-
+					   <li class="active" ><a href="../admin/admin_booking.do?page=${i }">${i }</a></li>
 					</c:if>
 					<c:if test="${i!=curpage }">
-
+					   <li><a href="../admin/admin_booking.do?page=${i }">${i }</a></li>
 					</c:if>
-					<li><a href="../booking/training_list.do?page=${i }">${i }</a></li>
 				</c:forEach>
+				
 				<c:if test="${endPage<totalpage }">
-					<li><a href="../booking/training_list.do?page=${endPage+1 }">&raquo;</a></li>
+					<li><a href="../admin/admin_booking.do?page=${endPage+1 }">&raquo;</a></li>
 				</c:if>
 			</ul>
-		</div> --%>
-
+		</div>
 
 
 		<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>

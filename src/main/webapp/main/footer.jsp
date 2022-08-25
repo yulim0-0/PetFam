@@ -1,7 +1,30 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.sist.dao.BookingDAO"%>
+<%@page import="com.sist.vo.BookingVO"%>
 <%@page import="org.apache.ibatis.annotations.Param"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%
+    
+    BookingDAO dao=new BookingDAO();
+    Cookie[] cookies=request.getCookies(); //쿠키 읽기
+    List<BookingVO> bList=new ArrayList<BookingVO>();
+    if(cookies!=null)
+    {
+        for(int i=cookies.length-1;i>=0;i--) // 최신부터 출력 
+        {
+            if(cookies[i].getName().startsWith("booking")) //movie1
+            {
+                String o_no=cookies[i].getValue();// 1
+                BookingVO vo=dao.hospitalDetailData(Integer.parseInt(o_no));
+                bList.add(vo);
+            }
+        }
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,13 +61,19 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>최근 검색 기록</h4>
-
-              <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li> -->
+            <h4>최근 확인 병원</h4>
+            <ul>
+			<%
+			int k = 0;
+			for (BookingVO vo : bList) {
+				if (k > 6)
+					break;
+			%>
+            <li><i class="bx bx-chevron-right"></i> <a href="../booking/hos_detail.do?o_no=<%=vo.getO_no()%>"><%=vo.getStore() %></a></li>
+			<%
+			k++;
+			}
+			%>
             </ul>
           </div>
 

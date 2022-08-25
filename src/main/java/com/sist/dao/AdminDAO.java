@@ -26,13 +26,13 @@ public class AdminDAO {
 	}
 	
 	// 예약 확인
-	public static List<OrderVO> adminBookingCheck()
+	public static List<OrderVO> adminBookingCheck(Map map)
 	{
 		List<OrderVO> list=null;
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
-			list=session.selectList("adminBookingCheck");
+			list=session.selectList("adminBookingCheck",map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
