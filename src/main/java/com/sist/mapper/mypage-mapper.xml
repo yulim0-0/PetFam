@@ -112,7 +112,7 @@ RCOUNT              NUMBER    -->
            (SELECT price FROM ord_4 WHERE o_no=ord_info_4.o_no) as price
     FROM ord_info_4
     WHERE id=#{id}
-    ORDER BY oi_no DESC
+    ORDER BY state,oi_no DESC
   </select>
   <!-- 예약 취소 -->
   <delete id="booking_Cancel" parameterType="int">
