@@ -109,7 +109,7 @@
   border: none;
   color: grey;
   border-color: 1px solid red;
-  padding: 1px 19px;
+  padding: 12px 19px;
   font-size: 16px;
   cursor: pointer;
 }
@@ -208,47 +208,42 @@ body {
 						        </td>
 						       </tr>
 						       
-						        <tr>
-						       <td colspan="2" class="text-center">
-							       
-							       <p>
-                                	    <span>Share on:</span>
-                                    	<span>
-	                                    	<a href="#"><i class="fa fa-facebook"></i></a>
-	                                    	<a href="#"><i class="fa fa-twitter"></i></a>
-	                                    	<a href="#"><i class="fa fa-pinterest"></i></a>
-	                                    	<a href="#"><i class="fa fa-google-plus"></i></a>
-                                		</span>
-                                	   </p>
-                                	   
-                                	   
-							       </td>
-							      </tr>
+						   
 							      </table>            
 							    
 							    
 							    
 							                         
 
-                           <!--  <div class="cart--area d-flex flex-wrap align-items-center" > -->
+                          <!--  <div class="cart--area d-flex flex-wrap align-items-center" > -->
                                 <!-- Add to Cart Form -->
                                
-                              
-                              <div class="wishlist-compare d-flex flex-wrap align-items-center">
+                              <div class="cart--area d-flex flex-wrap align-items-center" >
+                                <!-- Reserve -->
+  
+                               <a href="javascript:history.back()"><button class="btn alazea-btn ml-15">목록</button></a>
+                           
+                             <br>
+							        
+							  <div class="wishlist-compare d-flex flex-wrap align-items-center">
                                   <!-- 로그인 된 상태에서 -->
-                                   <c:if test="${sessionScope.id!=null }">
-                                  	<c:if test="${jcount==0 }">
-							        	 <a href="../petplace/jjim.do?c_no=${vo.c_no }" class="btn alazea-btn ml-15">찜하기</a>
-							        </c:if>
-							        <c:if test="${jcount!=0 }">
-							       		  <span class="btn alazea-btn ml-15">찜하기</span>
-							        </c:if>
-                                	</c:if>
+                                  <c:if test="${sessionScope.id!=null }"> 
+                                 <!-- 찜하기 누를 수 있게 활성화  --> 
+                                    <c:if test="${jcount==0 }"> 
+                                 	<a href="../petplace/jjim.do?c_no=${vo.c_no }"><button class="jjim_btn" ><i class="fa fa-heart"></i></button></a>
+                                 	 </c:if> 
+                                 <!-- 이미 찜하기 눌렀으면 비활성화  --> 
+                                 	<c:if test="${jcount!=0 }"> 
+                                 	<button class="jjim_btn1"><i class="fa fa-heart"></i></button>
+                                 	 </c:if> 
+                                 	</c:if>
+                                 </div>
+                              
                                 
-							        <a href="javascript:history.back()" class="btn alazea-btn ml-15">목록</a>
-							         
-                             </div> 
-                            </div>
+							     
+                             
+                           </div>
+                           
                         </div>
                     </div>
                 </div>
