@@ -6,13 +6,27 @@
  FROM(SELECT o_no,name,store,poster,price,rownum as num
  FROM(SELECT o_no,name,store,poster,price
  FROM ord_4 WHERE (o_no BETWEEN #{s} AND #{e}) AND (store LIKE '%'||#{store}||'%')
+ <if test="!chitem.equals('') and chitem!=null">
+    AND REGEXP_LIKE(name, #{chitem})
+</if>
  ORDER BY o_no ASC))
  WHERE num BETWEEN #{start} AND #{end}
  </select>
  
- <select id="bookingTotalPage" resultType="int" parameterType="string">
+ <!-- <select id="bookingTotalPage" resultType="int" parameterType="string">
    SELECT CEIL(COUNT(*)/9.0) FROM ord_4 
-   WHERE store LIKE '%'||#{store}||'%'
+   WHERE (store LIKE '%'||#{store}||'%')
+   <if test="!chitem.equals('') and chitem!=null">
+    AND (REGEXP_LIKE(name, #{chitem}))
+	</if>
+ </select> -->
+ 
+ <select id="bookingTotalPage2" resultType="int" parameterType="hashmap">
+   SELECT CEIL(COUNT(*)/9.0) FROM ord_4 
+   WHERE (store LIKE '%'||#{store}||'%')
+   <if test="!chitem.equals('') and chitem!=null">
+    AND (REGEXP_LIKE(name, #{chitem}))
+	</if>
  </select>
  
  <select id="hospitalDetailData" resultType="BookingVO" parameterType="int">

@@ -32,7 +32,25 @@ public class BookingModel {
 		String store=request.getParameter("store");
 		if(store==null) 
 			store="";
-		System.out.println(store+":");   
+		String[] chitem=request.getParameterValues("chitem");
+		/*
+		 * if(chitem==null) chitem=null; System.out.println(chitem+":");
+		 */
+		String strChitem = request.getParameter("strChitem");
+		
+		if(strChitem == null || strChitem.equals("")) {
+			strChitem = "";
+		}
+		if(chitem!=null) {
+			for (int i = 0; i < chitem.length; i++) { System.out.println(chitem[i]); }
+			strChitem = String.join("|", chitem); 
+		}
+		 
+		 
+		
+			/*
+			 * if(chitem==null) chitem=null; System.out.println(chitem+":");
+			 */
 		 
 		int curpage=Integer.parseInt(page);
 		int rowSize=9;
@@ -45,11 +63,19 @@ public class BookingModel {
 		map.put("s", 19);
 		map.put("e", 515);
 		map.put("store", store);
+		map.put("chitem", strChitem);
 		
 		List<BookingVO> list=BookingDAO.bookingListData(map);
 		
-		 int totalpage=BookingDAO.bookingTotalPage(store);
-		   System.out.println("totalpage="+totalpage);
+		Map map2=new HashMap();
+		map2.put("store", store);
+		map2.put("chitem", strChitem);
+		
+		/* int totalpage=BookingDAO.bookingTotalPage(store); */
+		 
+		 int totalpage2=BookingDAO.bookingTotalPage2(map2);
+		 
+		   System.out.println("totalpage="+totalpage2);
 		   final int BLOCK=5;
 		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
 		   /*
@@ -60,15 +86,17 @@ public class BookingModel {
 		    */
 		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
 		   
-		   if(endPage>totalpage)
-			    endPage=totalpage;
+		   if(endPage>totalpage2)
+			    endPage=totalpage2;
 		   
 		   request.setAttribute("curpage", curpage);
-		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("totalpage", totalpage2);
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
 		   request.setAttribute("list", list);
 		   request.setAttribute("store", store);
+		   request.setAttribute("chitem", strChitem);
+		   request.setAttribute("strChitem", strChitem);
 		
 		request.setAttribute("main_jsp", "../booking/hospital_list.jsp");
 		return "../main/main.jsp";

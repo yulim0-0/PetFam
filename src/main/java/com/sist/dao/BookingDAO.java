@@ -36,7 +36,7 @@ public class BookingDAO {
 		List<BookingVO> list=null;
 		SqlSession session=null;
 		try
-		{
+		{ 
 			session=ssf.openSession();
 			list=session.selectList("bookingListData",map);
 		}catch(Exception ex)
@@ -53,18 +53,25 @@ public class BookingDAO {
 		}
 		return list;
 	}
+	/*
+	 * public static int bookingTotalPage(String store) { int total=0; SqlSession
+	 * session=null; try { session=ssf.openSession();
+	 * total=session.selectOne("bookingTotalPage", store); }catch(Exception ex) {
+	 * System.out.println("bookingTotalPage : error"); ex.printStackTrace(); }
+	 * finally { if(session!=null) session.close(); // POOL => 반환 } return total; }
+	 */
 	
-	public static int bookingTotalPage(String store)
+		public static int bookingTotalPage2(Map map)
 	   {
 		   int total=0;
 		   SqlSession session=null;
 		   try
 		   {
 			   session=ssf.openSession();
-			   total=session.selectOne("bookingTotalPage", store);
+			   total=session.selectOne("bookingTotalPage2", map);
 		   }catch(Exception ex)
 		   {
-			   System.out.println("bookingTotalPage : error");
+			   System.out.println("bookingTotalPage2 : error");
 			   ex.printStackTrace();
 		   }
 		   finally
@@ -72,6 +79,7 @@ public class BookingDAO {
 			   if(session!=null)
 				   session.close(); // POOL => 반환 
 		   }
+		   //System.out.println("totalDAO2 ============== : "+total);
 		   return total;
 	   }
 	 

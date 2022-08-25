@@ -1,7 +1,7 @@
 .search-container {
-  display: block;
-  margin-bottom: -70px;
-  width: 1200px;
+  /* display: block;
+  margin-bottom: -70px; */
+  width: 100%;
 }
 
 input#search-bar {
@@ -37,5 +37,5 @@ input#search-bar:focus:-ms-placeholder {
   width: 75px;
   height: 75px;
   top: -62px;
-  left: -5px;
+  left: 90%;
 }

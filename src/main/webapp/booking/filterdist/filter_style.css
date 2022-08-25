@@ -148,7 +148,7 @@ select option {
 .input-group {
 	padding: 5px 10px; 
 	zoom: 1;
-	margin-bottom: 1em;
+	/* margin-bottom: 1em; */
 }
 
 .input-group:before, .input-group:after {
