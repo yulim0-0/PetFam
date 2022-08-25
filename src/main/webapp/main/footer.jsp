@@ -79,7 +79,7 @@
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <p style="word-break:break-all">해당 버튼을 클릭하시면 직원들의 GitHub으로 연결 됩니다. 더 많은 정보는 문의하기를 이용해주세요</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
