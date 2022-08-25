@@ -21,15 +21,15 @@ $(function(){
     $('#zipBtn').click(function() {
         new daum.Postcode({
             oncomplete : function(data) {
-                $('#addr1').val("["+data.zonecode+"] " + data.address)
+                $('#zipcode').val("["+data.zonecode+"] " + data.address)
             }
         }).open()
     })
-})
+
 $('#editBtn').click(function(){
         $('#edit_frm').submit();
     })
-
+})
 </script>
 </head>
 <body>
@@ -85,7 +85,7 @@ $('#editBtn').click(function(){
                                 <td></td>
                                 <td data-title="ID" class="info_cate">주소</td>
                                 <td>
-                                    <input type=text name=zipcode id=zipcode value=${vo.zipcode } placeholder="[${vo.zipcode }]  ${vo.addr1 }" disabled>
+                                    <input type=text name=zipcode id=zipcode value=${vo.zipcode } placeholder="[${vo.zipcode }]  ${vo.addr1 }" readonly>
                                 </td>
                                 <td class="checkBtn"><input type=button name=zipBtn id=zipBtn class=zipBtn value="우편번호" /></td>
                             </tr>
@@ -94,7 +94,6 @@ $('#editBtn').click(function(){
                                 <td data-title="ID" class="info_cate">상세주소</td>
                                 
                                 <td><input type=text name=addr2 id=addr2 value="${vo.addr2 }">                                    
-                                    <input type="hidden" name=addr1 id=addr1 value=${vo.addr1 }>
                                 </td>
                                 <td></td>
                             </tr>

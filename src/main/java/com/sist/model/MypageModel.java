@@ -74,11 +74,14 @@ public class MypageModel {
 		String email=request.getParameter("email");
 		String birthday=request.getParameter("birthday");
 		System.out.println("1");
+		
 		String zipcode=request.getParameter("zipcode");
+		String zip=zipcode.substring(zipcode.indexOf("[")+1,zipcode.lastIndexOf("]"));
+		String addr=zipcode.substring(zipcode.lastIndexOf("]")+1);
 		System.out.println(zipcode);
 		String addr1=request.getParameter("addr1");
 		String addr2=request.getParameter("addr2");
-		String gender=request.getParameter("gender");
+		String gender=request.getParameter("sex");
 		
 		UserVO vo=new UserVO();
 		vo.setId(id);
@@ -87,8 +90,8 @@ public class MypageModel {
 		vo.setPhone(phone);
 		vo.setEmail(email);
 		vo.setBirthday(birthday);
-		vo.setZipcode(zipcode);
-		vo.setAddr1(addr1);
+		vo.setZipcode(zip);
+		vo.setAddr1(addr.trim());
 		vo.setAddr2(addr2);
 		vo.setGender(gender);
 		
