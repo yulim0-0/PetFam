@@ -113,7 +113,6 @@ $('.up').click(function(){
 		})
 	})
 })
-
 </script>
 </head>
 <body>
@@ -265,7 +264,7 @@ $('.up').click(function(){
 					</tr>
 				</table>
 			</c:if>
-	</div>
+		</div>
 
 	</main>
 	</div>

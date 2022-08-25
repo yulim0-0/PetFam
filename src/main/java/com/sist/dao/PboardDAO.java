@@ -32,7 +32,7 @@ public class PboardDAO {
 		   session=ssf.openSession();
 		   list=session.selectList("pboardListData",map);
 	   }catch(Exception ex)
-	   {
+	   {System.out.println("====ListData() error====");
 		   ex.printStackTrace();
 	   }
 	   finally
@@ -59,6 +59,7 @@ public class PboardDAO {
 	   }
 	   return list;
    }
+  
    public static int pboardTotalPage()
    {
 	   int total=0;
@@ -213,24 +214,12 @@ public class PboardDAO {
 	   try
 	   {
 		   session=ssf.openSession(); 
-		   //<select id="boardGetPassword" resultType="string" parameterType="int">
-		   /*
-		    *  SELECT pwd FROM project_freeboard
-               WHERE no=#{no}
-               
-               map.put("boardGetPassword","SELECT pwd FROM project_freeboard
-               WHERE no=#{no}")
-		    */
+		  
 		   String db_pwd=session.selectOne("pboardGetPassword", p_no);
 		   if(db_pwd.equals(pwd))
 		   {
 			   result="yes";
-			   /*
-			    *  <delete id="boardDelete" parameterType="int">
-				    DELETE FROM project_freeboard
-				    WHERE no=#{no}
-				   </delete>
-			    */
+			  
 			   session.delete("pboardDelete",p_no);
 			   session.commit();
 		   }
@@ -238,7 +227,8 @@ public class PboardDAO {
 		   {
 			   result="no";
 		   }
-	   }catch(Exception ex)
+	   }
+	   catch(Exception ex)
 	   {
 		   ex.printStackTrace();
 	   }
@@ -250,42 +240,22 @@ public class PboardDAO {
 	   return result;
    }
    
-   public static void good_countInsert(PboardVO vo)
-	 {
-		 SqlSession session=null;
-		 try
-		 {
-			 session=ssf.openSession(true);
-			 session.insert("good_countInsert", vo);
-		 }catch(Exception ex)
-		 {
-			 ex.printStackTrace();
-		 }
-		 finally
-		 {
-			 if(session!=null)
-				 session.close();
-		 }
-		 
-	 }
-	 
-	 public static int good_count(PboardVO vo)
-	 {
-		 int count=0;
-		 SqlSession session=null;
-		 try
-		 {
-			 session=ssf.openSession();
-			 count=session.selectOne("good_count", vo);
-		 }catch(Exception ex)
-		 {
-			 ex.printStackTrace();
-		 }
-		 finally
-		 {
-			 if(session!=null)
-				 session.close();
-		 }
-		 return count;
-	 }
+//   public static List<PboardVO> pboardgetSearchList(Map map)
+//   {
+//	   List<PboardVO> list=null;
+//	   SqlSession session=null;
+//	   try {
+//		session=ssf.openSession(true);
+//		list=session.selectList("pboardgetSearchList",map);
+//	} catch (Exception e) {
+//		e.printStackTrace();
+//	}
+//	   finally
+//	   {
+//		   if(session!=null)
+//			   session.close();
+//	   }
+//	   return list;
+//   }
+   
 }

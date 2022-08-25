@@ -14,20 +14,29 @@ public class PboardModel {
    @RequestMapping("pboard/list.do")
    public String pboard_list(HttpServletRequest request,HttpServletResponse response)
    {
+//	   String id=request.getParameter("id");
+//	   String subject =request.getParameter("subject");
+	   try
+	   {
+		   request.setCharacterEncoding("UTF-8");
+	   }catch(Exception ex) {}
 	   String page=request.getParameter("page");
 	   if(page==null)
 		   page="1";
+	  
+	   String subject=request.getParameter("subject");
+	   if(subject==null)
+		   subject="";
 	   int curpage=Integer.parseInt(page);
+	   
 	   Map map=new HashMap();
 	   int rowSize=10;
 	   int start=(curpage*rowSize)-(rowSize-1);
 	   int end=curpage*rowSize;
 	   map.put("start", start);
 	   map.put("end",end);
+	   map.put("subject", subject);
 	   List<PboardVO> list=PboardDAO.pboardListData(map);
-//	   조회수 정렬 (인기순)
-	  
-	   
 	   int totalpage=PboardDAO.pboardTotalPage();
 	  
 	   final int BLOCK=5;
@@ -41,10 +50,14 @@ public class PboardModel {
        request.setAttribute("totalpage", totalpage);
        request.setAttribute("startPage", startPage);
 	   request.setAttribute("endPage", endPage);
+	   request.setAttribute("subject", subject);
        request.setAttribute("list", list);
+      
 	   request.setAttribute("main_jsp", "../pboard/list.jsp");
 	   return "../main/main.jsp";
    }
+   
+   
    
    @RequestMapping("pboard/list_hit.do")
    public String pboard_list_hit(HttpServletRequest request,HttpServletResponse response)
@@ -60,8 +73,8 @@ public class PboardModel {
 	   map.put("start", start);
 	   map.put("end",end);
 	   
+	 	   
 	   List<PboardVO> list=PboardDAO.pboardHitListData(map);
-	   
 	   int totalpage=PboardDAO.pboardTotalPage();
 	  
 	   final int BLOCK=5;
@@ -83,9 +96,6 @@ public class PboardModel {
    @RequestMapping("pboard/insert.do")
    public String pboard_insert(HttpServletRequest request,HttpServletResponse response)
    {
-//	   HttpSession session=request.getSession();
-//	   String id=(String)session.getAttribute("id");
-//	   String name=(String)session.getAttribute("name");
 	   request.setAttribute("main_jsp", "../pboard/insert.jsp");
 	   return "../main/main.jsp";
    }
@@ -191,7 +201,6 @@ public class PboardModel {
 	   request.setAttribute("result", result);
 	   return "../pboard/delete.jsp";
    }
-   
 
   
 }
