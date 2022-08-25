@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.vo.JjimVO;
+import com.sist.vo.OrderVO;
 import com.sist.vo.PboardVO;
 import com.sist.vo.PetplaceVO;
 import com.sist.vo.QnaVO;
@@ -194,4 +195,25 @@ public class MypageDAO {
 		}
 		return total;
 	}
+	//예약내역 출력
+	public static List<OrderVO> bookingMypageData(String id)
+	   {
+		   List<OrderVO> list=null;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   list=session.selectList("bookingMypageData", id);
+			   System.out.println(list);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
 }
