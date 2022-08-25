@@ -62,7 +62,7 @@ RCOUNT              NUMBER    -->
 
 
 <!-- 개인정보 수정 처리 -->
-<update id="userEdit" parameterType="string">
+<update id="userEdit" parameterType="com.sist.vo.UserVO">
     UPDATE user_4 
     SET name=#{name}, phone=#{phone}, email=#{email}, birthday=#{birthday}, zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2}, gender=#{gender}
     WHERE id=#{id}
@@ -104,6 +104,7 @@ RCOUNT              NUMBER    -->
 
 <!-- 예약내역 출력 -->
 <select id="bookingMypageData" resultType="com.sist.vo.OrderVO" parameterType="string">
+<!-- 조인으로 바꿀것 -->
     SELECT oi_no,order_date,order_time,msg,state,
            (SELECT store FROM ord_4 WHERE o_no=ord_info_4.o_no) as store,
            (SELECT name FROM ord_4 WHERE o_no=ord_info_4.o_no) as name,
@@ -113,4 +114,9 @@ RCOUNT              NUMBER    -->
     WHERE id=#{id}
     ORDER BY oi_no DESC
   </select>
+  <!-- 예약 취소 -->
+  <delete id="booking_Cancel" parameterType="int">
+    DELETE FROM ord_info_4
+    WHERE oi_no=#{oi_no}
+  </delete>
 </mapper>

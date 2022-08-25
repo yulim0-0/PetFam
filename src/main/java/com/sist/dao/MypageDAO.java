@@ -216,4 +216,22 @@ public class MypageDAO {
 		   }
 		   return list;
 	   }
+	 /* 예약취소 */
+	 public static void booking_Cancel(int oi_no)
+	   {
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession(true);
+			   session.delete("booking_Cancel",oi_no);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+	   }
 }

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>[MyPage] Booking Confirmation</title>
+<title>[MyPage2] Booking Confirmation</title>
 <link rel="stylesheet" href="../mypage/css/my_booking.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
@@ -121,13 +121,13 @@ var stop = function(msg, title, type){
             closeOnCancel : true
         }, function(isConfirm) {
             if (isConfirm) {
-            	var oi="";
-                var oi=document.getElementById('oi').value;
-                location.href="../admin/admin_cancel.do?oi_no="+oi
+            	var oi_no="";
+                var oi_no=document.getElementById('oi_no').value;
+                location.href="../mypage/booking_cancel.do?oi_no="+oi_no
                 swal('', '예약이 취소되었습니다.', "success");
             }
             else {
-                swal('', '취소에 실패하였습니다.', "failed");
+            	location.href="../mypage/mybooking.do"
             }
 
         });
@@ -151,7 +151,6 @@ var stop = function(msg, title, type){
 		<h1 style="text-align: center">예약 내역<br /> <span class="badge badge-pill badge-primary"
 				style="text-align: center">Booking list</span>
 		</h1>
-		<p style="text-align: center"></p>
 
 		<section class="card__list row" style="padding-bottom:160px; padding-top:20px;">
 			<c:forEach var="vo" items="${list }">
@@ -231,11 +230,11 @@ var stop = function(msg, title, type){
 							<div class="card-description"></div>
 							<div class="card-flap flap2">
 								<div class="card-actions">
-								<div style="text-align : left">
-								    예약자 아이디 : r <br>
+								<%-- <div style="text-align : left">
+								    예약자 아이디 : ${vo.id } <br>
 								    예약자 이름 :    <br>
 								    예약자 연락처 : 
-								</div>
+								</div> --%>
 									<c:if test="${vo.state=='n' }">
                                         <!-- <button class="btn" onclick="Confirm();" style="color:red">승인</button> -->
                                         <button class="btn" onclick="Cancel();" style="color:darkgreen">취소</button>
