@@ -10,9 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.4.2/css/all.css'>
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"> -->
-<link rel="stylesheet" href="../pboard/pboarddist/dist/style.css">
-<!--  <link rel="stylesheet" type="text/css" href="https://d4fodtu7cqfym.cloudfront.net/fad0d3bf8c478ce27ec4b20657d43000.min.css?v=200103-10"> -->
 <link rel="stylesheet" href="pboarddist/pboard_style.css">
 <style type="text/css">
 body {
@@ -187,29 +184,19 @@ body {
 					
  <!--  게시글 검색 -->
 				
-				<form class="search_bar large" mothod="get" action="">
-					  <div class="search_dropdown" style="width: 16px;">
-					    <span >제목+내용</span>
-					    <ul>
-					      <li class="selected" value="T" >제목+내용</li>
-					      <li value="A">제목</li>
-					      <li value="TA">작성자</li>
-					    </ul>
-					  </div>
-					
-					  <input type="text" placeholder="검색어를 입력해 주세요." id="keyword" autocomplete=off/>
-					  <input type="hidden" id="page" value="${curpage }">
-			          <input type="hidden" id="cno" value="${curcno}">
-			           <input type="hidden" id="total_list" value="#">
-			            <input type="hidden" id="sub_list" value="${vo.subject}">
-			             <input type="hidden" id="id_list" value="${vo.id}">
-			      <div class="input-group-append">
-					  <button type="submit" value="Search" id="findBtn">Search</button>
-					</div>
-				</form> 
-					
+					<div class="row">
+				<div class="input-group">
+					<form class="search-container" method="post" action="../pboard/list.do" class="search_bar large">
+						<input type="text" id="search-bar" value="${subject }" name=subject
+							placeholder="검색어를 입력해 주세요.">
+							 <button type="submit" value="Search" id="findBtn">Search</button>
+					</form>
+				</div>
 			</div>
-		</div>
+				
+				
+				
+			
 	</div>
 	
 
