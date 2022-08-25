@@ -87,12 +87,12 @@
    <li class="one_quarter first">
    <li class="cards_item">
     <div class="card">
-     <div class="card_image"><img src="${vo.poster }"></div>
+     <div class="card_image"><img src="${vo.poster }" class="img2"></div>
      
      
      <div class="card_content">
     
-      <b class="card_title">${vo.title }</b> &ensp;&ensp;&ensp; 조회수:${vo.hit }
+      <b class="card_title">${vo.title }</b>  <br> 조회수:${vo.hit }
       
      
       <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"><button class="btn card_btn">Read More</button></a>
@@ -105,10 +105,10 @@
    <li class="one_quarter">
    <li class="cards_item">
     <div class="card">
-     <div class="card_image"><img src="${vo.poster }"></div>
+     <div class="card_image"><img src="${vo.poster }" class="img2"></div>
      <div class="card_content">
      
-      <b class="card_title">${vo.title }</b> &ensp;&ensp;&ensp; 조회수:${vo.hit }
+      <b class="card_title">${vo.title }</b>  <br> 조회수:${vo.hit }
       
       
     <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"> <button class="btn card_btn">Read More</button></a>

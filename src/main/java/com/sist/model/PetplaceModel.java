@@ -269,8 +269,18 @@ public class PetplaceModel {
 		   List<PetplaceVO> list=PetplaceDAO.placeLocationFindData(map);
 		   int totalpage=PetplaceDAO.placeLocationFindTotalPage(addr);
 		   
+			   System.out.println("totalpage="+totalpage);
+			   final int BLOCK=5;
+			   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+			   
+			   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+			   
+			   if(endPage>totalpage)
+				    endPage=totalpage;
 		   request.setAttribute("curpage", curpage);
 		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("startPage", startPage);
+		   request.setAttribute("endPage", endPage);
 		   request.setAttribute("list", list);
 		   request.setAttribute("addr", addr);
 		   request.setAttribute("main_jsp", "../petplace/place_find.jsp");

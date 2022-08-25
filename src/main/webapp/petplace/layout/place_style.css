@@ -38,7 +38,8 @@ h1 {
     text-align: center;
 }
 
-img {
+.img2 {
+  width:280px;
   height: 200px;
   max-width: 100%;
   vertical-align: middle;
@@ -118,12 +119,28 @@ img {
   line-height: 1.5;
   margin-bottom: 0.1rem;    
   font-weight: 700;
+  text-align:center;
 }
 .place {
-  color: #f34100;
-  text-align: right;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 0.5rem;    
-  font-weight: 300;
+    color: #f34100;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    font-weight: 300;
+    font-size: 10px;
 }
+.hit{
+	color:red;
+	
+}
+ 
+
+/*.card_image > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
