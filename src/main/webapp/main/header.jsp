@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>HEADER</title>
 <link rel="stylesheet" href="https://use.typekit.net/evl6ifb.css">
 
 </head>
@@ -24,7 +24,6 @@
 
 			<nav id="navbar" class="navbar">
 				<ul>
-					<!-- <li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
 					<li class="dropdown">
 						<a href="#"><span>예약</span><i class="bi bi-chevron-down"></i></a>
 						<ul>
@@ -32,7 +31,6 @@
 							<li><a href="../booking/salon_list.do">미용</a></li>
 							<li><a href="../booking/training_list.do">훈련</a>
 						</ul> 
-						<!--   <li><a class="nav-link scrollto" href="#portfolio" hover="Recommendation")>추천</a></li>-->
 					<li class="dropdown"><a href="#"><span>추천</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="../petplace/cafe.do">카페/식당</a></li>
@@ -82,12 +80,12 @@
 						</c:if> <!-- 로그인 상태가 아닌 경우 --> <c:if test="${sessionScope.id==null }">
 							<li><a href="../user/join.do">회원가입</a></li>
 						</c:if>
-					<li><a class="nav-link scrollto" href="#contact">문의</a></li>
+					<li><a class="nav-link scrollto" href="../main/main.do">문의</a></li>
 
 					<!-- 로그인 상태가 아닌 경우 -->
 					<c:if test="${sessionScope.id==null }">
 						<li>
-							<a class="start" id="login_header" href="../user/login.do">로그인</a>
+							<a class="start" id="login_header" href="../user/login.do#contact">로그인</a>
 						</li>
 					</c:if>
 
