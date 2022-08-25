@@ -144,6 +144,7 @@
  <div style="height: 10px"></div>
  		<div class="cookie-row">
     <h3>최근에 본 장소</h3>
+    <a href="cookie_delete.jsp">쿠키삭제</a>
     <hr>
      <%
      	int k=0;

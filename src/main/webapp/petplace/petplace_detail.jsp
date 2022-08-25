@@ -33,6 +33,7 @@
 							<li><a href="../petplace/cafe.do">카페/식당</a></li>
 							<li><a href="../petplace/park.do">공원</a></li>
 							<li><a href="../petplace/pension.do">펜션</a></li>
+							<li><a href="../petplace/place_find.do">추천 지역별검색</a></li>
 						</ul>
 					</li>
 
