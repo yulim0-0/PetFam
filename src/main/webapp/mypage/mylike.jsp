@@ -95,7 +95,7 @@
 									class="btn">Read more</button>
 								<button
 									onclick="location.href='../booking/jjim_cancel.do?o_no=${po.c_no }'"
-									class="btn">좋아요 취소</button>
+									class="btn">Cancel Like</button>
 							</div>
 						</div>
 					</div>

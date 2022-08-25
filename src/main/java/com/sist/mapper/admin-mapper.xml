@@ -58,5 +58,33 @@
         UPDATE qbo_4 SET isreply=isreply+1
         WHERE q_no=#{q_no}
     </update>
-
+    
+    <!-- 예약 정보 승인 여부 -->
+    <select id="adminBookingCheck" resultType="com.sist.vo.OrderVO" >
+        SELECT ord_info_4.oi_no, ord_info_4.order_date, ord_info_4.order_time, ord_info_4.regdate
+        , ord_info_4.msg, ord_info_4.o_no, id, state, ord_4.poster, ord_4.price, ord_4.store, ord_4.name
+        FROM ORD_INFO_4
+        LEFT JOIN ORD_4
+        ON ORD_INFO_4.o_no = ord_4.o_no
+        ORDER BY state ASC
+    </select>
+    
+    <!-- 예약 승인 -->
+    <update id="adminBookingUpdate" parameterType="int">
+      UPDATE ord_info_4 
+      SET state='y'
+      WHERE oi_no=#{oi_no}
+    </update>
+    
+    <!-- 예약 취소 -->
+    <update id="adminCancel" parameterType="int">
+      UPDATE ord_info_4 
+      SET state='n'
+      WHERE oi_no=#{oi_no}
+    </update>
+    
+    <select id="adminBookingTotal" resultType="int">
+        SELECT CEIL(COUNT(*)/10.0) FROM ord_info_4
+    </select>
+    
 </mapper>

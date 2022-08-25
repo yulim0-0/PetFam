@@ -27,7 +27,7 @@ public class MypageDAO {
 		}
 	}
 	
-	// 확인용 정보 불러오기 전용
+	// 정보 확인용 전용
 	public static UserVO myInfoData(String id)
 	{
 		UserVO vo=new UserVO();
@@ -61,33 +61,36 @@ public class MypageDAO {
 		return vo;
 	}
 	
-
+	
 	public static boolean userEdit(UserVO vo)
 	{
 		boolean bCheck=false;
 		SqlSession session=null;
-		try {
+		try
+		{
 			session=ssf.openSession();
-			UserVO uvo=session.selectOne("myInfoEidtCheck", vo.getId());
-			System.out.println("test");
-			if(uvo.getPwd().equals(vo.getPwd()))
+			UserVO pvo=session.selectOne("userInfoEditPwd", vo.getId());
+			System.out.println(vo.getId());
+			if(pvo.getPwd().equals(vo.getPwd()))
 			{
 				bCheck=true;
-				session.update("userUpdate",vo);
+				session.update("userEdit",vo);
 				session.commit();
 			}
-			else 
+			else
 			{
-				bCheck=false;
+				bCheck=false; 
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
 		}
-		finally {
+		finally
+		{
 			if(session!=null)
 				session.close();
 		}
-		return bCheck;
+	   return bCheck;
 	}
 	// 나의 좋아요 목록 - 예약
 	public static List<JjimVO> userBookingLikeData(String id)

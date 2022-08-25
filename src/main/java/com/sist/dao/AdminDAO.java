@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.sist.vo.OrderVO;
 import com.sist.vo.PboardVO;
 import com.sist.vo.QnaVO;
 import com.sist.vo.UserVO;
@@ -23,6 +24,72 @@ public class AdminDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	// 예약 확인
+	public static List<OrderVO> adminBookingCheck()
+	{
+		List<OrderVO> list=null;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("adminBookingCheck");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return list;
+	}
+	
+	// 예약승인
+	public static void adminBookingUpdate(int oi_no)
+	{
+		SqlSession session=null;
+		try {
+			session=ssf.openSession(true);
+			session.update("adminBookingUpdate",oi_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	
+	// 예약 취소
+	public static void adminCancel(int oi_no)
+	{
+		SqlSession session=null;
+		try {
+			session=ssf.openSession(true);
+			session.update("adminCancel",oi_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+	}
+	
+	// 예약 페이징
+	public static int adminBookingTotal()
+	{
+		int total=0;
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			total=session.selectOne("adminWriteTotalPage");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(session!=null)
+				session.close();
+		}
+		return total;
+	}
+	
 	
 	// 전체 회원 정보 나열
 	public static List<UserVO> userInfoList()

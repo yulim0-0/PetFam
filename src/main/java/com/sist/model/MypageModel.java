@@ -1,6 +1,5 @@
 package com.sist.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +12,6 @@ import com.sist.controller.Controller;
 import com.sist.controller.RequestMapping;
 import com.sist.dao.AdminDAO;
 import com.sist.dao.MypageDAO;
-import com.sist.dao.PetplaceDAO;
-import com.sist.dao.UserDAO;
 import com.sist.vo.JjimVO;
 import com.sist.vo.PboardVO;
 import com.sist.vo.PetplaceVO;
@@ -23,14 +20,25 @@ import com.sist.vo.UserVO;
 
 @Controller
 public class MypageModel {
+//	@RequestMapping("mypage/myinfo.do")
+//	public String infoData(HttpServletRequest request, HttpServletResponse response)
+//	{
+//		HttpSession session=request.getSession();
+//		String id=(String)session.getAttribute("id");
+//		List<UserVO> list=MypageDAO.infoData(id);
+//		
+//		request.setAttribute("list", list);
+//		request.setAttribute("main_jsp", "../mypage/myinfo.jsp");
+//		return "../main/main.jsp";
+//	}
 	
 	@RequestMapping("mypage/myinfo.do")
-	public String myinfoData(HttpServletRequest request, HttpServletResponse response)
+	public String myInfoData(HttpServletRequest request, HttpServletResponse response)
 	{
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");	// 다운캐스팅
-		UserVO vo=MypageDAO.myInfoData(id);
 		System.out.println(id);
+		UserVO vo=MypageDAO.myInfoData(id);
 		
 		request.setAttribute("vo", vo);
 		request.setAttribute("main_jsp", "../mypage/myinfo.jsp");
@@ -42,24 +50,23 @@ public class MypageModel {
 	{	
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
-		UserVO vo=MypageDAO.myInfoDataforEdit(id);
+		UserVO vo=MypageDAO.myInfoData(id);
 		
 		request.setAttribute("vo", vo);
 		request.setAttribute("main_jsp", "../mypage/myinfo_edit.jsp");
 		return "../main/main.jsp";
 	}
-	
+	 
 	@RequestMapping("mypage/myinfo_edit_ok.do")
 	public String myinfo_edit_ok(HttpServletRequest request, HttpServletResponse response)
 	{
 		try {
 			request.setCharacterEncoding("UTF-8");
 		} catch (Exception e) {}
+		
+		
 		String id=request.getParameter("id");
-
 		String pwd=request.getParameter("pwd");
-		System.out.println(pwd);
-
 		String name=request.getParameter("name");
 		String phone=request.getParameter("phone");
 		String email=request.getParameter("email");
@@ -69,14 +76,10 @@ public class MypageModel {
 		String addr2=request.getParameter("addr2");
 		String gender=request.getParameter("gender");
 		
-		System.out.println(id);
-		System.out.println(pwd);
-		System.out.println(name);
-		
 		UserVO vo=new UserVO();
 		vo.setId(id);
-		vo.setName(name);
 		vo.setPwd(pwd);
+		vo.setName(name);
 		vo.setPhone(phone);
 		vo.setEmail(email);
 		vo.setBirthday(birthday);

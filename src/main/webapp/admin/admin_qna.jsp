@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>[ADMIN] QnA</title>
 <link rel="stylesheet" href="css/admin_community.css">
 <style>
  .pagination {

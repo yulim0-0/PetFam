@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.mapper.mypage-mapper">
 
+
 <select id="myInfoData" resultType="UserVO" parameterType="string">
     SELECT * FROM user_4 WHERE id=#{id}
 </select>
@@ -44,11 +45,26 @@ RCOUNT              NUMBER    -->
 <select id="userInfoEdit" resultType="UserVO" parameterType="string">
     SELECT * FROM user_4 WHERE id=#{id}
 </select>
+<!-- 비밀번호 읽기 -->
+<select id="userInfoEditPwd" resultType="UserVO" parameterType="string">
+  SELECT pwd,id,name,admin
+  FROM user_4
+  WHERE id=#{id}
+</select>
+
+<!--    <update id="memberUpdate" parameterType="MemberVO">
+      UPDATE project_member SET
+      name=#{name},sex=#{sex},email=#{email},
+      addr1=#{addr1},addr2=#{addr2},tel=#{tel},
+      content=#{content}
+      WHERE id=#{id}
+    </update> -->
+
 
 <!-- 개인정보 수정 처리 -->
 <update id="userEdit" parameterType="UserVO">
     UPDATE user_4 
-    SET pwd=#{pwd}, name=#{name}, phone=#{phone}, birthday=#{birthday}, zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2}, gender=#{gender}
+    SET name=#{name}, phone=#{phone}, email=#{email}, birthday=#{birthday}, zipcode=#{zipcode}, addr1=#{addr1}, addr2=#{addr2}, gender=#{gender}
     WHERE id=#{id}
 </update>
 

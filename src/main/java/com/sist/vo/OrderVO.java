@@ -5,8 +5,45 @@ import java.util.*;
 public class OrderVO {
 	private int oi_no,o_no;
 	private String order_date,order_time,msg,state,id;
-	private Date regdate;
+	private Date regdate, ordate, redate;
+	private String store, poster, name, price;
 	
+	public String getStore() {
+		return store;
+	}
+	public void setStore(String store) {
+		this.store = store;
+	}
+	public String getPoster() {
+		return poster;
+	}
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+	public Date getOrdate() {
+		return ordate;
+	}
+	public void setOrdate(Date ordate) {
+		this.ordate = ordate;
+	}
+	public Date getRedate() {
+		return redate;
+	}
+	public void setRedate(Date redate) {
+		this.redate = redate;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
 	public int getOi_no() {
 		return oi_no;
 	}

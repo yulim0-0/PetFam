@@ -14,17 +14,39 @@ import com.sist.dao.AdminDAO;
 import com.sist.dao.MypageDAO;
 import com.sist.dao.PboardDAO;
 import com.sist.dao.QnaDAO;
+import com.sist.vo.OrderVO;
 import com.sist.vo.PboardVO;
 import com.sist.vo.QnaVO;
 import com.sist.vo.UserVO;
 
 @Controller
 public class AdminModel {
+	// 예약 승인
 	@RequestMapping("admin/admin_booking.do")
 	public String admin_booking(HttpServletRequest request, HttpServletResponse response) 
 	{
+		List<OrderVO> list=AdminDAO.adminBookingCheck();
+		request.setAttribute("list", list);
 		request.setAttribute("main_jsp", "../admin/admin_booking.jsp");
 		return "../main/main.jsp";
+	}
+	
+	@RequestMapping("admin/admin_booking_ok.do")
+	public String admin_booking_check(HttpServletRequest request, HttpServletResponse response)
+	{
+		String oi_no=request.getParameter("oi_no");
+		AdminDAO.adminBookingUpdate(Integer.parseInt(oi_no));
+		System.out.println(oi_no);
+    	return "redirect:../admin/admin_booking.do";
+	}
+	
+	@RequestMapping("admin/admin_cancel.do")
+	public String admin_cancel(HttpServletRequest request, HttpServletResponse response)
+	{
+		String oi_no=request.getParameter("oi_no");
+		AdminDAO.adminCancel(Integer.parseInt(oi_no));
+		System.out.println(oi_no);
+    	return "redirect:../admin/admin_booking.do";
 	}
 	
 	@RequestMapping("admin/admin_community.do")

@@ -15,8 +15,7 @@
         </div>
 
         <div id="demo">
-            <div class="table-responsive-vertical shadow-z-1"
-                style="width: 1000px; margin: 0 auto;">
+            <div class="table-responsive-vertical shadow-z-1" style="width: 1000px; margin: 0 auto;">
                 <!-- Table starts here -->
                 <table id="table" class="table table-hover table-mc-light-blue">
                         <!-- <thead>
@@ -27,7 +26,9 @@
                                 <th></th>
                             </tr>
                         </thead> -->
+                        
                         <tbody>
+                        
                             <tr>
                                 <td></td>
                                 <td data-title="ID" class="info_cate">아이디</td>
@@ -36,8 +37,14 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td data-title="ID" class="info_cate">이름</td>
+                                <td data-title="Name" class="info_cate">이름</td>
                                 <td data-title="Name">${vo.name }</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td data-title="Email" class="info_cate">이메일</td>
+                                <td data-title="Email">${vo.email }</td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -48,8 +55,8 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td data-title="ID" class="info_cate">생일</td>
-                                <td data-title="Name">${vo.birthday }</td>
+                                <td data-title="Birthday" class="info_cate">생일</td>
+                                <td data-title="Birthday">${vo.birthday }</td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -67,6 +74,7 @@
 
 
                         </tbody>
+                        
                 </table>
 
 
@@ -76,5 +84,7 @@
             </div>
         </div>
     </main>
+    
+<script src="js/myinfo.js"></script>
 </body>
 </html>
