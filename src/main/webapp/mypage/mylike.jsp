@@ -8,11 +8,6 @@
 <meta charset="UTF-8">
 <title>My Like</title>
 <link rel="stylesheet" href="css/mylike.css">
-<script type="text/javascript">
-	function priceToString(price) {
-		return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-	}
-</script>
 </head>
 <body>
 	<!-- partial:index.partial.html -->
@@ -32,21 +27,7 @@
 						</a>
 						<h2>
 							${vo.name } <input type="hidden" value="${vo.price }" id=price>
-							<small> <script>
-								var n1 = document
-										.getElementById("price").value;
-
-								function numberWithCommas(x) {
-									return x
-											.toString()
-											.replace(
-													/\B(?=(\d{3})+(?!\d))/g,
-													",");
-								}
-								numberWithCommas(n1);
-								document
-										.write(numberWithCommas(n1));
-							</script> 원
+							<small>${vo.price }원
 							</small>
 						</h2>
 					</div>

@@ -20,23 +20,23 @@ NAME       NOT NULL VARCHAR2(20)
 RCOUNT              NUMBER    -->
 <!-- 게시글 목록 -->
 <select id="userWriteData" resultType="PboardVO" parameterType="map">
-    SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
-    FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
-    FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
+    SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, id, name, rcount, num
+    FROM (SELECT p_no, subject, content, pwd, regdate, hit, id, name, rcount, rownum as num
+    FROM (SELECT p_no, subject, content, pwd, regdate, hit, id, name, rcount
     FROM pbo_4 WHERE id=#{id} ORDER BY regdate DESC))
     WHERE num BETWEEN #{start} AND #{end}
     
 </select>
 <!-- 게시글 페이징 -->
-<select id="userWriteTotalPage" resultType="int" >
-    SELECT CEIL(COUNT(*)/10.0) FROM pbo_4
+<select id="userWriteTotalPage" resultType="int" parameterType="string" >
+    SELECT CEIL(COUNT(*)/10.0) FROM pbo_4 WHERE id=#{id}
 </select>
  
 <!-- 게시글 상세보기 -->
 <select id="userWriteDetailData" resultType="PboardVO" parameterType="int">
-    SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, good_count, id, name, rcount, num
-    FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount, rownum as num
-    FROM (SELECT p_no, subject, content, pwd, regdate, hit, good_count, id, name, rcount
+    SELECT p_no, subject, content, pwd, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, hit, id, name, rcount, num
+    FROM (SELECT p_no, subject, content, pwd, regdate, hit, id, name, rcount, rownum as num
+    FROM (SELECT p_no, subject, content, pwd, regdate, hit, id, name, rcount
     FROM pbo_4 ORDER BY regdate DESC))
     WHERE p_no=#{p_no}
 </select>
@@ -85,7 +85,7 @@ RCOUNT              NUMBER    -->
 
 <!-- 예약 - 좋아요 목록 -->
 <select id="userBookingLikeData" resultType="JjimVO" parameterType="string">
-    SELECT ord_jjim_4.j_no, ord_jjim_4.id, ord_jjim_4.o_no, ord_4.poster, ord_4.name, ord_4.s_info, ord_4.price
+    SELECT ord_jjim_4.j_no, ord_jjim_4.id, ord_jjim_4.o_no, ord_4.poster, ord_4.name, ord_4.s_info, to_char(ord_4.price,'FM9,999,999') as price
     FROM ord_jjim_4 
     LEFT JOIN ord_4
     ON ord_jjim_4.o_no = ord_4.o_no 

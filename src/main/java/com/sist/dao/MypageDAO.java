@@ -144,7 +144,7 @@ public class MypageDAO {
 		return list;
 	}
 	
-	// 커뮤니티 작성 글 페이징
+	// 내가 쓴 자유게시판 글 페이징
 	public static int userWriteTotalPage(String id)
 	{
 		int total=0;

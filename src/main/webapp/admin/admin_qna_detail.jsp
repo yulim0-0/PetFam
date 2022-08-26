@@ -8,8 +8,12 @@
 	<meta name="description" content="" />
 	<meta name="author" content="" />
 	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-	<link href="css/qna_detail.css" rel="stylesheet" />
-	
+	<style>
+	.row {
+	   justify-content:center;
+	   
+	}
+	</style>
 	<title>Admin QnA</title>
 	<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 	<script type="text/javascript">
@@ -100,16 +104,16 @@
                                     
 									<!-- Post categories-->
 									<a class="badge bg-secondary text-decoration-none link-light"
-										href="#!">Web Design</a> <a
+										href="#!">관리자모드</a> <a
 										class="badge bg-secondary text-decoration-none link-light"
-										href="#!">Freebies</a>
+										href="#!">문의</a>
 									<a id=name>${name }</a>
 								</header>
 								<!-- Preview image figure-->
 								<div>
 									<figure class="mb-4">
 										<p class="content-bg"
-											style="width: 100%; height: 400px; border:1px solid #ced4da; padding-top: 50px; padding-left: 30px;">${vo.content }</p>
+											style="width: 100%; height:fit-content; border:1px solid #ced4da; padding : 30px 50px;">${vo.content }</p>
 									</figure>
 								</div>
 							</article>
@@ -120,11 +124,11 @@
 									<div class="card-body">
 										<!-- Comment form-->
 										<h4>답변달기</h4>
-										<textarea class="form-control" rows="5" id="content" name="content" placeholder="Join the discussion and leave a comment!"></textarea>
+										<textarea class="form-control" rows="5" id="content" name="content" placeholder="문의에 대한 답변을 작성해주세요 ! 제목은 자동 지정됩니다."></textarea>
 										
-										<div class="submit-zone">
-											<input type="password" id=pwd name=pwd placeholder="Password" />
-	                                        <button title="저장" id="ansBtn">저장</button>
+										<div class="submit-zone" style="margin-top:20px;">
+											<input type="password" id=pwd name=pwd placeholder="Password" style="border:solid 0px; margin-right:20px;"/>
+	                                        <button title="저장" id="ansBtn" class="listBtn">저장</button>
 	                                        <button type="button" onclick="location.href='../admin/admin_qna.do'" id=listBtn class=listBtn >목록</button>
 										</div>
 										
