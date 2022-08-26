@@ -108,36 +108,83 @@ public class BookingModel {
 	@RequestMapping("booking/salon_list.do")
 	public String booking_salon(HttpServletRequest request, HttpServletResponse response)
 	{
-		/*String page=request.getParameter("page");
+		try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) {}
+		String page=request.getParameter("page");
 		if(page==null)
 			page="1";
+		String store=request.getParameter("store");
+		if(store==null) 
+			store="";
+		String[] chitem=request.getParameterValues("chitem");
+		/*
+		 * if(chitem==null) chitem=null; System.out.println(chitem+":");
+		 */
+		String strChitem = request.getParameter("strChitem");
+		
+		if(strChitem == null || strChitem.equals("")) {
+			strChitem = "";
+		}
+		if(chitem!=null) {
+			for (int i = 0; i < chitem.length; i++) { System.out.println(chitem[i]); }
+			strChitem = String.join("|", chitem); 
+		}
+		 
+		 
+		
+			/*
+			 * if(chitem==null) chitem=null; System.out.println(chitem+":");
+			 */
+		 
 		int curpage=Integer.parseInt(page);
-		Map map=new HashMap();
-		final int rowSize=9;
+		int rowSize=12;
 		int start=(rowSize*curpage)-(rowSize-1);//rownum=1
 		int end=(curpage*rowSize);
 		
+		Map map=new HashMap();
 		map.put("start", start);
 		map.put("end", end);
-	
 		map.put("s", 8);
 		map.put("e", 18);
+		map.put("store", store);
+		map.put("chitem", strChitem);
+		
 		List<BookingVO> list=BookingDAO.bookingListData(map);
 		
-		 int totalpage=BookingDAO.bookingTotalPage(map);
-		   //System.out.println("totalpage="+totalpage);
+		Map map2=new HashMap();
+		map2.put("store", store);
+		map2.put("chitem", strChitem);
+		
+		/* int totalpage=BookingDAO.bookingTotalPage(store); */
+		 
+		 int totalpage2=BookingDAO.bookingTotalPage2(map2);
+		 
+		   System.out.println("saltotalpage="+totalpage2);
 		   final int BLOCK=5;
 		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		   /*
+		    *   [1][2][3][4][5]  => startPage =1 
+		    *                       endPage   =5
+		    *   [6][7][8][9][10] => startPage=6
+		    *                       endPage=10
+		    */
 		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
 		   
-		   if(endPage>totalpage)
-			    endPage=totalpage;
+		   if(endPage>totalpage2)
+			    endPage=totalpage2;
+		   System.out.println("salendPage="+endPage);
 		   
 		   request.setAttribute("curpage", curpage);
-		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("totalpage", totalpage2);
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
-		   request.setAttribute("list", list);*/
+		   System.out.println(endPage);
+		   request.setAttribute("list", list);
+		   request.setAttribute("store", store);
+		   request.setAttribute("chitem", strChitem);
+		   request.setAttribute("strChitem", strChitem);
 		
 		
 		request.setAttribute("main_jsp", "../booking/salon_list.jsp");
@@ -147,36 +194,81 @@ public class BookingModel {
 	@RequestMapping("booking/training_list.do")
 	public String booking_training(HttpServletRequest request, HttpServletResponse response)
 	{
-		/*String page=request.getParameter("page");
+		try
+		   {
+			   request.setCharacterEncoding("UTF-8");
+		   }catch(Exception ex) {}
+		String page=request.getParameter("page");
 		if(page==null)
 			page="1";
+		String store=request.getParameter("store");
+		if(store==null) 
+			store="";
+		String[] chitem=request.getParameterValues("chitem");
+		/*
+		 * if(chitem==null) chitem=null; System.out.println(chitem+":");
+		 */
+		String strChitem = request.getParameter("strChitem");
+		
+		if(strChitem == null || strChitem.equals("")) {
+			strChitem = "";
+		}
+		if(chitem!=null) {
+			for (int i = 0; i < chitem.length; i++) { System.out.println(chitem[i]); }
+			strChitem = String.join("|", chitem); 
+		}
+		 
+		 
+		
+			/*
+			 * if(chitem==null) chitem=null; System.out.println(chitem+":");
+			 */
+		 
 		int curpage=Integer.parseInt(page);
-		Map map=new HashMap();
-		final int rowSize=9;
+		int rowSize=12;
 		int start=(rowSize*curpage)-(rowSize-1);//rownum=1
 		int end=(curpage*rowSize);
 		
+		Map map=new HashMap();
 		map.put("start", start);
 		map.put("end", end);
-		
 		map.put("s", 1);
 		map.put("e", 7);
+		map.put("store", store);
+		map.put("chitem", strChitem);
+		
 		List<BookingVO> list=BookingDAO.bookingListData(map);
 		
-		 int totalpage=BookingDAO.bookingTotalPage(map);
-		   //System.out.println("totalpage="+totalpage);
+		Map map2=new HashMap();
+		map2.put("store", store);
+		map2.put("chitem", strChitem);
+		
+		/* int totalpage=BookingDAO.bookingTotalPage(store); */
+		 
+		 int totalpage2=BookingDAO.bookingTotalPage2(map2);
+		 
+		   System.out.println("totalpage="+totalpage2);
 		   final int BLOCK=5;
 		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		   /*
+		    *   [1][2][3][4][5]  => startPage =1 
+		    *                       endPage   =5
+		    *   [6][7][8][9][10] => startPage=6
+		    *                       endPage=10
+		    */
 		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
 		   
-		   if(endPage>totalpage)
-			    endPage=totalpage;
+		   if(endPage>totalpage2)
+			    endPage=totalpage2;
 		   
 		   request.setAttribute("curpage", curpage);
-		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("totalpage", totalpage2);
 		   request.setAttribute("startPage", startPage);
 		   request.setAttribute("endPage", endPage);
-		   request.setAttribute("list", list);*/
+		   request.setAttribute("list", list);
+		   request.setAttribute("store", store);
+		   request.setAttribute("chitem", strChitem);
+		   request.setAttribute("strChitem", strChitem);
 		
 		request.setAttribute("main_jsp", "../booking/training_list.jsp");
 		return "../main/main.jsp";
