@@ -202,22 +202,7 @@ var stop = function(msg, title, type){
 										</span>
 									</div>
 									<div class="card__price">
-									   <input type="hidden" value="${vo.price }" id=price>
-									   <script>
-		                                var n1 = document
-		                                        .getElementById("price").value;
-		
-		                                function numberWithCommas(x) {
-		                                    return x
-		                                            .toString()
-		                                            .replace(
-		                                                    /\B(?=(\d{3})+(?!\d))/g,
-		                                                    ",");
-		                                }
-		                                numberWithCommas(n1);
-		                                document
-		                                        .write(numberWithCommas(n1));
-			                            </script> 원
+									   <p class="card_price">${vo.strPrice }원</p>
 									</div>
 								</div>
 

@@ -6,13 +6,19 @@ public class OrderVO {
 	private int oi_no,o_no;
 	private String order_date,order_time,msg,state,id;
 	private Date regdate, ordate, redate;
-	private String store, poster, name, price;
+	private String store, poster, name, price, strPrice;
 	
 	public String getStore() {
 		return store;
 	}
 	public void setStore(String store) {
 		this.store = store;
+	}
+	public String getStrPrice() {
+		return strPrice;
+	}
+	public void setStrPrice(String strPrice) {
+		this.strPrice = strPrice;
 	}
 	public String getPoster() {
 		return poster;
