@@ -262,11 +262,11 @@ div .logo {
                   <span>자유게시판 </span> <i class='fas fa-book'></i>
                   </button>
                </li>
-               <li>
+               <!-- <li>
                   <button type="button" onclick="location.href='../ppboard/list.do'">
                   <span>반려동물 자랑 게시판 </span> <i class='fas fa-car'></i>
                   </button>
-               </li>
+               </li> -->
                <li>
                   <button type="button" onclick="location.href='../qna/list.do'">
                   <span>문의 게시판</span> <i class='fas fa-cloud'></i>
