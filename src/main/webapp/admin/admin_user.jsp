@@ -330,7 +330,7 @@ var stop = function(msg, title, type){
 <body>
 	<main class="main">
 		<div class="user_header">
-			<h2 class="mb-5">User Information</h2>
+			<h2 class="mb-5">회원 정보</h2>
 
 		</div>
 
@@ -371,9 +371,10 @@ var stop = function(msg, title, type){
 										<div class="control__indicator"></div> </label></th>
 								<th scope="col">ID</th>
 								<th scope="col">Name</th>
-								<th scope="col">Occupation</th>
+								<th scope="col">Email</th>
 								<th scope="col">Contact</th>
 								<th scope="col">Address</th>
+								<th scope="col">JoinDate</th>
 								<th scope="col"></th>
 							</tr>
 						</thead>
@@ -397,13 +398,13 @@ var stop = function(msg, title, type){
 													<input type="checkbox" id=adminBtn
 														class="ios-switch-control-input">
 												</c:if> <span class="ios-switch-control-indicator"></span>
-											</label> <a href="#">${vo.name } ${vo.admin }</a>
+											</label> <a href="#">${vo.name }</a>
 										</div>
 									</td>
-									<td>Web Designer <small class="d-block">Far far away,
-											behind the word mountains</small></td>
+									<td>${vo.email }</td>
 									<td>${vo.phone }</td>
-									<td>[${vo.zipcode }] ${vo.addr1 } ${vo.addr2 }</td>
+									<td>[${vo.zipcode }]<small class="d-block"> ${vo.addr1 } ${vo.addr2 }</small></td>
+									<td>${vo.joindate }</td>
 									<td><a href="#" class="more" onclick="Confirm();">Delete</a></td>
 								</tr>
 							</c:forEach>

@@ -57,16 +57,16 @@
 }
 </style>
 <script type="text/javascript">
-	var alert = function(msg, type) {
-		swal({
-			title : '',
-			text : msg,
-			type : type,
-			timer : 1500,
-			customClass : 'sweet-size',
-			showConfirmButton : false
-		});
-	}
+var alert = function(title, type) {
+	swal({
+		title : title,
+		text : '',
+		type : type,
+		timer : 5000,
+		customClass : 'sweet-size',
+		showConfirmButton : true
+	});
+}
 var stop = function(msg, title, type){
         swal({
               title : title,

@@ -147,12 +147,13 @@ button {
  Body
 
 */
-
 .pbody {
-  display: flex;
-  flex: 1 1 auto;
-   font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;
-  color: #212529;
+	display: flex;
+	flex: 1 1 auto;
+	font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;
+	color: #212529;
+	width : 80%;
+	margin : 0 auto;
 }
 
 /* 
