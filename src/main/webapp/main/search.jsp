@@ -138,7 +138,7 @@ td img {
 <!-- 예약 검색 -->
 <div class="insearch-container">
 <h4 class="subtitle">예약</h4>
-<p class="subline"></p>
+<p class="subline" style="margin-right:608px;"></p>
 
 <c:forEach var="bo" items="${bookList }">
     <div class="insearch-row">
