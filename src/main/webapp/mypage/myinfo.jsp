@@ -49,7 +49,7 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td data-title="ID" class="info_cate">전화번호</td>
+                                <td data-title="Name" class="info_cate">전화번호</td>
                                 <td data-title="Name">${vo.phone }</td>
                                 <td></td>
                             </tr>
@@ -61,14 +61,14 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td data-title="ID" class="info_cate">주소</td>
-                                <td data-title="Name">[${vo.zipcode }]  ${vo.addr1 }  ${vo.addr2 }</td>
+                                <td data-title="Address" class="info_cate">주소</td>
+                                <td data-title="Address">[${vo.zipcode }]  ${vo.addr1 }  ${vo.addr2 }</td>
                                 <td></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td data-title="ID" class="info_cate">성별</td>
-                                <td data-title="Name">${vo.gender }</td>
+                                <td data-title="Gender" class="info_cate">성별</td>
+                                <td data-title="Gender">${vo.gender }</td>
                                 <td></td>
                             </tr>
 

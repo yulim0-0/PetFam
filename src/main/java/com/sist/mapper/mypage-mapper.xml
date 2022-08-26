@@ -73,7 +73,7 @@ RCOUNT              NUMBER    -->
     SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, id, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, num
     FROM (SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id, rownum as num
     FROM (seleCT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id
-    FROM qbo_4 WHERE id=#{id} ORDER BY regdate ASC))
+    FROM qbo_4 WHERE id=#{id} ORDER BY isreply ASC))
     WHERE num BETWEEN #{start} AND #{end}
     
 </select>
@@ -109,7 +109,7 @@ RCOUNT              NUMBER    -->
            (SELECT store FROM ord_4 WHERE o_no=ord_info_4.o_no) as store,
            (SELECT name FROM ord_4 WHERE o_no=ord_info_4.o_no) as name,
            (SELECT poster FROM ord_4 WHERE o_no=ord_info_4.o_no) as poster,
-           (SELECT TO_CHAR(price,'fm999&#44;999&#44;999&#44;999&#44;999') FROM ord_4 WHERE o_no=ord_info_4.o_no) as strPrice
+           (SELECT price FROM ord_4 WHERE o_no=ord_info_4.o_no) as price
     FROM ord_info_4
     WHERE id=#{id}
     ORDER BY state,oi_no DESC

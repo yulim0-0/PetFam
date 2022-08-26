@@ -1,32 +1,72 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CodePen - form</title>
+<title>JOIN</title>
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 <script type="text/javascript" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="shadow/js/shadowbox.js"></script>
-
-
 <link rel="stylesheet" href="css/join_style.css">
 <link rel="stylesheet" href="shadow/css/shadowbox.css">
+<script type="text/javascript">
 
+
+//숫자가 아닌 정규식
+var replaceNotInt = /[^0-9]/gi;
+
+$(document).ready(function(){
+    
+    $("#phone").on("focusout", function() {
+        var x = $(this).val();
+        if (x.length > 0) {
+            if (x.match(replaceNotInt)) {
+               x = x.replace(replaceNotInt, "");
+            }
+            $(this).val(x);
+        }
+    }).on("keyup", function() {
+        $(this).val($(this).val().replace(replaceNotInt, ""));
+    });
+
+});
+
+
+// 입력을 제한 할 특수문자의 정규식
+var replaceId  = /[<>()]/gi;
+
+$(document).ready(function(){
+    
+    $("#pwd").on("focusout", function() {
+        var x = $(this).val();
+        if (x.length > 0) {
+            if (x.match(replaceId)) {
+               x = x.replace(replaceId, "");
+               alert("특수문자는 사용 불가능합니다.");
+            }
+            $(this).val(x);
+        }
+    }).on("keyup", function() {
+        $(this).val($(this).val().replace(replaceId, ""));
+
+    });
+
+});
+</script>
 
 </head>
 <body>
 <main class="main">
     <!-- partial:index.partial.html -->
     <div class="joincontainer">
-        <form method="post" action="../user/join_ok.do" name="join_frm" id="join_frm" >
+        <form method="post" action="../user/join_ok.do" name="join_frm" id="join_frm" role="form" >
             
             <h4>Account</h4>
             <div class="row">
                 <div class="col-66 input-group input-group-icon">
-                    <input type="text" name=id id=id placeholder="아이디" />
+                    <input type="text" name=id id=id placeholder="아이디" required/>
                     <span class="none" id="idMsg"></span>
                     <div class="input-icon">
                         <i class="fa fa-envelope"></i>
@@ -66,7 +106,7 @@
             <!-- 이름 -->
             <div class="row">
                 <div class="input-group input-group-icon">
-                    <input class="row-100" type="text" id="name" name="name" placeholder="이름" />
+                    <input class="row-100" type="text" id="name" name="name" placeholder="이름"/>
                     <div class="input-icon" style="margin-top : 4px; ">
                         <i class="fa fa-smile-o"></i>
                     </div>
@@ -164,9 +204,7 @@
             <div class="row">
                 <h4>Terms and Conditions</h4>
                 <div class="input-group">
-                    <input id="terms" type="checkbox" /> <label for="terms">I
-                        accept the terms and conditions for signing up to this service,
-                        and hereby confirm I have read the privacy policy.</label>
+                    <input id="terms" type="checkbox" value="terms"/> <label for="terms">펫팸의 이용약관 및 개인정보 수집 및 이용에 대한 안내에 동의합니다.</label>
                 </div>
             </div>
             

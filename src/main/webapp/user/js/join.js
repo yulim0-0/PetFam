@@ -72,7 +72,7 @@ function ck_name(){
             return false;
         } else{
             MsgName.className='vaild'
-            MsgName.innerHTML="ok"
+            MsgName.innerHTML="비밀번호가 일치합니다"
         }   
 }
 
@@ -234,15 +234,61 @@ $(function() {
             }
         })
     })
-    $('#joinBtn').click(function(){
-    	$('#join_frm').submit();
+    $('#joinBtn').click(function() {
+        $(function() {
+            $('#joinBtn').click(function() {
+                var idck = $('#id').val();
+                var pwdck = $('#pwd').val();
+                var pwdckck = $('#pwd_check').val();
+                var name = $('#name').val();
+                var brd = $('#birthday').val();
+                var phone = $('#phone').val();
+                var email = $('#email').val();
+                var zipcode = $('#zipcode').val();
+                var terms = $('#terms').val();
+                
+                if (idck == '') {
+                    $("#id").focus();
+                    return false;
+                } else if(pwdck == '' || pwdck.indexOf()) {
+                    $("#pwd").focus();
+                    return false;
+                } else if(pwdckck == '') {
+                    $("#pwd_check").focus();
+                    return false;
+                } else if(name == '') {
+                    $("#name").focus();
+                    return false;
+                } else if(brd == '') {
+                    $("#birthday").focus();
+                    return false;
+                } else if(phone == '') {
+                    $("#phone").focus();
+                    return false;
+                } else if(email == '') {
+                    $("#email").focus();
+                    return false;
+                } else if(zipcode == '') {
+                    $("#zipcode").focus();
+                    return false;
+                } else if(terms == '') {
+                    alert('주의');
+                    $("#terms").focus();
+                    return false;
+                } else {
+                    $('#join_frm').submit();
+                }
+            })
+        })
+        
     })
 })
 /*    
-    if(man.checked == false && woman.checked == false){
-        MsgGender.style.display="block";
-        MsgGender.className='error'
-        MsgGender.innerHTML="필수 정보입니다."        wrap_gender.style.borderColor="red";
-        return false;
-    }
-    */
+if(man.checked == false && woman.checked == false){
+    MsgGender.style.display="block";
+    MsgGender.className='error'
+    MsgGender.innerHTML="필수 정보입니다."        wrap_gender.style.borderColor="red";
+    return false;
+}
+*/
+

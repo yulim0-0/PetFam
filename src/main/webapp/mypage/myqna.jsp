@@ -106,20 +106,7 @@
 								</c:if>
 							</c:if>
 							
-							<c:if test="${vo.group_step != 0 }">
-									<tr>
-									
-										<td class="lalign">${vo.q_no }</td>
-										<td style="cursor: pointer; text-align:left" >
-											<a href="../qna/detail.do?q_no=${vo.q_no }">${vo.subject }</a>
-										</td>
-										<td>${vo.dbday }</td>
-										<td>${vo.hit }</td>
-										<td>${vo.id }</td>
-										<td style="color:#f34100">답변</td>	
-									</tr>								
-								
-							</c:if>
+
 						</tbody>
 					</c:forEach>
 				</table>

@@ -1,35 +1,38 @@
 @charset "UTF-8";
-html,body {
-	background : #ecf0f3;
-}
-.container {
-	text-align : -webkit-center;
-	margin-top : 60px;
-	width : 350px;
-	background : #ecf0f3;
-}
-.sb-body {
-	border-radius : 20px;
-}
-.row {
-    margin : 0px auto;
-    width : 300px;
-}
-input[type=button]{
-	background : #192f61;
-	border : 0px;
-	border-radius : 5px;
+
+html, body {
+	background: #ecf0f3;
 }
 
-input[type=button]:hover{
-    background : #f34100;
-    border : 0px;
-    border-radius : 5px;
-    
+.container {
+	text-align: -webkit-center;
+	margin-top: 60px;
+	width: 350px;
+	background: #ecf0f3;
+}
+
+.sb-body {
+	border-radius: 20px;
+}
+
+.row {
+	margin: 0px auto;
+	width: 300px;
+}
+
+input[type=button] {
+	background: #192f61;
+	border: 0px;
+	border-radius: 5px;
+}
+
+input[type=button]:hover {
+	background: #f34100;
+	border: 0px;
+	border-radius: 5px;
 }
 
 input[type=text] {
-	  border: 0.5rem outset pink;
-  border-radius: 12px;
-  outline-offset: 0.5rem;
+	border-radius: 12px;
+	outline-offset: 0.5rem;
 }

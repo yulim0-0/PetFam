@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>개인정보 수정</title>
 <link rel="stylesheet" href="css/myinfo.css">
 
 <style>
@@ -85,15 +85,16 @@ $('#editBtn').click(function(){
                                 <td></td>
                                 <td data-title="ID" class="info_cate">주소</td>
                                 <td>
-                                    <input type=text name=zipcode id=zipcode value=${vo.zipcode } placeholder="[${vo.zipcode }]  ${vo.addr1 }" readonly>
+                                    [<input type=text name=zipcode id=zipcode value="${vo.zipcode }" readonly>]
+                                    <input type=text name=addr1 id=addr1 value="${vo.addr1}">
                                 </td>
                                 <td class="checkBtn"><input type=button name=zipBtn id=zipBtn class=zipBtn value="우편번호" /></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td data-title="ID" class="info_cate">상세주소</td>
-                                
-                                <td><input type=text name=addr2 id=addr2 value="${vo.addr2 }">                                    
+                                <td>
+                                    <input type=text name=addr2 id=addr2 value="${vo.addr2 }">                                    
                                 </td>
                                 <td></td>
                             </tr>
@@ -101,8 +102,8 @@ $('#editBtn').click(function(){
                                 <td></td>
                                 <td data-title="ID" class="info_cate">성별</td>
                                 <td data-title="Name">
-                                    <input type=radio value="남자" name=sex ${vo.gender=='남자'?"checked":"" }>남자
-                                    <input type=radio value="여자" name=sex ${vo.gender=='여자'?"checked":"" }>여자
+                                    <input type=radio value="남자" name=gender ${vo.gender=='남자'?"checked":"" }>남자
+                                    <input type=radio value="여자" name=gender ${vo.gender=='여자'?"checked":"" }>여자
                                 </td>
                                 <td></td>
                             </tr>
