@@ -123,18 +123,18 @@
 		 <div class="pagination">
           <ul>
 		  <c:if test="${startPage>1 }">
-		   <li><a href="../petplace/cafe.do?page=${startPage-1 }">&laquo;</a></li>
+		   <li><a href="../petplace/park.do?page=${startPage-1 }">&laquo;</a></li>
 		  </c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
 			<c:if test="${i==curpage }">
-		     <li class="active"><a href="../petplace/cafe.do?page=${i }">${i }</a></li>
+		     <li class="active"><a href="../petplace/park.do?page=${i }">${i }</a></li>
 			</c:if>
 			<c:if test="${i!=curpage }">
-		    <li><a href="../petplace/cafe.do?page=${i }">${i }</a></li>
+		    <li><a href="../petplace/park.do?page=${i }">${i }</a></li>
 			</c:if>
 		    </c:forEach>
 			<c:if test="${endPage<totalpage }">
-			 <li><a href="../petplace/cafe.do?page=${endPage+1 }">&raquo;</a></li>
+			 <li><a href="../petplace/park.do?page=${endPage+1 }">&raquo;</a></li>
 			</c:if>
 		  </ul>
 		 </div>
