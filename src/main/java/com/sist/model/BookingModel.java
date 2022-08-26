@@ -421,7 +421,7 @@ public class BookingModel {
 	    	
 	    	System.out.println(id+"."+o_no+"예약완료");
 	    	BookingDAO.bookingInsert(vo);
-	    	return "redirect:../main/main.do";
+	    	return "redirect:../mypage/mybooking.do";
 	    }
 	 
 	 @RequestMapping("booking/review_ok.do")

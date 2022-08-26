@@ -367,7 +367,7 @@ function validation(){
                 <a data-bs-toggle="collapse" href="#faq7" class="collapsed question">펫팸을 탈퇴하고 싶어요 <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></a>
                 <div id="faq7" class="collapse" data-bs-parent=".faq-list2">
                   <p>
-                     하단의 프로필 탭을 누르면 환경설정에서 회원 탈퇴가 가능합니다. 회원 탈퇴시 이전의 대화, 일지는 모두 볼 수 없게 됩니다. 신중히 진행해주시길 부탁드립니다.
+                     문의하기를 통해 회원 탈퇴가 가능합니다. 회원 탈퇴시 이전의 대화, 일지는 모두 볼 수 없게 됩니다. 신중히 진행해주시길 부탁드립니다.
                   </p>
                 </div>
               </li>
@@ -402,13 +402,13 @@ function validation(){
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>김예빈</h4>
-                  <span>Chief Executive Officer</span>
+                  <span>조장 & 총괄</span>
                 </div>
                 <div class="social">
-                  <a href="https://github.com/sist-varm/sist_webStudy"><i class="bi bi-twitter"></i></a>
+                  <a href="https://github.com/sist-varm/sist_webStudy"><i class="bi bi-github"></i></a>
                   <a href=""><i class="bi bi-facebook"></i></a>
                   <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
+                  <a href="https://www.linkedin.com/in/yebin-kim-0357571a0/"><i class="bi bi-linkedin"></i></a>
                 </div>
               </div>
             </div>
@@ -420,7 +420,7 @@ function validation(){
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>정희선</h4>
-                  <span>Product Manager</span>
+                  <span>예악</span>
                 </div>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
@@ -438,7 +438,7 @@ function validation(){
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>김유림</h4>
-                  <span>CTO</span>
+                  <span>커뮤니티</span>
                 </div>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
@@ -459,7 +459,7 @@ function validation(){
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>김지연</h4>
-                  <span>Accountant</span>
+                  <span>추천</span>
                 </div>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
@@ -477,7 +477,7 @@ function validation(){
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>김명우</h4>
-                  <span>Accountant</span>
+                  <span>추천 & 예약</span>
                 </div>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>
@@ -495,7 +495,7 @@ function validation(){
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>백송이</h4>
-                  <span>Accountant</span>
+                  <span>예약</span>
                 </div>
                 <div class="social">
                   <a href=""><i class="bi bi-twitter"></i></a>

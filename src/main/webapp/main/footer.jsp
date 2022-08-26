@@ -3,8 +3,7 @@
 <%@page import="com.sist.dao.BookingDAO"%>
 <%@page import="com.sist.vo.BookingVO"%>
 <%@page import="org.apache.ibatis.annotations.Param"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%
@@ -29,7 +28,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>Footer</title>
 
 </head>
 
@@ -79,12 +78,12 @@
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Social Networks</h4>
-            <p style="word-break:break-all">해당 버튼을 클릭하시면 직원들의 GitHub으로 연결 됩니다. 더 많은 정보는 문의하기를 이용해주세요</p>
+            <p style="word-break:break-all">해당 버튼을 클릭하시면 직원들의 GitHub으로 연결 됩니다. 더 많은 정보를 원하시면 문의하기를 이용해주세요</p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
               <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="https://github.com/sistteamtuna/PetFam" class="GitHub"><i class="bx bxl-github"></i></a>
               <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
           </div>
@@ -95,7 +94,7 @@
 
     <div class="container py-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>Ninestars</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>PetFam</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
@@ -106,5 +105,6 @@
       </div>
     </div>
   </footer>
+  <script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
 </body>
 </html>
