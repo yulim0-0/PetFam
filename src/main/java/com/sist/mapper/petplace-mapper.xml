@@ -13,6 +13,14 @@
 		
 	
  </select>
+  
+ <select id="petplaceHitListData" resultType="PetplaceVO" parameterType="hashmap">
+    SELECT c_no,title,category,poster,addr,tel,subtitle,map,good,hit,num
+		FROM(SELECT c_no,title,category,poster,addr,tel,subtitle,map,good,hit,rownum as num
+		FROM(SELECT c_no,title,category,poster,addr,tel,subtitle,map,good,hit
+    FROM rcpg_4 WHERE c_no BETWEEN #{s} AND #{e} ORDER BY hit DESC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
  
  
  

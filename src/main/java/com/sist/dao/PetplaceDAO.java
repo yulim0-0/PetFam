@@ -49,6 +49,28 @@ public class PetplaceDAO {
 		return list;
 		
 	}
+
+	
+	 public static List<PetplaceVO> petplaceHitListData(Map map)
+	   {
+		 
+		   SqlSession session=null;
+		   List<PetplaceVO> list=null;
+		   try {
+			session=ssf.openSession();
+			list=session.selectList("petplaceHitListData",map);
+		} catch (Exception ex) {
+			System.out.println("petplaceListData(Map map) : error");
+			ex.printStackTrace();
+		}
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return list;
+	   }
+		
 	
 	public static int petplaceTotalPage(Map map)
 	{

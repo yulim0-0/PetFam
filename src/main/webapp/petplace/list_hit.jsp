@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,com.sist.dao.*,com.sist.vo.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-
-
 <%
 	
 	PetplaceDAO dao=new PetplaceDAO();
 	Cookie[] cookies=request.getCookies(); //쿠키 읽기
-	List<PetplaceVO> cList=new ArrayList<PetplaceVO>();
+	List<PetplaceVO> bList=new ArrayList<PetplaceVO>();
 	if(cookies!=null)
 	{
 		for(int i=cookies.length-1;i>=0;i--) // 최신부터 출력 
@@ -16,11 +14,12 @@
 			{
 				String c_no=cookies[i].getValue();// 1
 				PetplaceVO vo=dao.petplaceDetailData(Integer.parseInt(c_no));
-				cList.add(vo);
+				bList.add(vo);
 			}
 		}
 	}
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,30 +74,26 @@
 .pagination li.active a:hover {
     color: #F34100;
 }
+ $("#hit").click(function(){
 
+ 
+ })
  </style>
 </head>
 <body>
 <br><br><br><b></b><br><br>
 <div class="main">
-<table class="hitorder">
-<tr>
-<th width="30%"></th>
-<td width="70%"><a href="../petplace/list_hit.do" ><button class="btn card_btn_hit">조회수순</button></a> </td>
-</table>						
+	
   <ul class="cards">
-  
   <c:forEach var="vo" items="${list }" varStatus="s">
    <c:if test="${s.index%3==0 }">
    <li class="one_quarter first">
    <li class="cards_item">
     <div class="card">
      <div class="card_image"><img src="${vo.poster }" class="img2"></div>
-     
-     
      <div class="card_content">
     
-      <b class="card_title">${vo.title }</b>  <br> 조회수:${vo.hit }
+       <b class="card_title">${vo.title }</b>  <br> 조회수:${vo.hit }
       
      
       <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"><button class="btn card_btn">Read More</button></a>
@@ -114,7 +109,7 @@
      <div class="card_image"><img src="${vo.poster }" class="img2"></div>
      <div class="card_content">
      
-      <b class="card_title">${vo.title }</b>  <br> 조회수:${vo.hit }
+       <b class="card_title">${vo.title }</b>  <br> 조회수:${vo.hit }
       
       
     <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"> <button class="btn card_btn">Read More</button></a>
@@ -132,18 +127,18 @@
 		 <div class="pagination">
           <ul>
 		  <c:if test="${startPage>1 }">
-		   <li><a href="../petplace/cafe.do?page=${startPage-1 }">&laquo;</a></li>
+		   <li><a href="../petplace/list_hit.do?page=${startPage-1 }">&laquo;</a></li>
 		  </c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
 			<c:if test="${i==curpage }">
-		     <li class="active"><a href="../petplace/cafe.do?page=${i }">${i }</a></li>
+		     <li class="active"><a href="../petplace/list_hit.do?page=${i }">${i }</a></li>
 			</c:if>
 			<c:if test="${i!=curpage }">
-		    <li><a href="../petplace/cafe.do?page=${i }">${i }</a></li>
+		    <li><a href="../petplace/list_hit.do?page=${i }">${i }</a></li>
 			</c:if>
 		    </c:forEach>
 			<c:if test="${endPage<totalpage }">
-			 <li><a href="../petplace/cafe.do?page=${endPage+1 }">&raquo;</a></li>
+			 <li><a href="../petplace/list_hit.do?page=${endPage+1 }">&raquo;</a></li>
 			</c:if>
 		  </ul>
 		 </div>
@@ -157,7 +152,7 @@
     <hr>
      <%
      	int k=0;
-        for(PetplaceVO vo:cList)
+        for(PetplaceVO vo:bList)
         {
         	if(k>13) break;
      %>
