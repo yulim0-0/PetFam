@@ -109,7 +109,7 @@ RCOUNT              NUMBER    -->
            (SELECT store FROM ord_4 WHERE o_no=ord_info_4.o_no) as store,
            (SELECT name FROM ord_4 WHERE o_no=ord_info_4.o_no) as name,
            (SELECT poster FROM ord_4 WHERE o_no=ord_info_4.o_no) as poster,
-           (SELECT price FROM ord_4 WHERE o_no=ord_info_4.o_no) as price
+           (SELECT TO_CHAR(price,'fm999&#44;999&#44;999&#44;999&#44;999') FROM ord_4 WHERE o_no=ord_info_4.o_no) as strPrice
     FROM ord_info_4
     WHERE id=#{id}
     ORDER BY state,oi_no DESC

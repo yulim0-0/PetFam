@@ -179,6 +179,47 @@ public class PetplaceModel {
 		   return "../main/main.jsp";
 	   }
 	
+	@RequestMapping("petplace/list_hit.do")
+	public String petplace_list_hit(HttpServletRequest request, HttpServletResponse response)
+	{
+		String page=request.getParameter("page");
+		if(page==null)
+			page="1";
+		int curpage=Integer.parseInt(page);
+		Map map=new HashMap();
+		final int rowSize=9;
+		int start=(rowSize*curpage)-(rowSize-1);//rownum=1
+		int end=(curpage*rowSize);
+		
+		map.put("start", start);
+		map.put("end", end);
+	
+		//map.put("s", 49);
+		//map.put("e", 50);
+		map.put("s", 319);
+		map.put("e", 481);
+		
+		List<PetplaceVO> list=PetplaceDAO.petplaceHitListData(map);
+		
+		 int totalpage=PetplaceDAO.petplaceTotalPage(map);
+		   //System.out.println("totalpage="+totalpage);
+		   final int BLOCK=5;
+		   int startPage=((curpage-1)/BLOCK*BLOCK)+1;
+		   int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
+		   
+		   if(endPage>totalpage)
+			    endPage=totalpage;
+		   
+		   request.setAttribute("curpage", curpage);
+		   request.setAttribute("totalpage", totalpage);
+		   request.setAttribute("startPage", startPage);
+		   request.setAttribute("endPage", endPage);
+		   request.setAttribute("list", list);
+		
+		request.setAttribute("main_jsp", "../petplace/list_hit.jsp");
+		return "../main/main.jsp";
+	}
+	
 	@RequestMapping("petplace/jjim.do")
 	   public String petplace_jjim(HttpServletRequest request,HttpServletResponse response)
 	   {
