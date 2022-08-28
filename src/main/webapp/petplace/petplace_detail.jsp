@@ -114,7 +114,6 @@
   font-size: 16px;
   cursor: pointer;
 }
-
 .jjim_btn1 {
   background-color: #ffeebc;
   border: none;
@@ -123,12 +122,15 @@
   font-size: 16px;
   cursor: pointer;
 }
-
 /* Darker background on mouse-over */
 .jjim_btn:hover {
   background-color: #ffeebc;
   color: #F34100;
-  
+
+.searchmap_btn {
+  background-color:#f34100;
+  color: white;
+}  
   
 }
 #header .logo h1 a, #header .logo h1 a:hover {
@@ -144,7 +146,6 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   font-size: 16px;
   color: #707070; }
-
 </style>
 </head>
 
@@ -198,6 +199,10 @@ body {
 						       <tr>
 						        <th width=30%>조회수</th>
 						        <td width=70%>${vo.hit }</td>
+						       </tr>
+						       <tr>
+						        <th width=30%>추천수</th>
+						        <td width=70%>${vo.good}</td>
 						       </tr>
 						       <tr>
 						       	 <th width=30%>카테고리</th>
@@ -272,7 +277,8 @@ body {
                                   <p> ${vo.subtitle } </p>
                                     
                                 </div><br>
-                                <br>
+                                <a href="https://map.kakao.com/link/to/${vo.title},${vo.map}" target="_blank">
+																<button class="searchmap_btn">길찾기</button></a>
                                 <br>
                             </div>
                              <div role="tabpanel" class="tab-pane fade show active" id="addi-info">

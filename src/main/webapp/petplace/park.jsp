@@ -98,7 +98,7 @@
      
      <div class="card_content">
     
-      <b class="card_title">${vo.title }</b>  <br> 조회수:${vo.hit }
+      <b class="card_title">${vo.title }</b>  <br> 조회수:${vo.hit } 추천수:${vo.good }
       
      
       <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"><button class="btn card_btn">Read More</button></a>
@@ -114,7 +114,7 @@
      <div class="card_image"><img src="${vo.poster }" class="img2"></div>
      <div class="card_content">
      
-      <b class="card_title">${vo.title }</b>  <br> 조회수:${vo.hit }
+      <b class="card_title">${vo.title }</b>  <br> 조회수:${vo.hit } 추천수:${vo.good }
       
       
     <a href="../petplace/placedetail_before.jsp?c_no=${vo.c_no }"> <button class="btn card_btn">Read More</button></a>
@@ -153,7 +153,7 @@
  <div style="height: 10px"></div>
  		<div class="cookie-row">
     <h3>최근에 본 장소</h3>
-    <a href="cookie_delete.jsp">쿠키삭제</a>
+    <a href="cookie_delete.jsp">쿠키삭제</a> 
     <hr>
      <%
      	int k=0;
