@@ -135,6 +135,8 @@ public class PetplaceDAO {
 			   {
 				   session=ssf.openSession(true);
 				   session.insert("petplaceJjimInsert",vo);
+				   vo=session.selectOne("placegoodIncrement", vo);//row
+			       session.commit();
 				  
 			   }catch(Exception ex) {
 				   ex.printStackTrace();
@@ -233,6 +235,8 @@ public class PetplaceDAO {
 			   {
 				   session=ssf.openSession(true);
 				   session.delete("petplaceJjimDelete",vo);
+				   vo=session.selectOne("placegoodCancel", vo);//row
+			       session.commit();
 				   
 			   }catch(Exception ex)
 			   {
@@ -285,6 +289,19 @@ public class PetplaceDAO {
 			   return total;
 		   }
 		   
+		   public static void placegoodIncrement(int c_no)
+		   {
+			   SqlSession session=ssf.openSession(true);
+			   session.update("placegoodIncrement", c_no);
+			   session.close();
+		   }  
+		   
+		   public static void placegoodCancel(int c_no)
+		   {
+			   SqlSession session=ssf.openSession(true);
+			   session.update("placegoodCancel", c_no);
+			   session.close();
+		   }  
 		  
  
 		   
