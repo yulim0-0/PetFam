@@ -282,8 +282,16 @@ div .logo {
          <div class='pmain'>
             <div class='pmain__content'>
                <div class='ptable-card'>
-                  <h2>Q&A</h2>
+                  <h2 style="margin-left: 38px;">Q&A</h2>
                   <table class='ptable'>
+                  <div  style="margin-top: 20px;">
+                  	 <c:if test="${sessionScope.id!=null }">
+			            <!-- 로그인한 사람만 보임  -->
+			            <a href="../qna/insert.do" class="btn square btn-primary write"
+			               id="WriteBtn"style="margin-right: 30px;"> <i class="fa fa-pencil"></i> 글 쓰기
+			            </a>
+				         </c:if>
+                  </div>
                      <thead>
                         <tr>
                            <td width="10%" class="text-center">번호</td>
@@ -315,7 +323,7 @@ div .logo {
                   </table>
                </div>
                <div class="container" align="center">
-                  <div class="pagination">
+                  <div class="pagination"   style=" width: inherit;">
                      <ul>
                         <c:if test="${startPage>1 }">
                            <li><a href="../qna/list.do?page=${startPage-1 }">&laquo;</a></li>
@@ -335,12 +343,7 @@ div .logo {
                   </div>
                </div>
             </div>
-            <c:if test="${sessionScope.id!=null }">
-            <!-- 로그인한 사람만 보임  -->
-            <a href="../qna/insert.do" class="btn square btn-primary write"
-               id="WriteBtn"> <i class="fa fa-pencil"></i> 글 쓰기
-            </a>
-	         </c:if>
+           
 	         
 	         <!-- 검색창 -->
 			<!-- <div style="width: 50%; margin: 0 auto;">

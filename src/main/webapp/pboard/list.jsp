@@ -294,7 +294,7 @@ body {
 			<div class='pmain'>
 				<div class='pmain__content'>
 					<div class='ptable-card'>
-						<h2>PetBoard</h2>
+						<h2 style="margin-left: 38px;">PetBoard</h2>
 						<div style="margin-top: 20px;">
 							<div style="width: 90%;margin: 0 auto;padding-bottom: 20px;">
 								<a href="../pboard/list_hit.do" class="btn square btn-default best"
@@ -303,7 +303,7 @@ body {
 									id="hit"><i class="fa fa-star"></i>최신글</a>
 								<c:if test="${sessionScope.id!=null }">
 									<!-- 로그인한 사람만 보임  -->
-									<a href="../pboard/insert.do" style="margin-bottom: -6px;"
+									<a href="../pboard/insert.do" style="margin-bottom: -6px;margin-right: 3px;"
 										class="btn square btn-primary write" id="WriteBtn"> <i
 										class="fa fa-pencil"></i> 글 쓰기
 									</a>
