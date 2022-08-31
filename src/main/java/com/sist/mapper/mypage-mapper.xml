@@ -109,11 +109,11 @@ RCOUNT              NUMBER    -->
 <!-- 예약내역 출력 -->
 <select id="bookingMypageData" resultType="com.sist.vo.OrderVO" parameterType="string">
 <!-- 조인으로 바꿀것 -->
-    SELECT o_no,oi_no,order_date,order_time,msg,state,
+   SELECT o_no,oi_no,order_date,order_time,msg,state,
            (SELECT store FROM ord_4 WHERE o_no=ord_info_4.o_no) as store,
            (SELECT name FROM ord_4 WHERE o_no=ord_info_4.o_no) as name,
            (SELECT poster FROM ord_4 WHERE o_no=ord_info_4.o_no) as poster,
-           (SELECT price FROM ord_4 WHERE o_no=ord_info_4.o_no) as price
+           (SELECT TO_CHAR(price,'fm999&#44;999&#44;999&#44;999&#44;999') FROM ord_4 WHERE o_no=ord_info_4.o_no) as strPrice
     FROM ord_info_4
     WHERE id=#{id}
     ORDER BY state,oi_no DESC

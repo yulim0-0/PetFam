@@ -6,83 +6,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<header id="header" class="fixed-top d-flex align-items-center" style="
-    font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;">
-		<div class="container d-flex align-items-center justify-content-between">
-			<div class="logo">
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<a href="../main/main.do"><img src="../assets/img/logo.png" alt="" class="img-fluid"></a>
-				<h1 class="text-light">
-					<a href="../main/main.do"><span style="font-family: geller-headline, serif">PetFam</span></a>
-				</h1>
-			</div>
-
-			<nav id="navbar" class="navbar">
-				<ul>
-					<!-- <li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
-					<li class="dropdown">
-						<a href="#"><span>예약</span><i class="bi bi-chevron-down"></i></a>
-						<ul>
-							<li><a href="../booking/hospital_list.do">병원</a></li>
-							<li><a href="../booking/salon_list.do">미용</a></li>
-							<li><a href="../booking/training_list.do">훈련</a>
-						</li></ul> 
-						<!--   <li><a class="nav-link scrollto" href="#portfolio" hover="Recommendation")>추천</a></li>-->
-					</li><li class="dropdown"><a href="#"><span>추천</span> <i class="bi bi-chevron-down"></i></a>
-						<ul>
-							<li><a href="../petplace/cafe.do">카페/식당</a></li>
-							<li><a href="../petplace/park.do">공원</a></li>
-							<li><a href="../petplace/pension.do">펜션</a></li>
-						</ul>
-					</li>
-
-
-					<li class="dropdown">
-						<a href="../pboard/list.do"><span>커뮤니티</span><i class="bi bi-chevron-down"></i></a>
-						<ul>
-							<li><a href="../pboard/list.do">자유 게시판</a></li>
-							<li><a href="../ppboard/list.do">반려동물 자랑 게시판</a></li>
-							<li><a href="../qna/list.do">문의 게시판</a></li>
-							<li><a href="../notice/list.do">공지사항</a></li>
-						</ul> 
-
-							</li><li class="dropdown"><a href="#"><span>마이</span> <i class="bi bi-chevron-down"></i></a>
-								<ul>
-									<li class="dropdown">
-										<a href="#"><span>마이페이지</span> <i class="bi bi-chevron-right"></i></a>
-										<ul>
-											<li><a href="../mypage/myinfo.do">나의정보</a></li>
-											<li><a href="../mypage/myinfo_edit.do">나의정보 수정</a></li>
-										</ul>
-									</li>
-									<li><a href="../mypage/mybooking.do">예약 내역</a></li>
-									<li><a href="../mypage/mylike.do">좋아요 내역</a></li>
-									<li><a href="../mypage/mywrite.do">게시글 내역</a></li>
-									<li><a href="../mypage/myqna.do">문의 내역</a></li>
-								</ul>
-							</li>
-
-
-						 <!-- 로그인 상태가 아닌 경우 --> 
-					<li><a class="nav-link scrollto" href="#contact">문의</a></li>
-
-					<!-- 로그인 상태가 아닌 경우 -->
-					<c:if test="${sessionScope.id==null }">
-						<li>
-							<a class="start" id="login_header" href="../user/login.do">로그인</a>
-						</li>
-					</c:if>
-
-					<!-- 로그인 상태인 경우 -->
-					<c:if test="${sessionScope.id!=null }">
-						<li><a class="start" id="logout_header" href="../user/logout.do">로그아웃</a></li>
-					</c:if>
-				</ul>
-				<i class="bi bi-list mobile-nav-toggle"></i>
-			</nav>
-			<!-- .navbar -->
-		</div>
-	</header>
 
 <head>
     
@@ -104,6 +27,22 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
+
+.navbar{
+	 font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;
+}
+
+.container{
+    --bs-gutter-x: -0.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+   
+}
+
 .jjim_btn {
   background-color: #f2f4f5;
   border: none;
@@ -127,8 +66,7 @@
 .jjim_btn:hover {
   background-color: #ffeebc;
   color: #F34100;
-  
-  
+
 }
 #header .logo h1 a, #header .logo h1 a:hover {
     color: #192f61;
@@ -140,10 +78,14 @@
     font-size: 30px;
 }
 body {
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;
   font-size: 16px;
   color: #707070; }
-
+  
+.footer-top{
+ font-family: 'GmarketSansMedium';
+ }
+  
 </style>
 </head>
 
@@ -159,7 +101,7 @@ body {
 
     <!-- ##### Single Product Details Area Start ##### -->
     <section class="single_product_details_area mb-50">
-        <div class="produts-details--content mb-50">
+        <div class="produts-details--content mb-50" style="margin-bottom: 15px! important">
             <div class="container">
                 <div class="row justify-content-between">
 
@@ -201,11 +143,11 @@ body {
                                 <p>${vo.s_info }</p>
                             </div>
 
-                            <div class="cart--area d-flex flex-wrap align-items-center" >
+                            <div class="cart--area d-flex flex-wrap align-items-center" style="border-bottom: 0px;" >
                                 <!-- Reserve -->
-  
+  								<c:if test="${sessionScope.id!=null }">
                                <a href="../booking/booking.do?o_no=${vo.o_no }"><button class="btn alazea-btn ml-15">예약하기</button></a>
-                                   
+                                   </c:if>
              					  <!-- Wishlist  -->
                                 <div class="wishlist-compare d-flex flex-wrap align-items-center">
                                   <!-- 로그인 된 상태에서 -->
@@ -220,18 +162,17 @@ body {
                                  	 </c:if> 
                                  	</c:if>
                                  </div> 
-                                 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        
+        </div>
 
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="product_details_tab clearfix">
+                    <div class="product_details_tab clearfix" style="padding: 33px;">
                         <!-- Tabs -->
                         <ul class="nav nav-tabs" role="tablist" id="product-details-tab">
                             <li class="nav-item">
@@ -369,16 +310,6 @@ body {
             </div>
         </div>
     </section>
-    <!-- ##### Single Product Details Area End ##### -->
-  
- 
-  
-   
-  
-
-   
-
-
 
     <!-- ##### Related Product Area Start ##### -->
     <div class="related-products-area">
@@ -492,16 +423,9 @@ body {
                 </div>
 
             </div>
-        </div>
-        
-        
+        </div>    
         
     </div>
-    <!-- ##### Related Product Area End ##### -->
-
-    <!-- ##### Footer Area Start ##### -->
-   
-    <!-- ##### Footer Area End ##### -->
 
     <!-- ##### All Javascript Files ##### -->
     <!-- jQuery-2.2.4 js -->
@@ -514,6 +438,7 @@ body {
     <script src="js/plugins/plugins.js"></script>
     
     <script src="js/active.js"></script>
+    
 </body>
 
 </html>

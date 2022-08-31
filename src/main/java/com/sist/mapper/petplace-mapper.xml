@@ -85,6 +85,19 @@
     SET    hit=NVL(hit,0) +1
     WHERE  c_no=#{c_no}
   </update>
+ 
+  
+  <update id="placegoodIncrement" parameterType="int">
+    UPDATE rcpg_4 
+    SET    good=NVL(good,0) +1
+    WHERE  c_no=#{c_no}
+  </update>
+  
+  <update id="placegoodCancel" parameterType="int">
+    UPDATE rcpg_4 
+    SET    good=good-1
+    WHERE  c_no=#{c_no}
+  </update>
   
  
 </mapper>

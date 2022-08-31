@@ -294,7 +294,7 @@ body {
 			<div class='pmain'>
 				<div class='pmain__content'>
 					<div class='ptable-card'>
-						<h2>Notice</h2>
+						<h2 style="margin-left: 38px;">Notice</h2>
 						<c:if test="${sessionScope.admin=='y'}">
 							<!-- 로그인한 사람만 보임  -->
 							<a href="../notice/insert.do"

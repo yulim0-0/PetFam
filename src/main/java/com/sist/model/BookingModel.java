@@ -427,7 +427,7 @@ public class BookingModel {
 	 @RequestMapping("booking/review_ok.do")
 	    public String review_ok(HttpServletRequest request,HttpServletResponse response)
 	    {
-		   //System.out.println("1111111111111111111");
+		   
 		   String o_no="",oi_no="";
 	    	try
 	    	{
@@ -440,7 +440,7 @@ public class BookingModel {
 				OI_NO   NOT NULL NUMBER         예약번호 (fk)
 				OPTIONS NOT NULL VARCHAR2(10)   옵션
 			 */
-	    	//String rv_no=request.getParameter("rv_no");
+	    	
 	    	o_no=request.getParameter("o_no");
 	        oi_no=request.getParameter("oi_no");
 	    	String content=request.getParameter("content");
@@ -460,7 +460,7 @@ public class BookingModel {
 	    	
 	    	ReviewVO vo=new ReviewVO();
 	    	
-	    	//vo.setRv_no(Integer.parseInt(rv_no));
+	    	
 	    	vo.setContent(content);
 	    	vo.setId(id);
 	    	vo.setOptions(options);
