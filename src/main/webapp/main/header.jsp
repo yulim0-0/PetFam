@@ -71,7 +71,7 @@
 									<ul>
 										<li><a href="../admin/admin_booking.do">예약 관리</a></li>
 										<li><a href="../admin/admin_community.do">게시글 관리</a></li>
-                                        <li><a href="../admin/admin_qna.do">문의 관리</a></li>
+                              <li><a href="../admin/admin_qna.do">문의 관리</a></li>
 										<li><a href="../admin/admin_user.do">계정 관리</a></li>
 									</ul>
 								</li>
