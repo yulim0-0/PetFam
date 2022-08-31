@@ -132,30 +132,28 @@ public class AdminDAO {
 		return result;
 	}
 	
-	public static String UserInfoDelete(String id, String pwd, String db_pwd)
-	{
-		String result="";
-		SqlSession session=null;
-		
-		try {
-			session=ssf.openSession(true);
-			if(db_pwd.equals(pwd))
-			{
-				result="yes";
-				session.delete("userInfoDelete",id);
-				session.commit();
-			} else {
-				result="no";
-			}
-		} catch (Exception e) {
-			System.out.println("userInfoDelete : error");
-			e.printStackTrace();
-		} finally {
-			if(session!=null)
-				session.close();
-		}
-		return result;
-	}
+	public static boolean userInfoDelete(String id)
+	   {
+		   boolean bCheck=false;
+		   SqlSession session=null;
+		   try
+		   {
+			   session=ssf.openSession();
+			   UserVO pvo=session.selectOne("memberInfoData", id);
+			   bCheck=true;
+			   session.delete("userDelete",id);
+			   session.commit();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   if(session!=null)
+				   session.close();
+		   }
+		   return bCheck;
+	   }
 	
 	public static List<UserVO> userInfoDetailData()
 	{

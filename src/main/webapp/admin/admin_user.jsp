@@ -385,8 +385,9 @@ var stop = function(msg, title, type){
 								<tr scope="row">
 									<td><label class="control control--checkbox"><input
 											type="checkbox" />
-											<div class="control__indicator"></div> </label></td>
-									<td>${vo.id }</td>
+											<div class="control__indicator"></div> 
+									</label></td>
+									<td>${vo.id }<input type="hidden" value=${vo.id } name=user_id></td>
 									<td class="pl-0">
 										<div class="d-flex align-items-center">
 											<label class="custom-control ios-switch"> <c:if

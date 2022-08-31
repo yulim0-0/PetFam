@@ -85,7 +85,7 @@ $('#editBtn').click(function(){
                                 <td></td>
                                 <td data-title="ID" class="info_cate">주소</td>
                                 <td>
-                                    [<input type=text name=zipcode id=zipcode value="${vo.zipcode }" readonly>]
+                                    <input type=text name=zipcode id=zipcode value="${vo.zipcode }" readonly>
                                     <input type=text name=addr1 id=addr1 value="${vo.addr1}">
                                 </td>
                                 <td class="checkBtn"><input type=button name=zipBtn id=zipBtn class=zipBtn value="우편번호" /></td>

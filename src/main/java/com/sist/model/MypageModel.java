@@ -151,13 +151,12 @@ public class MypageModel {
 		map.put("id",id);
 		map.put("start",start);
 		map.put("end",end);
+		List<QnaVO> list=MypageDAO.userQnaListData(map);
 		
-		List<QnaVO> list=MypageDAO.userQnaData(map);
 		int totalpage=AdminDAO.adminQnaTotalPage();
 		final int BLOCK=5;
 		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
 		int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
-		
 		if(endPage>totalpage)
 			endPage=totalpage;
 		request.setAttribute("curpage", curpage);
