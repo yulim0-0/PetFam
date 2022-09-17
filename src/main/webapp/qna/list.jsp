@@ -15,62 +15,14 @@
 <!--  <link rel="stylesheet" type="text/css" href="https://d4fodtu7cqfym.cloudfront.net/fad0d3bf8c478ce27ec4b20657d43000.min.css?v=200103-10"> -->
 <link rel="stylesheet" href="../pboard/pboarddist/pboard_style.css">
 <style type="text/css">
-/*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
-.container {
-	width: 100%
+.pbody {
+    display: flex;
+    flex: 1 1 auto;
+    font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;
+    color: #212529;
+    align-items: baseline;
+    justify-content: space-evenly;
 }
-
-#header {
-	height: 72px;
-	transition: all 0.5s;
-	z-index: 997;
-	transition: all 0.5s;
-	background: #fff;
-	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-	width: 100%;
-}
-
-#header .logo h1 {
-	font-size: 30px;
-	margin: 0;
-	line-height: 1;
-	font-weight: bold;
-	float: left;
-}
-
-#header .logo h1 a, #header .logo h1 a:hover {
-	color: #192f61;
-	text-decoration: none;
-	padding-left: 12px;
-	font-family: geller-headline, serif;
-	font-weight: 900;
-	font-style: normal;
-}
-
-#header .logo img {
-	padding: 0;
-	margin: 0;
-	max-height: 30px;
-	float: left;
-	align-items: center;
-}
-
-#main {
-	margin-top: 72px;
-}
-
-.main {
-	margin-top: 160px;
-}
-
-div .logo {
-	padding-right: 342px;
-	margin: 0 auto;
-	margin-left: 0px;
-}
-
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
@@ -282,13 +234,13 @@ div .logo {
          <div class='pmain'>
             <div class='pmain__content'>
                <div class='ptable-card'>
-                  <h2 style="margin-left: 38px;">Q&A</h2>
+                  <h2 >Q&A</h2>
                   <table class='ptable'>
                   <div  style="margin-top: 20px;">
                   	 <c:if test="${sessionScope.id!=null }">
 			            <!-- 로그인한 사람만 보임  -->
 			            <a href="../qna/insert.do" class="btn square btn-primary write"
-			               id="WriteBtn"style="margin-right: 30px;"> <i class="fa fa-pencil"></i> 글 쓰기
+			               id="WriteBtn"> <i class="fa fa-pencil"></i> 글 쓰기
 			            </a>
 				         </c:if>
                   </div>

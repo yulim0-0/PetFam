@@ -20,62 +20,6 @@ h3 {
 }
 
 /*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
-.container {
-	width: 100%
-}
-
-#header {
-	height: 72px;
-	transition: all 0.5s;
-	z-index: 997;
-	transition: all 0.5s;
-	background: #fff;
-	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-	width: 100%;
-}
-
-#header .logo h1 {
-	font-size: 30px;
-	margin: 0;
-	line-height: 1;
-	font-weight: bold;
-	float: left;
-}
-
-#header .logo h1 a, #header .logo h1 a:hover {
-	color: #192f61;
-	text-decoration: none;
-	padding-left: 12px;
-	font-family: geller-headline, serif;
-	font-weight: 900;
-	font-style: normal;
-}
-
-#header .logo img {
-	padding: 0;
-	margin: 0;
-	max-height: 30px;
-	float: left;
-	align-items: center;
-}
-
-#main {
-	margin-top: 72px;
-}
-
-.main {
-	margin-top: 160px;
-}
-
-div .logo {
-	padding-right: 342px;
-	margin: 0 auto;
-	margin-left: 0px;
-}
-
-/*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
 /**
@@ -85,7 +29,14 @@ div .logo {
 	padding: 0;
 	margin-bottom: 0px;
 }
-
+.pbody {
+    display: flex;
+    flex: 1 1 auto;
+    font-family: 'GmarketSansMedium', 'Noto Sans KR', sans-serif;
+    color: #212529;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
 .navbar ul {
 	margin: 0;
 	padding: 0;
@@ -294,16 +245,16 @@ body {
 			<div class='pmain'>
 				<div class='pmain__content'>
 					<div class='ptable-card'>
-						<h2 style="margin-left: 30px;">PetBoard</h2>
+						<h2 >PetBoard</h2>
 						<div style="margin-top: 20px;">
-							<div style="width: 90%;margin: 0 auto;padding-bottom: 20px;">
+							<div style="width: 90%;padding-bottom: 20px;">
 								<a href="../pboard/list_hit.do" class="btn square btn-default best"
 									id="hit"><i class="fa fa-star"></i>인기글</a> <a
 									href="../pboard/list.do" class="btn square btn-default best"
 									><i class="fa fa-star"></i>최신글</a>
 								<c:if test="${sessionScope.id!=null }">
 									<!-- 로그인한 사람만 보임  -->
-									<a href="../pboard/insert.do" style="margin-bottom: -6px;margin-right: -2px;"
+									<a href="../pboard/insert.do" style="margin-bottom: -6px;margin-right: -112px;"
 										class="btn square btn-primary write" id="WriteBtn"> <i
 										class="fa fa-pencil"></i> 글 쓰기
 									</a>
