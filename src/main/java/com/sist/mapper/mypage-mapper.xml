@@ -68,8 +68,21 @@ RCOUNT              NUMBER    -->
     WHERE id=#{id}
 </update>
 
+<delete id="userDelete" parameterType="string">
+  DELETE FROM user_4
+  WHERE id=#{id}
+</delete>
+
+<select id="qna" resultType="QnaVO" parameterType="hashmap">
+   SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, id, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, num
+    FROM (SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id, rownum as num
+    FROM (seleCT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id
+    FROM qbo_4 WHERE id=#{id} ORDER BY isreply ASC))
+    WHERE num BETWEEN #{start } AND #{end }
+</select>
+
 <!-- 문의내역 목록 -->
-<select id="userQnaData" resultType="QnaVO" parameterType="hashmap">
+<select id="userQnaListData" resultType="QnaVO" parameterType="hashmap">
     SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, id, TO_CHAR(regdate, 'YYYY-MM-DD') as dbday, num
     FROM (SELECT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id, rownum as num
     FROM (seleCT q_no, hit, group_id, isreply, group_step, group_tab, name, subject, content, pwd, regdate, id

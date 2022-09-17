@@ -162,14 +162,14 @@ public class MypageDAO {
 		return total;
 	}
 	
-	public static List<QnaVO> userQnaData(Map map)
+	public static List<QnaVO> userQnaListData(Map map)
 	{
 		List<QnaVO> list=null;
 		SqlSession session=null;
 		
 		try {
 			session=ssf.openSession();
-			list=session.selectList("userQnaData",map);
+			list=session.selectList("userQnaListData",map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

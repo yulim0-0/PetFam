@@ -115,21 +115,6 @@ public class AdminModel {
 		return "../main/main.jsp";
 	}
 	
-	@RequestMapping("admin/admin_user_del.do")
-	public String user_join_del(HttpServletRequest request, HttpServletResponse response)
-	{
-		String id=request.getParameter("id");
-		HttpSession session=request.getSession();
-		String pwd=(String)session.getAttribute("pwd");
-		System.out.println(pwd);
-		
-		
-		String db_pwd=request.getParameter("pwd");
-		String result=AdminDAO.UserInfoDelete(id, pwd, db_pwd);
-		request.setAttribute("result", result);
-		return "../admin/admin_user_del.jsp";
-	}
-	
 	@RequestMapping("admin/admin_qna_detail.do")
 	public String admin_qna_detail(HttpServletRequest request, HttpServletResponse response)
 	{
@@ -205,6 +190,29 @@ public class AdminModel {
 		AdminDAO.adminQnaInsert(vo);
 		return "redirect:../admin/admin_qna.do";
 	}
+	
+//	관리자가 -> 사용자 계정 삭제
+   @RequestMapping("admin/user_delete.do")
+   public String admin_user_delete(HttpServletRequest request,HttpServletResponse response)
+   {
+	   request.setAttribute("main_jsp", "../admin/admin_user_delete.jsp");
+	   return "../main/main.jsp";
+   }
+	
+   @RequestMapping("admin/admin_user_del_ok.do")
+   public String member_join_delete_ok(HttpServletRequest request,HttpServletResponse response)
+   {
+	   String user_id = request.getParameter("user_id");
+	   request.setAttribute("user_id", user_id);
+	   HttpSession session=request.getSession();
+	   boolean bCheck=AdminDAO.userInfoDelete(user_id);
+	   if(bCheck==true)
+	   {
+		   session.invalidate();
+	   }
+	   request.setAttribute("bCheck",bCheck);
+	   return "../member/join_delete_ok.jsp";
+   }
 
 	
 }

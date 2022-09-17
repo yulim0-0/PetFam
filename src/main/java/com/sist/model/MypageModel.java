@@ -13,6 +13,8 @@ import com.sist.controller.RequestMapping;
 import com.sist.dao.AdminDAO;
 import com.sist.dao.BookingDAO;
 import com.sist.dao.MypageDAO;
+import com.sist.dao.QnaDAO;
+import com.sist.dao.UserDAO;
 import com.sist.vo.JjimVO;
 import com.sist.vo.OrderVO;
 import com.sist.vo.PboardVO;
@@ -133,7 +135,7 @@ public class MypageModel {
 		return "../main/main.jsp";
 	}
 	
-	
+	// 나의 문의사항
 	@RequestMapping("mypage/myqna.do")
 	public String user_q(HttpServletRequest request, HttpServletResponse response)
 	{
@@ -151,13 +153,13 @@ public class MypageModel {
 		map.put("id",id);
 		map.put("start",start);
 		map.put("end",end);
+		System.out.println("id:"+id);
+		List<QnaVO> list=MypageDAO.userQnaListData(map);
 		
-		List<QnaVO> list=MypageDAO.userQnaData(map);
 		int totalpage=AdminDAO.adminQnaTotalPage();
 		final int BLOCK=5;
 		int startPage=((curpage-1)/BLOCK*BLOCK)+1;
 		int endPage=((curpage-1)/BLOCK*BLOCK)+BLOCK;
-		
 		if(endPage>totalpage)
 			endPage=totalpage;
 		request.setAttribute("curpage", curpage);
@@ -184,7 +186,7 @@ public class MypageModel {
 		return "../main/main.jsp";
 	}
 	
-	//예약내역 출력
+	// 예약내역 출력
 	@RequestMapping("mypage/mybooking.do")
     public String bookingMypageData(HttpServletRequest request,HttpServletResponse response)
     {
@@ -196,7 +198,7 @@ public class MypageModel {
     	request.setAttribute("main_jsp", "../mypage/mybooking.jsp");
     	return "../main/main.jsp";
     }
-	//예약취소
+	// 예약취소
 	@RequestMapping("mypage/booking_cancel.do")
     public String booking_cancel(HttpServletRequest request,HttpServletResponse response)
     {
